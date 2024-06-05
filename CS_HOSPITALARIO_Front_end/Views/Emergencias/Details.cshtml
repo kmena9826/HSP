@@ -1,0 +1,146 @@
+﻿@model CS_HOSPITALARIO.Models.CS_EMERGENCIA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CS_EMERGENCIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PEDIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEDIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTE_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTE_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NIVEL_EMERGENCIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NIVEL_EMERGENCIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADMISION_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADMISION_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_INGRESO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_INGRESO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TRIAGE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRIAGE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANSFERENCIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANSFERENCIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_ALTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_ALTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_ALTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_ALTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_CREACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_CREACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO_CREACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_CREACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_MODIFICACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_MODIFICACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO_MODIFICACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_MODIFICACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADMISION_EGY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADMISION_EGY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PEDIDO_EGY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEDIDO_EGY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTE_EGY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTE_EGY)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EMERGENCIA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

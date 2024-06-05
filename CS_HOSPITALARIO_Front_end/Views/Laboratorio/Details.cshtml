@@ -1,0 +1,82 @@
+﻿@model CS_HOSPITALARIO.Models.CS_RESULTADOS_LAB_ENCABEZADO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CS_RESULTADOS_LAB_ENCABEZADO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EXAMEN_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXAMEN_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTE_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTE_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_RESULTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_RESULTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO_REGISTRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_REGISTRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_REGISTRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_REGISTRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMPRESO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMPRESO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ENV_POR_CORREO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ENV_POR_CORREO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CS_LABORATORIO.CLIENTE_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CS_LABORATORIO.CLIENTE_ID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_RESULTADO_LAB }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

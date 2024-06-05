@@ -1,0 +1,123 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_EMERGENCIA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PEDIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTE_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NIVEL_EMERGENCIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADMISION_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_INGRESO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TRIAGE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TRANSFERENCIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_ALTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_ALTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_CREACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO_CREACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_MODIFICACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO_MODIFICACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADMISION_EGY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PEDIDO_EGY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTE_EGY)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PEDIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLIENTE_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NIVEL_EMERGENCIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADMISION_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_INGRESO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRIAGE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANSFERENCIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_ALTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_ALTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_CREACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USUARIO_CREACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_MODIFICACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USUARIO_MODIFICACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADMISION_EGY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PEDIDO_EGY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLIENTE_EGY)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EMERGENCIA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EMERGENCIA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EMERGENCIA })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,493 @@
+﻿
+@model CS_HOSPITALARIO.Models.SpListadoExamenLaboratorioRegistrado_Result
+@{
+    ViewBag.Title = "Editar Resultado De Laboratorio";
+}
+<link href="~/Content/animate.css" rel="stylesheet" />
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Admision")">Resultado De Muestra</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4>Registro de resultado del estudio: @Model.DESC_ARTICULO</h4>
+                        </div>
+                        @Html.HiddenFor(model => model.ID_EXAMEN)
+                        <div class="form-group ml-auto">
+                            @if (Model.ESTADO != "C")
+                            {
+                                <button class="btn btn-primary" id="btnregistaratoma" onclick="registrartoma();">Registro De Resultado</button>
+                            }
+                            @Html.ActionLink("Cancelar", "ListaTrabajo", "Laboratorio", null, new { @class = "btn btn-outline-secondary" })
+                        </div>
+                    </div>
+                    <hr />
+                    <ul class="nav nav-tabs" id="myTabLaboratorio" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="detalle-tab" data-toggle="tab" href="#detalle" role="tab" aria-controls="detalle" aria-selected="true">Detalle</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="registrar-tab" data-toggle="tab" href="#registrar" role="tab" aria-controls="registrar" aria-selected="false">Registro De Resultado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#diagnostico" role="tab" aria-controls="contable" aria-selected="false">Diagnostico</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContentLaboratorio">
+                        <div class="tab-pane fade show active" id="detalle" role="tabpanel" aria-labelledby="detalle-tab">
+                            <hr />
+                            <div>
+                                @Html.HiddenFor(m => m.ID_EXAMEN)
+                                <fieldset disabled>
+                                    @*<div class="form-group row" style="display:none">
+
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.ED, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>*@
+                                    <div class="form-group row">
+                                        <label for="CLIENTE_ID" class="col-sm-2 col-form-label" style="text-align:right">Num Muestra:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.NUM_MUESTRA, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="CLIENTE_ID" class="col-sm-2 col-form-label" style="text-align:right">Cod Cliente:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.CLIENTE_ID, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="CLIENTE" class="col-sm-2 col-form-label" style="text-align:right">Cliente:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.CLIENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="SEXO" class="col-sm-2 col-form-label" style="text-align:right">Sexo:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.SEXO, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="ADMISION" class="col-sm-2 col-form-label" style="text-align:right">Admision:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.ADMISION, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="DESC_ARTICULO" class="col-sm-2 col-form-label" style="text-align:right">Examen:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.EXAMEN, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="STAT" class="col-sm-2 col-form-label" style="text-align:right">STAT:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.STAT)
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="FECHA_CREACION" class="col-sm-2 col-form-label" style="text-align:right">Fecha Admision:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.FECHA_CREACION, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="EDAD" class="col-sm-2 col-form-label" style="text-align:right">Edad Al Tomar La Muestra:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.EDAD_AL_TOMAR_MUESTRA, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="FECHA_TOMA_MUESTRA" class="col-sm-2 col-form-label" style="text-align:right">Fecha Toma De Muestra:</label>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.FECHA_TOMA_MUESTRA, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    @*<div class="form-group row">
+                                            <label for="USUARIO_TOMA_MUESTRA" class="col-sm-2 col-form-label" style="text-align:right">Usuario Toma De Muestra:</label>
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.USUARIO_TOMA_MUESTRA, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>*@
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="registrar" role="tabpanel" aria-labelledby="emergencia-tab">
+                            <hr />
+                            <div class="col-md-12 table-responsive">
+                                <table id="tabla_test" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Cod</th>
+                                            <th>Test</th>
+                                            <th>Resultado</th>
+                                            <th>Limites</th>
+                                            <th>UM</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            var getlist = ViewBag.PROCEDIMIENTO_DET as IEnumerable<CS_HOSPITALARIO_Front_end.Models.RegistrarResultadoLaboratorio>;
+
+                                            foreach (var item in getlist)
+                                            {
+                                                <tr id="@item.TEST">
+                                                    <td>
+                                                        @item.TEST
+                                                    </td>
+                                                    <td style=" width:300px;background-color:#F5F5F5;">
+                                                        <p class="font-weight-bold">@item.NOMBRE</p>
+                                                    </td>
+                                                    @if (item.LIMITE == null)
+                                                    {
+                                                        <td test="N">
+                                                            <p class="font-weight-bold">
+                                                                No se encontro ninguna prueba.Que cumpla con los parametros del paciente.!Por favor registrelo!
+                                                                <button type="button" class="btn btn-primary" onclick="Reenviar()">Registrar detalle del test</button>
+                                                            </p>
+                                                        </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (@item.VALOR == "N")
+                                                        {
+                                                            <td style=" width: 250px;" input="S">
+                                                                <input type="number" placeholder="Ingresar Resultado" id="@item.TEST" class="form-control" value="@item.RESULTADO">
+                                                            </td>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <td style=" width: 250px;" input="N">
+                                                                <input type="number" placeholder="Ingresar Resultado" id="@item.TEST" class="form-control" value="@item.RESULTADO">
+                                                            </td>
+                                                        }
+                                                        <td style=" width: 200px;">
+                                                            <p>@item.LIMITE.RANGO_MINIMO - @item.LIMITE.RANGO_MAXIMO @item.DESCRIPCION</p>
+                                                        </td>
+
+                                                        <td style=" width: 100px;">@item.DESCRIPCION</td>
+                                                    }
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Cod</th>
+                                            <th>Test</th>
+                                            <th>Resultado</th>
+                                            <th>Limites</th>
+                                            <th>UM</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="diagnostico" role="tabpanel" aria-labelledby="contable-tab">
+                            <hr />
+                            <div>
+                                <div class="form-group row">
+                                    <label for="ESTADO" class="col-sm-2 col-form-label" style="text-align:right">Estado:</label>
+                                    <div class="col-md-8">
+                                        <select id="ESTADO" name="ESTADO" class="form-control">
+                                            <option value="I">Incompleto</option>
+                                            <option value="C">Completo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div id="gridContainerCatalogoCIE"></div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="row">
+                                            <label>Aplicar</label>
+                                            <table id="detalles" class="table">
+                                                <thead style="background-color: #0984e3;color:white">
+                                                    <tr>
+                                                        <th>Borrar</th>
+                                                        <th>Id</th>
+                                                        <th>Enfermedad</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                        <div class="row">
+                                            <label>Observacion:</label>
+                                            <textarea id="OBSERVACIONES" name="OBSERVACIONES" class="form-control" rows="10" cols="50" placeholder="Escriba una Observacion aqui"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+@section scripts
+{
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/cldr/moment.min.js"></script>
+    <script src="~/Scripts/select2.js"></script>
+
+    <script src="~/Scripts/dx.all.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            CargarGridCie();
+            CargarTest();
+        });
+        function Reenviar() {
+            window.open('/Procedimiento/TestDetalles', '_blank');
+        }
+        function AgregarDiagnostico(cie) {
+            $.ajax({
+                url: "/Consultas/GetCIE",
+                type: "GET",
+                data: { cie },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var allow = true;
+
+                    var rowCount = $('#detalles tr').length;
+                    if (rowCount <= 1) {
+                        $("#detalles").find('tbody')
+                            .append('<tr id="' + cie + '" CIE="' + data[0].COD + '"><td><button type="button" class="btn btn-danger" onclick="ËliminarDiagnostico(' + cie + ')"><i class="fa fa-trash"></i></button></td><td>' + cie + '</td><td>' + data[0].DESCRIPCION + '</td></tr>');
+                    }
+                    else {
+                        $.notify({ message: 'Estimado usuario,Solo debe de seleccionar un diagnostico' }, { type: 'danger' });
+                    }
+                }, error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+
+        }
+        function CargarTest() {
+            $('#tabla_test tfoot th').each(function () {
+                var title = $(this).text().trim();
+                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+            });
+            var events = $('#events');
+            var table = $('#tabla_test').DataTable();
+            // Hide two columns
+            table.columns([0]).visible(false);
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+            $('#tabla_test tfoot tr').appendTo('#tabla_test thead');
+            $('#tabla_test_filter input').addClass("form-control");
+        }
+        function registrartoma() {
+            var allow = true;
+            $('#tabla_test tr td').each(function () {
+                var test = $(this).attr("test");
+                if (test != null) {
+                    allow = false;
+                    console.log(test);
+                }
+            });
+            if (allow) {
+                var num_muestra = $('#NUM_MUESTRA').val();
+                var allowE = true;
+                $('#tabla_test tr td input').each(function () {
+                    var test = $(this).val();
+                    if (test == "") {
+                        allowE = false;
+                        return;
+                    }
+                });
+                if (allowE) {
+                    var rowCount = $('#detalles tr').length;
+                    if (rowCount > 1) {
+                        var EXAMEN_ENCABEZADO;
+                        EXAMEN_ENCABEZADO = {
+                            "NUM_MUESTRA": num_muestra,
+                            "EXAMEN_ID": $("#ID_EXAMEN").val(),
+                            "CLIENTE_ID": $("#CLIENTE_ID").val()
+                        };
+                        var id_diagnostico;
+                        var Examenes = [];
+                        $('#tabla_test tr td input').each(function () {
+                            var test = $(this);
+                            var exs;
+                            exs = {
+                                "ID_TEST_DETALLE": test.attr("ID"),
+                                "RESULTADO": test.val()
+                            };
+                            Examenes.push(exs);
+                        });
+                        $("#detalles").find("tr").each(function () {
+                            var id = $(this).attr("id");
+                            if (id != null) {
+                                id_diagnostico = $(this).attr("cie");
+                            }
+                        });
+                        var observaciones = $('#OBSERVACIONES').val();
+                        var estado = $('#ESTADO').val();
+                        var exams = JSON.stringify(Examenes)
+                        console.log(JSON.stringify(EXAMEN_ENCABEZADO), JSON.stringify(Examenes), id_diagnostico, estado, observaciones)
+                        //GuardarLaboratorio(JSON.stringify(EXAMEN_ENCABEZADO), JSON.stringify(Examenes), id_diagnostico, observaciones);
+                        GuardarLaboratorio(EXAMEN_ENCABEZADO, Examenes, id_diagnostico, estado, observaciones);
+                    }
+                    else {
+                        $.notify({ message: 'Por favor seleccione un Diagnostico' }, { type: 'danger' });
+                    }
+                }
+                else {
+                    $.notify({ message: 'Ingrese el resultado de todo los test' }, { type: 'danger' });
+                }
+            }
+            else {
+                $.notify({ message: 'Debe de registrar detalle de todo los Test' }, { type: 'danger' });
+            }
+        }
+        function GuardarLaboratorio(examen_encabezado, examenes, id_diagnostico, estado, observacion) {
+            $.ajax({
+                type: "POST",
+                url: '/Laboratorio/GuardarExamen',
+                data: { examen_encabezado, examenes, id_diagnostico, estado, observacion },
+                success: function (data) {
+                    if (data.status) {
+                        $.notify({ message: 'Se ha registrado el laboratorio correctamente' }, { type: 'success' });
+                        location.href = '../ListaTrabajo';
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar el laboratorio' }, { type: 'danger' });
+                }
+            })
+        }
+        function CargarGridCie() {
+            $.ajax({
+                url: "/Consultas/GetCatalogoCIE",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var fillData = data.datos;
+                    var dataGrid = $("#gridContainerCatalogoCIE").dxDataGrid({
+                        filterRow: { visible: true },
+                        dataSource: fillData,
+                        keyExpr: "ID",
+                        sorting: {
+                            mode: "multiple"
+                        },
+                        paging: {
+                            pageSize: 5
+                        },
+                        pager: {
+                            showPageSizeSelector: true,
+                            allowedPageSizes: [5, 10],
+                            showInfo: true
+                        },
+                        filterRow: {
+                            visible: true
+                        },
+                        searchPanel: {
+                            visible: true,
+                            width: 240,
+                            placeholder: "Search..."
+                        },
+                        groupPanel: {
+                            visible: true
+                        },
+                        loadPanel: {
+                            enabled: true
+                        },
+                        showBorders: true,
+                        columns: [
+                            {
+                                dataField: "ID",
+                                caption: "Id",
+                                alignment: "center",
+                                width: 70
+                            },
+                            {
+                                dataField: "DESCRIPCION",
+                                caption: "Descripcion",
+                                width: 380
+                            },
+                            {
+                                type: "buttons",
+                                caption: "Agregar",
+                                alignment: "center",
+                                width: 70,
+                                cellTemplate: function (container, options) {
+                                    $("<div>")
+                                        .append($("<button type='button' class='btn btn-warning btn-sm' onclick=AgregarDiagnostico('" + options.key + "');><i class='fa fa-plus'></i></button>"))
+                                        .appendTo(container);
+                                    //
+                                }
+                            }
+                        ]
+                    }).dxDataGrid("instance");
+                }, error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+        }
+        function ËliminarDiagnostico(cie) {
+            cie.remove();
+        }
+    </script>
+}
+

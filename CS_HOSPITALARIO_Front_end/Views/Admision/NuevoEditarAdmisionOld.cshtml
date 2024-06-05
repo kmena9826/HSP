@@ -1,0 +1,235 @@
+﻿@model CS_HOSPITALARIO.Models.CS_ADMISION
+
+@{
+    ViewBag.Modulo = "mAdmision";
+}
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+
+                <div class="bgc-white p-20 bd">
+
+                    @using (Html.BeginForm())
+                    {
+                        @*<input value="P" id="asegurado" name="asegurado" type="hidden">*@
+                        <input value="" id="ID_FINANC" name="ID_FINANC" type="hidden">
+
+                        if (ViewBag.Accion == "Editar")
+                        {
+                            @Html.HiddenFor(model => model.ID_ADMISION)
+                            @Html.HiddenFor(model => model.PEDIDO)
+                        }
+                        else
+                        {
+                            @Html.HiddenFor(model => model.PEDIDO, new { @Value = ViewBag.NUM_PEDIDO })
+                        }
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row p-20">
+                            <label id="id-pedido" class="col-form-label fsz-lg color-secondary-m">
+                                @if (ViewBag.Accion == "Editar")
+                                {
+                                    @Model.PEDIDO
+                                }
+                                else
+                                {
+                                    @ViewBag.NUM_PEDIDO
+                                }
+                                @*<i class="fas fa-external-link-alt fsz-xs color-secondary-m" data-toggle="tooltip" data-placement="right" data-html="true" title="Buscar en <b>Softland</b>"></i>*@
+                            </label>
+
+                            <div class="form-group ml-auto">
+                                <input type="submit" value="Guardar" class="btn btn-primary" />
+                                @Html.ActionLink("Cancelar", "Admisiones", "Admision", null, new { @class = "btn btn-outline-secondary" })
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <label>Paciente</label>
+                                <div class="">
+                                    @Html.DropDownList("CLIENTE_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CLIENTE_ID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label>Medico</label>
+                                <div class="">
+                                    @Html.DropDownList("DOCTOR_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DOCTOR_ID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label class="switch float-right">
+                                    @*<input id="chbx" type="checkbox" class="switch-input">*@
+                                    @Html.CheckBoxFor(model => model.ASEGURADO, new { @class = "switch-input" })
+                                    <span class="switch-label" data-on="Asegurado" data-off="Privado"></span>
+                                    <span class="switch-handle"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <hr />
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label>Área de Servicio</label>
+                                <div class="">
+                                    @Html.DropDownList("AREA_SERVICIO_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AREA_SERVICIO_ID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Causa de Admisión</label>
+                                <div class="">
+                                    @Html.DropDownList("CAUSA_ADMISION_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CAUSA_ADMISION_ID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Tipo de Ingreso</label>
+                                <div class="">
+                                    @Html.DropDownList("TIPO_INGRESO_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.TIPO_INGRESO_ID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Prioridad</label>
+                                <div class="">
+                                    @Html.DropDownList("PRIORIDAD_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PRIORIDAD_ID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+                        <div class="form-row">
+                            <div id="financ" class="form-group col-md-4">
+                                <label>Financiador</label>
+                                <div class="">
+                                    @Html.DropDownList("FINANCIADOR", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FINANCIADOR, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div id="tipSeg" class="form-group col-md-4">
+                                <label>Tipo de Asegurado</label>
+                                <div class="col-md-12">
+                                    @Html.DropDownList("TIPO_SEGURO", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.TIPO_SEGURO, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div id="afil" class="form-group col-md-4">
+                                <label>Nº Afiliado</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.NUM_AFILIADO, new { htmlAttributes = new { @class = "form-control", placeholder = "Nº Afiliado" } })
+                                    @Html.ValidationMessageFor(model => model.NUM_AFILIADO, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts
+{
+    <link href="~/Content/select2.css" rel="stylesheet" />
+    <script src="~/Scripts/select2.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#CLIENTE_ID').select2();
+            $('#DOCTOR_ID').select2();
+            $('#AREA_SERVICIO_ID').select2();
+            $('#CAUSA_ADMISION_ID').select2();
+            $('#TIPO_INGRESO_ID').select2();
+            $('#PRIORIDAD_ID').select2();
+            //$('#FINANCIADOR').select2();
+            //$('#TIPO_SEGURO').select2();
+
+            $('#PACIENTE_ID').on('change', function () {
+                $('#CLIENTE_ID').val(this.value);
+            });
+
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var checkbox = document.querySelector('input[type="checkbox"]');
+
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    // do this
+                    $('#financ').show();
+                    $('#afil').show();
+                    $('#tipSeg').show();
+                } else {
+                    // do that
+                    $('#financ').hide();
+                    $('#afil').hide();
+                    $('#tipSeg').hide();
+                }
+            });
+        });
+
+        var finanz = document.getElementById("FINANCIADOR");
+
+        finanz.addEventListener("change", function () {
+            document.getElementById('ID_FINANC').value = document.getElementById('FINANCIADOR').value;
+        });
+
+        var idPac = document.getElementById("CLIENTE_ID");
+
+        idPac.addEventListener("change", function () {
+            document.getElementById('ID_FINANC').value = $("#CLIENTE_ID :selected").text();
+        });
+
+    @if (ViewBag.Accion == "Editar" && Model.ASEGURADO)
+    {
+        <text>
+            $('#financ').show();
+            $('#afil').show();
+            $('#tipSeg').show();
+        </text>
+    }
+    else
+    {
+        <text>
+        $('#financ').hide();
+        $('#afil').hide();
+        $('#tipSeg').hide();
+        </text>
+    }
+
+    </script>
+}

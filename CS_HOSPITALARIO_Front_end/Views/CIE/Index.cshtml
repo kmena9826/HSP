@@ -1,0 +1,381 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_CIE>
+
+@{
+    ViewBag.Title = "CIE";
+}
+<script src="~/Scripts/bundle.js"></script>
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <div class="col-md-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active" style="margin-right:30px"><a id="tabcap" data-toggle="tab" href="#home">Por Capitulos</a></li>
+                            <li><a id="tabcat" data-toggle="tab" href="#menu1" onclick=" $('#divListadoCIE').hide();">Por Catalogo</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade in active">
+                                <h4 style="margin-top:50px">Buscar por capitulos</h4>
+                                <hr />
+                                <div class="row" style="margin-top:30px">
+                                    <div class="col-md-12">
+                                        <form>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Capitulo</label>
+                                                <div class="col-sm-10">
+                                                    <div id="CIE_CAPITULOS"></div>
+                                                    @*@Html.DropDownList("CIE_CAPITULOS", null, string.Empty, htmlAttributes: new { @class = "form-control" })*@
+                                                </div>
+                                            </div>
+
+                                            <div id="divSubCapitulo" class="form-group row" style="display:none">
+                                                <label class="col-sm-2 col-form-label">SubCapitulo</label>
+                                                <div class="col-sm-10">
+                                                    <div id="CIE_SUBCAPITULOS"></div>
+                                                </div>
+                                            </div>
+                                            <div id="divTema" class="form-group row" style="display:none">
+                                                <label class="col-sm-2 col-form-label">Tema</label>
+                                                <div class="col-sm-10">
+                                                    <div id="CIE_TEMA"></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <hr />
+
+                            </div>
+                            <div id="menu1" class="tab-pane fade">
+                                <h4 style="margin-top:50px">Buscar por catalogo</h4>
+                                <hr />
+                                <div id="gridContainerCatalogoCIE"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divListadoCIE" class="row m-0 gap-20 masonry pos-r" style="margin:50px;display:none">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <div id="gridContainerCIE"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/dx.all.js"></script>
+    <script>
+        function SelectCapitulo() {
+            var capitulos = [];
+            document.getElementById("tabcap").click();
+            $.ajax({
+                type: "GET",
+                url: "/cie/GetCapitulos",
+                success: function (data) {
+                    //capitulos.push({
+                    //    ID: 0,
+                    //    DESCRIPCION: "Seleccione el Capitulo",
+                    //});
+                    $.each(data, function (i, v) {
+                        capitulos.push({
+                            ID: v.ID,
+                            DESCRIPCION: v.DESCRIPCION,
+                        });
+                    })
+                    $("#CIE_CAPITULOS").dxSelectBox({
+                        placeholder: "Seleccione el Capitulo",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: capitulos,
+                            key: "ID"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ID",
+                        //value: capitulos[0].ID,
+                        searchEnabled: true,
+                        showClearButton: true,
+                        onValueChanged: function (data) {
+                            if (data.value != 0 && data.value != null) {
+                                $("#divSubCapitulo").show();
+                                SelectSubCapitulos(data.value);
+                                //alert(data.value);
+                                //$("#divTema").show();
+                            }
+                            else {
+                                $("#divSubCapitulo").hide();
+                                $("#divTema").hide();
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function SelectSubCapitulos(id_capitulo) {
+            var subcapitulos = [];
+            $.ajax({
+                type: "GET",
+                url: "/cie/GetSubCapitulos",
+                data: { id_capitulo },
+                success: function (data) {
+                    //subcapitulos.push({
+                    //    ID: 0,
+                    //    DESCRIPCION: "Seleccione el SubCapitulo",
+                    //});
+                    $.each(data, function (i, v) {
+                        subcapitulos.push({
+                            ID: v.ID,
+                            DESCRIPCION: v.DESCRIPCION,
+                        });
+                    })
+                    $("#CIE_SUBCAPITULOS").dxSelectBox({
+                        placeholder: "Seleccione el SubCapitulo",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: subcapitulos,
+                            key: "ID"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ID",
+                        //value: subcapitulos[0].ID,
+                        searchEnabled: true,
+                        showClearButton: true,
+                        onValueChanged: function (data) {
+                            if (data.value != 0 && data.value != null) {
+                                $("#divTema").show();
+                                SelectTemas(data.value);
+                            }
+                            else {
+                                $("#divTema").hide();
+                            }
+                        }
+                    });
+
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+            $("#divSubCapitulo").show();
+        }
+        function SelectTemas(id_subcapitulo) {
+            var temas = [];
+            $.ajax({
+                type: "GET",
+                url: "/cie/GetTema",
+                data: { id_subcapitulo },
+                success: function (data) {
+                    //temas.push({
+                    //    ID: 0,
+                    //    DESCRIPCION: "Seleccione el Tema",
+                    //});
+                    $.each(data, function (i, v) {
+                        temas.push({
+                            ID: v.ID,
+                            DESCRIPCION: v.DESCRIPCION,
+                        });
+                    })
+                    $("#CIE_TEMA").dxSelectBox({
+                        placeholder: "Seleccione el Tema",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: temas,
+                            key: "ID"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ID",
+                        //value: temas[0].ID,
+                        searchEnabled: true,
+                        showClearButton: true,
+                        onValueChanged: function (data) {
+                            if (data.value != 0 && data.value != null) {
+                                $("#divSubCapitulo").show();
+                                $("#divTema").show();
+                                ListadoCIE(data.value);
+
+                            }
+                            else {
+                                $("#divListadoCIE").hide();
+                            }
+
+                        }
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+            $("#divTema").show();
+        }
+        function ListadoCIE(id_tema) {
+            var CIE = [];
+            $("#divListadoCIE").show();
+            $.ajax({
+                type: "GET",
+                url: "/cie/GetCIE",
+                data: { id_tema },
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        CIE.push({
+                            ID: v.ID,
+                            DESCRIPCION: v.DESCRIPCION,
+                        });
+                    })
+                    $("#gridContainerCIE").dxDataGrid({
+                        dataSource: CIE,
+                        keyExpr: "ID",
+                        columnsAutoWidth: true,
+                        filterRow: {
+                            visible: true,
+                            applyFilter: "auto"
+                        },
+                        searchPanel: {
+                            visible: true,
+                            width: 240,
+                            placeholder: "Search..."
+                        },
+                        headerFilter: {
+                            visible: true
+                        },
+
+                        showBorders: true,
+                        remoteOperations: {
+                            sorting: true,
+                            paging: true
+                        },
+                        paging: {
+                            pageSize: 12
+                        },
+                        pager: {
+                            showPageSizeSelector: true,
+                            allowedPageSizes: [8, 12, 20]
+                        },
+                        columns: [{
+                            dataField: "ID",
+                            caption: "Id",
+                            width: 100,
+                            headerFilter: {
+                                allowSearch: true
+                            }
+                        },
+                        {
+                            dataField: "DESCRIPCION",
+                            caption: "Descripcion",
+                            width: 1200,
+                            headerFilter: {
+                                allowSearch: true
+                            }
+                        }
+                        ]
+                    }).dxDataGrid("instance");
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+
+        }
+        function CargarGrid() {
+            $.ajax({
+                url: "/cie/GetCatalogoCIE",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var fillData = data.datos;
+                    var dataGrid = $("#gridContainerCatalogoCIE").dxDataGrid({
+                        filterRow: { visible: true },
+                        dataSource: fillData,
+                        keyExpr: "ID",
+                        sorting: {
+                            mode: "multiple"
+                        },
+                        paging: {
+                            pageSize: 15
+                        },
+                        pager: {
+                            showPageSizeSelector: true,
+                            allowedPageSizes: [15, 20, 30, 50, 100],
+                            showInfo: true
+                        },
+                        filterRow: {
+                            visible: true
+                        },
+                        searchPanel: {
+                            visible: true,
+                            width: 340,
+                            placeholder: "Search..."
+                        },
+                        groupPanel: {
+                            visible: true
+                        },
+                        loadPanel: {
+                            enabled: true
+                        },
+                        showBorders: true,
+                        columns: [
+                            {
+                                dataField: "ID",
+                                caption: "Id",
+                                alignment: "center",
+                                width: 80
+                            },
+                            {
+                                dataField: "DESCRIPCION",
+                                caption: "Descripcion",
+                                width: 850
+
+                            },
+                            {
+                                dataField: "GRP",
+                                caption: "Grupo",
+                                alignment: "center",
+                                width: 80
+                            }
+                        ]
+                    }).dxDataGrid("instance");
+                }, error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+        }
+        $(document).ready(function () {
+            CargarGrid();
+            SelectCapitulo();
+        })
+    </script>
+}
+

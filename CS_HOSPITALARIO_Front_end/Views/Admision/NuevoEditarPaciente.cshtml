@@ -1,0 +1,973 @@
+﻿@model CS_HOSPITALARIO.Models.CS_PACIENTES
+
+@{
+    ViewBag.Modulo = "mAdmision";
+}
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<link href="~/Content/select2.css" rel="stylesheet" />
+<link href="~/Content/inputmask.css" rel="stylesheet" />
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <input type="hidden" id="hfisvalid" name="hfisvalid">
+                <div class="bgc-white p-20 bd">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        if (ViewBag.Accion == "Editar")
+                        {
+                            @Html.HiddenFor(model => model.ID_PACIENTE)
+                            @Html.HiddenFor(model => model.CLIENTE_ID)
+                            <input type="hidden" value="1" id="H" />
+                        }
+                        else
+                        {
+                            @Html.HiddenFor(model => model.CLIENTE_ID, new { @Value = ViewBag.CLIENTE_ID })
+                            <input type="hidden" value="0" id="hdnFlag" />
+                        }
+                        <div class="row p-20">
+                            <label id="id-cliente" class="col-form-label fsz-lg color-secondary-m">
+                                @if (ViewBag.Accion == "Editar")
+                                {
+                                    @Model.CLIENTE_ID
+                                }
+                                else
+                                {
+                                    @("Nuevo Paciente")
+                                }
+                            </label>
+                            <div class="form-group ml-auto">
+                                <input type="submit" value="Guardar" onclick="return validateForm();" class="btn btn-primary" />
+                                @Html.ActionLink("Cancelar", "Index", "Admision", null, new { @class = "btn btn-outline-secondary" })
+                            </div>
+                        </div>
+                        <hr />
+                        <ul class="nav nav-tabs" id="myTabPaciente" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#clinicos" role="tab" aria-controls="clinicos" onclick="ValidarIdentificacion()" aria-selected="true">Datos Clinicos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#emergencia" role="tab" aria-controls="emergencia" aria-selected="false" onclick="ValidarIdentificacion()">Contactos de Emergencia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contable" role="tab" aria-controls="contable" onclick="ValidarIdentificacion()" aria-selected="false">Datos Financiero</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContentPaciente">
+                            <div class="tab-pane fade show active" id="clinicos" role="tabpanel" aria-labelledby="clinicos-tab">
+                                <hr />
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Nombres</label>
+                                        <div class="">
+                                            @Html.EditorFor(model => model.NOMBRES, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombres", autofocus = "autofocus", oninput = "let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" } })
+                                            @*@Html.ValidationMessageFor(model => model.NOMBRES, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                El nombre es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Apellidos</label>
+                                        <div class="">
+                                            @Html.EditorFor(model => model.APELLIDOS, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellidos", oninput = "let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" } })
+                                            @*@Html.ValidationMessageFor(model => model.APELLIDOS, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                El apellido es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Estado Civil</label>
+                                        <div class="">
+                                            @Html.DropDownList("ESTADO_CIVIL_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.ESTADO_CIVIL_ID, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                El estado civil del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Sexo</label>
+                                        <div class=" ">
+                                            <label class="radio-inline col-md-4">
+                                                @Html.RadioButtonFor(model => model.SEXO, "F") Femenino
+                                            </label>
+                                            <label class="radio-inline col-md-4">
+                                                @Html.RadioButtonFor(model => model.SEXO, "M") Masculino
+                                            </label>
+                                            @*@Html.ValidationMessageFor(model => model.SEXO, "", new { @class = "text-danger" })*@
+                                            <div id="sexovalid" class="invalid-feedback">
+                                                El sexo del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <div class="form-label">
+                                            <label>
+                                                <span id="labelIdentificacion">Identificación</span>
+                                            </label>
+                                            <label class="switch float-right">
+                                                @Html.CheckBox("chbxExtranjero", false, htmlAttributes: new { @class = "switch-input" })
+                                                <span class="switch-label" data-on="Extranjero" data-off="Nacional"></span>
+                                                <span class="switch-handle"></span>
+                                            </label>
+                                            <label class="switch float-right">
+                                                @Html.CheckBox("chbxEmpresa", false, htmlAttributes: new { @class = "switch-input" })
+                                                <span class="switch-label" data-on="Empresa" data-off="No Empresa"></span>
+                                                <span class="switch-handle"></span>
+                                            </label>
+                                        </div>
+                                        <div class="">
+                                            @Html.EditorFor(model => model.IDENTIFICACION, new { htmlAttributes = new { @class = "form-control", placeholder = "Identificación", oninput = "let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" } })
+                                            <div class="invalid-feedback">
+                                                La identificacion del paciente es requerido y debe ser unico.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Fecha de Nacimiento</label>
+                                        <div class="">
+                                            @Html.EditorFor(model => model.FECHA_NACIMIENTO, "{0:mm/dd/yyyy}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                            @*@Html.ValidationMessageFor(model => model.FECHA_NACIMIENTO, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                La fecha de nacimiento del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Tipo de Sangre</label>
+                                        <div class="">
+                                            @Html.DropDownList("TIPO_SANGRE_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.TIPO_SANGRE_ID, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                El tipo de sangre del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>N° Teléfono</label>
+                                        <div class="">
+                                            @if (ViewBag.Accion != "Editar")
+                                            {
+                                                <input class="form-control text-box single-line" id="TEL1" name="TEL1" type="text" value="" placeholder="Nº Teléfono">
+                                            }
+                                            else
+                                            {
+                                                @Html.EditorFor(model => model.CLIENTE.TELEFONO1, new { htmlAttributes = new { @class = "form-control", placeholder = "Nº Teléfono" } })
+                                                @Html.ValidationMessageFor(model => model.CLIENTE.TELEFONO1, "", new { @class = "text-danger" })
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Teléfono (otro)</label>
+                                        <div class="">
+                                            @if (ViewBag.Accion != "Editar")
+                                            {
+                                                <input class="form-control text-box single-line" id="TEL2" name="TEL2" type="text" value="" placeholder="Teléfono (otro)">
+                                            }
+                                            else
+                                            {
+                                                @Html.EditorFor(model => model.CLIENTE.TELEFONO2, new { htmlAttributes = new { @class = "form-control", placeholder = "Teléfono (otro)" } })
+                                                @Html.ValidationMessageFor(model => model.CLIENTE.TELEFONO2, "", new { @class = "text-danger" })
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Correo Electrónico</label>
+                                        <div class="">
+                                            @if (ViewBag.Accion != "Editar")
+                                            {
+                                                <input class="form-control text-box single-line" id="EMAIL" name="EMAIL" type="text" value="" placeholder="Correo Electrónico">
+                                            }
+                                            else
+                                            {
+                                                @Html.EditorFor(model => model.CLIENTE.E_MAIL, new { htmlAttributes = new { @class = "form-control", placeholder = "Correo Electrónico" } })
+                                                @Html.ValidationMessageFor(model => model.CLIENTE.E_MAIL, "", new { @class = "text-danger" })
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label>Dirección</label>
+                                        <div class="">
+                                            @if (ViewBag.Accion != "Editar")
+                                            {
+                                                <textarea class="form-control ocupar-todo" cols="20" id="DIRECCION" name="DIRECCION" placeholder="Dirección" rows="2" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);"></textarea>
+                                            }
+                                            else
+                                            {
+                                                @Html.TextAreaFor(model => model.CLIENTE.DIRECCION, new { @class = "form-control ocupar-todo", placeholder = "Dirección", @rows = 2, oninput = "let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" })
+                                                @*@Html.ValidationMessageFor(model => model.CLIENTE.DIRECCION, "", new { @class = "text-danger" })*@
+
+                                            }
+                                            <div class="invalid-feedback">
+                                                El tipo de sangre del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-12 col-md-4">
+                                        <label>Departamento</label>
+                                        <div class="">
+                                            @Html.DropDownList("DEPARTAMENTO", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>Escolaridad</label>
+                                        <div class="">
+                                            @Html.DropDownList("ESCOLARIDAD_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.ESCOLARIDAD_ID, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                La escolaridad del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Profesión</label>
+                                        <div class="">
+                                            @Html.DropDownList("PROFESION_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.PROFESION_ID, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                La profesion del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Religión</label>
+                                        <div class="">
+                                            @Html.DropDownList("RELIGION_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.PROFESION_ID, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                La religion del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label>Observaciones</label>
+                                        <div class="">
+                                            @Html.TextAreaFor(model => model.OBSERVACIONES, new { @class = "form-control ocupar-todo", placeholder = "Observaciones", @rows = 3, oninput = "let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" })
+                                            @Html.ValidationMessageFor(model => model.OBSERVACIONES, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="emergencia" role="tabpanel" aria-labelledby="emergencia-tab">
+                                <hr />
+                                @*<div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label>Nombre de Contacto</label>
+                                            <div class="">
+                                                @Html.EditorFor(model => model.CONTACTO_1, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre de Contacto" } })
+                                                @Html.ValidationMessageFor(model => model.CONTACTO_1, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>Teléfono Contacto</label>
+                                            <div class="">
+                                                @Html.EditorFor(model => model.TEL_CONT_1, new { htmlAttributes = new { @class = "form-control", placeholder = "Teléfono Contacto" } })
+                                                @Html.ValidationMessageFor(model => model.TEL_CONT_1, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>Otro Contacto</label>
+                                            <div class="">
+                                                @Html.EditorFor(model => model.CONTACTO_2, new { htmlAttributes = new { @class = "form-control", placeholder = "Otro Contacto" } })
+                                                @Html.ValidationMessageFor(model => model.CONTACTO_2, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>Teléfono Contacto (otro)</label>
+                                            <div class="">
+                                                @Html.EditorFor(model => model.TEL_CONT_2, new { htmlAttributes = new { @class = "form-control", placeholder = "Teléfono Contacto (otro)" } })
+                                                @Html.ValidationMessageFor(model => model.TEL_CONT_2, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />*@
+                                <div id="gridContactoPaciente"></div>
+                                <div id="contactovalid" class="invalid-feedback">
+                                    Se debe de registrar al menos un contacto.
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="contable" role="tabpanel" aria-labelledby="contable-tab">
+                                <hr />
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Categoria</label>
+                                        <div class="">
+                                            @Html.DropDownList("CATEGORIA_CLIENTE_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            <div class="invalid-feedback">
+                                                La categoria del paciente es requeridos.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Nivel de Precios</label>
+                                        <div class="row">
+                                            @*<div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                                        <label class="form-check-label" for="defaultCheck1">
+                                                            En moneda local
+                                                        </label>
+                                                    </div>
+                                                </div>*@
+                                            <div class="col-md-12">
+                                                @Html.DropDownList("NIVEL_PRECIO_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                                <div class="invalid-feedback">
+                                                    El nivel de precio del paciente es requerido.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>Pais</label>
+                                        <div class="">
+                                            @Html.DropDownList("PAIS_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.PROFESION_ID, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                El pais del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Condicion de pago</label>
+                                        <div class="">
+                                            @Html.DropDownList("CONDICION_PAGO_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.PROFESION_ID, "", new { @class = "text-danger" })*@
+                                            <div class="invalid-feedback">
+                                                La condicion de pago del paciente es requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Origen</label>
+                                        <div class="row">
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" value="L" id="LOCAL" name="LOCAL" checked>Local
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" value="S" id="LOCAL" name="LOCAL">Exterior
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label>Financiador</label>
+                                            <div class="">
+                                                @Html.DropDownList("FINANCIADOR", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.FINANCIADOR, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Nº Afiliado</label>
+                                            <div class="">
+                                                @Html.EditorFor(model => model.NUM_AFILIADO, new { htmlAttributes = new { @class = "form-control", placeholder = "Nº Afiliado" } })
+                                                @Html.ValidationMessageFor(model => model.NUM_AFILIADO, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Tipo de Asegurado</label>
+                                            <div class="">
+                                                @Html.DropDownList("TIPO_ASEGURADO_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.TIPO_ASEGURADO_ID, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id='myModal' class='modal fade' tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title" id="myModalLabel">Pacientes registrados en Softland</h2>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover" id="tabla_pac_softland">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID Softland
+                            </th>
+                            <th>
+                                Nombre Completo
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-datos-modal"></tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/dx.all.js"></script>
+    <script src="https://cdn3.devexpress.com/jslib/19.1.5/js/localization/dx.messages.es.js"></script>
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/select2.js"></script>
+    <script src="~/Scripts/inputmask/inputmask.js"></script>
+    <script src="~/Scripts/jquery.inputmask.js"></script>
+    <script type="text/javascript">
+        function validateForm() {
+
+            let isvalid = true;
+            var nombre = $("#NOMBRES");
+            nombre.removeClass("is-invalid");
+
+            var apellido = $("#APELLIDOS");
+            apellido.removeClass("is-invalid");
+
+            var estadocivil = $("#ESTADO_CIVIL_ID");
+            estadocivil.removeClass("is-invalid");
+
+            $("#sexovalid").hide();
+
+            var identificacion = $("#IDENTIFICACION");
+            identificacion.removeClass("is-invalid");
+
+            var fechanacimiento = $("#FECHA_NACIMIENTO");
+            fechanacimiento.removeClass("is-invalid");
+
+            var tiposangre = $("#TIPO_SANGRE_ID");
+            tiposangre.removeClass("is-invalid");
+
+            var direccion = $("#DIRECCION");
+            direccion.removeClass("is-invalid");
+
+            var escolaridad = $("#ESCOLARIDAD_ID");
+            escolaridad.removeClass("is-invalid");
+
+            var profesion = $("#PROFESION_ID");
+            profesion.removeClass("is-invalid");
+
+            var religion = $("#RELIGION_ID");
+            religion.removeClass("is-invalid");
+
+            var categoria = $("#CATEGORIA_CLIENTE_ID");
+            categoria.removeClass("is-invalid");
+
+
+            var nivelprecio = $("#NIVEL_PRECIO_ID");
+            nivelprecio.removeClass("is-invalid");
+
+            var pais = $("#PAIS_ID");
+            pais.removeClass("is-invalid");
+
+            var condicion = $("#CONDICION_PAGO_ID");
+            condicion.removeClass("is-invalid");
+
+            var extranjero = $('#chbxExtranjero')
+            var empresa = $('#chbxEmpresa')
+
+            $("#home-tab").css('color', '#0f9aee');
+            $("#profile-tab").css('color', '#0f9aee');
+            $("#contact-tab").css('color', '#0f9aee');
+
+            $("#contactovalid").hide();
+
+            if (nombre.val() == "") {
+                $.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+                nombre.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if (apellido.val() == "") {
+                $.notify({ message: 'El apellido del paciente es requerido' }, { type: 'danger' });
+                apellido.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if (estadocivil.val() == "") {
+                $.notify({ message: 'El estado civil del paciente es requerido' }, { type: 'danger' });
+                estadocivil.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if ($("input[name='SEXO']:checked").val() == undefined) {
+                $.notify({ message: 'El sexo del paciente es requerido' }, { type: 'danger' });
+                $("#sexovalid").show();
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if (identificacion.val() == "" || identificacion.val() == " ") {
+                $.notify({ message: 'La identificacion del paciente es requerido' }, { type: 'danger' });
+                identificacion.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+
+            if (empresa.prop('checked')) {
+                if (!/^\d{4}-\d{4}-\d{6}$/.test(identificacion.val())) {
+                    $.notify({ message: 'La identificacion del paciente debe cumplir con la mascara' }, { type: 'danger' });
+                    identificacion.addClass("is-invalid");
+                    isvalid = false;
+                    $("#home-tab").css('color', 'red');
+                }
+            }
+
+            if (!empresa.prop('checked') && !extranjero.prop('checked')) {
+                if (!/^\d{4}-\d{4}-\d{5}$/.test(identificacion.val())) {
+                    $.notify({ message: 'La identificacion del paciente debe cumplir con la mascara' }, { type: 'danger' });
+                    identificacion.addClass("is-invalid");
+                    isvalid = false;
+                    $("#home-tab").css('color', 'red');
+                }
+            }
+
+
+            if (fechanacimiento.val() == "") {
+                $.notify({ message: 'La fecha de nacimeinto del paciente es requerido' }, { type: 'danger' });
+                fechanacimiento.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if (tiposangre.val() == "") {
+                $.notify({ message: 'El tipo de sangre del paciente es requerido' }, { type: 'danger' });
+                tiposangre.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if (direccion.val() == "") {
+                $.notify({ message: 'La direccion del paciente es requerido' }, { type: 'danger' });
+                direccion.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if (escolaridad.val() == "") {
+                $.notify({ message: 'La escolaridad del paciente es requerido' }, { type: 'danger' });
+                escolaridad.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if (profesion.val() == "") {
+                $.notify({ message: 'La profesion del paciente es requerido' }, { type: 'danger' });
+                profesion.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if (religion.val() == "") {
+                $.notify({ message: 'La religion del paciente es requerido' }, { type: 'danger' });
+                religion.addClass("is-invalid");
+                isvalid = false;
+                $("#home-tab").css('color', 'red');
+            }
+            if ($("#gridContactoPaciente").dxDataGrid("getDataSource")["_items"]["length"] == 0) {
+                $.notify({ message: 'Debe de registrar al menos un contacto a este paciente' }, { type: 'danger' });
+                $("#contactovalid").show();
+                isvalid = false;
+                $("#profile-tab").css('color', 'red');
+            }
+
+            if (categoria.val() == "") {
+                $.notify({ message: 'La categoria del paciente es requerido' }, { type: 'danger' });
+                categoria.addClass("is-invalid");
+                isvalid = false;
+                $("#contact-tab").css('color', 'red');
+            }
+            if (nivelprecio.val() == "") {
+                $.notify({ message: 'El nivel de precio del paciente es requerido' }, { type: 'danger' });
+                nivelprecio.addClass("is-invalid");
+                isvalid = false;
+                $("#contact-tab").css('color', 'red');
+            }
+            if (pais.val() == "") {
+                $.notify({ message: 'El pais del paciente es requerido' }, { type: 'danger' });
+                pais.addClass("is-invalid");
+                isvalid = false;
+                $("#contact-tab").css('color', 'red');
+            }
+            if (condicion.val() == "") {
+                $.notify({ message: 'La condicion de pago del paciente es requerido' }, { type: 'danger' });
+                condicion.addClass("is-invalid");
+                isvalid = false;
+                $("#contact-tab").css('color', 'red');
+            }
+            if (isvalid == true) {
+                //ValidarIdentificacion($("#IDENTIFICACION").val(), isvalid);
+                //var identific = identificacion.val();
+                //var locale = Example.Request({
+                //    type: 'POST',
+                //    url: '/Admision/ValidarIdentificacion',
+                //    data: { identific},
+                //    success: function (data) {
+                //        // Send data back to the locale variable
+                //        locale = data;
+                //        // ...or
+                //        // use the 'data' inside of this callback if you are concerned about async failures
+                //    }
+                //});
+                //console.log(locale);
+            }
+            if (isvalid == true) {
+                let contactos = $("#gridContactoPaciente").dxDataGrid("getDataSource")["_items"];
+                let contactosBD = [];
+                contactos.forEach(function (item) {
+                    let nombres, apellidos, tel1, tel2, correo, parentesco;
+                    nombres = item["NOMBRES"];
+                    apellidos = item["APELLIDOS"];
+                    tel1 = item["TEL_CONT_1"];
+                    if (item["TEL_CONT_2"] == undefined) {
+                        tel2 = "";
+                    }
+                    else {
+                        tel2 = item["TEL_CONT_2"];
+                    }
+                    if (item["CORREO"] == undefined) {
+                        correo = "";
+                    }
+                    else {
+                        correo = item["CORREO"];
+                    }
+                    parentesco = item["ID_PARENTESCO"];
+                    contactosBD.push({
+                        NOMBRES: nombres,
+                        APELLIDOS: apellidos,
+                        TEL_CONT_1: tel1,
+                        TEL_CONT_2: tel2,
+                        CLIENTE_ID: $("#IDENTIFICACION").val(),
+                        CORREO: correo,
+                        ID_PARENTESCO: parentesco
+
+                    });
+                });
+                SaveContactos(contactosBD);
+            }
+            return isvalid;
+        }
+        function ValidarIdentificacion() {
+            var identificacion = $("#IDENTIFICACION").val();
+            if (identificacion != '') {
+                $.ajax({
+                    type: "POST",
+                    url: '/Admision/ValidarIdentificacion',
+                    data: { identificacion },
+                    success: function (data) {
+                        var value = data.Data;
+                        var identificacion = $("#IDENTIFICACION");
+                        if (!value["status"]) {
+                            identificacion.addClass("is-invalid");
+                            $("#home-tab").css('color', 'red');
+                            $("#IDENTIFICACION").val("");
+                            $.notify({ message: value["mensaje"] }, { type: 'danger' });
+                        }
+                        else {
+                            identificacion.removeClass("is-invalid");
+                            $("#home-tab").css('color', '#0f9aee');
+                        }
+                    },
+                    error: function () {
+                        $.notify({ message: 'Error al registrar los contactos del paciente' }, { type: 'danger' });
+                    }
+                })
+            }
+        }
+
+        function SaveContactos(contactos) {
+            $.ajax({
+                type: "POST",
+                url: '/Admision/GuardarContactos',
+                data: JSON.stringify(contactos),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.status) {
+                        return true;
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar los contactos del paciente' }, { type: 'danger' });
+                }
+            })
+        }
+        function UpdateContacto(contactos) {
+            $.ajax({
+                type: "POST",
+                url: '/Admision/EditarContactos',
+                data: JSON.stringify(contactos),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.status) {
+                        return true;
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar los contactos del paciente' }, { type: 'danger' });
+                }
+            })
+        }
+        function ContactosPaceinte() {
+            let employees = [];
+            let states = [];
+            if ($("#hdnFlag").val() == 0) {
+                $.ajax({
+                    type: "GET",
+                    url: "/admision/GetParentesco",
+                    success: function (data) {
+                        let parentesco = {};
+                        parentesco = data;
+                        $("#gridContactoPaciente").dxDataGrid({
+                            dataSource: employees,
+                            keyExpr: "ID",
+                            showBorders: true,
+                            paging: {
+                                pageSize: 10
+                            },
+                            pager: {
+                                showPageSizeSelector: true,
+                                allowedPageSizes: [10, 25, 50, 100]
+                            },
+                            searchPanel: {
+                                visible: true,
+                                highlightCaseSensitive: true
+                            },
+                            filterRow: { visible: true },
+                            headerFilter: { visible: true },
+                            editing: {
+                                mode: "popup",
+                                allowUpdating: true,
+                                allowDeleting: true,
+                                allowAdding: true,
+                                popup: {
+                                    title: "Contacto",
+                                    showTitle: true,
+                                    width: 700,
+                                    height: 340,
+                                    position: {
+                                        my: "center",
+                                        at: "center",
+                                        of: window
+                                    }
+                                },
+                                form: {
+                                    items: [{
+                                        itemType: "group",
+                                        colCount: 2,
+                                        colSpan: 2,
+                                        items: [{
+                                            dataField: "NOMBRES",
+                                            caption: "Nombres",
+                                            dataType: "string",
+                                            validationRules: [{ type: "required", message: 'El nombre del contacto es requerido' }]
+                                        }, {
+                                            dataField: "APELLIDOS",
+                                            caption: "Apellidos",
+                                            dataType: "string",
+                                            validationRules: [{ type: "required", message: 'El apellido del contacto es requerido' }]
+                                        }, {
+                                            dataField: "TEL_CONT_1",
+                                            caption: "Telefono",
+                                            validationRules: [{ type: "required", message: 'El telefono del contacto es requerido' }
+                                                //{
+                                                //    type: "pattern",
+                                                //    message: 'El telefono debe de tener el siguiente formato! "5555-5555" ',
+                                                //    //pattern: /^\d{3-4}-\d{4}$/i
+                                                //}
+                                            ]
+                                        }, {
+                                            dataField: "TEL_CONT_2",
+                                            caption: "Celular"
+                                        }, {
+                                            dataField: "CORREO",
+                                            caption: "Correo",
+                                            validationRules: [{ type: "email", message: 'El correo electronico no es valido', }]
+                                        }, {
+                                            dataField: "ID_PARENTESCO",
+                                            caption: "Parentesco",
+                                            width: 125,
+                                            lookup: {
+                                                dataSource: parentesco,
+                                                displayExpr: "DESCRIPCION",
+                                                valueExpr: "ID"
+                                            },
+                                            validationRules: [{ type: "required", message: 'El parentesco del contacto es requerido' }]
+                                        }]
+                                    }]
+                                }
+                            },
+                            columns: [
+                                {
+                                    dataField: "ID_CONTACTO",
+                                    caption: "Cod",
+                                    visible: false
+                                },
+                                {
+                                    dataField: "NOMBRES",
+                                    caption: "Nombres",
+                                    dataType: "string",
+                                    width: 150
+                                },
+                                {
+                                    dataField: "APELLIDOS",
+                                    caption: "Apellidos",
+                                    dataType: "string",
+                                    width: 150
+                                },
+                                {
+                                    dataField: "TEL_CONT_1",
+                                    caption: "Telefono",
+                                    width: 100
+                                },
+                                {
+                                    dataField: "TEL_CONT_2",
+                                    caption: "Celular",
+                                    width: 100
+                                },
+                                {
+                                    dataField: "CORREO",
+                                    caption: "Correo",
+                                    width: 150
+                                },
+                                {
+                                    dataField: "ID_PARENTESCO",
+                                    caption: "Parentesco",
+                                    width: 100,
+                                    lookup: {
+                                        dataSource: parentesco,
+                                        displayExpr: "DESCRIPCION",
+                                        valueExpr: "ID"
+                                    }
+                                }
+                            ]
+                        });
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                })
+            }
+            else {
+                alert('se va ha editar')
+            }
+        }
+        $(document).ready(function () {
+            DevExpress.localization.locale("es");
+            $('#IDENTIFICACION').on('blur', function () {
+                if (this.value != '') {
+                    ValidarIdentificacion();
+                }
+            });
+            $("#IDENTIFICACION").inputmask("9999-9999-99999");
+            $("#chbxExtranjero").click(function () {
+                //console.log($(this).prop('checked'));
+                if ($(this).prop('checked')) {
+                    $("#IDENTIFICACION").val('')
+                    $("#IDENTIFICACION").inputmask("remove");
+                    $("#chbxEmpresa").prop('checked', false);
+                } else {
+                    $("#IDENTIFICACION").val('')
+                    $("#IDENTIFICACION").inputmask("9999-9999-99999");
+                }
+            });
+            $("#chbxEmpresa").click(function () {
+                //console.log($(this).prop('checked'));
+                if ($(this).prop('checked')) {
+                    $("#IDENTIFICACION").val('')
+                    $("#IDENTIFICACION").inputmask("9999-9999-999999");
+                    $("#chbxExtranjero").prop('checked', false);
+                } else {
+                    $("#IDENTIFICACION").val('')
+                    $("#IDENTIFICACION").inputmask("9999-9999-99999");
+                }
+            });
+            $("#TEL1").inputmask("(999)-99999999");
+            $("#TEL2").inputmask("(999)-99999999");
+            $("#EMAIL").inputmask({ alias: "email" });
+            ContactosPaceinte();
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+            $('#CLIENTE_ID').on('change', function () {
+                $('#idClienteSoftland').val(this.value);
+                var item = $('#CLIENTE_ID option:selected').text();
+                var separador = " ";
+                var nombresApellidos = item.split(separador);
+                if (nombresApellidos.length > 1) {
+                    var pos = Math.floor(nombresApellidos.length / 2);
+                    var nombre = [];
+                    for (var i = 0; i < pos; i++) {
+                        nombre.push(nombresApellidos[i]);
+                    }
+                    $('#NOMBRES').val(nombre.join(' '));
+                    var apellido = [];
+                    for (var i = pos; i < nombresApellidos.length; i++) {
+                        apellido.push(nombresApellidos[i]);
+                    }
+                    $('#APELLIDOS').val(apellido.join(' '));
+                }
+                else {
+                    $('#NOMBRES').val(item.toString());
+                    $('#APELLIDOS').val("");
+                }
+
+            });
+        });
+    </script>
+}

@@ -1,0 +1,519 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_TEST>
+
+@{
+    ViewBag.Title = "Listado Detalle Test";
+}
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Test Detalle</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <table class="table table-responsive table-hover" id="tabla_test">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Cod Test
+                                </th>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Unidad Medida
+                                </th>
+                                <th>
+                                    Valor
+                                </th>
+                                <th>
+                                    Observacion
+                                </th>
+                                <th>
+                                    Activo
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TEST)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NOMBRE)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE.DESCRIPCION)
+                                    </td>
+                                    @if (item.VALOR == "N")
+                                    {
+                                        <td>
+                                            Numerico
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            AlfaNumerico
+                                        </td>
+                                    }
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OBSERVACION)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ACTIVO)
+                                    </td>
+                                    <td>
+                                        @if (item.CS_TEST_DETALLE.Count() == 0)
+                                        {
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="@("AgregarDetalle('" + item.TEST + "','"+item.VALOR+"')")" data-toggle="tooltip" data-placement="top" title="Detalles del Test">
+                                                <i class="fas fa-clipboard-list"></i>
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button type="button" class="btn btn-sm btn-warning" onclick="@("AgregarDetalle('" + item.TEST + "','"+item.VALOR+"')")" data-toggle="tooltip" data-placement="top" title="Detalles del Test">
+                                                <i class="fas fa-clipboard-list"></i>
+                                            </button>
+                                        }
+
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Cod Test
+                                </th>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Unidad Medida
+                                </th>
+                                <th>
+                                    Valor
+                                </th>
+                                <th>
+                                    Observacion
+                                </th>
+                                <th>
+                                    Activo
+                                </th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="ModalDetalle" tabindex="-1" role="dialog" aria-labelledby="ModalDetalleLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalRecetaLabel">Detalles Del Test</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="masonry-item col-md-12">
+                    <input type="hidden" id="TESTID" name="TESTID">
+                    <div id="gridTestDetalle"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+@section scripts
+{
+    <script src="~/Scripts/dx.all.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+    <script type="text/javascript">
+        function AgregarDetalle(test, valor) {
+            $("#ModalDetalle").modal('show');
+            $("#TESTID").val(test);
+            TestDetalles(test, valor);
+        }
+        function CargarTest() {
+            $('#tabla_test tfoot th').each(function () {
+                var title = $(this).text().trim();
+                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+            });
+            var events = $('#events');
+            var table = $('#tabla_test').DataTable({
+                dom: 'Bfrtip',
+                language: {
+                    select: {
+                        rows: {
+                            0: "",
+                            1: " │ %d registro seleccionado."
+                        }
+                    }
+                },
+                select: true,
+                buttons: [{
+                    text: 'Nuevo',
+                    action: function (e, dt, node, config) {
+                        window.location.href = '/Procedimiento/NuevoTest';
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Editar',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        //console.log(rowSelected[0][0]);
+                        window.location.href = '/Procedimiento/EditarTest/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                }, "pdf", "excel"
+                ]
+            });
+
+
+            // Hide two columns
+            table.columns([0]).visible(true);
+
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+            $('#tabla_test tfoot tr').appendTo('#tabla_test thead');
+            $("#tabla_test_wrapper button").each(function () {
+                $(this).removeClass("dt-button");
+                $(this).addClass("btn btn-sm");
+                if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                    $(this).addClass("btn-secondary");
+                }
+                else {
+                    $(this).addClass("btn-primary");
+                }
+            });
+            $('#tabla_test_filter input').addClass("form-control");
+            $('#tabla_test tbody').on('dblclick', 'tr', function () {
+                var rowSelected = table.rows({ selected: true }).data();
+                window.location.href = '/Procedimiento/EditarTest/' + rowSelected[0][0];
+            });
+        }
+        /* INICIALIZACIÓN */
+        function TestDetalles(TEST_DETALLE, VALUE) {
+            let states = [{
+                ID: 'F',
+                SEXO: 'Femenino'
+            }, {
+                ID: 'M',
+                SEXO: 'Masculino'
+            }];
+
+            $.ajax({
+                type: "GET",
+                url: "/procedimiento/GetTestDetalles",
+                data: { TEST_DETALLE },
+                success: function (data) {
+                    let detalle = {};
+                    detalle = data;
+                    let valor;
+                    if (VALUE == 'N') {
+                        valor = "number";
+                    }
+                    else {
+                        valor = "string";
+                    }
+                    let sexo;
+                    $("#gridTestDetalle").dxDataGrid({
+                        dataSource: detalle,
+                        keyExpr: "TEST_DETALLE",
+                        showColumnLines: true,
+                        showRowLines: true,
+                        rowAlternationEnabled: true,
+                        showBorders: true,
+                        paging: {
+                            pageSize: 10
+                        },
+                        pager: {
+                            showPageSizeSelector: true,
+                            allowedPageSizes: [10, 25, 50, 100]
+                        },
+                        searchPanel: {
+                            visible: false,
+                            highlightCaseSensitive: false
+                        },
+                        filterRow: { visible: false },
+                        headerFilter: { visible: false },
+                        editing: {
+                            mode: "popup",
+                            allowUpdating: true,
+                            allowDeleting: true,
+                            allowAdding: true,
+                            popup: {
+                                title: "Test Detalle",
+                                showTitle: true,
+                                width: 710,
+                                height: 370,
+                                position: {
+                                    my: "center",
+                                    at: "center",
+                                    of: window
+                                }
+                            },
+                            form: {
+                                items: [{
+                                    itemType: "group",
+                                    colCount: 2,
+                                    colSpan: 2,
+                                    items: [{
+                                        dataField: "EDAD_MIN",
+                                        caption: "Edad Minima",
+                                        dataType: "number",
+                                        validationRules: [{ type: "required", message: 'La edad minima es requerido' }]
+                                    }, {
+                                        dataField: "EDAD_MAXIMA",
+                                        caption: "Edad Maxima",
+                                        dataType: "number",
+                                        validationRules: [{ type: "required", message: 'La edad maxima es requerido' }]
+                                    }, {
+                                        dataField: "RANGO_MINIMO",
+                                        caption: "Rango Minimo",
+                                        dataType: valor,
+                                        validationRules: [{ type: "required", message: 'El rango minimo es requerido' }]
+                                    }, {
+                                        dataField: "RANGO_MAXIMO",
+                                        caption: "Rango Maximo",
+                                        dataType: valor,
+                                        validationRules: [{ type: "required", message: 'El rango maximo es requerido', }]
+                                    }, {
+                                        dataField: "LOW_PANIC",
+                                        caption: "Low Panic",
+                                        dataType: valor,
+                                        validationRules: [{ type: "required", message: 'El low panic es requerido', }]
+                                    },
+                                    {
+                                        dataField: "HIGH_PANIC",
+                                        caption: "High Panic",
+                                        dataType: valor,
+                                        validationRules: [{ type: "required", message: 'El high panic es requerido', }]
+                                    },
+                                    {
+                                        dataField: "SEXO",
+                                        caption: "Sexo",
+                                        width: 100,
+                                        lookup: {
+                                            dataSource: states,
+                                            displayExpr: "SEXO",
+                                            valueExpr: "ID"
+                                        },
+                                        validationRules: [{ type: "required", message: 'El sexo es requerido' }]
+                                    }]
+                                }]
+                            }
+                        },
+                        columns: [
+                            {
+                                dataField: "SEXO",
+                                caption: "Sexo",
+                                width: 100,
+                                lookup: {
+                                    dataSource: states,
+                                    displayExpr: "SEXO",
+                                    valueExpr: "ID"
+                                }
+                            },
+                            {
+                                dataField: "TEST_DETALLE",
+                                visible: false,
+                                dataType: "number",
+                            },
+                            {
+                                dataField: "EDAD_MIN",
+                                caption: "Edad Min",
+                                dataType: "number",
+                                width: 100
+                            },
+                            {
+                                dataField: "EDAD_MAXIMA",
+                                caption: "Edad Max",
+                                dataType: "number",
+                                width: 100
+                            },
+                            {
+                                dataField: "RANGO_MINIMO",
+                                caption: "Rango Min",
+                                dataType: valor,
+                                width: 105
+                            },
+                            {
+                                dataField: "RANGO_MAXIMO",
+                                caption: "Rango Max",
+                                dataType: valor,
+                                width: 105
+                            },
+                            {
+                                dataField: "LOW_PANIC",
+                                caption: "Low P",
+                                dataType: valor,
+                                width: 60
+                            },
+                            {
+                                dataField: "HIGH_PANIC",
+                                caption: "High P",
+                                dataType: valor,
+                                width: 60
+                            }
+                        ],
+                        onRowInserted: function (e) {
+                            //console.log(e.data);
+                            InsertarTestDetalle(e.data, $("#TESTID").val());
+
+                            //console.log("RowInserted");
+                            //console.log(e.data);
+                        },
+                        onRowUpdated: function (e) {
+                            //var detalle = e.data;
+                            //if (detalle.) {
+
+                            //}
+                            //else {
+                            //}
+
+                            console.log(detalle);
+                            ActualizarTestDetalle(e.data, $("#TESTID").val());
+                            //console.log("RowUpdated");
+                            //console.log(e);
+                        },
+                        onRowRemoved: function (e) {
+                            console.log(e.data);
+                            EliminarTestDetalle(e.data.TEST_DETALLE, $("#TESTID").val());
+                            //console.log("RowRemoved");
+                            //console.log(e);
+                        }
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function InsertarTestDetalle(detalle, TEST_DETALLE) {
+            console.log(detalle);
+            var detallejson = JSON.stringify(detalle);
+            console.log(detallejson);
+            $.ajax({
+                type: "POST",
+                url: "/procedimiento/InsertarTestDetalle",
+                data: { detalle, TEST_DETALLE },
+                success: function (data) {
+                    if (data.status) {
+                        //alert("Se registro");
+                        TestDetalles(TEST_DETALLE);
+                    }
+                    else {
+                        alert("No se pudo registrar");
+                    }
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function ActualizarTestDetalle(detalle, TEST_DETALLE) {
+            $.ajax({
+                type: "POST",
+                url: "/procedimiento/ActualizarTestDetalle",
+                data: { detalle },
+                success: function (data) {
+                    if (data.status) {
+                        //alert("Se registro");
+                        TestDetalles(TEST_DETALLE);
+                    }
+                    else {
+                        alert("No se pudo actualizar");
+                    }
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function EliminarTestDetalle(id, TEST_DETALLE) {
+            $.ajax({
+                type: "POST",
+                url: "/procedimiento/EliminarTestDetalle",
+                data: { id },
+                success: function (data) {
+                    if (data.status) {
+                        //alert("Se registro");
+                        TestDetalles(TEST_DETALLE);
+                    }
+                    else {
+                        alert("No se pudo eliminar");
+                    }
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        $(document).ready(function () {
+            CargarTest();
+        });
+    </script>
+}
+
+
+

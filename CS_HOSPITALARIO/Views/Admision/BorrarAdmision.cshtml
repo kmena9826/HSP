@@ -1,0 +1,28 @@
+﻿@model CS_HOSPITALARIO.Models.CS_ADMISION
+
+<h2>@ViewBag.Title</h2>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <h4>¿Está seguro que desea borrar el registro del Paciente <strong>@Model.CLIENTE.NOMBRE</strong> con Número de Admisión = <strong>@Model.ID_ADMISION</strong>?</h4>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="text-left">
+                    <input type="submit" value="Confirmar" class="btn btn-primary" />
+                    @Html.ActionLink("Cancelar", "Pacientes", "Admision", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

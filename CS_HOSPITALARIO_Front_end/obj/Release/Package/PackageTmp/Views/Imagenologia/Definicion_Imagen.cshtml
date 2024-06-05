@@ -1,0 +1,156 @@
+﻿@model CS_HOSPITALARIO.Models.CS_DEFINICION_PROC_IMAGEN
+
+@{
+    ViewBag.Modulo = "mImagen";
+    ViewBag.Title = "Procedimiento Imagen";
+}
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="~/Content/select2.min.css" rel="stylesheet" />
+
+
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action(" Index","Home")">Imagenplogia</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action(" Index","Admision")">Definición de Procedimiento</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="row p-20">
+
+                        <h2 class="col-form-label fsz-lg color-secondary-m">@ViewBag.Title</h2>
+                        <div class="form-group ml-auto">
+                            <button class="btn btn-primary" type="button" id="btnGuardar" onclick="ValidarForm()"><i class="fa fa-save"></i> Guardar</button>
+                            @Html.ActionLink("Cancelar", "Imagenologia", "Definicion_Img_Listar", null, new { @class = "btn btn-outline-secondary" })
+                        </div>
+                    </div>
+                    <hr style="margin-bottom:30px" />
+                    <div class="form-horizontal">
+
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label>Agregar Estudio:</label>
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownList("ID_EXAMEN", null, "Seleccione...", htmlAttributes: new { @class = "form-control", style = "width: 100% !important;" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label>Observación:</label>
+                            </div>
+                            <div class="col-md-5">
+                                <textarea class="form-control" name="Observacion" id="Observacion" rows="5">                                    </textarea>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+
+    <script>
+
+        function ValidarForm() {
+            let isvalid = true;
+
+
+            if ($("#ID_EXAMEN").val().trim() == "") {
+                $.notify({ message: 'El estudio es requerido' }, { type: 'danger' });
+                isvalid = false;
+                return;
+            }
+            if ($("#Observacion").val().trim() == "") {
+                $.notify({ message: 'La observacion es requerido' }, { type: 'danger' });
+                isvalid = false;
+                return;
+            }
+
+
+            if (isvalid == true) {
+                let definicion = {
+                    "ARTICULO": $("#ID_EXAMEN").val().trim(),
+                    "OBSERVACION": $("#Observacion").val().trim()
+                };
+
+                Guardar(definicion);
+            }
+            isvalid = false;
+            return isvalid;
+        }
+
+        function Guardar(definicion) {
+            $.ajax({
+                type: "POST",
+                url: '/Imagenologia/CrearDefinicion',
+                data: JSON.stringify({ definicion: definicion }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.status) {
+
+                        $.notify({ message: 'Se ha registrado la definición' }, { type: 'success' });
+                        window.location.href = '/Imagenologia/Definicion_Img_Listar';
+
+                    } else {
+                        $.notify({ message: 'Error al registrar la definición' }, { type: 'danger' });
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar la definición' }, { type: 'danger' });
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            
+            $("#ID_EXAMEN").select2({
+                placeholder: "Seleccione un estudio",
+                allowClear: true,
+
+            });
+
+         });
+
+
+    </script>
+}

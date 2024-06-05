@@ -1,0 +1,317 @@
+﻿@model  CS_HOSPITALARIO_Front_end.Models.ViewModel.ResultadoImagenViewModel
+
+
+@{
+    ViewBag.Modulo = "mAdmision";
+    ViewBag.Title = "Transcripción";
+}
+<script type="text/javascript" src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Imagenologia")">Imagenología</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+
+                <div class="bgc-white p-20 bd">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row p-20">
+                            <label class="col-form-label fsz-lg color-secondary-m"> Orden: <span id="imagen">@Model.IMAGENOLOGIA_ID</span></label>
+
+                            <div class="form-group ml-auto">
+                                <input type="button" id="Guardar" value="Guardar" class="btn btn-primary" />
+                                @Html.ActionLink("Cancelar", "Index", "Imagenologia", null, new { @class = "btn btn-outline-secondary" })
+                            </div>
+                        </div>
+
+                        <hr />
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th style="background-color:#D8D8D8;">Paciente</th>
+                                            <td><span id="cliente_id">@Model.CLIENTE_ID</span></td>
+                                            <th style="background-color:#D8D8D8;">Nombre y Apellidos</th>
+                                            <td colspan="3"><span id="nombre_cliente">@Model.NOMBRE_PACIENTE</span></td>
+                                            <th style="background-color:#D8D8D8;">Edad</th>
+                                            <td><span id="edad">@Model.EDAD</span></td>
+                                            <th style="background-color:#D8D8D8;">Sexo</th>
+                                            <td><span id="sexo">@Model.SEXO</span></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th style="background-color:#D8D8D8;">Fecha Nac</th>
+                                            <td>
+                                                <span id="fecha_nacimiento">
+                                                    @if (Model.FECHA_NACIMIENTO.HasValue)
+                                                    {@Convert.ToDateTime(@Model.FECHA_NACIMIENTO).ToShortDateString()}
+                                            </span>
+                                        </td>
+                                        <th style="background-color:#D8D8D8;">Admisión</th>
+                                        <td WIDTH="50"><span id="admision_id">@Model.ADMISION_ID</span></td>
+                                        <th style="background-color:#D8D8D8;">Fecha Admisión</th>
+                                        <td><span id="fecha_admision">@Model.FECHA_REGISTRO</span></td>
+                                        <th style="background-color:#D8D8D8;">Fecha Alta</th>
+                                        <td><span id="fecha_alta">@Model.FECHA_ALTA</span></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th style="background-color:#D8D8D8;">Fecha Registro</th>
+                                        <td><span id="fecha_registro">@Model.FECHA_REGISTRO_PROC</span></td>
+                                        <th style="background-color:#D8D8D8;">Procedimiento</th>
+                                        <td><span id="procedimiento">@Model.PROCEDIMIENTO</span> - <span id="desc_procedimiento">@Model.DESC_PROCEDIMIENTO</span> </td>
+                                        <th style="background-color:#D8D8D8;">Medico</th>
+                                        <td><span id="medico">@Model.NOMBRE_DOCTOR</span></td>
+                                        <th style="background-color:#D8D8D8;">Area de Servicio</th>
+                                        <td><span id="area_servicio">@Model.DESC_AREA_SERVICIO</span></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-5">
+                            @Html.LabelFor(model => model.RADIOLOGO_ID, "Radiologo:")
+                            @Html.DropDownList("RADIOLOGO", null, "--Seleccione--", htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-5">
+                            @Html.LabelFor(model => model.PLANTILLA_ID, "Plantilla:")
+                            @Html.DropDownList("PLANTILLA_ID", new SelectList(string.Empty, "Value", "Text"), "--Seleccione--", new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-md-12">
+
+                        </div>
+                      
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-12">
+
+                            @Html.TextAreaFor(model => model.TRANSCRIPCION, htmlAttributes: new { @class = "form-control", required = "required" })
+
+                            <script>
+                                CKEDITOR.replace('TRANSCRIPCION', { removeButtons: 'Source' });
+                            </script>
+
+                        </div>
+
+                    </div>
+
+                        }
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</div>
+
+@*<div class="row">
+        @Html.Partial("_datoImagen",Model,new ViewDataDictionary { { "id", 3} })
+    </div>*@
+
+
+
+@section Scripts {
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
+    <script src="~/Scripts/select2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(document).ready(function () {
+
+            var id_imagen=obtenerValorParametro('id');
+			$("#PLANTILLA_ID").select2({
+				placeholder: "Seleccione una Plantilla",
+				allowClear: true,
+
+            });
+
+            $("#RADIOLOGO").select2({
+                placeholder: "Seleccione un Radiologo",
+                allowClear: true,
+
+            });
+
+            $('#Guardar').click(function () {
+                //Check validation of order item
+                var isValidItem = true;
+
+                if (CKEDITOR.instances['TRANSCRIPCION'].getData() == '') {
+                    isValidItem = false;
+                    alert('Debe digitar la transcripción.');
+                }
+
+
+                if ($('#RADIOLOGO').val().trim() == '') {
+                    isValidItem = false;
+                    alert('Debe seleccionar al radiologo.');
+                }
+
+
+
+                if (isValidItem) {
+
+                    var data = {
+                        TRANSCRIPCION: CKEDITOR.instances['TRANSCRIPCION'].getData(),
+                        PLANTILLA_ID: $('#PLANTILLA_ID').val().trim(),
+                        IMAGENOLOGIA_ID: id_imagen,
+                        RADIOLOGO_ID: $('#RADIOLOGO').val().trim()
+                    }
+
+                    
+                    $.ajax({
+                        url: '/Imagenologia/Transcripcion_Nueva',
+                        type: "POST",
+                        data: JSON.stringify(data),
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function (d) {
+                            //check is successfully save to database
+                            if (d.status == true) {
+                                //will send status from server side
+                                window.location.href = '/Imagenologia/Index';
+                            }
+                            else {
+                                alert(d.messageerror);
+
+                            }
+
+                        },
+                        error: function () {
+
+                            alert('Error. Intente Nuevamente.');
+
+                        }
+                    });
+                }
+
+
+            });
+
+            $('#RADIOLOGO').change(function () {
+                $("#PLANTILLA_ID").empty();
+                var valor = $("#RADIOLOGO").val();
+                  $.ajax({
+
+                             type: 'POST',
+                             url: '@Url.Action("GetPlantillas")',
+                             dataType: 'json',
+                         data: { medico: valor },
+
+                             success: function (states) {
+                                 $("#PLANTILLA_ID").append('<option value="0">--Seleccione--</option>');
+                                 $.each(states, function (i, state) {
+
+                                     $("#PLANTILLA_ID").append('<option value="' + state.Value + '">' +
+                                     state.Text + '</option>');
+
+                                });
+                            },
+                            error: function (ex) {
+                                alert('Failed to retrieve states.' + ex);
+                            }
+                             });
+            });
+
+            $('#PLANTILLA_ID').change(function () {
+
+                var valor = $("#PLANTILLA_ID").val();
+                var data = {
+                    plantilla: valor
+                }
+               $.ajax({
+                   url: '/Imagenologia/GetDetallePlantillas',
+                            type: "POST",
+                            data: JSON.stringify(data),
+                            dataType: "JSON",
+                            contentType: "application/json",
+                            success: function (d) {
+                                //check is successfully save to database
+                                if (d.status == true) {
+                                   // $('#TRANSCRIPCION').val(d.detalle);
+                                    CKEDITOR.instances['TRANSCRIPCION'].setData(d.detalle)
+                                }
+                                else {
+                                    alert(d.messageerror);
+                                }
+
+                            },
+                            error: function () {
+                                alert('Error al obtener el detalle de la plantilla');
+
+                            }
+                        })
+            });
+
+            function obtenerValorParametro(sParametroNombre) {
+                var sPaginaURL = window.location.search.substring(1);
+                var sURLVariables = sPaginaURL.split('&');
+                for (var i = 0; i < sURLVariables.length; i++) {
+                    var sParametro = sURLVariables[i].split('=');
+                    if (sParametro[0] == sParametroNombre) {
+                        return sParametro[1];
+                    }
+                }
+                return null;
+            }
+        });
+
+
+    </script>
+}
+<style>
+    table {
+        table-layout: fixed;
+        width: 250px;
+    }
+
+    th, td {
+        border: 1px solid blue;
+        width: 100px;
+        word-wrap: break-word;
+    }
+</style>

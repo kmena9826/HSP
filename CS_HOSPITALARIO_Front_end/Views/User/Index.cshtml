@@ -1,0 +1,205 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.SP_Listado_usuario_CS_Result>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <h2>@ViewBag.Title</h2>
+                    <hr />
+                    <table class="table table-responsive table-hover" id="tabla_usuarios">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Cod Usuario
+                                </th>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Usuario
+                                </th>
+                                <th>
+                                    Rol
+                                </th>
+                                <th>
+                                    Fecha Registro
+                                </th>
+                                <th>
+                                    Estado
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID_USER)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.USERNAME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NOMBRE)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ROL)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FECHA_REGISTRO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ISACTIVE)
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Cod Usuario
+                                </th>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Usuario
+                                </th>
+                                <th>
+                                    Rol
+                                </th>
+                                <th>
+                                    Fecha Registro
+                                </th>
+                                <th>
+                                    Estado
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+@section scripts
+{
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+
+    <script type="text/javascript">
+
+        /* INICIALIZACIÓN */
+        $(document).ready(function () {
+            $('#tabla_usuarios tfoot th').each(function () {
+                var title = $(this).text().trim();
+                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+            });
+            var events = $('#events');
+            var table = $('#tabla_usuarios').DataTable({
+                dom: 'Bfrtip',
+                language: {
+                    select: {
+                        rows: {
+                            0: "",
+                            1: " │ %d registro seleccionado."
+                        }
+                    }
+                },
+                select: true,
+                buttons: [{
+                    text: 'Nuevo',
+                    action: function (e, dt, node, config) {
+                        window.location.href = '/User/Create';
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Editar',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+                        window.location.href = '/User/Edit/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                }, "pdf", "excel"
+                ]
+            });
+
+
+            // Hide two columns
+            table.columns([0]).visible(true);
+
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+            $('#tabla_usuarios tfoot tr').appendTo('#tabla_usuarios thead');
+            $("#tabla_usuarios_wrapper button").each(function () {
+                $(this).removeClass("dt-button");
+                $(this).addClass("btn btn-sm");
+                if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                    $(this).addClass("btn-secondary");
+                }
+                else {
+                    $(this).addClass("btn-primary");
+                }
+            });
+            $('#tabla_usuarios_filter input').addClass("form-control");
+            $('#tabla_usuarios tbody').on('dblclick', 'tr', function () {
+                var rowSelected = table.rows({ selected: true }).data();
+                window.location.href = '/User/Edit/' + rowSelected[0][0];
+            });
+        });
+    </script>
+}
+

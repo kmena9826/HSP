@@ -1,0 +1,50 @@
+﻿@model CS_HOSPITALARIO.Models.CS_DEFINICION_PROCEDIMIENTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CS_DEFINICION_PROCEDIMIENTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTIVO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTIVO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ARTICULO1.PLANTILLA_SERIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARTICULO1.PLANTILLA_SERIE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CS_CATALOGO_DETALLE.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CS_CATALOGO_DETALLE.DESCRIPCION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_EXAMEN }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

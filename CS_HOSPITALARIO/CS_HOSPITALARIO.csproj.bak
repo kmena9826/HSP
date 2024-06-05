@@ -1,0 +1,773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66D14ACB-C9B7-4D74-8D2D-8E438BA5E132}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CS_HOSPITALARIO</RootNamespace>
+    <AssemblyName>CS_HOSPITALARIO</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v17.1.Core, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Mvc5.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.8.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.8.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.8.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.8.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.8.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.8.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.0.0\lib\net451\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.7\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AdmisionController.cs" />
+    <Compile Include="Controllers\CatalogosController.cs" />
+    <Compile Include="Controllers\DefinicionProcedimientoController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FuncionesVarias.cs" />
+    <Compile Include="Controllers\HabitacionController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HospitalizacionController.cs" />
+    <Compile Include="Controllers\ImagenologiaController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ARTICULO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ARTICULO_PRECIO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BODEGA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CATEGORIA_CLIENTE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CLASIFICACION.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CLIENTE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CLIENTE_VENDEDOR.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COBRADOR.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONDICION_PAGO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONSECUTIVO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONSECUTIVO_FA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_ACCIONES.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_ADMISION.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_ADMISION_EGY.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_ADT.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_CAMA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_CATALOGO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_CATALOGO_DETALLE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_CIE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_CITA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_CONSULTAS.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_CONTACTOS.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_CONTROLADOR.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_CONTROL_ACCION_DETALLE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_DEFINICION_PROCEDIMIENTO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_DEFINICION_PROCEDIMIENTO_DET.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_DEFINICION_PROC_IMAGEN.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_DIAGNOSTICO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_DIAGNOSTICO_DETALLE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_DIETA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_EMERGENCIA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_EQUIPO_QX.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_ESTACION.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_ESTACION_ENFERMERIA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_ESTACION_QX.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_FARMACIA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_HABITACION.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_IMAGENOLOGIA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_INTERACCIONES.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_LABORATORIO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_MEDICOS.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_PACIENTES.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_PARAMETROS.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_PEDIDO_EGY.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_PERSONAL.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_PLANTILLA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_QUIROFANO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_RANGO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_RESULTADOS_LAB_DETALLE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_RESULTADOS_LAB_ENCABEZADO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_RESULTADO_IMAGENOLOGIA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_RESULT_IMAGENOLOGIA_DETALLE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_ROL.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_ROL_USER.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_SEGURO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_SIGNOS_VITALES.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_TEST.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_TEST_DETALLE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_TRIAGE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CS_USER.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomMethods\AutorizeController.cs" />
+    <Compile Include="Models\CustomMethods\Utilerias.cs" />
+    <Compile Include="Models\CustomModels\MenuItem.cs" />
+    <Compile Include="Models\CustomModels\SubMenuItem.cs" />
+    <Compile Include="Models\DETALLE_DIRECCION.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DIRECC_EMBARQUE.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EXISTENCIA_BODEGA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GLOBALES_AS.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloHospitalario.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloHospitalario.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloHospitalario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloHospitalario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloHospitalario.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NIT.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NIVEL_PRECIO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PAIS.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PEDIDO.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PEDIDO_LINEA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RUTA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spListadoArticulosPedios_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoCitasCS_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoExamenAdmisionImagen_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoExamenAdmisionLaboratorio_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoExamenLaboratorioRecepcionado_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoExamenLaboratorioRecepcion_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoExamenLaboratorioRegistrado_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoExamenLaboratorio_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoExamen_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoProcImagen_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpListadoTotalesAdmisionesDB_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Insertar_detalle_direccion_cliente_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Listado_CIE_Capitulos_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Listado_CIE_SubCapitulos_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Listado_CIE_Tema_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Listado_CIE_Total_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Listado_consulta_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Listado_Examen_Test_Detalle_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_Listado_Limite_Registrar_Resultado_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Listado_precio_articulo_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Listado_Receta_Consulta_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Listado_usuario_CS_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_listar_paciente_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UBICACION.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UNIDAD_DE_MEDIDA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VENDEDOR.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VERSION_NIVEL.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ZONA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\DataTableSearch.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\PagedList.css" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\select2.min.css" />
+    <Content Include="icon-cs.ico" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\ModeloHospitalario.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloHospitalario.edmx</DependentUpon>
+      <LastGenOutput>ModeloHospitalario.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModeloHospitalario.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloHospitalario.edmx</DependentUpon>
+      <LastGenOutput>ModeloHospitalario.cs</LastGenOutput>
+    </Content>
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\Body-Grotesque-Fit-Bold-trial.ttf" />
+    <EntityDeploy Include="Models\ModeloHospitalario.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloHospitalario.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModeloHospitalario.edmx.diagram">
+      <DependentUpon>ModeloHospitalario.edmx</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\buttons.flash.min.js" />
+    <Content Include="Scripts\buttons.html5.min.js" />
+    <Content Include="Scripts\ckeditor.js" />
+    <Content Include="Scripts\dataTables.buttons.min.js" />
+    <Content Include="Scripts\dataTables.select.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui\external\jquery\jquery.js" />
+    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\jquery-ui\index.html" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.theme.min.css" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jszip.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\pdfmake.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\script-custom-editor.js" />
+    <Content Include="Scripts\select2.full.js" />
+    <Content Include="Scripts\select2.full.min.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\vfs_fonts.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admision\Pacientes.cshtml" />
+    <Content Include="Views\Catalogos\Maestros.cshtml" />
+    <Content Include="Views\Catalogos\ItemsCatalogos.cshtml" />
+    <Content Include="Views\Catalogos\Seguros.cshtml" />
+    <Content Include="Views\Catalogos\NuevoEditarCatalogoMaestro.cshtml" />
+    <Content Include="Views\Catalogos\BorrarCatalogoMaestro.cshtml" />
+    <Content Include="Views\Catalogos\BorrarSeguro.cshtml" />
+    <Content Include="Views\Catalogos\NuevoEditarSeguro.cshtml" />
+    <Content Include="Views\Catalogos\NuevoEditarItemCatalogo.cshtml" />
+    <Content Include="Views\Catalogos\BorrarItemCatalogo.cshtml" />
+    <Content Include="Views\Admision\NuevoEditarPaciente.cshtml" />
+    <Content Include="Views\Admision\BorrarPaciente.cshtml" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\FuncionesVarias\Create.cshtml" />
+    <Content Include="Views\FuncionesVarias\Delete.cshtml" />
+    <Content Include="Views\FuncionesVarias\Details.cshtml" />
+    <Content Include="Views\FuncionesVarias\Edit.cshtml" />
+    <Content Include="Views\FuncionesVarias\Index.cshtml" />
+    <Content Include="Views\Admision\Admisiones.cshtml" />
+    <Content Include="Views\Admision\NuevoEditarAdmision.cshtml" />
+    <Content Include="Views\Admision\BorrarAdmision.cshtml" />
+    <Content Include="Views\Admision\RegistrarSignosVitales.cshtml" />
+    <Content Include="Views\Admision\DetalleSignosVitales.cshtml" />
+    <Content Include="Views\DefinicionProcedimiento\Definicion_Proc_Listar.cshtml" />
+    <Content Include="Views\DefinicionProcedimiento\Definicion_Proc_Nuevo.cshtml" />
+    <Content Include="Views\Shared\_ListadoPacientesSoftland.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Habitacion\Create.cshtml" />
+    <Content Include="Views\Habitacion\Delete.cshtml" />
+    <Content Include="Views\Habitacion\Details.cshtml" />
+    <Content Include="Views\Habitacion\Edit.cshtml" />
+    <Content Include="Views\Habitacion\Index.cshtml" />
+    <Content Include="Views\Hospitalizacion\Index.cshtml" />
+    <Content Include="Views\Hospitalizacion\_HospitalCardViewPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Acceso\" />
+    <Folder Include="Views\Autorize\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50326</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50326/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

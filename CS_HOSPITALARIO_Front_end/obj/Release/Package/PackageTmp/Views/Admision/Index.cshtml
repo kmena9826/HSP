@@ -1,0 +1,247 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_ADMISION>
+
+@{
+    ViewBag.Title = "Admisión";
+    ViewBag.Modulo = "mAdmision";
+}
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Admisión</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div id="10admisiones" class="masonry-item col-md-6 col-sm-12">
+
+            </div>
+            <div id="10pacientes" class="masonry-item col-md-6 col-sm-12">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*<div class="row gap-20 masonry pos-r">
+        <div class="masonry-item w-100">
+            <div class="row gap-20">
+                <div id="10admisiones" class="masonry-item col-md-6 col-sm-12">
+
+                </div>
+                <div id="10pacientes" class="masonry-item col-md-6 col-sm-12">
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+@*//////////////////////////////////////////////////////////////////////////////////////////*@
+
+@*<div class="container-fluid">
+        <h3 class="c-grey-900 mT-10 mB-30">Admisión</h3>
+        <div class="row">
+            <div id="10admisiones" class="col-md-12">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                <h4>Historial Clínico</h4>
+                <ul class="timeline">
+                    <li>
+                        <a href="#">Examen de VIH</a>
+                        <a href="#" class="float-right">31/12/2018</a>
+                        <p>Se solicita examen de VIH, cuyos resultados serán entregados en privado al solicitando dado que...</p>
+                    </li>
+                    <li>
+                        <a href="#">Examen de ADN</a>
+                        <a href="#" class="float-right">02/01/2019</a>
+                        <p>Se realiza examen de ADN para verificar paternidad, cuyos resultados obtenidos demuestran que...</p>
+                    </li>
+                    <li>
+                        <a href="#">Examen de Próstata</a>
+                        <a href="#" class="float-right">05/01/2019</a>
+                        <p>Quinto examen solicitado en el mes, dicho examen se programa con el mismo médico...</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>*@
+
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+
+@section scripts
+                {
+
+    @*jQuery first, then Popper.js, then Bootstrap JS*@
+    @*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>*@
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+
+
+    <script type="text/javascript">
+
+                        function detallarSignosVitales(admis) {
+
+                            $.ajax({
+                                type: "GET",
+                                url: '@Url.Action("Popup_DetalleSignosVitales", "Admision")/' + admis,
+                                contentType: "application/json; charset=utf-8",
+                                datatype: "json",
+                                success: function (data) {
+                                    $('#myModal').html(data);
+                                    $('#myModal').modal('show');
+                                },
+                                error: function () {
+                                    alert("Content load failed.");
+                                }
+                            });
+                        }
+
+
+                        /* INICIALIZACIÓN */
+                        $(document).ready(function () {
+
+                            $.get("/Admision/Top10Admisiones").done(function (data) {
+                                $("#10admisiones").append(data);
+                            });
+
+                            $.get("/Admision/Top10Pacientes").done(function (data) {
+                                $("#10pacientes").append(data);
+                            });
+
+                            $('#tabla_admisiones tfoot th').each(function () {
+                                var title = $(this).text().trim();
+                                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+                            });
+
+                            var events = $('#events');
+
+                            var table = $('#tabla_admisiones').DataTable({
+                                dom: 'Bfrtip',
+                                language: {
+                                    select: {
+                                        rows: {
+                                            0: "",
+                                            1: " │ %d registro seleccionado."
+                                        }
+                                    }
+                                },
+                                select: true,
+                                buttons: [{
+                                    text: 'Nuevo',
+                                    action: function (e, dt, node, config) {
+                                        window.location.href = '/Admision/NuevaAdmision';
+                                    },
+                                    init: function (api, node, config) {
+                                        $(node).removeClass('btn-default')
+                                    }
+                                },
+                                {
+                                    text: 'Editar',
+                                    action: function (e, dt, node, config) {
+                                        var rowSelected = table.rows({ selected: true }).data();
+                                        console.log(rowSelected[0][0]);
+                                        window.location.href = '/Admision/EditarAdmision/' + rowSelected[0][0];
+                                    },
+                                    init: function (api, node, config) {
+                                        $(node).removeClass('btn-default')
+                                    }
+                                },
+                                {
+                                    text: 'Borrar',
+                                    action: function (e, dt, node, config) {
+                                        var rowSelected = table.rows({ selected: true }).data();
+                                        console.log(rowSelected[0][0]);
+                                        window.location.href = '/Admision/BorrarAdmision/' + rowSelected[0][0];
+                                    },
+                                    init: function (api, node, config) {
+                                        $(node).removeClass('btn-default')
+                                    }
+                                },
+                                {
+                                    text: 'Signos Vitales',
+                                    action: function (e, dt, node, config) {
+                                        var rowSelected = table.rows({ selected: true }).data();
+                                        console.log(rowSelected[0][0]);
+                                        if (rowSelected[0][7] == 'Pendiente') {
+                                            window.location.href = '/Admision/SignosVitales/' + rowSelected[0][0];
+                                        }
+                                        else
+                                            detallarSignosVitales(rowSelected[0][0]);
+                                    },
+                                    init: function (api, node, config) {
+                                        $(node).removeClass('btn-default')
+                                    }
+                                }, "pdf", "excel"]
+                            });
+                            // Apply the search
+                            table.columns().every(function () {
+                                var that = this;
+
+                                $('input', this.footer()).on('keyup change', function () {
+                                    if (that.search() !== this.value) {
+                                        that
+                                            .search(this.value)
+                                            .draw();
+                                    }
+                                });
+                            });
+                            $('#tabla_admisiones tfoot tr').appendTo('#tabla_admisiones thead');
+                            $("#tabla_admisiones_wrapper button").each(function () {
+                                $(this).removeClass("dt-button");
+                                $(this).addClass("btn btn-sm");
+                                if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                                    $(this).addClass("btn-secondary");
+                                }
+                                else {
+                                    if ($(this).text() == 'Nuevo' || $(this).text() == 'Editar' || $(this).text() == 'Borrar') {
+                                        $(this).addClass("btn-primary");
+                                    }
+                                    else
+                                        $(this).addClass("btn-dark");
+                                }
+                            });
+                            $('#tabla_admisiones_filter input').addClass("form-control");
+
+                            $('#tabla_admisiones tbody').on('dblclick', 'tr', function () {
+                                var rowSelected = table.rows({ selected: true }).data();
+                                window.location.href = '/Admision/EditarAdmision/' + rowSelected[0][0];
+                            });
+
+                        });
+
+    </script>
+}

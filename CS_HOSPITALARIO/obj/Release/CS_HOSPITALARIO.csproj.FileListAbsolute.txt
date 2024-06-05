@@ -1,0 +1,326 @@
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\ApplicationInsights.config
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\CS_HOSPITALARIO.dll.config
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\CS_HOSPITALARIO.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\CS_HOSPITALARIO.pdb
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Antlr3.Runtime.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\EntityFramework.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\EntityFramework.SqlServer.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.DependencyCollector.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.Web.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.WindowsServer.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.ApplicationInsights.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Cors.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Google.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Web.Infrastructure.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Newtonsoft.Json.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Owin.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Net.Http.Formatting.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Cors.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Helpers.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Http.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Http.Owin.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Mvc.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Optimization.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Razor.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.Deployment.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.Razor.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\WebGrease.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\EntityFramework.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\EntityFramework.SqlServer.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.DependencyCollector.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.PerfCounterCollector.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.Web.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.WindowsServer.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.ApplicationInsights.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Cors.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Google.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Newtonsoft.Json.pdb
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Newtonsoft.Json.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Net.Http.Formatting.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Helpers.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Http.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Http.Owin.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Mvc.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Razor.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.Deployment.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.Razor.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Optimization.xml
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\Antlr3.Runtime.pdb
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.Helpers.resources.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.Mvc.resources.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.Razor.resources.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.WebPages.resources.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.WebPages.Deployment.resources.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.Optimization.resources.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\obj\Release\CS_HOSPITALARIO.csproj.CoreCompileInputs.cache
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\obj\Release\CS_HOSPITALARIO.dll
+D:\Desarrollo Quintero\Hospitalario\HSP\CS_HOSPITALARIO\obj\Release\CS_HOSPITALARIO.pdb
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ApplicationInsights.config
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\CS_HOSPITALARIO.dll.config
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\CS_HOSPITALARIO.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\CS_HOSPITALARIO.pdb
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Antlr3.Runtime.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Data.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Office.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Printing.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.RichEdit.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.RichEdit.v18.1.Export.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Utils.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxThemes.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.Mvc5.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\EntityFramework.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\EntityFramework.SqlServer.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.Agent.Intercept.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.DependencyCollector.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.Web.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.WindowsServer.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.ApplicationInsights.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.Identity.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Cors.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Cookies.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Facebook.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Google.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.OAuth.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Web.Infrastructure.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Newtonsoft.Json.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Owin.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Diagnostics.DiagnosticSource.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Net.Http.Formatting.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Cors.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Helpers.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Http.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Http.Owin.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Mvc.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Optimization.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Razor.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.Deployment.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.Razor.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\WebGrease.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Pdf.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Images.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraCharts.v18.1.Web.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraCharts.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxHtmlEditor.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxPivotGrid.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.PivotGrid.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraReports.v18.1.Web.WebForms.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxRichEdit.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxScheduler.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraScheduler.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxSpellChecker.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxSpreadsheet.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxTreeList.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Charts.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraReports.v18.1.Web.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraReports.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.DataAccess.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.SpellChecker.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Spreadsheet.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.Resources.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Sparkline.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraGauges.v18.1.Core.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Xpo.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.CodeParser.v18.1.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Data.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Printing.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Office.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.RichEdit.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Utils.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\EntityFramework.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\EntityFramework.SqlServer.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.DependencyCollector.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.PerfCounterCollector.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.Web.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AI.WindowsServer.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.ApplicationInsights.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.Identity.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Cors.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Cookies.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Facebook.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.Google.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Microsoft.Owin.Security.OAuth.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Newtonsoft.Json.pdb
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Newtonsoft.Json.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Diagnostics.DiagnosticSource.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Net.Http.Formatting.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Helpers.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Http.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Http.Owin.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Mvc.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Razor.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.Deployment.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.WebPages.Razor.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\System.Web.Optimization.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\Antlr3.Runtime.pdb
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Pdf.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraCharts.v18.1.Web.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraCharts.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxHtmlEditor.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxPivotGrid.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.PivotGrid.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxRichEdit.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxScheduler.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraScheduler.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxSpellChecker.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxSpreadsheet.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Web.ASPxTreeList.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraReports.v18.1.Web.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraReports.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.DataAccess.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.SpellChecker.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Spreadsheet.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Sparkline.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.XtraGauges.v18.1.Core.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\DevExpress.Xpo.v18.1.xml
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Data.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Data.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Data.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Data.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Printing.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Printing.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Printing.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Printing.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Office.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Office.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Office.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Office.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.RichEdit.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.RichEdit.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.RichEdit.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.RichEdit.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Utils.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Utils.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Utils.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Utils.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Web.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Web.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Web.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Web.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.Helpers.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.Mvc.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.Razor.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.WebPages.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.WebPages.Deployment.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\System.Web.Optimization.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Pdf.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Pdf.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Pdf.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Pdf.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.XtraCharts.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.XtraCharts.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.XtraCharts.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.XtraCharts.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Web.ASPxHtmlEditor.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Web.ASPxHtmlEditor.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Web.ASPxHtmlEditor.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Web.ASPxHtmlEditor.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.PivotGrid.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.PivotGrid.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.PivotGrid.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.PivotGrid.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Web.ASPxRichEdit.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Web.ASPxRichEdit.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Web.ASPxRichEdit.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Web.ASPxRichEdit.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Web.ASPxScheduler.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Web.ASPxScheduler.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Web.ASPxScheduler.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Web.ASPxScheduler.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.XtraScheduler.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.XtraScheduler.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.XtraScheduler.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.XtraScheduler.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Web.ASPxSpellChecker.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Web.ASPxSpellChecker.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Web.ASPxSpellChecker.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Web.ASPxSpellChecker.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Web.ASPxSpreadsheet.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Web.ASPxSpreadsheet.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Web.ASPxSpreadsheet.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Web.ASPxSpreadsheet.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Web.ASPxTreeList.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Web.ASPxTreeList.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Web.ASPxTreeList.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Web.ASPxTreeList.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.XtraReports.v18.1.Web.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.XtraReports.v18.1.Web.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.XtraReports.v18.1.Web.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.XtraReports.v18.1.Web.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.XtraReports.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.XtraReports.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.XtraReports.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.XtraReports.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.DataAccess.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.DataAccess.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.DataAccess.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.DataAccess.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Spreadsheet.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Spreadsheet.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Spreadsheet.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Spreadsheet.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Web.Resources.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Web.Resources.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Web.Resources.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Web.Resources.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Sparkline.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Sparkline.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Sparkline.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Sparkline.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.XtraGauges.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.XtraGauges.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.XtraGauges.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.XtraGauges.v18.1.Core.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\de\DevExpress.Xpo.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\es\DevExpress.Xpo.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ja\DevExpress.Xpo.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\bin\ru\DevExpress.Xpo.v18.1.resources.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\obj\Release\CS_HOSPITALARIO.csproj.AssemblyReference.cache
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\obj\Release\CS_HOSPITALARIO.csproj.CoreCompileInputs.cache
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\obj\Release\CS_HOSPITALARIO.csproj.CopyComplete
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\obj\Release\CS_HOSPITALARIO.dll
+D:\PRODUCTOS CORPSOFT\Sistema Hospitalario\HSP\CS_HOSPITALARIO\obj\Release\CS_HOSPITALARIO.pdb

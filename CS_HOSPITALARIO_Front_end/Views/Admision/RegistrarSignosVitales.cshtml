@@ -1,0 +1,485 @@
+﻿@model CS_HOSPITALARIO.Models.CS_SIGNOS_VITALES
+
+@{
+    ViewBag.Modulo = "mAdmision";
+}
+<link href="~/Content/animate.css" rel="stylesheet" />
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+
+                    @using (Html.BeginForm())
+                    {
+                        <input type="hidden" id="DOCTOR_ID" value="@ViewBag.DOCTOR_ID" />
+                        <input type="hidden" id="CLIENTE_ID" value="@ViewBag.DOCTOR_ID" />
+                        <input type="hidden" id="AREA_SERVICIO_ID" value="@ViewBag.AREA_SERVICIO_ID" />
+                        <input type="hidden" id="ADMISION_ID" value="@ViewBag.ADMISION_ID" />
+                        <div class="row p-20">
+                            <label id="id-pedido" class="col-form-label fsz-lg color-light-h">
+                                Admisión Nº:&nbsp;&nbsp; <span class="color-secondary-b">@ViewBag.ADMISION_ID</span>
+                            </label>
+
+                            <div class="form-group ml-auto">
+                                <input type="submit" value="Guardar" class="btn btn-primary" onclick="return validateForm();" />
+                                @Html.ActionLink("Cancelar", "Admisiones", "Admision", null, new { @class = "btn btn-outline-secondary" })
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-row" style="display:none">
+                            @*<input type="text" class="form-control" value="@ViewBag.ADMISION_ID" readonly />*@
+                            @Html.EditorFor(model => model.ADMISION_ID, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.ADMISION_ID, @autofocus = "autofocus" } })
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Paciente</label>
+                                <div class="">
+                                    <input type="text" class="form-control" value="@ViewBag.PACIENTE" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Tipo</label>
+                                <div class="">
+                                    <input type="text" class="form-control" value="@ViewBag.TIPO" readonly />
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <div class="form-row">
+ 
+                            <div class="form-group col-md-3">
+                                <label>Temperatura</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.TEMPERATURAC, new { type = "number", step = "0.1", min = 0, max = 43, @class = "form-control", @autofocus = "autofocus" })
+                                    <span class="input-group-addon" id="basic-addon2">C°</span>
+                                    <div class="invalid-feedback">
+                                        La temperatura es requerida.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Estatura</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.ESTATURA, new { type = "number", step = "0.1", min = 0, max = 300, @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ESTATURA, "", new { @class = "text-danger" })
+                                    <span class="input-group-addon" id="basic-addon2">cm</span>
+                                    <div class="invalid-feedback">
+                                        La estatura  es requerida.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Peso</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.PESOKG, new { type = "number", step = "0.1", min = 0, max = 500, @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PESOKG, "", new { @class = "text-danger" })
+                                    <span class="input-group-addon" id="basic-addon2">kg</span>
+                                    <div class="invalid-feedback">
+                                        El peso es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>IMC</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.IMC, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control" })
+                                    @*@Html.ValidationMessageFor(model => model.IMC, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">kg/m²</span>
+                                    <div class="invalid-feedback">
+                                        El IMC es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label>Pulso</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.PULSO, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control" })
+                                    @*@Html.ValidationMessageFor(model => model.PULSO, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">FCR</span>
+                                    <div class="invalid-feedback">
+                                        El pulso es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Respiración</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.RESPIRACION, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control" })
+                                    @*@Html.ValidationMessageFor(model => model.RESPIRACION, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">FR</span>
+                                    <div class="invalid-feedback">
+                                        La respiracion es requerida.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Saturación</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.SATURACION, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control"  })
+                                    @*@Html.ValidationMessageFor(model => model.SATURACION, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">SPO2</span>
+                                    <div class="invalid-feedback">
+                                        La saturacion es requerida.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Glucometría</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.GLUCOMETRIA, new { type = "number", step = "0.1", min = 0, max = 100,@class = "form-control" })
+                                    @*@Html.ValidationMessageFor(model => model.GLUCOMETRIA, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">mg/dl</span>
+                                    <div class="invalid-feedback">
+                                        La glucometria es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Presión Sistólica</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.PSISTOLICA, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control" })
+                                    @*@Html.ValidationMessageFor(model => model.PSISTOLICA, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">mmHg</span>
+                                    <div class="invalid-feedback">
+                                        La presion sistolica es requerida.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Presión Diastólica</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.PDIASTOLICA, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control"})
+                                    @*@Html.ValidationMessageFor(model => model.PDIASTOLICA, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">mmHg</span>
+                                    <div class="invalid-feedback">
+                                        La presion diastolica es requerida.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label>Perímetro Toráxico</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.PERIMETRO_TORAXICO, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control"})
+                                    @*@Html.ValidationMessageFor(model => model.PERIMETRO_TORAXICO, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">cm</span>
+                                    <div class="invalid-feedback">
+                                        El perimetro toraxico es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Perímetro Muñeca</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.PERIMETRO_MUNECA, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control"})
+                                    @*@Html.ValidationMessageFor(model => model.PERIMETRO_MUNECA, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">cm</span>
+                                    <div class="invalid-feedback">
+                                        El perimetro de muneca es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Perímetro Cefálico</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.PERIMETRO_CEFALICO, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control"})
+                                    @*@Html.ValidationMessageFor(model => model.PERIMETRO_CEFALICO, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">cm</span>
+                                    <div class="invalid-feedback">
+                                        El perimetro cefalico es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Perímetro Adbominal</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.PERIMETRO_ABDOMINAL, new { type = "number", step = "0.1", min = 0, max = 100, @class = "form-control"})
+                                    @*@Html.ValidationMessageFor(model => model.PERIMETRO_ABDOMINAL, "", new { @class = "text-danger" })*@
+                                    <span class="input-group-addon" id="basic-addon2">cm</span>
+                                    <div class="invalid-feedback">
+                                        El perimetro abdominal es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>Hallazgo</label>
+                                <div class="">
+                                    @Html.TextAreaFor(model => model.HALLAZGO, new { @class = "form-control ocupar-todo", @rows = 3 })
+                                    @Html.ValidationMessageFor(model => model.HALLAZGO, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/inputmask/inputmask.js"></script>
+    <script src="~/Scripts/jquery.inputmask.js"></script>
+    <script src="~/Scripts/jquery-mask-as-number.min.js"></script>
+
+    <script type="text/javascript">
+        function validateForm() {
+
+            let isvalid = true;
+            var areaServicioId = "@ViewBag.AREA_SERVICIO_ID";
+            var itemOdonto = "@ViewBag.ITEM_ODONTO";
+
+            var temperatura = $("#TEMPERATURAC");
+            temperatura.removeClass("is-invalid");
+
+            var estatura = $("#ESTATURA");
+            estatura.removeClass("is-invalid");
+
+            var peso = $("#PESOKG");
+            peso.removeClass("is-invalid");
+
+            var imc = $("#IMC");
+            imc.removeClass("is-invalid");
+
+            var pulso = $("#PULSO");
+            pulso.removeClass("is-invalid");
+
+            var respiracion = $("#RESPIRACION");
+            respiracion.removeClass("is-invalid");
+
+            var saturacion = $("#SATURACION");
+            saturacion.removeClass("is-invalid");
+
+            var glucometria = $("#GLUCOMETRIA");
+            glucometria.removeClass("is-invalid");
+
+            var sistolica = $("#PSISTOLICA");
+            sistolica.removeClass("is-invalid");
+
+            var diastolica = $("#PDIASTOLICA");
+            sistolica.removeClass("is-invalid");
+
+            var torax = $("#PERIMETRO_TORAXICO");
+            torax.removeClass("is-invalid");
+
+            var muneca = $("#PERIMETRO_MUNECA");
+            muneca.removeClass("is-invalid");
+
+            var cefalico = $("#PERIMETRO_CEFALICO");
+            cefalico.removeClass("is-invalid");
+
+            var abdominal = $("#PERIMETRO_ABDOMINAL");
+            abdominal.removeClass("is-invalid");
+
+            if (areaServicioId !== itemOdonto) {
+                if (temperatura.val() == "") {
+                    $.notify({ message: 'La temperatura del paciente es requerida' }, { type: 'danger' });
+                    temperatura.addClass("is-invalid");
+                    isvalid = false;
+                }
+            }
+            
+
+            if (estatura.val() == "") {
+                $.notify({ message: 'El estatura del paciente es requerido' }, { type: 'danger' });
+                estatura.addClass("is-invalid");
+                isvalid = false;
+            }
+            if (peso.val() == "") {
+                $.notify({ message: 'El peso del paciente es requerido' }, { type: 'danger' });
+                peso.addClass("is-invalid");
+                isvalid = false;
+            }
+            if (imc.val() == "") {
+                $.notify({ message: 'El IMC del paciente es requerido' }, { type: 'danger' });
+                imc.addClass("is-invalid");
+                isvalid = false;
+            }
+            if (areaServicioId !== itemOdonto) {
+                if (pulso.val() == "") {
+                    $.notify({ message: 'El pulso del paciente es requerido' }, { type: 'danger' });
+                    pulso.addClass("is-invalid");
+                    isvalid = false;
+                }
+            }
+            if (areaServicioId !== itemOdonto) {
+                if (respiracion.val() == "") {
+                    $.notify({ message: 'La respiracion del paciente es requerida' }, { type: 'danger' });
+                    respiracion.addClass("is-invalid");
+                    isvalid = false;
+                }
+            }
+            if (areaServicioId !== itemOdonto) {
+                if (saturacion.val() == "") {
+                    $.notify({ message: 'La saturacion del paciente es requerida' }, { type: 'danger' });
+                    saturacion.addClass("is-invalid");
+                    isvalid = false;
+                }
+            }
+
+
+            //if (glucometria.val() == "") {
+            //    $.notify({ message: 'La glucometria del paciente es requerido' }, { type: 'danger' });
+            //    glucometria.addClass("is-invalid");
+            //    isvalid = false;
+            //}
+            if (areaServicioId !== itemOdonto) {
+                if (sistolica.val() == "") {
+                    $.notify({ message: 'La presion sistolica del paciente es requerida' }, { type: 'danger' });
+                    sistolica.addClass("is-invalid");
+                    isvalid = false;
+                }
+            }
+            if (areaServicioId !== itemOdonto) {
+                if (diastolica.val() == "") {
+                    $.notify({ message: 'La presion diastolica del paciente es requerida' }, { type: 'danger' });
+                    diastolica.addClass("is-invalid");
+                    isvalid = false;
+                }
+            }
+
+            //if (torax.val() == "") {
+            //    $.notify({ message: 'El Perímetro Toráxico del paciente es requerido' }, { type: 'danger' });
+            //    torax.addClass("is-invalid");
+            //    isvalid = false;
+            //}
+            //if (muneca.val() == "") {
+            //    $.notify({ message: 'El Perímetro Muñeca del paciente es requerido' }, { type: 'danger' });
+            //    muneca.addClass("is-invalid");
+            //    isvalid = false;
+            //}
+            //if (cefalico.val() == "") {
+            //    $.notify({ message: 'El Perímetro Cefálico del paciente es requerido' }, { type: 'danger' });
+            //    cefalico.addClass("is-invalid");
+            //    isvalid = false;
+            //}
+            //if (abdominal.val() == "") {
+            //    $.notify({ message: 'El Perímetro abdominal del paciente es requerido' }, { type: 'danger' });
+            //    abdominal.addClass("is-invalid");
+            //    isvalid = false;
+            //}
+            return isvalid;
+        }
+        function calculoimc() {
+
+            var altura = document.getElementById("ESTATURA").value;
+            var peso = document.getElementById("PESOKG").value;
+
+            if (altura != '' && peso != '') {
+                altura = altura.toString().replace(',', '.');
+                var alturaMetro = altura / 100;
+                /*CALCULO IMC*/
+                var alturaCuadrado = alturaMetro * alturaMetro;
+                var imc = peso / alturaCuadrado;
+                document.getElementById("IMC").value = Math.round(imc);
+            }
+            /*CALCULO DESCRIPCION IMC*/
+            //if (imc < 16) {
+            //    document.getElementById("IMCdetallado").value = "Delgadez Severa";
+            //}
+            //else if (imc < 17) {
+            //    document.getElementById("IMCdetallado").value = "Delgadez Moderada";
+            //}
+            //else if (imc < 18.5) {
+            //    document.getElementById("IMCdetallado").value = "Delgadez Aceptable";
+            //}
+            //else if (imc < 25) {
+            //    document.getElementById("IMCdetallado").value = "Peso Normal";
+            //}
+            //else if (imc < 30) {
+            //    document.getElementById("IMCdetallado").value = "Sobrepeso";
+            //}
+            //else if (imc < 35) {
+            //    document.getElementById("IMCdetallado").value = "Obeso: Tipo I";
+            //}
+            //else if (imc < 40) {
+            //    document.getElementById("IMCdetallado").value = "Obeso: Tipo II";
+            //}
+            //else if (imc >= 40) {
+            //    document.getElementById("IMCdetallado").value = "Obeso: Tipo III";
+            //}
+        }
+        $(document).ready(function () {
+            $('#ESTATURA').on('blur', function () {
+                if (this.value != '') {
+                    calculoimc();
+                }
+            });
+            $('#PESOKG').on('blur', function () {
+                if (this.value != '') {
+                    calculoimc();
+                }
+            });
+            var estatura = $("#ESTATURA");
+            var peso = $("#PESOKG");
+            console.log(estatura.val(), peso.val());
+    
+            // $('#TEMPERATURAC').inputmask("decimal", { min: 27, max: 43, allowMinus: true });
+            $('#TEMPERATURAC').maskAsNumber({ decimal: true, min: 0, max: 43 });
+            $('#ESTATURA').maskAsNumber({ decimal: true, min: 0, max: 300 });
+            $('#PESOKG').maskAsNumber({ decimal: true, min: 0, max: 500 });
+            $('#IMC').maskAsNumber({ decimal: true, min: 0, max: 100 });
+            $('#PULSO').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            $('#RESPIRACION').maskAsNumber({ decimal: true, min: 0, max: 100 });
+            $('#SATURACION').maskAsNumber({ decimal: true, min: 0, max: 100 });
+            $('#GLUCOMETRIA').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            $('#PSISTOLICA').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            $('#PDIASTOLICA').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            $('#PERIMETRO_TORAXICO').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            $('#PERIMETRO_MUNECA').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            $('#PERIMETRO_CEFALICO').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            $('#PERIMETRO_ABDOMINAL').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            //$("#TEMPERATURAC").inputmask("(999)-99999999");
+            //$("#TEMPERATURAC").inputmask("decimal", {
+            //    onUnMask: function (maskedValue, unmaskedValue) {
+            //        //do something with the value
+            //        console.log(maskedValue, unmaskedValue);
+            //        return unmaskedValue;
+            //    }
+            //});
+        });
+    </script>
+}

@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/icon-cs.ico" />
+    <title>SGH - @ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Font Awesome -->
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid contenedor">
+            <div class="row" style="margin-left: auto;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("SGH", "Index", "Home", new { area = "" }, new { @class = "navbar-brand logo" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Admisión
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Admisiones", "admisiones", "admision")</li>
+                                <li>@Html.ActionLink("Signos Vitales", "tomarsignosvitales", "admision")</li>
+                                <li class="disabled"><a href="#">Citas</a></li>
+                                <li class="divider"></li>
+                                <li class="disabled"><a href="#">Agenda</a></li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Pacientes", "pacientes", "admision")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Consulta Externa
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a href="#">Consulta</a></li>
+                                <li class="divider"></li>
+                                <li class="disabled"><a href="#">Emergencias</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Laboratorio
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a href="#">Toma de Muestra</a></li>
+                                <li class="disabled"><a href="#">Recepción de Muestra</a></li>
+                                <li class="disabled"><a href="#">Lista de trabajo</a></li>
+                                <li class="divider"></li>
+                                <li class="disabled"><a href="#">Reportes</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Imagenología
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li> @Html.ActionLink("Lista de Trabajo", "Lista_Trabajo_Imagen", "Imagenologia")</li>
+                                <li class="disabled"><a href="#">Trancripciones</a></li>
+                                <li class="divider"></li>
+                                <li> @Html.ActionLink("Plantilla", "Plantillas_Listar", "Imagenologia")</li>
+                                <li class="disabled"><a href="#">Reportes</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Farmacia
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a href="#">Despacho</a></li>
+                                <li class="disabled"><a href="#">Interacciones</a></li>
+                                <li class="divider"></li>
+                                <li class="disabled"><a href="#">Reportes</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Hospitalización
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a href="#">Admisión</a></li>
+                                <li class="disabled"><a href="#">Estación de Piso</a></li>
+                                <li class="disabled"><a href="#">Transferencias</a></li>
+                                <li class="divider"></li>
+                                <li class="disabled"><a href="#">Reportes</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Quirófano
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a href="#">Admisión</a></li>
+                                <li class="disabled"><a href="#">Estaciones</a></li>
+                                <li class="disabled"><a href="#">Transferencias</a></li>
+                                <li class="divider"></li>
+                                <li class="disabled"><a href="#">Reportes</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Catálogos
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a href="#">Cuartos</a></li>
+                                <li class="disabled"><a href="#">Quirófanos</a></li>
+                                <li class="disabled"><a href="#">Módulos</a></li>
+                                <li>@Html.ActionLink("Definición de Procedimiento", "Definicion_Proc_Listar", "DefinicionProcedimiento")</li>
+                                <li>@Html.ActionLink("Seguros", "seguros", "catalogos")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Catálogos Maestros", "maestros", "catalogos")</li>
+                                <li>@Html.ActionLink("Ítems de Catálogos", "itemscatalogos", "catalogos")</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid body-content contenedor cuerpo-contenedor panel panel-default">
+        <input type="hidden" value="@Session["MenuMaster"]" id="myHiddenVar" />
+        @RenderBody()
+
+    </div>
+    <hr />
+    <footer id="footer">
+        <p>
+            <a href="http://corpsoftsa.com/corpsoft/">Corpsoft</a>
+            &copy; @DateTime.Now.Year - Sistema Gestión Hospitalario
+        </p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

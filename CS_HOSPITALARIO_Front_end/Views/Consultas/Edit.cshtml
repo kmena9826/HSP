@@ -1,0 +1,767 @@
+﻿
+@model CS_HOSPITALARIO.Models.SP_Listado_consulta_Result
+
+@{
+    /**/
+
+    ViewBag.Title = "Consulta";
+}
+<link href="~/Content/animate.css" rel="stylesheet" />
+<style>
+    [data-notify="progressbar"] {
+        margin-bottom: 0px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 5px;
+    }
+</style>
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-8 col-sm-8">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Consulta Externa</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*@using (Html.BeginForm())*@
+@*  *@
+@*//@Html.AntiForgeryToken()*@
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    @Html.HiddenFor(m => m.NUM_CONSULTA)
+                    @Html.HiddenFor(m => m.CLIENTE_ID)
+                    @Html.HiddenFor(m => m.ID_MEDICO)
+                    @Html.HiddenFor(m => m.AREA_SERVICIO_ID)
+                    @Html.HiddenFor(m => m.ADMISION_ID)
+                    @Html.HiddenFor(m => m.PEDIDO)
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4>Consulta Nº: @Model.NUM_CONSULTA</h4>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th style="background-color:#D8D8D8;">Paciente</th>
+                                        <td><span id="paciente">@Model.CLIENTE</span></td>
+                                        <th style="background-color:#D8D8D8;">IDENT</th>
+                                        <td><span id="dni">@Model.IDENTIFICACION</span></td>
+                                        <th style="background-color:#D8D8D8;">Edad</th>
+                                        <td><span id="edad">@Model.EDAD</span></td>
+                                        <th style="background-color:#D8D8D8;">Servicio</th>
+                                        <td><span id="servicio">@Model.AREA_SERVICIO</span></td>
+                                        <th style="background-color:#D8D8D8;">Especialista</th>
+                                        <td><span id="especialista">@Model.MEDICO</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <fieldset>
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th style="background-color:#D8D8D8;">Presión Sistólica</th>
+                                            <td><input type="text" class="form-control" name="presion_sistolica" id="presion_sistolica" size="5" value="@Model.PSISTOLICA"></td>
+                                            <th style="background-color:#D8D8D8;">Temperatura (°C)</th>
+                                            <td><input type="text" class="form-control" name="temperatura" id="temperatura" size="5" value="@Model.TEMPERATURAC"></td>
+                                            <th style="background-color:#D8D8D8;">Respiración</th>
+                                            <td><input type="text" class="form-control" name="frecuencia_respiratoria" id="frecuencia_respiratoria" size="5" value="@Model.RESPIRACION"></td>
+                                            <th style="background-color:#D8D8D8;">Pulso</th>
+                                            <td><input type="text" class="form-control" name="pulso" id="pulso" size="5" value="@Model.PULSO"></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#D8D8D8;">Saturación (%)</th>
+                                            <td><input type="text" class="form-control" name="saturacion" id="saturacion" size="5" value="@Model.SATURACION"></td>
+                                            <th style="background-color:#D8D8D8;">Peso (Kg)</th>
+                                            <td><input type="text" class="form-control" name="peso" id="peso" size="5" value="@Model.PESOKG"></td>
+                                            <th style="background-color:#D8D8D8;">Estatura</th>
+                                            <td><input type="text" class="form-control" name="estatura" id="estatura" size="5" value="@Model.ESTATURA"></td>
+                                            <th style="background-color:#D8D8D8;">IMC</th>
+                                            <td><input type="text" class="form-control" name="imc" id="imc" size="5" value="@Model.IMC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#D8D8D8;">Glucometría</th>
+                                            <td><input type="text" class="form-control" name="glucometria" id="glucometria" size="5" value="@Model.GLUCOMETRIA"></td>
+                                            <th style="background-color:#D8D8D8;">Presión Diastólica</th>
+                                            <td><input type="text" class="form-control" name="presion_distolica" id="presion_distolica" size="5" value="@Model.PDIASTOLICA"></td>
+                                            <th style="background-color:#D8D8D8;">Perímetro Toráxico</th>
+                                            <td><input type="text" class="form-control" name="perimetro_toraxico" id="perimetro_toraxico" size="5" value="@Model.PERIMETRO_TORAXICO"></td>
+                                            <th style="background-color:#D8D8D8;">Perímetro Muñeca</th>
+                                            <td><input type="text" class="form-control" name="perimetro_muneca" id="imc" size="5" value="@Model.PERIMETRO_MUNECA"></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#D8D8D8;">
+                                                Perímetro Cefálico
+                                            </th>
+                                            <td><input type="text" class="form-control" name="perimetro_cefalico" id="perimetro_cefalico" size="5" value="@Model.PERIMETRO_CEFALICO"></td>
+                                            <th style="background-color:#D8D8D8;">Perímetro Adbominal</th>
+                                            <td><input type="text" class="form-control" name="perimetro_abdominal" id="perimetro_abdominal" size="5" value="@Model.PERIMETRO_ABDOMINAL"></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#D8D8D8;">
+                                                Hallazgo
+                                            </th>
+                                            <td colspan="8"><textarea type="text" class="form-control" name="perimetro_cefalico" id="perimetro_cefalico" size="5" value="@Model.HALLAZGO">@Model.HALLAZGO</textarea></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="col-row" style="margin-top:40px;border: 1px solid;border-radius: 4px;border-color: #337ab7;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-primary ">
+                                <div class="panel-body" style="margin:20px">
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label>Motivo de la Consulta:</label>
+                                        <textarea class="form-control" name="motivo_consulta" id="motivo_consulta" rows="5"></textarea>
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label>Antecedentes:</label>
+                                        <textarea class="form-control" name="antecedentes" id="antecedentes" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-row" style="margin-top:40px;border: 1px solid;border-radius: 4px;border-color:#d6e9c6;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-success">
+                                <div class="panel-body" style="margin:20px">
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px">
+                                        <label>Examen Físico:</label>
+                                        <textarea class="form-control" name="examen_fisico" id="examen_fisico" rows="5"></textarea>
+                                    </div>
+                                    <h4>Diagnósticos</h4>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6>Diagnóstico</h6>
+                                            <textarea class="form-control" name="diagnostico_manual" id="diagnostico_manual" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <h6>CIE</h6>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div id="gridContainerCatalogoCIE"></div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <label>Aplicar</label>
+                                            <table id="detalles" class="table">
+                                                <thead style="background-color: #0984e3;color:white">
+                                                    <tr>
+                                                        <th>Borrar</th>
+                                                        <th>Id</th>
+                                                        <th>Enfermedad</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label>Tratamiento:</label>
+                                        <textarea class="form-control" name="tratamiento" id="tratamiento" rows="5" required=""></textarea>
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label>Observaciones:</label>
+                                        <textarea type="text" class="form-control" name="observacion" id="observacion" rows="5" required=""></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-row" style="margin-top:40px;border: 1px solid;border-radius: 4px;border-color: #337ab7;">
+                        <div class="table-responsive">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body" style="margin:20px">
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <label>Receta <button type="button" class="btn btn-sm btn-success" onclick="AgregarReceta()" style="margin-top:20px;margin-bottom:20px"><i class="fas fa-plus"></i></button></label>
+                                            <table id="recetas" class="table">
+                                                <thead style="background-color: #0984e3;color:white">
+                                                    <tr>
+                                                        <th>Borrar</th>
+                                                        <th>Medicamento</th>
+                                                        <th>Presentación</th>
+                                                        <th>Dosis</th>
+                                                        <th>Via Administracion</th>
+                                                        <th>Duración (Dias)</th>
+                                                        <th>Cantidad</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="form-group ml-auto">
+                            <button class="btn btn-primary" type="button" id="btnGuardar" onclick="GuardarConsulta()"><i class="fas fa-save"></i> Guardar</button>
+                            <button class="btn btn-danger" id="btnCancelar" onclick="cancelarform()" type="button"><i class="fas fa-arrow-circle-left"></i> Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ModalReceta" tabindex="-1" role="dialog" aria-labelledby="ModalRecetaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalRecetaLabel">Medicamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12 form-horizontal">
+                    <div class="form-group">
+                        <label>Medicamento:</label>
+                        <input type="text" class="form-control" id="MEDICAMENTO_NO_INV">
+                        <span id="medAvailableText" class="d-none text-success">Medicamento disponible en farmacia</span>
+                        @*<div id="MEDICAMENTO"></div>*@
+                    </div>
+                    @*<div class="form-group">
+                        <label> Cantidad Disponible:</label>
+                        <input type="text" class="form-control" id="CANTIDAD_DISPONIBLE" readonly>
+                    </div>*@
+                    <div class="form-group">
+                        <label>Presentación:</label>
+                        <input type="text" class="form-control" id="PRESENTACION">
+                    </div>
+                    <div class="form-group">
+                        <label>Dosis:</label>
+                        <div id="DOSIS"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Via de Administracion:</label>
+                        <div id="VIAS"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Duración (Días):</label>
+                        <input type="number" min="1" class="form-control" id="DURACION">
+                    </div>
+                    <div class="form-group">
+                        <label>Cantidad:</label>
+                        <input type="number" min="1" class="form-control" id="CANTIDAD">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="CerrarMedicinaReceta()">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="AgregarMedicinaReceta()">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/dx.all.js"></script>
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script>
+        function CargarGridCie() {
+            $.ajax({
+                url: "/Consultas/GetCatalogoCIE",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var fillData = data.datos;
+                    var dataGrid = $("#gridContainerCatalogoCIE").dxDataGrid({
+                        filterRow: { visible: true },
+                        dataSource: fillData,
+                        keyExpr: "ID",
+                        sorting: {
+                            mode: "multiple"
+                        },
+                        paging: {
+                            pageSize: 5
+                        },
+                        pager: {
+                            showPageSizeSelector: true,
+                            allowedPageSizes: [5, 10],
+                            showInfo: true
+                        },
+                        filterRow: {
+                            visible: true
+                        },
+                        searchPanel: {
+                            visible: true,
+                            width: 240,
+                            placeholder: "Search..."
+                        },
+                        groupPanel: {
+                            visible: true
+                        },
+                        loadPanel: {
+                            enabled: true
+                        },
+                        showBorders: true,
+                        columns: [
+                            {
+                                dataField: "ID",
+                                caption: "Id",
+                                alignment: "center",
+                                width: 70
+                            },
+                            {
+                                dataField: "DESCRIPCION",
+                                caption: "Descripcion",
+                                width: 380
+                            },
+                            {
+                                type: "buttons",
+                                caption: "Agregar",
+                                alignment: "center",
+                                width: 70,
+                                cellTemplate: function (container, options) {
+                                    $("<div>")
+                                        .append($("<button type='button' class='btn btn-warning btn-sm' onclick=AgregarDiagnostico('" + options.key + "');><i class='fas fa-plus'></i></button>"))
+                                        .appendTo(container);
+                                    //
+                                }
+                            }
+                        ]
+                    }).dxDataGrid("instance");
+                }, error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+        }
+        function AgregarDiagnostico(cie) {
+            $.ajax({
+                url: "/Consultas/GetCIE",
+                type: "GET",
+                data: { cie },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var allow = true;
+                    $("#detalles").find("tr").each(function () {
+                        if ($(this).attr("id") == cie) {
+                            allow = false;
+                            return;
+                        }
+                    });
+
+                    if (allow == true) {
+                        $("#detalles").find('tbody')
+                            .append('<tr id="' + cie + '" CIE="' + data[0].COD + '"><td><button type="button" class="btn btn-danger" onclick="ËliminarDiagnostico(' + cie + ')"><i class="fas fa-trash"></i></button></td><td>' + cie + '</td><td>' + data[0].DESCRIPCION + '</td></tr>');
+                    }
+                    else {
+                        $.notify({ message: 'Estimado usuario,Esta enfermedad ya ha sido agregado' }, { type: 'danger' });
+                    }
+                }, error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+
+        }
+        function AgregarReceta() {
+            CargarDosis();
+            CargarVias();
+            $("#ModalReceta").modal('show');
+        }
+        function ËliminarDiagnostico(cie) {
+            cie.remove();
+        }
+
+        function CheckArticuloAvailability() {
+            var medicamentoField = $('#MEDICAMENTO_NO_INV')
+            var medAvailableText = $('#medAvailableText')
+            var medicamento = medicamentoField.val()
+            if (medicamento == null || medicamento == "") {
+                medicamentoField.removeClass('is-valid');
+                medAvailableText.addClass('d-none');
+                return;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: `/Consultas/IsAvailable?medicamento=${medicamento}`,
+                success: function (data) {
+                    if (data.available) {
+                        medicamentoField.addClass('is-valid');
+                        medAvailableText.removeClass('d-none')
+                    } else {
+                        medicamentoField.removeClass('is-valid');
+                        medAvailableText.addClass('d-none');
+                    }
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+
+        function CargarMedicamento() {
+            $.ajax({
+                type: "GET",
+                url: "/Consultas/GetMedicamentos",
+                success: function (data) {
+                    $("#MEDICAMENTO").dxSelectBox({
+                        placeholder: "Seleccione el medicamento",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: data,
+                            key: "ARTICULO"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ARTICULO",
+                        searchEnabled: true,
+                        showClearButton: true,
+                        onValueChanged: function (data) {
+
+                            if (data.value != 0 && data.value != null) {
+                                var articulo = data.value;
+                                $.ajax({
+                                    type: "GET",
+                                    url: "/Consultas/GetMedicamentoMedida",
+                                    data: { articulo },
+                                    success: function (data) {
+                                        $("#PRESENTACION").val(data.Data.DESCRIPCION);
+                                        $("#CANTIDAD_DISPONIBLE").val(data.Data.CANT_DISPONIBLE);
+                                    },
+                                    error: function (error) {
+                                        alert(error);
+                                    }
+                                })
+                            }
+                            else {
+                                //$("#divSubCapitulo").hide();
+                                $("#PRESENTACION").val('');
+                                $("#CANTIDAD_DISPONIBLE").val('');
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function CargarDosis() {
+            $.ajax({
+                type: "GET",
+                url: "/Consultas/GetDosis",
+                success: function (data) {
+                    $("#DOSIS").dxSelectBox({
+                        placeholder: "Seleccione la dosi",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: data,
+                            key: "ID"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ID",
+                        searchEnabled: true,
+                        showClearButton: true,
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function CargarVias() {
+            $.ajax({
+                type: "GET",
+                url: "/Consultas/GetVias",
+                success: function (data) {
+                    $("#VIAS").dxSelectBox({
+                        placeholder: "Seleccione la via",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: data,
+                            key: "ID"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ID",
+                        searchEnabled: true,
+                        showClearButton: true,
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function AgregarMedicinaReceta() {
+            //if ($("#MEDICAMENTO").dxSelectBox('instance').option("value") == null) {
+            //    $.notify({ message: 'El medicameto es requerido' }, { type: 'danger' });
+            //    return;
+            //}
+            if ($("#MEDICAMENTO_NO_INV").val().trim() == "") {
+                $.notify({ message: 'El medicamento es requerido' }, { type: 'danger' });
+                return;
+            }
+            if ($("#DOSIS").dxSelectBox('instance').option("value") == null) {
+                $.notify({ message: 'La dosis es requerida' }, { type: 'danger' });
+                return;
+            }
+            if ($("#VIAS").dxSelectBox('instance').option("value") == null) {
+                $.notify({ message: 'La via de administracion es requerida' }, { type: 'danger' });
+                return;
+            }
+            if ($('#DURACION').val().trim() == "" || $('#DURACION').val().trim() <= 0) {
+                $.notify({ message: 'La duracion es requerida' }, { type: 'danger' });
+                return;
+            }
+            if ($('#CANTIDAD').val().trim() == "" || $('#CANTIDAD').val().trim() <= 0) {
+                $.notify({ message: 'La cantidad es requerida' }, { type: 'danger' });
+                return;
+            }
+
+            //var cod_medicamneto = $("#MEDICAMENTO").dxSelectBox('instance').option("value");
+            var medicamento = $("#MEDICAMENTO_NO_INV").val();
+            var presentacion = $("#PRESENTACION").val();
+
+            var cod_dosis = $("#DOSIS").dxSelectBox('instance').option("value");
+            var dosis = $("#DOSIS").dxSelectBox('instance').option("displayValue");
+
+            var cod_vias = $("#VIAS").dxSelectBox('instance').option("value");
+            var vias = $("#VIAS").dxSelectBox('instance').option("displayValue");
+
+            var duracion = $('#DURACION').val().trim();
+            var cantidad = $('#CANTIDAD').val().trim();
+
+
+            var allow = true;
+            $("#recetas").find("tr").each(function () {
+                if ($(this).attr("id") == medicamento) {
+                    allow = false;
+                    return;
+                }
+            });
+            if (allow == true) {
+                $("#ModalReceta").modal('hide');
+                $("#recetas").find('tbody')
+                    .append('<tr id="' + medicamento + '" dosis="' + cod_dosis + '" via="' + cod_vias + '" duracion="' + duracion + '" cantidad="' + cantidad + '" presentacion="' + presentacion+ '"><td><button type="button" class="btn btn-sm btn-danger" onclick="EliminarMedicamento(`' + medicamento + '`)"><i class="fas fa-trash"></i></button></td><td>' + medicamento + '</td><td>' + presentacion + '</td><td>' + dosis + '</td><td>' + vias + '</td><td>' + duracion + '</td><td>' + cantidad + '</td></tr>');
+
+                $("#MEDICAMENTO").dxSelectBox('instance').option("value", " ");
+                $("#DOSIS").dxSelectBox('instance').option("value", " ");
+                $("#VIAS").dxSelectBox('instance').option("value", " ");
+                $('#MEDICAMENTO_NO_INV').val('');
+                CheckArticuloAvailability();
+                $('#PRESENTACION').val('');
+                $('#DURACION').val('');
+                $('#CANTIDAD').val('');
+            }
+            else {
+                $.notify({ message: 'Estimado usuario,Esta medicamento ya ha sido agregado' }, { type: 'danger' });
+            }
+        }
+        function EliminarMedicamento(cod_medicamento) {
+            $("#recetas").find("tr").each(function () {
+                if ($(this).attr("id") == cod_medicamento) {
+                    $(this).remove();
+                }
+            });
+        }
+        function CerrarMedicinaReceta() {
+            $("#MEDICAMENTO").dxSelectBox('instance').option("value", " ");
+            $("#DOSIS").dxSelectBox('instance').option("value", " ");
+            $("#VIAS").dxSelectBox('instance').option("value", " ");
+            $('#PRESENTACION').val('');
+            $('#DURACION').val('');
+            $('#CANTIDAD').val('');
+        }
+        function cancelarform() {
+            location.href = '../index';
+        }
+        function GuardarConsulta() {
+
+            var CountDetalles = $('#detalles tr').length;
+            var CountRecetas = $('#recetas tr').length;
+
+            if ($("#examen_fisico").val().trim() == "") {
+                $.notify({ message: 'El examen fisico es requerido' }, { type: 'danger' });
+                return;
+            }
+            if ($("#motivo_consulta").val().trim() == "") {
+                $.notify({ message: 'El motivo de la consulta es requerido' }, { type: 'danger' });
+                return;
+            }
+            if ($("#tratamiento").val().trim() == "") {
+                $.notify({ message: 'El tratamiento es requerido' }, { type: 'danger' });
+                return;
+            }
+            if (CountDetalles == 1 && $("#diagnostico_manual").val().trim() == "") {
+                $.notify({ message: 'Es necesario que realice el diagnostico' }, { type: 'danger' });
+                return;
+            }
+            if (CountRecetas == 1) {
+                $.notify({ message: 'Es necesario que realice la receta' }, { type: 'danger' });
+                return;
+            }
+
+            var Consulta = {
+                "num_consulta": $("#NUM_CONSULTA").val().trim(),
+                "cliente_id": $("#CLIENTE_ID").val().trim(),
+                "id_medico": $("#ID_MEDICO").val().trim(),
+                "razon": $("#motivo_consulta").val().trim(),
+                "antecedente": $("#antecedentes").val().trim(),
+                "examen": $("#examen_fisico").val().trim(),
+                "area": $("#AREA_SERVICIO_ID").val().trim(),
+                "admision": $("#ADMISION_ID").val().trim()
+            };
+            $.ajax({
+                type: "POST",
+                url: '/Consultas/EditarConsulta',
+                data: Consulta,
+                success: function (data) {
+                    if (data.status) {
+                        var Diagnostico = {
+                            "num_consulta": $("#ADMISION_ID").val().trim(),
+                            "observaciones": $("#observacion").val().trim(),
+                            "tratamiento": $("#tratamiento").val().trim(),
+                            "diagnosticoManual": $("#diagnostico_manual").val().trim()
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: '/Consultas/GuardarDiagnostico',
+                            data: Diagnostico,
+                            success: function (data) {
+                                console.log(data);
+                                if (data.status) {                                  
+                                    $("#detalles").find("tr").each(function () {
+                                        var id = $(this).attr("id");
+                                        if (id != null) {
+                                            var DiagnsoticoDetalle;
+                                            DiagnsoticoDetalle={
+                                                "ID_CIE": $(this).attr("cie"),
+                                                "COD_CIE": $(this).attr("id"),
+                                                "TIPO": "P",
+                                                "ID_DIAGNOSTICO": data.ID_DIAGNOSTICO
+                                            };
+                                            GuardarDiagnosticoDetalle(DiagnsoticoDetalle);
+                                        }
+                                    });                                  
+                                    var Receta = [];
+                                    $("#recetas").find("tr").each(function () {
+                                        var id = $(this).attr("id");
+                                        if (id != null) {
+                                            Receta.push({
+                                                NUM_CONSULTA:$("#NUM_CONSULTA").val(),
+                                                CODPEDIDO: $("#PEDIDO").val(),
+                                                ARTICULO: $(this).attr("id"),
+                                                DOSIS: $(this).attr("dosis"),
+                                                VIA: $(this).attr("via"),
+                                                DURACION: $(this).attr("duracion"),
+                                                CANTIDAD: $(this).attr("cantidad"),
+                                                PRESENTACION: $(this).attr("presentacion"),
+                                            });
+                                        }
+                                    });
+                                    GuardarReceta(Receta);
+
+                                }
+                            },
+                            error: function () {
+                                conosole.log('error');
+                                $.notify({ message: 'Error al registrar la consulta' }, { type: 'danger' });
+                            }
+                        })
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar la consulta' }, { type: 'danger' });
+                }
+            })
+        }
+        function GuardarDiagnosticoDetalle(DiagnsoticoDetalle) {
+            console.log('lol');
+            $.ajax({
+                type: "POST",
+                url: '/Consultas/GuardarDiagnosticoDetalle',
+                data: DiagnsoticoDetalle,
+                error: function () {
+                    $.notify({ message: 'Error al registrar la consulta' }, { type: 'danger' });
+                }
+            })
+        }
+        function GuardarReceta(Receta) {
+            $.ajax({
+                type: "POST",
+                url: '/Consultas/GuardarReceta',
+                data: JSON.stringify(Receta),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.status) {
+                        let pedido;
+                        pedido={
+                            "codpedido": $("#PEDIDO").val(),
+                            "version": data.version,
+                            "total": data.total,
+                            "cantidad": data.cantidad
+                        };
+
+                       // alert(data.total);
+                        GuardarPedidoMonto($("#PEDIDO").val(), data.version, data.total, data.cantidad);
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar la consulta' }, { type: 'danger' });
+                }
+            })
+        }
+        function GuardarPedidoMonto(codP, ver, tot, cant) {
+            $.ajax({
+                type: "POST",
+                url: '/Consultas/GuardarPedidoMonto',
+                data: { codpedido:codP , version:ver, total:tot, cantidad:cant},
+                success: function (data) {
+                    if (data.status) {
+                        $.notify({ message: 'Se ha registrado la consulta correctamente' }, { type: 'success' });
+                        cancelarform();
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar la consulta' }, { type: 'danger' });
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            CargarMedicamento();
+            CargarGridCie();
+            $("#MEDICAMENTO_NO_INV").change(function () {
+                CheckArticuloAvailability();
+            })
+        })
+    </script>
+}
+@*//}*@
+

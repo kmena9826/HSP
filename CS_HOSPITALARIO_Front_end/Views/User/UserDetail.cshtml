@@ -1,0 +1,125 @@
+﻿@model CS_HOSPITALARIO.Models.SP_Listado_usuario_CS_Result
+
+@{
+    ViewBag.Title = "Detalle Usuario";
+}
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    @using (Html.BeginForm("UserDetail", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @*@Html.AntiForgeryToken()*@
+
+                        <div class="form-horizontal">
+                            <div class="row p-20">
+                                <h2 class="col-form-label fsz-lg color-secondary-m">@ViewBag.Title</h2>
+                                <div class="form-group ml-auto">
+                                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                                    @Html.ActionLink("Cancelar", "Index", "Home", null, new { @class = "btn btn-outline-secondary" })
+                                </div>
+                            </div>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.ID_USER)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NOMBRE, "Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @class = "form-control", } })
+                                    @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.USERNAME, "Usuario", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.USERNAME, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <fieldset disabled>
+                                <div class="form-group">
+
+                                    @Html.LabelFor(model => model.ROL, "Rol:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("ROL_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.ROL, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                @*<img width="50" height="50" src="@Url.Action("convertirImagen", "User", new {id_usuario = Model.ID_USER})" />*@
+                                @Html.LabelFor(model => model.IMAGEN, "Imagen Actual", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="text-left" style="margin-left:7px">
+                                        <img src="@Url.Action("convertirImagen", "User", new {id_usuario = Model.ID_USER})" style="width:150px" class="rounded-circle" alt="Foto de Perfil">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top:10px">
+                                @Html.LabelFor(model => model.IMAGEN, "Cambiar Imagen", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <input type="file" name="imageload" accept="image/x-png" />
+                                    <label>Nota: La imagen debe de estar en formato PNG, Con una resolucion maxima de 357x357 .Debe de tener un tamano maximo de 1.5 MB</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CLAVE, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.CLAVE, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CLAVE, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        const input = document.getElementById('imageload')
+        input.addEventListener('change', (event) => {
+            const target = event.target
+            if (target.files && target.files[0]) {
+
+                /*Maximum allowed size in bytes
+                  5MB Example
+                  Change first operand(multiplier) for your needs*/
+                const maxAllowedSize = 1.5 * 1024 * 1024;
+                if (target.files[0].size > maxAllowedSize) {
+                    // Here you can ask your users to load correct file
+                    target.value = ''
+                }
+            }
+        })
+    </script>
+}
+

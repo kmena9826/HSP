@@ -1,0 +1,599 @@
+﻿@model CS_HOSPITALARIO.Models.CS_DEFINICION_PROCEDIMIENTO
+
+@{
+    ViewBag.Title = "Editar Procedimento";
+}
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@using (Html.BeginForm())
+    {
+
+        <div class="form-horizontal">
+            <h4>CS_DEFINICION_PROCEDIMIENTO</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID_EXAMEN)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ARTICULO, "ARTICULO", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ARTICULO", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ARTICULO, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DESCRIPCION, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DESCRIPCION, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AREA_SERVICIO, "AREA_SERVICIO", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("AREA_SERVICIO", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AREA_SERVICIO, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ACTIVO, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.ACTIVO)
+                        @Html.ValidationMessageFor(model => model.ACTIVO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    @using (Html.BeginForm())
+                    {
+                        @*@Html.HiddenFor(m => m.ID_EXAMEN)*@
+                        <div class="form-horizontal">
+                            <div class="row p-20">
+                                <h2 class="col-form-label fsz-lg color-secondary-m">@ViewBag.Title</h2>
+                                <div class="form-group ml-auto">
+                                    <input type="submit" value="Guardar" onclick="return ValidarForm()" class="btn btn-primary" />
+                                    @Html.ActionLink("Cancelar", "Index", "Procedimiento", null, new { @class = "btn btn-outline-secondary" })
+                                </div>
+                            </div>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group row">
+                                <div class="control-label col-md-2" style="text-align:right">Cod Examen:</div>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ID_EXAMEN, "Cod Procedmiento", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.ID_EXAMEN, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="control-label col-md-2" style="text-align:right">Articulo:</div>
+                                <div class="col-md-10">
+                                    @Html.DropDownList("ARTICULO", null, "", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ARTICULO, "", new { @class = "text-danger" })
+                                    <div class="invalid-feedback">
+                                        El articulo es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="form-group row">
+                                    <div class="control-label col-md-2" style="text-align:right">Area Serivicio:</div>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("AREA_SERVICIO", null, "", htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.AREA_SERVICIO, "", new { @class = "text-danger" })
+                                        <div class="invalid-feedback">
+                                            El area de servicio es requerido.
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="form-group row">
+                                <div class="control-label col-md-2" style="text-align:right">Color Tubo:</div>
+                                <div class="col-md-10">
+                                    @Html.DropDownList("COLOR_TUBO", null, "", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.COLOR_TUBO, "", new { @class = "text-danger" })
+                                    <div class="invalid-feedback">
+                                        El color de tubo es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group  row">
+                                <div class="control-label col-md-2" style="text-align:right">Imprimir etiqueta:</div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="">
+                                            @if (Model.IMPRIME_ETIQUETA == true)
+                                            {
+                                                <label class="radio-inline col-md-3">
+                                                    <label class="radio-inline"><input type="radio" name="txtimprimirtiquetaprocedimiento" value=true checked> Si</label>
+                                                </label>
+                                                <label class="radio-inline col-md-3">
+                                                    <label class="radio-inline"><input type="radio" name="txtimprimirtiquetaprocedimiento" value=false> No</label>
+                                                </label>
+                                            }
+                                            else
+                                            {
+                                                <label class="radio-inline col-md-3">
+                                                    <label class="radio-inline"><input type="radio" name="txtimprimirtiquetaprocedimiento" value=true> Si</label>
+                                                </label>
+                                                <label class="radio-inline col-md-3">
+                                                    <label class="radio-inline"><input type="radio" name="txtimprimirtiquetaprocedimiento" value=false checked> No</label>
+                                                </label>
+                                            }
+                                        </div>
+                                        <div id="erroretiqueta" class="invalid-feedback">
+                                            La seleccion de esta opcion es requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-label col-md-2" style="text-align:right">Enviar Correo:</div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="">
+                                            @if (Model.ENVIAR_CORREO == true)
+                                            {
+                                                <label class="radio-inline col-md-3">
+                                                    <label class="radio-inline"><input type="radio" name="txtenviarcorreoprocedimiento" value=true checked> Si</label>
+                                                </label>
+                                                <label class="radio-inline col-md-3">
+                                                    <label class="radio-inline"><input type="radio" name="txtenviarcorreoprocedimiento" value=false> No</label>
+                                                </label>
+                                            }
+                                            else
+                                            {
+                                                <label class="radio-inline col-md-3">
+                                                    <label class="radio-inline"><input type="radio" name="txtenviarcorreoprocedimiento" value=true> Si</label>
+                                                </label>
+                                                <label class="radio-inline col-md-3">
+                                                    <label class="radio-inline"><input type="radio" name="txtenviarcorreoprocedimiento" value=false checked> No</label>
+                                                </label>
+                                            }
+                                        </div>
+                                        <div id="errorenviarcorreo" class="invalid-feedback">
+                                            La seleccion de esta opcion es requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="control-label col-md-2" style="text-align:right">Observacion:</div>
+                                <div class="col-md-10">
+                                    @Html.TextArea("OBSERVACION", null, new { @class = "form-control" })
+                                    @*@Html.TextArea(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.ValidationMessageFor(model => model.OBSERVACION, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <h2 class="col-form-label fsz-lg color-secondary-m">Detalle De Procedimiento</h2>
+                    <hr />
+                    <div class="col-row" style="margin-top:40px;border: 1px solid;border-radius: 4px;border-color: #337ab7;">
+                        <div class="table-responsive">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body" style="margin:20px">
+                                        <div class="row" style="margin-top:50px;margin-bottom:50px">
+                                            <div class="col-md-2" style="text-align:right;margin-top:5px">
+                                                <label>Agregar Test:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.DropDownList("TEST", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-md-1">
+                                                <button type="button" class="btn btn-sm btn-success" onclick="AgregarDetalle()" style="margin-top:5px;margin-bottom:0px">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            @*<label>Agregar detalle <button type="button" class="btn btn-sm btn-success" onclick="AgregarDetalle()" style="margin-top:20px;margin-bottom:20px"><i class="fa fa-plus"></i></button></label>*@
+                                            <table id="tbldetalles" class="table">
+                                                <thead style="background-color: #0086c3;color:white">
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Unidad Medida</th>
+                                                        <th>Valor</th>
+                                                        <th>Observacion</th>
+                                                        <th>Borrar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in ViewBag.PROCEDIMIENTO_DET)
+                                                    {
+                                                        // @item
+                                                        <tr id="@item.TEST" nombre="@item.CS_TEST.NOMBRE" observacion="@item.CS_TEST.OBSERVACION" unidad="@item.CS_TEST.UNIDAD_MEDIDA" valor="@item.CS_TEST.VALOR" coment="@item.CS_TEST.OBSERVACION">
+                                                            <td>@item.CS_TEST.NOMBRE</td>
+                                                            <td>@item.CS_TEST.CS_CATALOGO_DETALLE.DESCRIPCION</td>
+                                                            @if (@item.CS_TEST.VALOR == "N")
+                                                            {
+                                                                <td>NUMERICO</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>ALFANUMERICO</td>
+                                                            }
+                                                            <td>@item.CS_TEST.OBSERVACION</td>
+                                                            <td><button type="button" class="btn btn-sm btn-danger" onclick="EliminarDetalle(@item.ID_DEF_DETALLE)"><i class="fa fa-trash"></i></button></td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            <div id="errordetalle" class="invalid-feedback">
+                                                Debe de agregar el detalle del procedmiento del examen.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ModalDetalle" tabindex="-1" role="dialog" aria-labelledby="ModalDetalleLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalRecetaLabel">Agregar Test</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="masonry-item col-md-12">
+                    <div class="mT-30">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputunombretest">Nombre</label>
+                                    <input type="text" class="form-control" id="txtnombretest" placeholder="Nombre">
+                                    <div id="errornombretest" class="invalid-feedback">
+                                        El nombre es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputunidadmedidatest">Unidad Medida</label>
+                                    <div id="UMDETALLE"></div>
+                                    <div id="errorunidadmedidatest" class="invalid-feedback">
+                                        La unidad de medida es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputcolortubo">Valor</label>
+                                    <select class="form-control" id="txtvalortest" placeholder="Valor">
+                                        <option value="Seleccione">Seleccione</option>
+                                        <option value="N">Numerico</option>
+                                        <option value="A">AlfaNumerico</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        El valor es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputComentario">Observacion</label>
+                                <textarea type="text" class="form-control" id="txtcomentariodetalle" placeholder="Agregue un comentario"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="CerrarProcediemintoDetalle()">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="AgregarProcedimientoDetalle()">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/Scripts/dx.all.js"></script>
+    <script src="~/Scripts/ID.js"></script>
+    <link href="~/Content/select2.css" rel="stylesheet" />
+    <script src="~/Scripts/select2.js"></script>
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/inputmask/inputmask.js"></script>
+    <script src="~/Scripts/jquery.inputmask.js"></script>
+    <script src="~/Scripts/jquery-mask-as-number.min.js"></script>
+    <script type="text/javascript">
+        function AgregarDetalle() {
+            let allow = true;
+            var test = $("#TEST").val();
+            if (test != "") {
+                //let item = "test" + test;
+                $("#tbldetalles").find("tr").each(function () {
+                    if ($(this).attr("id") == test) {
+                        allow = false;
+                        return;
+                    }
+                });
+                if (allow) {
+                    GuardarDetalleProcediemintoSolo(test)
+                }
+                else {
+                    $.notify({ message: 'Este Test ya se ha agregado.Por favor seleccione otro' }, { type: 'danger' });
+                }
+                //alert('Debe de seleccionar un Test');
+            }
+            else {
+                $.notify({ message: 'Debe de seleccionar un Test' }, { type: 'danger' });
+            }
+        }
+        function ValidarForm() {
+            let isvalid = true;
+            var CountRecetas = $('#tbldetalles tr').length;
+
+            var articulo = $("#ARTICULO");
+            articulo.removeClass("is-invalid");
+            $("#erroretiqueta").hide();
+            $("#errorenviarcorreo").hide();
+            $("#errordetalle").hide();
+
+            var color = $("#COLOR_TUBO");
+            color.removeClass("is-invalid");
+
+            if (articulo.val() == "") {
+                //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+                articulo.addClass("is-invalid");
+                isvalid = false;
+            }
+            if (color.val() == "") {
+                //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+                color.addClass("is-invalid");
+                isvalid = false;
+            }
+
+            if ($("input[name='txtimprimirtiquetaprocedimiento']:checked").val() == undefined) {
+                //$.notify({ message: 'El sexo del paciente es requerido' }, { type: 'danger' });
+                $("#erroretiqueta").show();
+                isvalid = false;
+            }
+            if ($("input[name='txtenviarcorreoprocedimiento']:checked").val() == undefined) {
+                $("#errorenviarcorreo").show();
+                isvalid = false;
+            }
+
+            if (CountRecetas == 1) {
+                //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+                $("#errordetalle").show();
+                isvalid = false;
+            }
+            if (isvalid) {
+                let procedimiento;
+
+                procedimiento = {
+                    "ID_EXAMEN": $("#ID_EXAMEN").val().trim(),
+                    "ARTICULO": $("#ARTICULO").val().trim(),
+                    "OBSERVACION": $("#OBSERVACION").val().trim(),
+                    "AREA_SERVICIO": 26,
+                    "COLOR_TUBO": $("#COLOR_TUBO").val().trim(),
+                    "IMPRIME_ETIQUETA": $("input[name='txtimprimirtiquetaprocedimiento']:checked").val(),
+                    "ENVIAR_CORREO": $("input[name='txtenviarcorreoprocedimiento']:checked").val(),
+                    "ACTIVO": true
+                };
+                GuardarDetalleProcedieminto(procedimiento);
+            }
+            return false;
+        }
+        function GuardarDetalleProcedieminto(procedimiento) {
+            $.ajax({
+                url: '/Procedimiento/GuardarProcedimiento',
+                type: "POST",
+                data: JSON.stringify({ procedimiento: procedimiento }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (d) {
+                    if (d.status == true) {
+                        $.notify({ message: 'El examen se actualizo correctamente' }, { type: 'success' });
+                        window.location.href = "../index";
+                    }
+                },
+                error: function () {
+                    alert('Error');
+                }
+            });
+        }
+        function GuardarDetalleProcediemintoSolo(test) {
+            var procedimiento = $("#ID_EXAMEN").val();
+            $.ajax({
+                url: '/Procedimiento/GuardarProcedimientoDetalleSolo',
+                type: "POST",
+                data: JSON.stringify({ test: test, procedimeinto: procedimiento }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (d) {
+                    if (d.status == true) {
+                        location.reload();
+                    }
+                },
+                error: function () {
+                    alert('Error');
+                }
+            });
+        }
+        function EliminarDetalleProcediemintoSolo(procedimeintodet) {
+            //console.log(procedimeintodet);
+            $.ajax({
+                url: '/Procedimiento/EliminarProcedimientoDetalleSolo',
+                type: "POST",
+                data: JSON.stringify({ procedimeintodet: procedimeintodet }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (d) {
+                    if (d.status == true) {
+                        location.reload();
+                    }
+                },
+                error: function () {
+                    alert('Error');
+                }
+            });
+        }
+        function SelectUnidadMedidaDetalle() {
+            var pacientes = [];
+            $.ajax({
+                type: "GET",
+                url: "/Procedimiento/GetUnidadMedida",
+                success: function (data) {
+                    $("#UMDETALLE").dxSelectBox({
+                        placeholder: "Seleccione la Unidad de Medida",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: data,
+                            key: "ID"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ID",
+                        searchEnabled: true,
+                        showClearButton: true,
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function AgregarProcedimientoDetalle() {
+            let isvalid = true;
+            var nombre = $("#txtnombretest");
+            nombre.removeClass("is-invalid");
+
+            var observacion = $("#txtcomentariodetalle");
+
+            var valor = $("#txtvalortest");
+            valor.removeClass("is-invalid");
+
+            $("#errorunidadmedida").hide();
+
+            var colortubo = $("#txtcolortubodetalle");
+            colortubo.removeClass("is-invalid");
+
+            $("#erroretiqueta").hide();
+            var CountDetalle = ID();
+
+            if (nombre.val() == "") {
+                //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+                nombre.addClass("is-invalid");
+                isvalid = false;
+            }
+            if (valor.val() == "" || valor.val() == "Seleccione") {
+                //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+                valor.addClass("is-invalid");
+                isvalid = false;
+            }
+
+            if ($("#UMDETALLE").dxSelectBox('instance').option('value') == null) {
+                //$.notify({ message: 'El sexo del paciente es requerido' }, { type: 'danger' });
+                $("#errorunidadmedidatest").show();
+                isvalid = false;
+            }
+            if (isvalid) {
+                $("#ModalDetalle").modal('hide');
+                //$("#tbldetalles").find('tbody')
+                //    .append('<tr id="detalle' + CountDetalle + '" sexo="' + $("input[name='optradiosexodetalle']:checked").val() + '" edadminima="' + edadminima.val() + '" edadmaxima="' + edadmaxima.val() + '" valor="' + valor.val() + '"lowpanic="' + lowpanic.val() + '" highpanic="' + highpanic.val() + '" um="' + $("#UMDETALLE").dxSelectBox('instance').option('value') + '" imp="' + $("input[name='txtimprimeetiquetadetalle']:checked").val() + '" color="' + colortubo.val() + '" coment="' + $("#txtcomentariodetalle").val() + '" ><td>' + $("input[name='optradiosexodetalle']:checked").val() + '</td><td>' + edadminima.val() + '</td><td>' + edadmaxima.val() + '</td><td>' + valor.val() + '</td><td>' + lowpanic.val() + '</td><td>' + highpanic.val() + '</td><td>' + $("#UMDETALLE").dxSelectBox('instance').option('value') + '</td><td>' + $("input[name='txtimprimeetiquetadetalle']:checked").val() + '</td><td>' + colortubo.val() + '</td><td>' + $("#txtcomentariodetalle").val() + '</td><td><button type="button" class="btn btn-sm btn-danger" onclick="EliminarDetalle(detalle' + CountDetalle + ')"><i class="fa fa-trash"></i></button></td></tr>');
+
+                const test = {
+                    "NOMBRE": $("#txtnombretest").val(),
+                    "OBSERVACION": $("#txtcomentariodetalle").val(),
+                    "ACTIVO": true,
+                    "UNIDAD_MEDIDA": $("#UMDETALLE").dxSelectBox('instance').option('value'),
+                    "VALOR": $("#txtvalortest").val()
+                };
+                GuardarDetalleProcediemintoSolo(test);
+                LimpiarModal();
+            }
+        }
+        function CerrarProcediemintoDetalle() {
+            LimpiarModal();
+        }
+        function LimpiarModal() {
+            $("#errorsexo").hide();
+
+            //var valor = $("#txtvalordetalle");
+            //valor.val('');
+            //valor.removeClass("is-invalid");
+
+            //$("#errorunidadmedida").hide();
+
+            //var colortubo = $("#txtcolortubodetalle");
+            //colortubo.val('');
+            //colortubo.removeClass("is-invalid");
+
+            //$("#erroretiqueta").hide();
+
+
+            //$("#txtcomentariodetalle").val('');
+
+        }
+        function EliminarDetalle(detalle) {
+            EliminarDetalleProcediemintoSolo(detalle);
+        }
+        $(document).ready(function () {
+
+            $('#txtedadmindetalle').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            $('#txtedadmaxdetalle').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            SelectUnidadMedidaDetalle();
+            $('#ARTICULO').select2({
+                placeholder: "Seleccione el Articulo",
+                showClearButton: true,
+                allowClear: true
+            });
+            $('#AREA_SERVICIO').select2({
+                placeholder: "Seleccione el Area Servicio",
+                showClearButton: true,
+                allowClear: true
+            });
+        })
+    </script>
+}

@@ -1,0 +1,179 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_CATALOGO_DETALLE>
+
+@{
+    ViewBag.Title = "Ítems de Catálogos";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+
+<table class="table table-hover" id="tabla_detalles_cat">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Descripción
+            </th>
+            <th>
+                Catálogo Maestro
+            </th>
+            <th>
+                Fecha de Registro
+            </th>
+            <th>
+                Fecha de Modificación
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_CAT_DETALLE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CS_CATALOGO.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_REGISTRO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_MODIFICACION)
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Descripción
+            </th>
+            <th>
+                Catálogo Maestro
+            </th>
+            <th>
+                Fecha de Registro
+            </th>
+            <th>
+                Fecha de Modificación
+            </th>
+        </tr>
+    </tfoot>
+</table>
+
+<br />
+
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+
+    <script type="text/javascript">
+
+        /* INICIALIZACIÓN */
+        $(document).ready(function () {
+            $('#tabla_detalles_cat tfoot th').each(function () {
+                var title = $(this).text().trim();
+                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+            });
+
+            var events = $('#events');
+
+            var table = $('#tabla_detalles_cat').DataTable({
+                dom: 'Bfrtip',
+                language: {
+                    select: {
+                        rows: {
+                            0: "",
+                            1: " │ %d registro seleccionado."
+                        }
+                    }
+                },
+                select: true,
+                buttons: [{
+                    text: 'Nuevo',
+                    action: function (e, dt, node, config) {
+                        window.location.href = '/Catalogos/NuevoItemCatalogo';
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Editar',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+                        window.location.href = '/Catalogos/EditarItemCatalogo/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Borrar',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+                        window.location.href = '/Catalogos/BorrarItemCatalogo/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                    'pdf', 'excel'
+                ]
+            });
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+            $('#tabla_detalles_cat tfoot tr').appendTo('#tabla_detalles_cat thead');
+            $("#tabla_detalles_cat_wrapper button").each(function () {
+                $(this).removeClass("dt-button");
+                $(this).addClass("btn btn-sm");
+                if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                    $(this).addClass("btn-default");
+                }
+                else {
+                    $(this).addClass("btn-primary ");
+                }
+            });
+            $('#tabla_detalles_cat_filter input').addClass("form-control");
+            $('#tabla_detalles_cat tbody').on('dblclick', 'tr', function () {
+                var rowSelected = table.rows({ selected: true }).data();
+                window.location.href = '/Catalogos/EditarItemCatalogo/' + rowSelected[0][0];
+            });
+        });
+    </script>
+}

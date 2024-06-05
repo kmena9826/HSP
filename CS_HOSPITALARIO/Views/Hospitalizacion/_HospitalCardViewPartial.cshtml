@@ -1,0 +1,19 @@
+@{
+	var cardView = Html.DevExpress().CardView(settings => {
+        settings.Name = "EstacionCardView";
+        settings.CallbackRouteValues = new { Controller = "Hospitalizacion", Action = "HospitalCardViewPartial" };
+
+
+		settings.KeyFieldName = "ESTACION_ID";
+
+		settings.SettingsPager.Visible = true;
+				settings.Settings.ShowHeaderPanel = true;
+		settings.Settings.ShowHeaderFilterButton = true;
+				settings.SettingsBehavior.AllowSelectByCardClick = true;
+
+				settings.Columns.Add("ESTACION_ID");
+
+						settings.CardLayoutProperties.Items.Add("ESTACION_ID");
+			});
+}
+@cardView.Bind(Model).GetHtml()

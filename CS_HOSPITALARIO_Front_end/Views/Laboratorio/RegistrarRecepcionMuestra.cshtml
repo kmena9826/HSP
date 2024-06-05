@@ -1,0 +1,253 @@
+﻿@model CS_HOSPITALARIO.Models.SpListadoExamenLaboratorioRecepcion_Result
+@{
+    ViewBag.Title = "Registrar Recepcion De Muestra";
+}
+<link href="~/Content/animate.css" rel="stylesheet" />
+<style>
+    [data-notify="progressbar"] {
+        margin-bottom: 0px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 5px;
+    }
+
+    .btn-search {
+        background: #039BE5;
+        border-radius: 0;
+        color: #fff;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #1c1c1c;
+    }
+
+        .btn-search:link, .btn-search:visited {
+            color: #fff;
+        }
+
+        .btn-search:active, .btn-search:hover {
+            background: #1c1c1c;
+            color: #fff;
+        }
+</style>
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Toma De Muestra</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    @*@using (Html.BeginForm())
+                        {*@
+                    @*@Html.HiddenFor(model => model.ED)*@
+                    @* @Html.HiddenFor(model => model.NUM_MUESTRA)*@
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4>Recepcion de Muestra</h4>
+                        </div>
+                        <div class="form-group ml-auto">
+                            <button class="btn btn-primary" id="btnregistaratoma">Recepcionar Muestra</button>
+                            @*<input type="submit" value="Emprimir Etiqueta" class="btn btn-primary" id="btnregistaratoma" />*@
+                            @Html.ActionLink("Cancelar", "RecepcionMuestra", "Laboratorio", null, new { @class = "btn btn-outline-secondary" })
+                        </div>
+                    </div>
+                    <hr />
+                    <div>
+                        <div class="form-group row">
+                            <label for="ADMISION" class="col-sm-2 col-form-label" style="text-align:right">Nº Admision:</label>
+                            <div class="col-md-8">
+                                @*@Html.EditorFor(model => model.ADMISION, new { htmlAttributes = new { @class = "form-control" } })*@
+                                <div class="input-group">
+                                    <input type="text" id="NUM_MUESTRA" name="NUM_MUESTRA" class="form-control" placeholder="Buscar por numero de muestra..." autofocus>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-search" type="button" onclick="BuscarMuestra()"><i class="fa fa-search fa-fw"></i>Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <fieldset disabled>
+                            @*<div class="form-group row" style="display:none">
+
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.ED, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>*@
+                            <div class="form-group row">
+                                <label for="CLIENTE_ID" class="col-sm-2 col-form-label" style="text-align:right">Cod Cliente:</label>
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.CLIENTE_ID, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="CLIENTE" class="col-sm-2 col-form-label" style="text-align:right">Cliente:</label>
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.CLIENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="ID_EXAMEN" class="col-sm-2 col-form-label" style="text-align:right">Cod Examen:</label>
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.ID_EXAMEN, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="DESC_ARTICULO" class="col-sm-2 col-form-label" style="text-align:right">Examen:</label>
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.DESC_ARTICULO, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="STAT" class="col-sm-2 col-form-label" style="text-align:right">STAT:</label>
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.STAT)
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="FECHA_CREACION" class="col-sm-2 col-form-label" style="text-align:right">Fecha Admision:</label>
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.FECHA_CREACION, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="EDAD" class="col-sm-2 col-form-label" style="text-align:right">Edad Al Tomar La Muestra:</label>
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.EDAD_AL_TOMAR_MUESTRA, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="FECHA_TOMA_MUESTRA" class="col-sm-2 col-form-label" style="text-align:right">Fecha Toma De Muestra:</label>
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.FECHA_TOMA_MUESTRA, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="USUARIO_TOMA_MUESTRA" class="col-sm-2 col-form-label" style="text-align:right">Usuario Toma De Muestra:</label>
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.USUARIO_TOMA_MUESTRA, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    @*}*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/Scripts/cldr/moment.min.js"></script>
+    <script src="~/Scripts/select2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnregistaratoma').click(function () {
+                let NUM_MUESTRA = $("#NUM_MUESTRA").val();
+                let ED = $("#ED").val();
+                $.ajax({
+                    type: "POST",
+                    url: '/Laboratorio/RegistrarRecepcionMuestra',
+                    data: { NUM_MUESTRA },
+                    success: function (data) {
+                        if (data.status) {
+                            //window.open('/Laboratorio/FormartoEmprimirEtiqueta?muestra=' + NUM_MUESTRA, '_blank');
+                            location.href = '../Laboratorio/RecepcionMuestra';
+                        }
+                    },
+                    error: function () {
+                        alert('Failed');
+                    }
+                })
+            })
+            //$('#NUM_MUESTRA').keypress(function (event) {
+            //    let muestra = $('#NUM_MUESTRA').val();
+            //    if (muestra != '') {
+            //        console.log(event);
+            //        if (event != undefined) {
+            //            if (event.which === 13) {
+            //                BuscarMuestra(muestra);
+            //            }
+            //        }
+            //    }
+            //});
+            //$('#NUM_MUESTRA').keypress(function (event) {
+            //    try {
+            //        var keycode = (event.keyCode ? event.keyCode : event.which);
+            //        if (keycode == '13') {
+            //            BuscarMuestra();
+            //            return false;
+            //        }
+            //    }
+            //    catch (error) {
+            //        return false;
+            //        console.error(error);
+            //        // expected output: ReferenceError: nonExistentFunction is not defined
+            //        // Note - error messages will vary depending on browser
+            //    }
+            //});
+        });
+        function BuscarMuestra() {
+            let NUM_MUESTRA = $('#NUM_MUESTRA').val();
+            if (NUM_MUESTRA != '') {
+                $.ajax({
+                    type: "POST",
+                    url: '/Laboratorio/BuscarTomaMuestra',
+                    data: { NUM_MUESTRA },
+                    success: function (data) {
+                        if (data.status) {
+                            let muestra = data.laboratoriodb;
+                            console.log(muestra);
+                            $('#CLIENTE_ID').val(muestra.CLIENTE_ID);
+                            $('#CLIENTE').val(muestra.CLIENTE);
+                            $('#ID_EXAMEN').val(muestra.ID_EXAMEN);
+                            $('#DESC_ARTICULO').val(muestra.DESC_ARTICULO);
+                            $('#STAT').val(muestra.STAT);
+
+                            // let formatted_date = muestra.FECHA_CREACION.getDate() + "-" + (muestra.FECHA_CREACION.getMonth() + 1) + "-" + muestra.FECHA_CREACION.getFullYear()
+                            $('#EDAD_AL_TOMAR_MUESTRA').val(muestra.EDAD_AL_TOMAR_MUESTRA);
+                            $('#FECHA_CREACION').val(moment(muestra.FECHA_CREACION).format('DD/MM/YYYY'));
+                            $('#FECHA_TOMA_MUESTRA').val(moment(muestra.FECHA_TOMA_MUESTRA).format('DD/MM/YYYY h:mm a'));
+                            $('#USUARIO_TOMA_MUESTRA').val(muestra.USUARIO_TOMA_MUESTRA);
+                            //$('#CLIENTE').val(muestra.CLIENTE);
+                            //window.open('/Laboratorio/FormartoEmprimirEtiqueta?muestra=' + NUM_MUESTRA, '_blank');
+                            //location.href = '../TomaMuestra';
+                            //alert(data.mensaje);
+                        } else {
+                            alert(data.mensaje);
+                        }
+                    },
+                    error: function () {
+                        alert('Failed');
+                    }
+                })
+            }
+            else {
+                alert('Por favor escriba el numero de muestra');
+            }
+
+        }
+    </script>
+}

@@ -1,0 +1,629 @@
+﻿@model CS_HOSPITALARIO.Models.CS_DEFINICION_PROCEDIMIENTO
+@{
+    ViewBag.Title = "Registrar Procedimento";
+}
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    @*@using (Html.BeginForm())
+                        {*@
+                    <div class="form-horizontal">
+                        <div class="row p-20">
+                            <h2 class="col-form-label fsz-lg color-secondary-m">@ViewBag.Title</h2>
+                            <div class="form-group ml-auto">
+                                <input type="submit" value="Guardar" onclick="return ValidarForm()" class="btn btn-primary" />
+                                @Html.ActionLink("Cancelar", "Index", "Procedimiento", null, new { @class = "btn btn-outline-secondary" })
+                            </div>
+                        </div>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @*<div class="form-group row">
+                                <div class="control-label col-md-2" style="text-align:right">Cod Examen:</div>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ID_EXAMEN, "Cod Procedmiento", new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ID_EXAMEN, "", new { @class = "text-danger" })
+                                    <div class="invalid-feedback">
+                                        El codigo del examen es requerido.
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="form-group row">
+                            <div class="control-label col-md-2" style="text-align:right">Articulo:</div>
+                            <div class="col-md-10">
+                                @Html.DropDownList("ARTICULO", null, "", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ARTICULO, "", new { @class = "text-danger" })
+                                <div class="invalid-feedback">
+                                    El articulo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="form-group row">
+                                <div class="control-label col-md-2" style="text-align:right">Area Serivicio:</div>
+                                <div class="col-md-10">
+                                    @Html.DropDownList("AREA_SERVICIO", null, "", htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.AREA_SERVICIO, "", new { @class = "text-danger" })
+                                    <div class="invalid-feedback">
+                                        El area de servicio es requerido.
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="form-group row">
+                            <div class="control-label col-md-2" style="text-align:right">Color Tubo:</div>
+                            <div class="col-md-10">
+                                @Html.DropDownList("COLOR_TUBO", null, "", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.COLOR_TUBO, "", new { @class = "text-danger" })
+                                <div class="invalid-feedback">
+                                    El color de tubo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group  row">
+                            <div class="control-label col-md-2" style="text-align:right">Imprimir etiqueta:</div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="">
+                                        <label class="radio-inline col-md-3">
+                                            <label class="radio-inline"><input type="radio" name="txtimprimirtiquetaprocedimiento" value=true> Si</label>
+                                        </label>
+                                        <label class="radio-inline col-md-3">
+                                            <label class="radio-inline"><input type="radio" name="txtimprimirtiquetaprocedimiento" value=false> No</label>
+                                        </label>
+                                    </div>
+                                    <div id="erroretiqueta" class="invalid-feedback">
+                                        La seleccion de esta opcion es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-label col-md-2" style="text-align:right">Enviar Correo:</div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="">
+                                        <label class="radio-inline col-md-3">
+                                            <label class="radio-inline"><input type="radio" name="txtenviarcorreoprocedimiento" value=true> Si</label>
+                                        </label>
+                                        <label class="radio-inline col-md-3">
+                                            <label class="radio-inline"><input type="radio" name="txtenviarcorreoprocedimiento" value=false> No</label>
+                                        </label>
+                                    </div>
+                                    <div id="errorenviarcorreo" class="invalid-feedback">
+                                        La seleccion de esta opcion es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="control-label col-md-2" style="text-align:right">Observacion:</div>
+                            <div class="col-md-10">
+                                @Html.TextArea("OBSERVACION", null, new { @class = "form-control" })
+                                @*@Html.TextArea(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })*@
+                                @Html.ValidationMessageFor(model => model.OBSERVACION, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    @*}*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <h2 class="col-form-label fsz-lg color-secondary-m">Detalle De Procedimiento</h2>
+                    <hr />
+                    <div class="col-row" style="margin-top:40px;border: 1px solid;border-radius: 4px;border-color: #337ab7;">
+                        <div class="table-responsive">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body" style="margin:20px">
+                                        <div class="row" style="margin-top:50px;margin-bottom:50px">
+                                            <div class="col-md-2" style="text-align:right;margin-top:5px">
+                                                <label>Agregar Test:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.DropDownList("TEST", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-md-1">
+                                                <button type="button" class="btn btn-sm btn-success" onclick="AgregarDetalle()" style="margin-top:0px;margin-bottom:0px">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            @*<label>Agregar Test <button type="button" class="btn btn-sm btn-success" onclick="AgregarDetalle()" style="margin-top:20px;margin-bottom:20px"><i class="fa fa-plus"></i></button></label>*@
+                                            <table id="tbldetalles" class="table">
+                                                <thead style="background-color: #0086c3;color:white">
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Unidad Medida</th>
+                                                        <th>Valor</th>
+                                                        <th>Observacion</th>
+                                                        <th>Borrar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                            <div id="errordetalle" class="invalid-feedback">
+                                                Debe de agregar al menos un Test para el procedmiento del examen.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="modal fade" id="ModalDetalle" tabindex="-1" role="dialog" aria-labelledby="ModalDetalleLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalRecetaLabel">Detalle Del Procedieminto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="masonry-item col-md-12">
+                        <div class="mT-30">
+                            <form>
+                                <div class="form-group">
+                                    <label>Sexo</label>
+                                    <div class="">
+                                        <label class="radio-inline col-md-4">
+                                            <label class="radio-inline"><input type="radio" name="optradiosexodetalle" value="F"> Femenino</label>
+                                        </label>
+                                        <label class="radio-inline col-md-4">
+                                            <label class="radio-inline"><input type="radio" name="optradiosexodetalle" value="M"> Masculino</label>
+                                        </label>
+                                    </div>
+                                    <div id="errorsexo" class="invalid-feedback">
+                                        El sexo es requerido.
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputedadmin">Edad Minima</label>
+                                        <input type="number" class="form-control" id="txtedadmindetalle" placeholder="Edad Minima" min="0" max="200">
+                                        <div class="invalid-feedback">
+                                            El edad minima es requerido.
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputedadmax">Edad Maxima</label>
+                                        <input type="number" class="form-control" id="txtedadmaxdetalle" placeholder="Edad Maxima" min="0" max="200">
+                                        <div class="invalid-feedback">
+                                            El edad maxima es requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputvalordetalle">Valor</label>
+                                        <input type="text" class="form-control" id="txtvalordetalle" placeholder="Valor">
+                                        <div class="invalid-feedback">
+                                            El valor es requerido.
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputlowpanicdetalle">Low Panic</label>
+                                        <input type="text" class="form-control" id="txtlowpanicdetalle" placeholder="Low Panic">
+                                        <div class="invalid-feedback">
+                                            El low panic es requerido.
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputhighpanic">High Panic</label>
+                                        <input type="text" class="form-control" id="txthighpanicdetalle" placeholder="High Panic">
+                                        <div class="invalid-feedback">
+                                            El high panic es requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputunidadmedida">Unidad Medida</label>
+                                        <div id="UMDETALLE"></div>
+                                        <div id="errorunidadmedida" class="invalid-feedback">
+                                            La unidad de medida es requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputcolortubo">Color Tubo</label>
+                                        <select class="form-control" id="txtcolortubodetalle" placeholder="Color">
+                                            <option value="Seleccione"></option>
+                                            <option value="ROJO">ROJO</option>
+                                            <option value="AMARILLO">AMARILLO</option>
+                                            <option value="AZUL">AZUL</option>
+                                            <option value="MORADO">MORADO</option>
+                                            <option value="VERDE">VERDE</option>
+                                            <option value="GRIS">GRIS</option>
+                                            <option value="NEGRO">NEGRO</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            La color de tubo es requerido.
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Imprimir etiqueta</label>
+                                        <div class="">
+                                            <label class="radio-inline col-md-4">
+                                                <label class="radio-inline"><input type="radio" name="txtimprimeetiquetadetalle" value="Si"> Si</label>
+                                            </label>
+                                            <label class="radio-inline col-md-4">
+                                                <label class="radio-inline"><input type="radio" name="txtimprimeetiquetadetalle" value="No"> No</label>
+                                            </label>
+                                        </div>
+                                        <div id="erroretiqueta" class="invalid-feedback">
+                                            La seleccion de esta opcion es requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputComentario">Comentario</label>
+                                    <textarea type="text" class="form-control" id="txtcomentariodetalle" placeholder="Agregue un comentario"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="CerrarProcediemintoDetalle()">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="AgregarProcedimientoDetalle()">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<div class="modal fade" id="ModalDetalle" tabindex="-1" role="dialog" aria-labelledby="ModalDetalleLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalRecetaLabel">Agregar Test</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="masonry-item col-md-12">
+                    <div class="mT-30">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputunombretest">Nombre</label>
+                                    <input type="text" class="form-control" id="txtnombretest" placeholder="Nombre">
+                                    <div id="errornombretest" class="invalid-feedback">
+                                        El nombre es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputunidadmedidatest">Unidad Medida</label>
+                                    <div id="UMDETALLE"></div>
+                                    <div id="errorunidadmedidatest" class="invalid-feedback">
+                                        La unidad de medida es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputcolortubo">Valor</label>
+                                    <select class="form-control" id="txtvalortest" placeholder="Valor">
+                                        <option value="Seleccione">Seleccione</option>
+                                        <option value="N">Numerico</option>
+                                        <option value="A">AlfaNumerico</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        El valor es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputComentario">Observacion</label>
+                                <textarea type="text" class="form-control" id="txtcomentariodetalle" placeholder="Agregue un comentario"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="CerrarProcediemintoDetalle()">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="AgregarProcedimientoDetalle()">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/Scripts/dx.all.js"></script>
+    <script src="~/Scripts/ID.js"></script>
+    <link href="~/Content/select2.css" rel="stylesheet" />
+    <script src="~/Scripts/select2.js"></script>
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/inputmask/inputmask.js"></script>
+    <script src="~/Scripts/jquery.inputmask.js"></script>
+    <script src="~/Scripts/jquery-mask-as-number.min.js"></script>
+    <script type="text/javascript">
+        function AgregarDetalle() {
+            //let isvalid = true;
+            //var articulo = $("#ARTICULO");
+            //articulo.removeClass("is-invalid");
+            //$("#erroretiqueta").hide();
+            //$("#errorenviarcorreo").hide();
+            //var color = $("#COLOR_TUBO");
+            //color.removeClass("is-invalid");
+
+            //if (articulo.val() == "") {
+            //    //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+            //    articulo.addClass("is-invalid");
+            //    isvalid = false;
+            //}
+            //if (color.val() == "") {
+            //    //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+            //    color.addClass("is-invalid");
+            //    isvalid = false;
+            //}
+
+            //if ($("input[name='txtimprimirtiquetaprocedimiento']:checked").val() == undefined) {
+            //    //$.notify({ message: 'El sexo del paciente es requerido' }, { type: 'danger' });
+            //    $("#erroretiqueta").show();
+            //    isvalid = false;
+            //}
+            //if ($("input[name='txtenviarcorreoprocedimiento']:checked").val() == undefined) {
+            //    $("#errorenviarcorreo").show();
+            //    isvalid = false;
+            //}
+            //if (isvalid) {
+            //    $("#ModalDetalle").modal('show');
+            //}
+            let allow = true;
+            var test = $("#TEST").val();
+            if (test != "") {
+                let item = "test" + test;
+                $("#tbldetalles").find("tr").each(function () {
+                    if ($(this).attr("id") == item) {
+                        allow = false;
+                        return;
+                    }
+                });
+                if (allow) {
+                    AgregarProcedimientoDetalle()
+                }
+                else {
+                    $.notify({ message: 'Este Test ya se ha agregado.Por favor seleccione otro' }, { type: 'danger' });
+                }
+                //alert('Debe de seleccionar un Test');
+            }
+            else {
+                $.notify({ message: 'Debe de seleccionar un Test' }, { type: 'danger' });
+            }
+        }
+        function ValidarForm() {
+            let isvalid = true;
+            var CountRecetas = $('#tbldetalles tr').length;
+
+            var articulo = $("#ARTICULO");
+            articulo.removeClass("is-invalid");
+            $("#erroretiqueta").hide();
+            $("#errorenviarcorreo").hide();
+            $("#errordetalle").hide();
+
+            var color = $("#COLOR_TUBO");
+            color.removeClass("is-invalid");
+
+            if (articulo.val() == "") {
+                //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+                articulo.addClass("is-invalid");
+                isvalid = false;
+            }
+            if (color.val() == "") {
+                //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+                color.addClass("is-invalid");
+                isvalid = false;
+            }
+
+            if ($("input[name='txtimprimirtiquetaprocedimiento']:checked").val() == undefined) {
+                //$.notify({ message: 'El sexo del paciente es requerido' }, { type: 'danger' });
+                $("#erroretiqueta").show();
+                isvalid = false;
+            }
+            if ($("input[name='txtenviarcorreoprocedimiento']:checked").val() == undefined) {
+                $("#errorenviarcorreo").show();
+                isvalid = false;
+            }
+
+            if (CountRecetas == 1) {
+                //$.notify({ message: 'El nombre del paciente es requerido' }, { type: 'danger' });
+                $("#errordetalle").show();
+                isvalid = false;
+            }
+            if (isvalid) {
+                //let procedimiento = {
+                //    ID_EXAMEN:0,
+                //    ARTICULO: $('#ARTICULO').val().trim(),
+                //    DESCRIPCION: $('#AREA_SERVICIO').val().trim(),
+                //    AREA_SERVICIO: $('#DESCRIPCION').val().trim(),
+                //    ACTIVO: true
+                //}
+
+                let test = [];
+                let procedimiento;
+
+                procedimiento = {
+                    "ARTICULO": $("#ARTICULO").val().trim(),
+                    "OBSERVACION": $("#OBSERVACION").val().trim(),
+                    "AREA_SERVICIO": 26,
+                    "COLOR_TUBO": $("#COLOR_TUBO").val().trim(),
+                    "IMPRIME_ETIQUETA": $("input[name='txtimprimirtiquetaprocedimiento']:checked").val(),
+                    "ENVIAR_CORREO": $("input[name='txtenviarcorreoprocedimiento']:checked").val(),
+                    "ACTIVO": true
+                };
+
+                $("#tbldetalles").find("tr").each(function () {
+                    var id = $(this).attr("id");
+                    if (id != null) {
+                        test.push({
+                            TEST: $(this).attr("test"),
+                            NOMBRE: $(this).attr("nombre"),
+                            OBSERVACION: $(this).attr("observacion"),
+                            ACTIVO: true,
+                            UNIDAD_MEDIDA: $(this).attr("unidad"),
+                            VALOR: $(this).attr("valor")
+
+                        });
+                    }
+                });
+                //console.log(procedimiento, test);
+                GuardarDetalleProcedieminto(procedimiento, test);
+            }
+            return isvalid;
+        }
+        function GuardarDetalleProcedieminto(procedimiento, test) {
+            $.ajax({
+                url: '/Procedimiento/GuardarProcedimientoDetalle',
+                type: "POST",
+                data: JSON.stringify({ procedimiento: procedimiento, test: test }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (d) {
+                    if (d.status == true) {
+                        $.notify({ message: 'El examen se registro correctamente' }, { type: 'success' });
+                        window.location.href = "index";
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'No se pudo registar el examen' }, { type: 'danger' });
+                }
+            });
+        }
+        function SelectUnidadMedidaDetalle() {
+            var pacientes = [];
+            $.ajax({
+                type: "GET",
+                url: "/Procedimiento/GetUnidadMedida",
+                success: function (data) {
+                    $("#UMDETALLE").dxSelectBox({
+                        placeholder: "Seleccione la Unidad de Medida",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: data,
+                            key: "ID"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ID",
+                        searchEnabled: true,
+                        showClearButton: true,
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function AgregarProcedimientoDetalle() {
+            var test = $("#TEST").val();
+            $.ajax({
+                type: "GET",
+                url: "/Procedimiento/GetTest",
+                data: { test },
+                success: function (data) {
+                    let test = data[0];
+                    let tipo;
+                    if (test.VALOR == 'A') {
+                        tipo = 'ALFANUMERICO';
+                    }
+                    else {
+                        tipo = 'NUMERICO';
+                    }
+
+                    $("#tbldetalles").find('tbody')
+                        .append('<tr id="test' + test.TEST + '" nombre="' + test.NOMBRE + '" unidad="' + test.UNIDAD_MEDIDA + '" valor="' + test.VALOR + '"observacion="' + test.OBSERVACION + '"test="' + test.TEST + '" ><td>' + test.NOMBRE + '</td><td>' + test.UNIDAD_MEDIDA + '</td><td>' + tipo + '</td><td>' + test.OBSERVACION + '</td><td><button type="button" class="btn btn-sm btn-danger" onclick="EliminarDetalle(test' + test.TEST + ')"><i class="fa fa-trash"></i></button></td></tr>');
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function CerrarProcediemintoDetalle() {
+            LimpiarModal();
+        }
+        function LimpiarModal() {
+            var valor = $("#txtvalordetalle");
+            valor.val('');
+            valor.removeClass("is-invalid");
+
+
+
+            $("#errorunidadmedida").hide();
+
+            var colortubo = $("#txtcolortubodetalle");
+            colortubo.val('');
+            colortubo.removeClass("is-invalid");
+
+            $("#erroretiqueta").hide();
+
+
+            $("#txtcomentariodetalle").val('');
+        }
+        function EliminarDetalle(detalle) {
+            $("#tbldetalles").find("tr").each(function () {
+                if ($(this).attr("id") == detalle) {
+                    $(this).remove();
+                }
+            });
+            // detalle.remove();
+        }
+        $(document).ready(function () {
+
+            $('#txtedadmindetalle').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            $('#txtedadmaxdetalle').maskAsNumber({ decimal: true, min: 0, max: 200 });
+            SelectUnidadMedidaDetalle();
+            $('#ARTICULO').select2({
+                placeholder: "Seleccione el Articulo",
+                showClearButton: true,
+                allowClear: true
+            });
+            $('#COLOR_TUBO').select2({
+                placeholder: "Seleccione el color de tubo",
+                showClearButton: true,
+                allowClear: true
+            });
+            $('#TEST').select2({
+                placeholder: "Seleccione el Test",
+                showClearButton: true,
+                allowClear: true
+            });
+        })
+    </script>
+}
+

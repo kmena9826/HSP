@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c331515a5f234c839496eddd63469981" Name="Diagram1" ZoomLevel="77" ShowGrid="false" SnapToGrid="true">
+        <EntityTypeShape EntityType="ModeloHospitalario.ARTICULO" Width="1.5" PointX="3.5" PointY="30.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.ARTICULO_PRECIO" Width="1.875" PointX="8.75" PointY="28.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.BODEGA" Width="1.5" PointX="7.5" PointY="21" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CATEGORIA_CLIENTE" Width="3.25" PointX="3.5" PointY="22.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CLASIFICACION" Width="1.5" PointX="1.25" PointY="30.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CLIENTE" Width="1.5" PointX="7.5" PointY="18.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CLIENTE_VENDEDOR" Width="1.5" PointX="9.75" PointY="18.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.COBRADOR" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CONDICION_PAGO" Width="2.25" PointX="4.5" PointY="20.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CONSECUTIVO" Width="1.5" PointX="6.625" PointY="4.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CONSECUTIVO_FA" Width="2.125" PointX="3.75" PointY="4.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_ACCIONES" Width="1.5" PointX="14" PointY="19" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_ADMISION" Width="1.5" PointX="5.75" PointY="39.625" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_ADMISION_EGY" Width="1.875" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_ADT" Width="1.5" PointX="5.875" PointY="52.5" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_CAMA" Width="1.5" PointX="10.375" PointY="51.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_CIE" Width="1.5" PointX="1" PointY="4.875" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_CITA" Width="2.125" PointX="2.375" PointY="46.875" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_CONSULTAS" Width="1.5" PointX="1.875" PointY="53.375" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_CONTACTOS" Width="1.5" PointX="5.75" PointY="30.375" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_CONTROL_ACCION_DETALLE" Width="2.5" PointX="16.25" PointY="28.25" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_CONTROLADOR" Width="1.5" PointX="14" PointY="22.25" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_DEFINICION_PROC_IMAGEN" Width="2.625" PointX="5.75" PointY="10.5" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_DIAGNOSTICO" Width="2.125" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_DIAGNOSTICO_DETALLE" Width="2.125" PointX="3.25" PointY="1" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_DIETA" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_EMERGENCIA" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_EQUIPO_QX" Width="1.5" PointX="11" PointY="59.125" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_ESTACION" Width="1.5" PointX="8" PointY="41.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_ESTACION_ENFERMERIA" Width="2.25" PointX="5" PointY="48.25" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_ESTACION_QX" Width="1.5" PointX="3.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_FARMACIA" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_HABITACION" Width="2" PointX="7.625" PointY="51.5" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_IMAGENOLOGIA" Width="1.875" PointX="13" PointY="48.5" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_MEDICOS" Width="1.5" PointX="3.125" PointY="40.875" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_PACIENTES" Width="1.5" PointX="9.75" PointY="33.25" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_PEDIDO_EGY" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_PERSONAL" Width="1.5" PointX="8.75" PointY="56.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_PLANTILLA" Width="1.5" PointX="11" PointY="55.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_QUIROFANO" Width="1.5" PointX="11.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_RANGO" Width="1.5" PointX="15" PointY="32.5" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_RESULT_IMAGENOLOGIA_DETALLE" Width="2.75" PointX="15.75" PointY="57.625" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_RESULTADO_IMAGENOLOGIA" Width="2.875" PointX="15.625" PointY="53.875" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_RESULTADOS_LAB_DETALLE" Width="2.5" PointX="17.25" PointY="36.25" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_ROL" Width="1.5" PointX="14" PointY="28" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_ROL_USER" Width="1.5" PointX="19.25" PointY="27.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_SEGURO" Width="1.5" PointX="5.75" PointY="24.125" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_SIGNOS_VITALES" Width="1.75" PointX="14" PointY="40.875" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_TRIAGE" Width="1.5" PointX="11.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_USER" Width="1.5" PointX="11.75" PointY="27.5" />
+        <EntityTypeShape EntityType="ModeloHospitalario.DETALLE_DIRECCION" Width="1.75" PointX="5" PointY="16.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.DIRECC_EMBARQUE" Width="1.5" PointX="9.75" PointY="17.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.EXISTENCIA_BODEGA" Width="2.25" PointX="8.75" PointY="30.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.NIT" Width="1.5" PointX="1.25" PointY="29.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.NIVEL_PRECIO" Width="1.5" PointX="5.25" PointY="21.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.PAIS" Width="1.5" PointX="1.25" PointY="27.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.PEDIDO" Width="1.5" PointX="9.75" PointY="21" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.PEDIDO_LINEA" Width="1.5" PointX="12" PointY="25.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.RUTA" Width="1.5" PointX="5.25" PointY="17.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.UBICACION" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.UNIDAD_DE_MEDIDA" Width="1.5" PointX="1.25" PointY="25.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.VENDEDOR" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.VERSION_NIVEL" Width="1.5" PointX="7.625" PointY="21.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.ZONA" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_INTERACCIONES" Width="1.5" PointX="5.75" PointY="27.625" />
+        <EntityTypeShape EntityType="ModeloHospitalario.GLOBALES_AS" Width="1.5" PointX="3.5" PointY="27.25" IsExpanded="false" />
+        <AssociationConnector Association="ModeloHospitalario.ARPRARTI" />
+        <AssociationConnector Association="ModeloHospitalario.ARTCLASIF4" />
+        <AssociationConnector Association="ModeloHospitalario.ARTCLASIF5" />
+        <AssociationConnector Association="ModeloHospitalario.ARTCLASIF6" />
+        <AssociationConnector Association="ModeloHospitalario.ARTCLSF1" />
+        <AssociationConnector Association="ModeloHospitalario.ARTCLSF2" />
+        <AssociationConnector Association="ModeloHospitalario.ARTCLSF3" />
+        <AssociationConnector Association="ModeloHospitalario.AUNMDALM" />
+        <AssociationConnector Association="ModeloHospitalario.AUNMDEMP" />
+        <AssociationConnector Association="ModeloHospitalario.AUNMDVNT" />
+        <AssociationConnector Association="ModeloHospitalario.DEF_ARTO" />
+        <AssociationConnector Association="ModeloHospitalario.EXBODART" />
+        <AssociationConnector Association="ModeloHospitalario.FK_ARTICULO_NIT" />
+        <AssociationConnector Association="ModeloHospitalario.IMG_ARTO" />
+        <AssociationConnector Association="ModeloHospitalario.PELIARTI" />
+        <AssociationConnector Association="ModeloHospitalario.ARTPRECVERSNIV" />
+        <AssociationConnector Association="ModeloHospitalario.EXTBODBD" />
+        <AssociationConnector Association="ModeloHospitalario.PEDIBODE" />
+        <AssociationConnector Association="ModeloHospitalario.PELIBODE" />
+        <AssociationConnector Association="ModeloHospitalario.CLIECATG" />
+        <AssociationConnector Association="ModeloHospitalario.CLSUNMD" />
+        <AssociationConnector Association="ModeloHospitalario.CLI_ADMIN" />
+        <AssociationConnector Association="ModeloHospitalario.CLI_PAC" />
+        <AssociationConnector Association="ModeloHospitalario.CLICONDP" />
+        <AssociationConnector Association="ModeloHospitalario.CLIDETDIR" />
+        <AssociationConnector Association="ModeloHospitalario.CLIECOBR" />
+        <AssociationConnector Association="ModeloHospitalario.CLIENFER" />
+        <AssociationConnector Association="ModeloHospitalario.CLIENIPR" />
+        <AssociationConnector Association="ModeloHospitalario.CLIENTECLICORPASOC" />
+        <AssociationConnector Association="ModeloHospitalario.CLIENTENIT" />
+        <AssociationConnector Association="ModeloHospitalario.CLIERUTA" />
+        <AssociationConnector Association="ModeloHospitalario.CLIPAIS" />
+        <AssociationConnector Association="ModeloHospitalario.CLIVEND" />
+        <AssociationConnector Association="ModeloHospitalario.CLIZONA" />
+        <AssociationConnector Association="ModeloHospitalario.CLVDCLIE" />
+        <AssociationConnector Association="ModeloHospitalario.DIRECLIE" />
+        <AssociationConnector Association="ModeloHospitalario.PEDICLIE" />
+        <AssociationConnector Association="ModeloHospitalario.PEDICLIECORPORAC" />
+        <AssociationConnector Association="ModeloHospitalario.PEDICLIEDIRECCION" />
+        <AssociationConnector Association="ModeloHospitalario.PEDICLIEORIGEN" />
+        <AssociationConnector Association="ModeloHospitalario.CLVDVEND" />
+        <AssociationConnector Association="ModeloHospitalario.PEDICOBR" />
+        <AssociationConnector Association="ModeloHospitalario.NIVPRECCONDPAG" />
+        <AssociationConnector Association="ModeloHospitalario.PEDICNPG" />
+        <AssociationConnector Association="ModeloHospitalario.FKCONSEFA" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CONTROL_ACCION_DETALLE_ACCIONES" />
+        <AssociationConnector Association="ModeloHospitalario.ADMENFER" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_ADMISION_CS_MEDICOS" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_CONSULTAS_CS_ADMISION" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_SIGNOS_VITALES_CS_ADMISION" />
+        <AssociationConnector Association="ModeloHospitalario.IMG_ADM" />
+        <AssociationConnector Association="ModeloHospitalario.fk_habitacion" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_DIAGNOSTICO_DETALLE_CS_CIE" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CONTROL_ACCION_DETALLE_CONTROLADOR" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CONTROL_ACCION_DETALLE_ROL_USER" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_DIAGNOSTICO_DETALLE_CS_DIAGNOSTICO" />
+        <AssociationConnector Association="ModeloHospitalario.PERS_EQ_QX" />
+        <AssociationConnector Association="ModeloHospitalario.ESTENFER" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_HAB_ESTA" />
+        <AssociationConnector Association="ModeloHospitalario.IMG_PERSO" />
+        <AssociationConnector Association="ModeloHospitalario.IMG_R_IMG" />
+        <AssociationConnector Association="ModeloHospitalario.DOCTOR_PLANT" />
+        <AssociationConnector Association="ModeloHospitalario.IMG_PLANT" />
+        <AssociationConnector Association="ModeloHospitalario.RANG_DET_LAB" />
+        <AssociationConnector Association="ModeloHospitalario.R_IMG_DET" />
+        <AssociationConnector Association="ModeloHospitalario.FK_ROL_USER" />
+        <AssociationConnector Association="ModeloHospitalario.FK_ROL_USER_ROL" />
+        <AssociationConnector Association="ModeloHospitalario.FK_ROL_USER1" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_ROL_USER_CS_USER" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_ROL_USER_CS_USER1" />
+        <AssociationConnector Association="ModeloHospitalario.FK_ROL_USER_USER" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_SIGNOS_VITALES_CS_USER" />
+        <AssociationConnector Association="ModeloHospitalario.DIREMBDETDIR" />
+        <AssociationConnector Association="ModeloHospitalario.NITPAIS" />
+        <AssociationConnector Association="ModeloHospitalario.NIPRPEDI" />
+        <AssociationConnector Association="ModeloHospitalario.VERSNIVNIVPREC" />
+        <AssociationConnector Association="ModeloHospitalario.GBASPAIS" />
+        <AssociationConnector Association="ModeloHospitalario.PEDIPAIS" />
+        <AssociationConnector Association="ModeloHospitalario.PEDIRUTA" />
+        <AssociationConnector Association="ModeloHospitalario.PEDIVEND" />
+		<AssociationConnector Association="ModeloHospitalario.SpListadoCitasCS_Result"/>
+		<AssociationConnector Association="ModeloHospitalario.PEDIZONA" />
+        <AssociationConnector Association="ModeloHospitalario.PELIPEDI" />
+        <AssociationConnector Association="ModeloHospitalario.PEDLINEAUNDMEDIDA" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_CATALOGO" Width="1.5" PointX="0.75" PointY="35.25" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_CATALOGO_DETALLE" Width="2" PointX="3" PointY="33.125" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_DEFINICION_PROCEDIMIENTO" Width="2.625" PointX="5.75" PointY="34.875" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_DEFINICION_PROCEDIMIENTO_DET" Width="2.75" PointX="8.625" PointY="48.5" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_LABORATORIO" Width="1.75" PointX="11" PointY="41.375" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_RESULTADOS_LAB_ENCABEZADO" Width="3" PointX="13.5" PointY="35.875" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_TEST" Width="1.5" PointX="4.25" PointY="57.5" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_TEST_DETALLE" Width="1.5" PointX="6.5" PointY="57.375" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_DEFINICION_PROCEDIMIENTO_ARTICULO" />
+        <AssociationConnector Association="ModeloHospitalario.LAB_ARTO" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_ADMISION_CS_CATALOGO_DETALLE" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_ADMISION_CS_CATALOGO_DETALLE2" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_ADMISION_CS_CATALOGO_DETALLE3" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_ADMISION_CS_CATALOGO_DETALLE4" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_ADMISION_CS_CATALOGO_DETALLE5" />
+        <AssociationConnector Association="ModeloHospitalario.LAB_ADM" />
+        <AssociationConnector Association="ModeloHospitalario.CAT_ADT" />
+        <AssociationConnector Association="ModeloHospitalario.CAT_ALTA" />
+        <AssociationConnector Association="ModeloHospitalario.CATDETALLECAT" />
+        <AssociationConnector Association="ModeloHospitalario.ASEG_SEG" />
+        <AssociationConnector Association="ModeloHospitalario.CAT_PROC" />
+        <AssociationConnector Association="ModeloHospitalario.CATDET_ESPC" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_CONTACTOS_CS_CATALOGO_DETALLE" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_DEFINICION_PROCEDIMIENTO_CS_CATALOGO_DETALLE" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_PACIENTES_CS_CATALOGO_DETALLE" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_PACIENTES_CS_CATALOGO_DETALLE2" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_PACIENTES_CS_CATALOGO_DETALLE4" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_PACIENTES_CS_CATALOGO_DETALLE5" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_PACIENTES_CS_CATALOGO_DETALLE6" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_TEST_CS_CATALOGO_DETALLE" />
+        <AssociationConnector Association="ModeloHospitalario.IMG_ESTUSCAT" />
+        <AssociationConnector Association="ModeloHospitalario.TIPOINTERACCION_INTERAC" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_DEFINICION_PROCEDIMIENTO_DET_CS_DEFINICION_PROCEDIMIENTO" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_DEFINICION_PROCEDIMIENTO_DET_CS_TEST" />
+        <AssociationConnector Association="ModeloHospitalario.LAB_R_LAB" />
+        <AssociationConnector Association="ModeloHospitalario.R_LAB_DET" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_TEST_DETALLE_CS_TEST" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_PARAMETROS" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_RECETA" Width="1.5" PointX="4.125" PointY="53.5" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_RECETA_CS_CONSULTAS" />
+        <EntityTypeShape EntityType="ModeloHospitalario.DIVISION_GEOGRAFICA1" Width="2.125" PointX="3.25" PointY="28.375" IsExpanded="false" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_ADMISION_CS_CATALOGO_DETALLE51" />
+        <AssociationConnector Association="ModeloHospitalario.PAISDIV1" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_PACIENTES_CS_PACIENTES" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_CITA_CS_MEDICOS" />
+        <AssociationConnector Association="ModeloHospitalario.FK_CS_CITA_REMITIDO" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_GLOBAL_ODONTO" Width="1.5" PointX="6.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

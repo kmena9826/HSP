@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_ADMISION>
+
+<div class="bd bgc-white">
+    <div class="layers">
+        <div class="layer w-100 p-15 bg-color-secondary-m color-blanco">
+            <h5 class="lh-1">Admisiones recientes</h5>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="color-secondary-h" scope="col">Fecha de Recepción</th>
+                    <th class="color-secondary-h" scope="col">Nombre Completo</th>
+                    <th class="color-secondary-h" scope="col">Área de Servicio</th>
+                    <th class="color-secondary-h" scope="col">Signos Vitales</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FECHA_RECEPCION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CLIENTE.NOMBRE) 
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE3.DESCRIPCION)
+                        </td>
+                        <td>
+                            @{
+                                if ((bool)item.SIGNOS_VITALES)
+                                {
+                                    <text>
+                                        <a href="#" onClick="detallarSignosVitales(@item.ID_ADMISION)">
+                                            <span class="badge bg-color-info-m color-accent-h p-10 lh-0 tt-c badge-pill">
+                                                Completo
+                                                @*<i class="fas fa-eye fa-xs"></i>*@
+                                            </span>
+                                        </a>
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        <a href="@Url.Action("SignosVitales", "Admision")/@item.ID_ADMISION">
+                                            <span class="badge bg-color-light-m color-dark-h p-10 lh-0 tt-c badge-pill">
+                                                Pendiente
+                                                @*<i class="fas fa-external-link-alt fa-xs"></i>*@
+                                            </span>
+                                        </a>
+                                    </text>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="ta-c bdT w-100 p-15">
+            <a class="btn btn-primary float-right" href="@Url.Action("NuevaAdmision", "Admision")">
+                <i class="fas fa-plus-circle"></i>
+                Nueva Admisión
+            </a>
+            <a class="float-left" href="@Url.Action("Admisiones", "Admision")">Ver todas las admisiones &nbsp;<i class="fas fa-angle-right"></i></a>
+        </div>
+    </div>
+</div>

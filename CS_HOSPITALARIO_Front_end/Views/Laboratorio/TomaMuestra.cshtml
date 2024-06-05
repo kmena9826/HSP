@@ -1,0 +1,230 @@
+﻿
+@model IEnumerable<CS_HOSPITALARIO.Models.SpListadoExamenLaboratorio_Result>
+@{
+    ViewBag.Title = "Toma De Muestra ";
+    ViewBag.Modulo = "mAdmision";
+}
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión Laboratorio</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <h3>@ViewBag.Title</h3>
+                    <hr style="padding-bottom:20px" />
+                    <table class="table table-responsive table-hover" id="tabla_examenes">
+                        <thead>
+                            <tr>
+                            <tr>
+                                <th>Imp</th>
+                                <th>
+                                    N° Muestra
+                                </th>
+                                <th>
+                                    Cod Examen
+                                </th>
+                                <th>
+                                    Examen
+                                </th>
+                                <th>
+                                    Cod Cliente
+                                </th>
+                                <th>
+                                    Cliente
+                                </th>
+                                <th>
+                                    STAT
+                                </th>
+
+                                <th>
+                                    Prioridad
+                                </th>
+                                <th>
+                                    Area
+                                </th>
+                                <th>Estado</th>
+                                <th>Cod Admision</th>
+
+                                <th>
+                                    Fecha de Admision
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    <a title="Imprimir etiqueta" class="btn btn-info" href="@Url.Action("RegistrarTomaMuestra", "Laboratorio")/@item.NUM_MUESTRA"><i class="fa fa-print"></i></a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NUM_MUESTRA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ARTICULO)
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.DESC_ARTICULO)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CLIENTE_ID)
+                                </td>
+                                <td> @Html.DisplayFor(modelItem => item.CLIENTE)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STAT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PRIORIDAD)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AREA_SERVICIO)
+                                </td>
+
+                                <td>
+                                    @{
+                                        if (item.ESTADO == "P")
+                                        {
+                                            <text>
+                                                Pendiente
+                                            </text>
+                                        }
+                                        else
+                                        {
+                                            <text>
+
+                                            </text>
+                                        }
+                                    }
+                                </td>
+                                <td> @Html.DisplayFor(modelItem => item.ADMISION)</td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FECHA_CREACION)
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Imp</th>
+                                <th>
+                                    N° Muestra
+                                </th>
+                                <th>
+                                    Cod Examen
+                                </th>
+                                <th>
+                                    Examen
+                                </th>
+                                <th>
+                                    Cod Cliente
+                                </th>
+                                <th>
+                                    Cliente
+                                </th>
+                                <th>
+                                    STAT
+                                </th>
+                                <th>
+                                    Prioridad
+                                </th>
+                                <th>
+                                    Area
+                                </th>
+                                <th>Estado</th>
+                                <th>Cod Admision</th>
+                                <th>
+                                    Fecha de Admision
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+
+@section scripts
+{
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+
+    <script type="text/javascript">
+        /* INICIALIZACIÓN */
+        $(document).ready(function () {
+            $('#tabla_examenes tfoot th').each(function () {
+                var title = $(this).text().trim();
+                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+            });
+            var events = $('#events');
+            var table = $('#tabla_examenes').DataTable({
+                "order": [[0, "desc"]],
+                "columns": [
+                    { "width": "5%" },
+                    { "width": "10%" },
+                    { "width": "10%" },
+                    { "width": "15%" },
+                    { "width": "10%" },
+                    { "width": "15%" },
+                    { "width": "5%" },
+                    { "width": "10%" },
+                    { "width": "5%" },
+                    { "width": "10%" },
+                ],
+                dom: 'Bfrtip',           
+                select: false,
+                buttons: []
+            });
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+            $('#tabla_examenes tfoot tr').appendTo('#tabla_examenes thead');          
+            $('#tabla_examenes_filter input').addClass("form-control");
+        });
+    </script>
+
+}
+

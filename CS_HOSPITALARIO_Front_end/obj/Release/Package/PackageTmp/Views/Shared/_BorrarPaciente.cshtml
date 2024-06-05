@@ -1,0 +1,30 @@
+﻿@model CS_HOSPITALARIO.Models.CS_PACIENTES
+
+
+<!-- The Modal -->
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @using (Html.BeginForm())
+            {
+    <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">@ViewBag.Title</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+    <!-- Modal body -->
+                <div class="modal-body">
+                    <h5>¿Está seguro que desea borrar el registro <strong>@Model.NOMBRES @Model.APELLIDOS</strong> con ID= <strong>@Model.CLIENTE_ID</strong>?</h5>
+                </div>
+
+    <!-- Modal footer -->
+                <div class="modal-footer">
+                    <a href="@Url.Action("BorrarPacliente", "Admision")/@Model.CLIENTE_ID" class="btn btn-primary">Confirmar</a>
+                    @*<input type="submit" value="Confirmar" class="btn btn-primary" />*@
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    @*@Html.ActionLink("Cancelar", "Pacientes", "Admision", null, new { @class = "btn btn-outline-secondary" })*@
+                </div>
+            }
+        </div>
+    </div>

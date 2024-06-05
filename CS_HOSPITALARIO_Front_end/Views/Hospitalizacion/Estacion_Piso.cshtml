@@ -1,0 +1,838 @@
+﻿
+@model IEnumerable<CS_HOSPITALARIO.Models.CS_ESTACION>
+
+@{
+    ViewBag.Title = "Estaciones de Enfermeria";
+    ViewBag.Modulo = "mAdmision";
+}
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/animate.css" rel="stylesheet" />
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Hospitalización")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <table class="table table-responsive table-hover" id="tabla_pacientes">
+                        <thead>
+                            <tr>
+                                <th>
+                                    N° Habitacion
+                                </th>
+                                <th>
+                                    N° Cama
+                                </th>
+                                <th>
+                                    N° Admisión
+                                </th>
+                                <th>
+                                    Pedido
+                                </th>
+                                <th>
+                                    Fecha de Ingreso
+                                </th>
+                                <th>
+                                    Paciente
+                                </th>
+                                <th>
+                                    Nombre del Paciente
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CUARTO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CAMA)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ID_ADMISION)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CS_ADMISION.PEDIDO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FECHA_INGRESO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CLIENTE.CLIENTE1)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CLIENTE.NOMBRE)
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    N° Habitacion
+                                </th>
+                                <th>
+                                    N° Cama
+                                </th>
+                                <th>
+                                    N° Admisión
+                                </th>
+                                <th>
+                                    Pedido
+                                </th>
+                                <th>
+                                    Fecha de Ingreso
+                                </th>
+                                <th>
+                                    Paciente
+                                </th>
+                                <th>
+                                    Nombre del Paciente
+                                </th>
+
+                            </tr>
+                        </tfoot>
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .glyphicon {
+        font-size: 50px;
+    }
+
+        .glyphicon.glyphicon-globe {
+            font-size: 75px;
+        }
+
+    .center {
+        text-align: center;
+    }
+
+    .modal:nth-of-type(even) {
+        z-index: 1052 !important;
+    }
+
+    .modal-backdrop.show:nth-of-type(even) {
+        z-index: 1051 !important;
+    }
+</style>
+
+
+
+@*<button type="button" id="GuardarNombre" name="GuardarNombre" class="btn btn-primary">
+    <span class="fa fa-save"></span><span class="hidden-xs"> Guardar</span>*@
+
+
+
+
+<div class="modal" id="modalopciones">
+    <div class="modal-dialog modal-lg  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row col-sm-12">
+                    <div class="col-8 col-sm-2">
+
+                        <h5 class="modal-title">No.Admison:</h5>
+                    </div>
+                    <div class="col-8 col-sm-3">
+
+                        <h5 class="modal-title"> <input type="text" class="form-control" id="ADMISION" name="ADMISION" readonly></h5>
+                    </div>
+
+                    <div class="col-8 col-sm-2">
+
+                        <h5 class="modal-title">Pedido:</h5>
+                    </div>
+                    <div class="col-8 col-sm-3">
+
+                        <h5 class="modal-title"> <input type="text" class="form-control" id="PEDIDO" name="PEDIDO" readonly></h5>
+                    </div>
+                </div>
+            
+
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>*@
+
+            </div>
+            <div class="modal-body">
+
+                @*style="background-image: url('/assets/img/fondo-cabecera.jpg');*@
+                <div class="row col-sm-12">
+                    <div class="col-8 col-sm-2">
+
+                        <h5 class="modal-title">Paciente:</h5>
+                    </div>
+
+                    <div class="col-8 col-sm-3">
+
+                        <h5 class="modal-title"> <input type="text" class="form-control" id="CLIENTE" name="CLIENTE" readonly></h5>
+                    </div>
+                    <div class="col-8 col-sm-7">
+
+                        <h5 class="modal-title">  <input type="text" class="form-control" id="NOMBRE" name="NOMBRE" readonly></h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="center col-sm-12">
+                        <h5 class="modal-title">Ordenes</h5>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-12">
+
+                        <div class="row">
+                            <div class="col-8 col-sm-4">
+                                <div class="layers bd bgc-white p-30">
+
+                                    <div class="center layer w-100 mB-10">
+                                        @*<span class="glyphicon glyphicon-globe fa fa-save"></span>*@
+                                        <i class="glyphicon glyphicon-globe fas fa-capsules"></i>
+                                        <h4 class="lh-1"> <a href="#">Farmacia</a> </h4>
+                                    </div>
+
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="lh-1">****</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-8 col-sm-4">
+                                <div class="layers bd bgc-white p-30">
+
+                                    <div class="center layer w-100 mB-10">
+                                        <i class="glyphicon glyphicon-globe fas fa-file-prescription"></i>
+                                        <h4 class="lh-1"> <a data-toggle="modal" href="#modalcargosImagen">Imagen  </a> </h4>
+
+                                    </div>
+
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="lh-1">****</h6>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-8 col-sm-4">
+                                <div class="layers bd bgc-white p-30">
+
+                                    <div class="center layer w-100 mB-10">
+                                        <i class="glyphicon glyphicon-globe fas fa-flask"></i>
+                                        <h4 class="lh-1"> <a href="#">Laboratorio </a> </h4>
+                                    </div>
+
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="lh-1">****</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+
+                </div>
+
+                <div class="col-md-3">
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalcargosImagen" data-backdrop="static">
+    <div class="modal-dialog modal-lg" style="width:85%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ordenes de Imagen</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div><div class="container"></div>
+            <div class="modal-body">
+
+                <hr />
+                <div class="form-row form-group row" style="margin-top:50px">
+                    <div class="col-md-2">
+                        <label>Procedimiento:</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownList("ID_EXAMEN_IMAGEN", null, "Seleccione...", htmlAttributes: new { @class = "form-control", style = "width: 100% !important;" })
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-2">
+                        <label>Cantidad:</label>
+                    </div>
+                    <div class="col-md-1">
+                        @Html.Editor("CANTIDAD_IMAGEN", new { htmlAttributes = new { @class = "form-control", style = "width: 100% !important;", placeholder = "Cantidad", @Value = ViewBag.CANTIDAD_IMAGEN } })
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="false" name="STAT_IMAGEN" id="STAT_IMAGEN">
+                            <label class="form-check-label" for="STAT_IMAGEN" style="padding-left: 0px;margin-right:5px">
+                                Stat
+                            </label>
+                            <button type="button" class="btn btn-sm btn-success" onclick="AgregarExamen($('#txtRemarks').val())" style="margin-top:0px;margin-bottom:0px">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <hr />
+
+                    <div class="table-responsive">
+                        <table id="tblexamenImagen" class="table table-hover">
+                            <thead style="background-color: #0086c3;color:white">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Cod Examen</th>
+                                    <th>Examen</th>
+                                    <th>Cantidad</th>
+                                    <th>Stat</th>
+                                    <th>Observacion</th>
+                                    <th>Borrar</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+
+
+                    <div id="errorexamenesImagen" class="invalid-feedback">
+                        Debe de agregar al menos un EXAMEN .
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" id="linkimagen"  class="btn" style="display: none"></a>
+
+                <button type="button" data-dismiss="modal" class="btn btn-sm" id="cancel_Imagen" style="margin-top:0px;margin-bottom:0px">
+                    Cerrar 
+                </button>
+
+                    <button type="button" class="btn btn-sm btn-primary" onclick="AgregarOrdenImagen()" style="margin-top:0px;margin-bottom:0px">
+                        Ordenar <i class="fas fa-arrow-circle-right"></i>
+
+                    </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal" id="modalsolicitudes">
+    <div class="modal-dialog modal-lg  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-8 col-sm-2">
+
+                    <h5 class="modal-title">Paciente:</h5>
+                </div>
+
+                <div class="col-8 col-sm-3">
+
+                    <h5 class="modal-title"> <input type="text" class="form-control" id="CLIENTE_SOL" name="CLIENTE_SOL" readonly></h5>
+                </div>
+                <div class="col-8 col-sm-7">
+
+                    <h5 class="modal-title">  <input type="text" class="form-control" id="NOMBRE_SOL" name="NOMBRE_SOL" readonly></h5>
+                </div>
+
+               
+            </div>
+            <div class="modal-body">
+
+          
+                <div class="row">
+                    <div class="center col-sm-12">
+                        <h5 class="modal-title">Solicitudes</h5>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-12">
+
+                        <div class="row">
+                            <div class="col-8 col-sm-4">
+                                <div class="layers bd bgc-white p-30">
+
+                                    <div class="center layer w-100 mB-10">
+                                     
+                                        <i class="glyphicon glyphicon-globe fas fa-capsules"></i>
+                                        <h4 class="lh-1"> <a href="#">Traspaso</a> </h4>
+                                    </div>
+
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="lh-1">****</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-8 col-sm-4">
+                                <div class="layers bd bgc-white p-30">
+
+                                    <div class="center layer w-100 mB-10">
+                                        <i class="glyphicon glyphicon-globe fas fa-file-prescription"></i>
+                                        <h4 class="lh-1"> <a data-toggle="modal" href="#modalcargosImagen">Alta </a> </h4>
+
+                                    </div>
+
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="lh-1">****</h6>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                          
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+
+                </div>
+
+                <div class="col-md-3">
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br />
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+
+
+
+@section scripts
+{
+
+
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/select2.js"></script>
+    <link href="~/Content/select2.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        function AgregarOrdenImagen()
+        {
+            let admision_imagen = document.getElementById('ADMISION').value;
+            let pedido_imagen = document.getElementById('PEDIDO').value;
+            InsertarOrdenImagen(admision_imagen, pedido_imagen);
+            InsertarTotalImagen(pedido_imagen);
+           
+            $('#cancel_Imagen').click();
+
+
+            
+        }
+      
+        function InsertarOrdenImagen(admision, pedido)
+        {
+            let isvalid = true;
+            var CountExamenes = $('#tblexamenImagen tr').length;
+
+            if (CountExamenes == 1) {
+                $.notify({ message: 'Es necesario que agregue al menos un procedimiento' }, { type: 'danger' });
+                $("#errorexamenes").show();
+                isvalid = false;
+            }
+
+            if (isvalid == true)
+            {
+                var examen_imagen = [];
+                $("#tblexamenImagen").find("tr").each(function () {
+                    var id = $(this).attr("id");
+                    if (id != null) {
+                        examen_imagen.push({
+                            ARTICULO: $(this).attr("examen_id"),
+                            FECHA_REGISTRO: $(this).attr("fecha_reg"),
+                            CLIENTE_ID: document.getElementById('CLIENTE').value,
+                            PEDIDO_LINEA: id,
+                            STAT: $(this).attr("stat"),
+                            ANULADO: 'N',
+                            LECTURA: 'N',
+                            CANTIDAD: $(this).attr("cantidad")
+                        });
+                    }
+                });
+
+                examen_imagen.forEach(function (element) {
+                    console.log(element);
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Admision/NuevoImagen',
+                        data: JSON.stringify({ imagen: element, sexo: '', idadmision: admision, pedido: pedido }),
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function (data) {
+                            if (data.status) {
+                                return true;
+                            }
+                        },
+                        error: function () {
+                            $.notify({ message: 'Error al registrar la orden de imagen' }, { type: 'danger' });
+                        }
+                    })
+                });
+
+               
+
+            }
+
+            isvalid = false;
+            return isvalid;
+
+            
+        }
+        function InsertarTotalImagen(pedido) {
+            console.log(pedido);
+            $.ajax({
+                type: "POST",
+                url: '/Admision/MontoPedidoImagen',
+                data: JSON.stringify({ pedido: pedido }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.status) {
+                        $.notify({ message: 'Se registro la orden de imagen' }, { type: 'success' });
+                        $.notify({ message: 'Se actualizaron los montos del pedido' }, { type: 'success' });
+
+                        
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al actualizar el total del pedido' }, { type: 'danger' });
+                }
+            })
+        }
+        function AgregarExamen() {
+
+            var examen = $("#ID_EXAMEN_IMAGEN option:selected").val();
+
+            var cantidad_examen_imagen = $("#CANTIDAD_IMAGEN").val();
+
+
+            if (examen != '') {
+                var allow = true;
+                $("#tblexamenImagen").find("tr").each(function () {
+                    if ($(this).attr("id") == examen) {
+                        allow = false;
+                        return;
+                    }
+
+
+                });
+
+                var id_last = $('#tblexamenImagen tr').last().attr('id');//$("#tblexamen").find("tr").length
+                if (id_last == null) { id_last = 0; }
+
+                let STAT;
+                let VALUE_STAT;
+                if ($("input[type=checkbox]").is(
+                    ":checked")) {
+                    STAT = 'Si';
+                    VALUE_STAT = true;
+                } else {
+                    STAT = 'No';
+                    VALUE_STAT = false;
+                }
+
+                if (cantidad_examen_imagen) {
+                }
+                else { cantidad_examen_imagen = 1; }
+
+
+                $.ajax({
+                    url: '/admision/ExamenDetalleImagen',
+                    type: "POST",
+                    data: JSON.stringify({ examen }),
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    success: function (d) {
+                        if (d.status == true) {
+                            var detexamen = d.detexamen;
+                            contador = parseInt(id_last) + 1
+
+                            var loIsDate = new Date(detexamen.FECHA_REGISTRO);
+                            var dateString = loIsDate.getDate() + "/" + (loIsDate.getMonth() + 1) + "/" + loIsDate.getFullYear() + " " + loIsDate.getHours() + ":" + loIsDate.getMinutes() + ":" + loIsDate.getSeconds();
+
+                            $("#tblexamenImagen").find('tbody')
+                                .append('<tr id="' + contador + '" stat="' + VALUE_STAT + '" cantidad= "' + cantidad_examen_imagen + '" examen_id="' + detexamen.ARTICULO + '" fecha_reg="' + dateString + '"><td>' + contador + '</td><td>' + dateString + ' </td><td>' + detexamen.ARTICULO + '</td><td>' + detexamen.DESCRIPCION + '</td><td>' + cantidad_examen_imagen + '</td><td>' + STAT + '</td><td>' + detexamen.OBSERVACION + '</td><td><button type="button" class="btn btn-sm btn-danger" onclick="EliminarDetalle(' + contador + ')"><i class="fa fa-trash"></i></button></td></tr>');
+
+                            console.log(id_last);
+                            console.log(dateString);
+
+                        }
+                    },
+                    error: function () {
+                        $.notify({ message: 'No se pudo agregar el procedimiento' }, { type: 'danger' });
+                    }
+                });
+                //}
+                //else {
+                //    $.notify({ message: 'Estimado usuario,Este procedimiento ya ha sido agregado' }, { type: 'danger' });
+                //}
+            }
+            else {
+                $.notify({ message: 'Por favor seleccione un procedimiento' }, { type: 'danger' });
+            }
+        }
+        function EliminarDetalle(linea) {
+            $("#tblexamenImagen").find("tr").each(function () {
+                if ($(this).attr("id") == linea) {
+                    $(this).remove();
+                }
+            });
+        }
+
+        /* INICIALIZACIÓN */
+        $(document).ready(function () {
+
+            $('#cancel_Imagen').click(function () {
+              
+                $("#tblexamenImagen > tbody").empty(); 
+                $('#linkimagen').click();
+            });
+
+            //$("#modalcargosImagen").on('hidden.bs.modal', function () {
+
+            //    var table = document.getElementById('tblexamenImagen');
+            //    var row = document.getElementsByTagName('tbody')[0];
+            //    row.parentNode.removeChild(row);
+              
+               
+               
+            //});
+
+            $('#ID_EXAMEN_IMAGEN').select2({
+                dropdownParent: $('#modalcargosImagen'),
+                placeholder: "Seleccione un procedimiento",
+                allowClear: true
+            });
+
+           
+
+            $('#tabla_pacientes tfoot th').each(function () {
+                var title = $(this).text().trim();
+                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+            });
+
+            var events = $('#events');
+
+            var table = $('#tabla_pacientes').DataTable({
+                "order": [[0, "desc"]],
+                "columns": [
+                    { "width": "7%" },
+                    { "width": "10%" },
+                    null,
+                    { "width": "10%" },
+                    null,
+                    { "width": "10%" },
+                    null
+                ],
+                dom: 'Bfrtip',
+                language: {
+                    select: {
+                        rows: {
+                            0: "",
+                            1: " │ %d registro seleccionado."
+                        }
+                    }
+                },
+                select: true,
+                buttons: [{
+                    text: 'Solicitudes',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][5]);
+                        document.getElementById('CLIENTE_SOL').value = rowSelected[0][5];
+                        document.getElementById('NOMBRE_SOL').value = rowSelected[0][6];
+
+                        $('#modalsolicitudes').modal('toggle');
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Historial',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+                        window.location.href = '/Admision/EditarAdmision/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Ordenes',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][5]);
+
+                        document.getElementById('CLIENTE').value = rowSelected[0][5];
+                        document.getElementById('NOMBRE').value = rowSelected[0][6];
+                        document.getElementById('ADMISION').value = rowSelected[0][2];
+                        document.getElementById('PEDIDO').value = rowSelected[0][3];
+
+                        $('#modalopciones').modal('toggle');
+
+                        //$.get("/Hospitalizacion/Update_ClienteData", { CLIENTE: rowSelected[0][5], NOMBRE: rowSelected[0][5] }, function (data) {
+                        //    $('#modalopciones').modal('toggle');
+                        //});
+
+
+                        //window.location.href = '/Admision/EditarAdmision/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                
+                    //{
+                    //    text: 'Borrar',
+                    //    action: function (e, dt, node, config) {
+                    //        var rowSelected = table.rows({ selected: true }).data();
+                    //        console.log(rowSelected[0][0]);
+                    //        window.location.href = '/Admision/BorrarAdmision/' + rowSelected[0][0];
+                    //    },
+                    //    init: function (api, node, config) {
+                    //        $(node).removeClass('btn-default')
+                    //    }
+                    //},
+                    "pdf", "excel"]
+            });
+
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+            $('#tabla_pacientes tfoot tr').appendTo('#tabla_pacientes thead');
+            $("#tabla_pacientes_wrapper button").each(function () {
+                $(this).removeClass("dt-button");
+                $(this).addClass("btn btn-sm");
+                if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                    $(this).addClass("btn-secondary");
+                }
+                else
+                    if ($(this).text() == 'Signos Vitales') {
+                        $(this).addClass("btn-dark");
+                    }
+                    else {
+                        $(this).addClass("btn-primary ");
+                    }
+
+            });
+            $('#tabla_pacientes_filter input').addClass("form-control");
+
+            //$('#tabla_pacientes tbody').on('dblclick', 'tr', function () {
+            //    var rowSelected = table.rows({ selected: true }).data();
+            //    window.location.href = '/Admision/EditarAdmision/' + rowSelected[0][0];
+            //});
+
+
+           
+        });
+
+
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+

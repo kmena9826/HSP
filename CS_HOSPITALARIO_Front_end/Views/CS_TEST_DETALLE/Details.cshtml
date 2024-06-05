@@ -1,0 +1,82 @@
+﻿@model CS_HOSPITALARIO.Models.CS_TEST_DETALLE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CS_TEST_DETALLE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SEXO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEXO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDAD_MIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDAD_MIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDAD_MAXIMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDAD_MAXIMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RANGO_MINIMO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RANGO_MINIMO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RANGO_MAXIMO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RANGO_MAXIMO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOW_PANIC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOW_PANIC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HIGH_PANIC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HIGH_PANIC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CS_TEST.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CS_TEST.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TEST_DETALLE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

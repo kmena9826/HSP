@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("IdentitySignout", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+   
+
+    <ul class="nav navbar-nav navbar-right" style="margin-right:auto;">
+        <li>
+            <a><span class="glyphicon glyphicon-user"></span> @User.Identity.GetUserName()</a>
+            
+            @*@Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-log-in"></span> Cerrar sesión</a></li>
+    </ul>
+    }
+}
+

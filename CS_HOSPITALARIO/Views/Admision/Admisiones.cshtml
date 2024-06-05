@@ -1,0 +1,304 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_ADMISION>
+
+@{
+    ViewBag.Title = "Admisiones";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<table class="table table-responsive table-hover" id="tabla_admisiones">
+    <thead>
+        <tr>
+            <th>
+                N° Admisión
+            </th>
+            <th>
+                Paciente ID
+            </th>
+            <th>
+                Nombre Completo
+            </th>
+            <th>
+                Prioridad
+            </th>
+            <th>
+                Causa de Admisión
+            </th>
+            <th>
+                Tipo de Ingreso
+            </th>
+            <th>
+                Área de Servicio
+            </th>
+            <th>
+                Signos Vitales
+            </th>
+            <th>
+                Fecha de Recepción
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_ADMISION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CLIENTE_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CLIENTE.NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRIORIDAD.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CAUSA_ADMISION.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TIPO_INGRESO.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AREA_SERVICIO.DESCRIPCION)
+                </td>
+                <td>
+                    @{ 
+                        if ((bool)item.SIGNOS_VITALES)
+                        {
+                           <text>Tomado</text>
+                        }
+                        else
+                        {
+                            <text>Pendiente</text>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_RECEPCION)
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>
+                N° Admisión
+            </th>
+            <th>
+                Paciente ID
+            </th>
+            <th>
+                Nombre Completo
+            </th>
+            <th>
+                Prioridad
+            </th>
+            <th>
+                Causa de Admisión
+            </th>
+            <th>
+                Tipo de Ingreso
+            </th>
+            <th>
+                Área de Servicio
+            </th>
+            <th>
+                Signos Vitales
+            </th>
+            <th>
+                Fecha de Recepción
+            </th>
+        </tr>
+    </tfoot>
+</table>
+
+<br />
+
+<!-- Modal -->
+<div class="modal fade" id="detalleSignosVitales" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Detalle Signos Vitales</h4>
+            </div>
+            <div class="modal-body">
+                <div id="SignosVitalesTomados"></div>
+            </div>
+            <div class="modal-footer text-left">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+
+    @section scripts
+{
+        <script src="~/Scripts/jquery.dataTables.min.js"></script>
+        <script src="~/Scripts/dataTables.buttons.min.js"></script>
+        <script src="~/Scripts/buttons.flash.min.js"></script>
+        <script src="~/Scripts/jszip.min.js"></script>
+        <script src="~/Scripts/buttons.html5.min.js"></script>
+        <script src="~/Scripts/dataTables.select.min.js"></script>
+        <script src="~/Scripts/pdfmake.min.js"></script>
+        <script src="~/Scripts/vfs_fonts.js"></script>
+
+        <script type="text/javascript">
+
+            /* INICIALIZACIÓN */
+            $(document).ready(function () {
+                $('#tabla_admisiones tfoot th').each(function () {
+                    var title = $(this).text().trim();
+                    $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+                });
+
+                var events = $('#events');
+
+                var table = $('#tabla_admisiones').DataTable({
+                    "order": [[8, "desc"]],
+                    "columns": [
+                        { "width": "7%" },
+                        { "width": "10%" },
+                        null,
+                        { "width": "10%" },
+                        null,
+                        { "width": "10%" },
+                        null,
+                        null,
+                        null
+                    ],
+                    dom: 'Bfrtip',
+                    language: {
+                        select: {
+                            rows: {
+                                0: "",
+                                1: " │ %d registro seleccionado."
+                            }
+                        }
+                    },
+                    select: true,
+                    buttons: [{
+                        text: 'Nuevo',
+                        action: function (e, dt, node, config) {
+                            window.location.href = '/Admision/NuevaAdmision';
+                        },
+                        init: function (api, node, config) {
+                            $(node).removeClass('btn-default')
+                        }
+                    },
+                    {
+                        text: 'Editar',
+                        action: function (e, dt, node, config) {
+                            var rowSelected = table.rows({ selected: true }).data();
+                            console.log(rowSelected[0][0]);
+                            window.location.href = '/Admision/EditarAdmision/' + rowSelected[0][0];
+                        },
+                        init: function (api, node, config) {
+                            $(node).removeClass('btn-default')
+                        }
+                    },
+                    {
+                        text: 'Borrar',
+                        action: function (e, dt, node, config) {
+                            var rowSelected = table.rows({ selected: true }).data();
+                            console.log(rowSelected[0][0]);
+                            window.location.href = '/Admision/BorrarAdmision/' + rowSelected[0][0];
+                        },
+                        init: function (api, node, config) {
+                            $(node).removeClass('btn-default')
+                        }
+                    },
+                    {
+                        text: 'Signos Vitales',
+                        action: function (e, dt, node, config) {
+                            var rowSelected = table.rows({ selected: true }).data();
+                            console.log(rowSelected[0][0]);
+                            if (rowSelected[0][7] == 'Pendiente') {
+                                window.location.href = '/Admision/SignosVitales/' + rowSelected[0][0];
+                            }
+                            else
+                               detallarSignosVitales();
+                        },
+                        init: function (api, node, config) {
+                            $(node).removeClass('btn-default')
+                        }
+                    }, "pdf", "excel"]
+                    //,
+                    //rowCallback: function (row, data, index) {
+                    //    if (data[7] == 'Pendiente') {
+                    //        $(row).addClass('warning');
+                    //    }
+                    //}
+                });
+                // Apply the search
+                table.columns().every(function () {
+                    var that = this;
+
+                    $('input', this.footer()).on('keyup change', function () {
+                        if (that.search() !== this.value) {
+                            that
+                                .search(this.value)
+                                .draw();
+                        }
+                    });
+                });
+                $('#tabla_admisiones tfoot tr').appendTo('#tabla_admisiones thead');
+                $("#tabla_admisiones_wrapper button").each(function () {
+                    $(this).removeClass("dt-button");
+                    $(this).addClass("btn btn-sm");
+                    if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                        $(this).addClass("btn-default");
+                    }
+                    else {
+                        $(this).addClass("btn-primary ");
+                    }
+                });
+                $('#tabla_admisiones_filter input').addClass("form-control");
+
+                $('#tabla_admisiones tbody').on('dblclick', 'tr', function () {
+                    var rowSelected = table.rows({ selected: true }).data();
+                    window.location.href = '/Admision/EditarAdmision/' + rowSelected[0][0];
+                });
+
+                //$('#tabla_admisiones tbody').on('click', 'tr', function () {
+                //    if ($(this).hasClass('warning')) {
+                //        $(this).removeClass('warning');
+                //    }
+                //    if ($(this).hasClass('selected')) {
+                //        $(this).removeClass('selected');
+                //    }
+                //    else {
+                //        $(this).$('tr.selected').removeClass('selected');
+                //        $(this).addClass('selected');
+                //    }
+                //});
+            });
+
+            function detallarSignosVitales() {
+                var tableee = $('#tabla_admisiones').DataTable();
+                if (tableee.rows('.selected').count() > 0) {
+                    var rowSelected = tableee.rows({ selected: true }).data();
+                    var laURLDeLaVista = '/Admision/DetalleSignosVitales/' + rowSelected[0][0];
+                    $.ajax({
+                        cache: false,
+                        async: true,
+                        type: "GET",
+                        url: laURLDeLaVista,
+                        data: {},
+                        success: function (response) {
+                            $('#SignosVitalesTomados').html(response);
+                            $('#detalleSignosVitales').modal('show');
+                        }
+                    });
+                }
+            }
+        </script>
+    }

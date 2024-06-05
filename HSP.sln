@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_HOSPITALARIO", "CS_HOSPITALARIO\CS_HOSPITALARIO.csproj", "{66D14ACB-C9B7-4D74-8D2D-8E438BA5E132}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_HOSPITALARIO_Front_end", "CS_HOSPITALARIO_Front_end\CS_HOSPITALARIO_Front_end.csproj", "{0D81A9B6-0F43-489D-8381-354446552110}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66D14ACB-C9B7-4D74-8D2D-8E438BA5E132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D14ACB-C9B7-4D74-8D2D-8E438BA5E132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D14ACB-C9B7-4D74-8D2D-8E438BA5E132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D14ACB-C9B7-4D74-8D2D-8E438BA5E132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D81A9B6-0F43-489D-8381-354446552110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D81A9B6-0F43-489D-8381-354446552110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D81A9B6-0F43-489D-8381-354446552110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D81A9B6-0F43-489D-8381-354446552110}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E568EA1-46BD-4BC8-90DF-FB00805FA146}
+	EndGlobalSection
+EndGlobal

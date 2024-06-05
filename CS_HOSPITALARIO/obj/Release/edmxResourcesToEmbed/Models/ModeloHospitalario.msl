@@ -1,0 +1,2489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModeloHospitalarioStoreContainer" CdmEntityContainer="HospitalarioBD">
+    <FunctionImportMapping FunctionImportName="SP_Actualizar_pedido_monto_paciente" FunctionName="ModeloHospitalario.Store.SP_Actualizar_pedido_monto_paciente" />
+    <FunctionImportMapping FunctionImportName="SP_Insertar_cliente_NIT" FunctionName="ModeloHospitalario.Store.SP_Insertar_cliente_NIT" />
+    <FunctionImportMapping FunctionImportName="SP_Insertar_cliente_vendedor" FunctionName="ModeloHospitalario.Store.SP_Insertar_cliente_vendedor" />
+    <FunctionImportMapping FunctionImportName="SP_Insertar_detalle_direccion_cliente" FunctionName="ModeloHospitalario.Store.SP_Insertar_detalle_direccion_cliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Insertar_detalle_direccion_cliente_Result">
+          <ScalarProperty Name="DETALLE_DIRECCION" ColumnName="DETALLE_DIRECCION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Insertar_direcc_embarque" FunctionName="ModeloHospitalario.Store.SP_Insertar_direcc_embarque" />
+    <FunctionImportMapping FunctionImportName="SP_Insertar_LineaPedido" FunctionName="ModeloHospitalario.Store.SP_Insertar_LineaPedido" />
+    <FunctionImportMapping FunctionImportName="SP_Insertar_receta" FunctionName="ModeloHospitalario.Store.SP_Insertar_receta" />
+    <FunctionImportMapping FunctionImportName="SP_Listado_CIE_Capitulos" FunctionName="ModeloHospitalario.Store.SP_Listado_CIE_Capitulos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Listado_CIE_Capitulos_Result">
+          <ScalarProperty Name="ID_CIE" ColumnName="ID_CIE" />
+          <ScalarProperty Name="COD_CIE" ColumnName="COD_CIE" />
+          <ScalarProperty Name="DEC" ColumnName="DEC" />
+          <ScalarProperty Name="GRP" ColumnName="GRP" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Listado_CIE_SubCapitulos" FunctionName="ModeloHospitalario.Store.SP_Listado_CIE_SubCapitulos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Listado_CIE_SubCapitulos_Result">
+          <ScalarProperty Name="ID_CIE" ColumnName="ID_CIE" />
+          <ScalarProperty Name="COD_CIE" ColumnName="COD_CIE" />
+          <ScalarProperty Name="DEC" ColumnName="DEC" />
+          <ScalarProperty Name="GRP" ColumnName="GRP" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Listado_CIE_Tema" FunctionName="ModeloHospitalario.Store.SP_Listado_CIE_Tema">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Listado_CIE_Tema_Result">
+          <ScalarProperty Name="ID_CIE" ColumnName="ID_CIE" />
+          <ScalarProperty Name="COD_CIE" ColumnName="COD_CIE" />
+          <ScalarProperty Name="DEC" ColumnName="DEC" />
+          <ScalarProperty Name="GRP" ColumnName="GRP" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Listado_CIE_Total" FunctionName="ModeloHospitalario.Store.SP_Listado_CIE_Total">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Listado_CIE_Total_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_CIE" ColumnName="ID_CIE" />
+          <ScalarProperty Name="COD_CIE" ColumnName="COD_CIE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="GRP" ColumnName="GRP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Listado_consulta" FunctionName="ModeloHospitalario.Store.SP_Listado_consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Listado_consulta_Result">
+          <ScalarProperty Name="NUM_CONSULTA" ColumnName="NUM_CONSULTA" />
+          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+          <ScalarProperty Name="EDAD" ColumnName="EDAD" />
+          <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+          <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+          <ScalarProperty Name="MEDICO" ColumnName="MEDICO" />
+          <ScalarProperty Name="AREA_SERVICIO_ID" ColumnName="AREA_SERVICIO_ID" />
+          <ScalarProperty Name="AREA_SERVICIO" ColumnName="AREA_SERVICIO" />
+          <ScalarProperty Name="ESTATURA" ColumnName="ESTATURA" />
+          <ScalarProperty Name="PESOKG" ColumnName="PESOKG" />
+          <ScalarProperty Name="IMC" ColumnName="IMC" />
+          <ScalarProperty Name="TEMPERATURAC" ColumnName="TEMPERATURAC" />
+          <ScalarProperty Name="PSISTOLICA" ColumnName="PSISTOLICA" />
+          <ScalarProperty Name="PDIASTOLICA" ColumnName="PDIASTOLICA" />
+          <ScalarProperty Name="PULSO" ColumnName="PULSO" />
+          <ScalarProperty Name="RESPIRACION" ColumnName="RESPIRACION" />
+          <ScalarProperty Name="SATURACION" ColumnName="SATURACION" />
+          <ScalarProperty Name="GLUCOMETRIA" ColumnName="GLUCOMETRIA" />
+          <ScalarProperty Name="PERIMETRO_TORAXICO" ColumnName="PERIMETRO_TORAXICO" />
+          <ScalarProperty Name="PERIMETRO_MUNECA" ColumnName="PERIMETRO_MUNECA" />
+          <ScalarProperty Name="PERIMETRO_CEFALICO" ColumnName="PERIMETRO_CEFALICO" />
+          <ScalarProperty Name="PERIMETRO_ABDOMINAL" ColumnName="PERIMETRO_ABDOMINAL" />
+          <ScalarProperty Name="HALLAZGO" ColumnName="HALLAZGO" />
+          <ScalarProperty Name="ADMISION_ID" ColumnName="ADMISION_ID" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="RAZON_CONSULTA" ColumnName="RAZON_CONSULTA" />
+          <ScalarProperty Name="ANTECEDENTE" ColumnName="ANTECEDENTE" />
+          <ScalarProperty Name="EXAMEN_FISICO" ColumnName="EXAMEN_FISICO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Listado_Examen_Test_Detalle" FunctionName="ModeloHospitalario.Store.SP_Listado_Examen_Test_Detalle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Listado_Examen_Test_Detalle_Result">
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="COLOR_TUBO" ColumnName="COLOR_TUBO" />
+          <ScalarProperty Name="IMPRIME_ETIQUETA" ColumnName="IMPRIME_ETIQUETA" />
+          <ScalarProperty Name="ENVIAR_CORREO" ColumnName="ENVIAR_CORREO" />
+          <ScalarProperty Name="TEST" ColumnName="TEST" />
+          <ScalarProperty Name="OBSERVACION_TEST" ColumnName="OBSERVACION_TEST" />
+          <ScalarProperty Name="UNIDAD_MEDIDA" ColumnName="UNIDAD_MEDIDA" />
+          <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+          <ScalarProperty Name="TEST_DETALLE" ColumnName="TEST_DETALLE" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="EDAD_MIN" ColumnName="EDAD_MIN" />
+          <ScalarProperty Name="EDAD_MAXIMA" ColumnName="EDAD_MAXIMA" />
+          <ScalarProperty Name="RANGO_MINIMO" ColumnName="RANGO_MINIMO" />
+          <ScalarProperty Name="RANGO_MAXIMO" ColumnName="RANGO_MAXIMO" />
+          <ScalarProperty Name="LOW_PANIC" ColumnName="LOW_PANIC" />
+          <ScalarProperty Name="HIGH_PANIC" ColumnName="HIGH_PANIC" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Listado_Limite_Registrar_Resultado" FunctionName="ModeloHospitalario.Store.Sp_Listado_Limite_Registrar_Resultado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.Sp_Listado_Limite_Registrar_Resultado_Result">
+          <ScalarProperty Name="TEST_DETALLE" ColumnName="TEST_DETALLE" />
+          <ScalarProperty Name="TEST" ColumnName="TEST" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="EDAD_MIN" ColumnName="EDAD_MIN" />
+          <ScalarProperty Name="EDAD_MAXIMA" ColumnName="EDAD_MAXIMA" />
+          <ScalarProperty Name="RANGO_MINIMO" ColumnName="RANGO_MINIMO" />
+          <ScalarProperty Name="RANGO_MAXIMO" ColumnName="RANGO_MAXIMO" />
+          <ScalarProperty Name="LOW_PANIC" ColumnName="LOW_PANIC" />
+          <ScalarProperty Name="HIGH_PANIC" ColumnName="HIGH_PANIC" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Listado_precio_articulo" FunctionName="ModeloHospitalario.Store.SP_Listado_precio_articulo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Listado_precio_articulo_Result">
+          <ScalarProperty Name="NIVEL_PRECIO" ColumnName="NIVEL_PRECIO" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="VERSION_ARTICULO" ColumnName="VERSION_ARTICULO" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="ESQUEMA_TRABAJO" ColumnName="ESQUEMA_TRABAJO" />
+          <ScalarProperty Name="MARGEN_MULR" ColumnName="MARGEN_MULR" />
+          <ScalarProperty Name="MARGEN_UTILIDAD" ColumnName="MARGEN_UTILIDAD" />
+          <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+          <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+          <ScalarProperty Name="FECHA_ULT_MODIF" ColumnName="FECHA_ULT_MODIF" />
+          <ScalarProperty Name="USUARIO_ULT_MODIF" ColumnName="USUARIO_ULT_MODIF" />
+          <ScalarProperty Name="MARGEN_UTILIDAD_MIN" ColumnName="MARGEN_UTILIDAD_MIN" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Listado_Receta_Consulta" FunctionName="ModeloHospitalario.Store.SP_Listado_Receta_Consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Listado_Receta_Consulta_Result">
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FECHA_ENTREGA" ColumnName="FECHA_ENTREGA" />
+          <ScalarProperty Name="CANTIDAD_PEDIDA" ColumnName="CANTIDAD_PEDIDA" />
+          <ScalarProperty Name="NUM_CONSULTA" ColumnName="NUM_CONSULTA" />
+          <ScalarProperty Name="DOSIS" ColumnName="DOSIS" />
+          <ScalarProperty Name="via" ColumnName="via" />
+          <ScalarProperty Name="DURACION" ColumnName="DURACION" />
+          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+          <ScalarProperty Name="MEDICO" ColumnName="MEDICO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Listado_usuario_CS" FunctionName="ModeloHospitalario.Store.SP_Listado_usuario_CS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_Listado_usuario_CS_Result">
+          <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+          <ScalarProperty Name="ROL" ColumnName="ROL" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spListadoArticulosPedios" FunctionName="ModeloHospitalario.Store.spListadoArticulosPedios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.spListadoArticulosPedios_Result">
+          <ScalarProperty Name="ID_ADMISION" ColumnName="ID_ADMISION" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ARTICULO1" ColumnName="ARTICULO1" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="PEDIDO_LINEA" ColumnName="PEDIDO_LINEA" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="LECTURA" ColumnName="LECTURA" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoExamen" FunctionName="ModeloHospitalario.Store.SpListadoExamen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoExamen_Result">
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="EXAMEN" ColumnName="EXAMEN" />
+          <ScalarProperty Name="DESC_ARTICULO" ColumnName="DESC_ARTICULO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoExamenAdmisionImagen" FunctionName="ModeloHospitalario.Store.SpListadoExamenAdmisionImagen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoExamenAdmisionImagen_Result">
+          <ScalarProperty Name="DEF_IMG" ColumnName="DEF_IMG" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="EXAMEN" ColumnName="EXAMEN" />
+          <ScalarProperty Name="DESC_ARTICULO" ColumnName="DESC_ARTICULO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ANULADO" ColumnName="ANULADO" />
+          <ScalarProperty Name="LECTURA" ColumnName="LECTURA" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+          <ScalarProperty Name="PEDIDO_LINEA" ColumnName="PEDIDO_LINEA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoExamenAdmisionLaboratorio" FunctionName="ModeloHospitalario.Store.SpListadoExamenAdmisionLaboratorio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoExamenAdmisionLaboratorio_Result">
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="EXAMEN" ColumnName="EXAMEN" />
+          <ScalarProperty Name="DESC_ARTICULO" ColumnName="DESC_ARTICULO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="NUM_MUESTRA" ColumnName="NUM_MUESTRA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoExamenLaboratorioRecepcion" FunctionName="ModeloHospitalario.Store.SpListadoExamenLaboratorioRecepcion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoExamenLaboratorioRecepcion_Result">
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="EXAMEN" ColumnName="EXAMEN" />
+          <ScalarProperty Name="DESC_ARTICULO" ColumnName="DESC_ARTICULO" />
+          <ScalarProperty Name="EDAD" ColumnName="EDAD" />
+          <ScalarProperty Name="EDAD_AL_TOMAR_MUESTRA" ColumnName="EDAD_AL_TOMAR_MUESTRA" />
+          <ScalarProperty Name="FECHA_TOMA_MUESTRA" ColumnName="FECHA_TOMA_MUESTRA" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="NUM_MUESTRA" ColumnName="NUM_MUESTRA" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ADMISION" ColumnName="ADMISION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_TOMA_MUESTRA" ColumnName="USUARIO_TOMA_MUESTRA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoExamenLaboratorioRecepcionado" FunctionName="ModeloHospitalario.Store.SpListadoExamenLaboratorioRecepcionado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoExamenLaboratorioRecepcionado_Result">
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="EXAMEN" ColumnName="EXAMEN" />
+          <ScalarProperty Name="DESC_ARTICULO" ColumnName="DESC_ARTICULO" />
+          <ScalarProperty Name="EDAD" ColumnName="EDAD" />
+          <ScalarProperty Name="EDAD_AL_TOMAR_MUESTRA" ColumnName="EDAD_AL_TOMAR_MUESTRA" />
+          <ScalarProperty Name="FECHA_TOMA_MUESTRA" ColumnName="FECHA_TOMA_MUESTRA" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="NUM_MUESTRA" ColumnName="NUM_MUESTRA" />
+          <ScalarProperty Name="FECHA_RECEPCION" ColumnName="FECHA_RECEPCION" />
+          <ScalarProperty Name="USUARIO_RECEPCION_MUESTRA" ColumnName="USUARIO_RECEPCION_MUESTRA" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ESTADO_DESCRIPCION" ColumnName="ESTADO_DESCRIPCION" />
+          <ScalarProperty Name="ADMISION" ColumnName="ADMISION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_TOMA_MUESTRA" ColumnName="USUARIO_TOMA_MUESTRA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoExamenLaboratorioRegistrado" FunctionName="ModeloHospitalario.Store.SpListadoExamenLaboratorioRegistrado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoExamenLaboratorioRegistrado_Result">
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="EXAMEN" ColumnName="EXAMEN" />
+          <ScalarProperty Name="DESC_ARTICULO" ColumnName="DESC_ARTICULO" />
+          <ScalarProperty Name="EDAD" ColumnName="EDAD" />
+          <ScalarProperty Name="EDAD_AL_TOMAR_MUESTRA" ColumnName="EDAD_AL_TOMAR_MUESTRA" />
+          <ScalarProperty Name="FECHA_TOMA_MUESTRA" ColumnName="FECHA_TOMA_MUESTRA" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="NUM_MUESTRA" ColumnName="NUM_MUESTRA" />
+          <ScalarProperty Name="USUARIO_RECEPCION_MUESTRA" ColumnName="USUARIO_RECEPCION_MUESTRA" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ESTADO_DESCRIPCION" ColumnName="ESTADO_DESCRIPCION" />
+          <ScalarProperty Name="ADMISION" ColumnName="ADMISION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ID_RESULTADO_LAB" ColumnName="ID_RESULTADO_LAB" />
+          <ScalarProperty Name="ENV_POR_CORREO" ColumnName="ENV_POR_CORREO" />
+          <ScalarProperty Name="IMPRESO" ColumnName="IMPRESO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoProcImagen" FunctionName="ModeloHospitalario.Store.SpListadoProcImagen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoProcImagen_Result">
+          <ScalarProperty Name="Row" ColumnName="Row" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="PROCEDIMIENTO" ColumnName="PROCEDIMIENTO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoTotalesAdmisionesDB" FunctionName="ModeloHospitalario.Store.SpListadoTotalesAdmisionesDB">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoTotalesAdmisionesDB_Result">
+          <ScalarProperty Name="TOTAL_ADMISIONES" ColumnName="TOTAL_ADMISIONES" />
+          <ScalarProperty Name="TOTAL_ADMISIONES_PENDIENTE_SV" ColumnName="TOTAL_ADMISIONES_PENDIENTE_SV" />
+          <ScalarProperty Name="TOTAL_ADMISIONES_CON_SV" ColumnName="TOTAL_ADMISIONES_CON_SV" />
+          <ScalarProperty Name="TOTAL_ADMISIONES_PENDIENTE_CONSULTA" ColumnName="TOTAL_ADMISIONES_PENDIENTE_CONSULTA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ARTICULO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.ARTICULO">
+        <MappingFragment StoreEntitySet="ARTICULO">
+          <ScalarProperty Name="U_PRINCIPIO_ACTIVO" ColumnName="U_PRINCIPIO_ACTIVO" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="U_CLAVE_PS_PUB" ColumnName="U_CLAVE_PS_PUB" />
+          <ScalarProperty Name="U_CLAVE_PROD_SERV" ColumnName="U_CLAVE_PROD_SERV" />
+          <ScalarProperty Name="U_CLAVE_UNIDAD" ColumnName="U_CLAVE_UNIDAD" />
+          <ScalarProperty Name="SUGIERE_MIN" ColumnName="SUGIERE_MIN" />
+          <ScalarProperty Name="PORC_PERCEP" ColumnName="PORC_PERCEP" />
+          <ScalarProperty Name="CALC_PERCEP" ColumnName="CALC_PERCEP" />
+          <ScalarProperty Name="CODIGO_DETRACCION_COMPRA" ColumnName="CODIGO_DETRACCION_COMPRA" />
+          <ScalarProperty Name="TIPO_DETRACCION_COMPRA" ColumnName="TIPO_DETRACCION_COMPRA" />
+          <ScalarProperty Name="CODIGO_DETRACCION_VENTA" ColumnName="CODIGO_DETRACCION_VENTA" />
+          <ScalarProperty Name="TIPO_DETRACCION_VENTA" ColumnName="TIPO_DETRACCION_VENTA" />
+          <ScalarProperty Name="CATALOGO_EXISTENCIA" ColumnName="CATALOGO_EXISTENCIA" />
+          <ScalarProperty Name="TIPO_EXISTENCIA" ColumnName="TIPO_EXISTENCIA" />
+          <ScalarProperty Name="TIENDA" ColumnName="TIENDA" />
+          <ScalarProperty Name="ITEM_HACIENDA_COMPRA" ColumnName="ITEM_HACIENDA_COMPRA" />
+          <ScalarProperty Name="CODIGO_HACIENDA" ColumnName="CODIGO_HACIENDA" />
+          <ScalarProperty Name="ITEM_HACIENDA" ColumnName="ITEM_HACIENDA" />
+          <ScalarProperty Name="SERVICIO_MEDICO" ColumnName="SERVICIO_MEDICO" />
+          <ScalarProperty Name="ES_OTRO_CARGO" ColumnName="ES_OTRO_CARGO" />
+          <ScalarProperty Name="CANASTA_BASICA" ColumnName="CANASTA_BASICA" />
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="TIPO_DOC_IVA" ColumnName="TIPO_DOC_IVA" />
+          <ScalarProperty Name="ES_IMPUESTO" ColumnName="ES_IMPUESTO" />
+          <ScalarProperty Name="OBLIGA_INCLUIR_FASE_PY" ColumnName="OBLIGA_INCLUIR_FASE_PY" />
+          <ScalarProperty Name="VALIDA_CANT_FASE_PY" ColumnName="VALIDA_CANT_FASE_PY" />
+          <ScalarProperty Name="UTILIZADO_EN_CONTRATOS" ColumnName="UTILIZADO_EN_CONTRATOS" />
+          <ScalarProperty Name="COSTO_PROM_ULTIMO_DOL" ColumnName="COSTO_PROM_ULTIMO_DOL" />
+          <ScalarProperty Name="COSTO_PROM_ULTIMO_LOC" ColumnName="COSTO_PROM_ULTIMO_LOC" />
+          <ScalarProperty Name="COSTO_PROM_COMPARATIVO_DOLAR" ColumnName="COSTO_PROM_COMPARATIVO_DOLAR" />
+          <ScalarProperty Name="COSTO_PROM_COMPARATIVO_LOC" ColumnName="COSTO_PROM_COMPARATIVO_LOC" />
+          <ScalarProperty Name="USA_CONTROL_ENVASE" ColumnName="USA_CONTROL_ENVASE" />
+          <ScalarProperty Name="ES_ENVASE" ColumnName="ES_ENVASE" />
+          <ScalarProperty Name="ARTICULO_ENVASE" ColumnName="ARTICULO_ENVASE" />
+          <ScalarProperty Name="TIPO_COSTO" ColumnName="TIPO_COSTO" />
+          <ScalarProperty Name="COLOR" ColumnName="COLOR" />
+          <ScalarProperty Name="TALLA" ColumnName="TALLA" />
+          <ScalarProperty Name="ESTILO" ColumnName="ESTILO" />
+          <ScalarProperty Name="MODELO_RETENCION" ColumnName="MODELO_RETENCION" />
+          <ScalarProperty Name="RETENCION_COMPRA" ColumnName="RETENCION_COMPRA" />
+          <ScalarProperty Name="RETENCION_VENTA" ColumnName="RETENCION_VENTA" />
+          <ScalarProperty Name="CODIGO_RETENCION" ColumnName="CODIGO_RETENCION" />
+          <ScalarProperty Name="MANUFACTURADOR" ColumnName="MANUFACTURADOR" />
+          <ScalarProperty Name="GTIN" ColumnName="GTIN" />
+          <ScalarProperty Name="PERECEDERO" ColumnName="PERECEDERO" />
+          <ScalarProperty Name="UNIDAD_VENTA" ColumnName="UNIDAD_VENTA" />
+          <ScalarProperty Name="UNIDAD_EMPAQUE" ColumnName="UNIDAD_EMPAQUE" />
+          <ScalarProperty Name="UNIDAD_ALMACEN" ColumnName="UNIDAD_ALMACEN" />
+          <ScalarProperty Name="USA_REGLAS_LOCALES" ColumnName="USA_REGLAS_LOCALES" />
+          <ScalarProperty Name="TIPO_COD_BARRA_ALM" ColumnName="TIPO_COD_BARRA_ALM" />
+          <ScalarProperty Name="TIPO_COD_BARRA_DET" ColumnName="TIPO_COD_BARRA_DET" />
+          <ScalarProperty Name="MODALIDAD_INV_FIS" ColumnName="MODALIDAD_INV_FIS" />
+          <ScalarProperty Name="USA_NUMEROS_SERIE" ColumnName="USA_NUMEROS_SERIE" />
+          <ScalarProperty Name="FCH_HORA_ULT_MODIF" ColumnName="FCH_HORA_ULT_MODIF" />
+          <ScalarProperty Name="USUARIO_ULT_MODIF" ColumnName="USUARIO_ULT_MODIF" />
+          <ScalarProperty Name="FCH_HORA_CREACION" ColumnName="FCH_HORA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="UTILIZADO_MANUFACT" ColumnName="UTILIZADO_MANUFACT" />
+          <ScalarProperty Name="NOTAS" ColumnName="NOTAS" />
+          <ScalarProperty Name="LOTE_MULTIPLO" ColumnName="LOTE_MULTIPLO" />
+          <ScalarProperty Name="PLAZO_REABAST" ColumnName="PLAZO_REABAST" />
+          <ScalarProperty Name="ORDEN_MINIMA" ColumnName="ORDEN_MINIMA" />
+          <ScalarProperty Name="ARTICULO_DEL_PROV" ColumnName="ARTICULO_DEL_PROV" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="DIAS_CUARENTENA" ColumnName="DIAS_CUARENTENA" />
+          <ScalarProperty Name="VIDA_UTIL_PROM" ColumnName="VIDA_UTIL_PROM" />
+          <ScalarProperty Name="MIN_VIDA_VENTA" ColumnName="MIN_VIDA_VENTA" />
+          <ScalarProperty Name="MIN_VIDA_CONSUMO" ColumnName="MIN_VIDA_CONSUMO" />
+          <ScalarProperty Name="MIN_VIDA_COMPRA" ColumnName="MIN_VIDA_COMPRA" />
+          <ScalarProperty Name="OBLIGA_CUARENTENA" ColumnName="OBLIGA_CUARENTENA" />
+          <ScalarProperty Name="USA_LOTES" ColumnName="USA_LOTES" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="CODIGO_BARRAS_INVT" ColumnName="CODIGO_BARRAS_INVT" />
+          <ScalarProperty Name="CODIGO_BARRAS_VENT" ColumnName="CODIGO_BARRAS_VENT" />
+          <ScalarProperty Name="FRECUENCIA_CONTEO" ColumnName="FRECUENCIA_CONTEO" />
+          <ScalarProperty Name="CLASE_ABC" ColumnName="CLASE_ABC" />
+          <ScalarProperty Name="ULTIMO_INVENTARIO" ColumnName="ULTIMO_INVENTARIO" />
+          <ScalarProperty Name="ULTIMO_INGRESO" ColumnName="ULTIMO_INGRESO" />
+          <ScalarProperty Name="ULTIMO_MOVIMIENTO" ColumnName="ULTIMO_MOVIMIENTO" />
+          <ScalarProperty Name="ULTIMA_SALIDA" ColumnName="ULTIMA_SALIDA" />
+          <ScalarProperty Name="PRECIO_BASE_DOLAR" ColumnName="PRECIO_BASE_DOLAR" />
+          <ScalarProperty Name="PRECIO_BASE_LOCAL" ColumnName="PRECIO_BASE_LOCAL" />
+          <ScalarProperty Name="COSTO_ULT_DOL" ColumnName="COSTO_ULT_DOL" />
+          <ScalarProperty Name="COSTO_ULT_LOC" ColumnName="COSTO_ULT_LOC" />
+          <ScalarProperty Name="COSTO_STD_DOL" ColumnName="COSTO_STD_DOL" />
+          <ScalarProperty Name="COSTO_STD_LOC" ColumnName="COSTO_STD_LOC" />
+          <ScalarProperty Name="COSTO_PROM_DOL" ColumnName="COSTO_PROM_DOL" />
+          <ScalarProperty Name="COSTO_PROM_LOC" ColumnName="COSTO_PROM_LOC" />
+          <ScalarProperty Name="COSTO_COMPARATIVO" ColumnName="COSTO_COMPARATIVO" />
+          <ScalarProperty Name="COSTO_FISCAL" ColumnName="COSTO_FISCAL" />
+          <ScalarProperty Name="PUNTO_DE_REORDEN" ColumnName="PUNTO_DE_REORDEN" />
+          <ScalarProperty Name="EXISTENCIA_MAXIMA" ColumnName="EXISTENCIA_MAXIMA" />
+          <ScalarProperty Name="EXISTENCIA_MINIMA" ColumnName="EXISTENCIA_MINIMA" />
+          <ScalarProperty Name="FACTOR_VENTA" ColumnName="FACTOR_VENTA" />
+          <ScalarProperty Name="FACTOR_EMPAQUE" ColumnName="FACTOR_EMPAQUE" />
+          <ScalarProperty Name="IMPUESTO" ColumnName="IMPUESTO" />
+          <ScalarProperty Name="ARTICULO_CUENTA" ColumnName="ARTICULO_CUENTA" />
+          <ScalarProperty Name="BULTOS" ColumnName="BULTOS" />
+          <ScalarProperty Name="VOLUMEN" ColumnName="VOLUMEN" />
+          <ScalarProperty Name="PESO_BRUTO" ColumnName="PESO_BRUTO" />
+          <ScalarProperty Name="PESO_NETO" ColumnName="PESO_NETO" />
+          <ScalarProperty Name="ORIGEN_CORP" ColumnName="ORIGEN_CORP" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FACTOR_CONVER_6" ColumnName="FACTOR_CONVER_6" />
+          <ScalarProperty Name="FACTOR_CONVER_5" ColumnName="FACTOR_CONVER_5" />
+          <ScalarProperty Name="FACTOR_CONVER_4" ColumnName="FACTOR_CONVER_4" />
+          <ScalarProperty Name="FACTOR_CONVER_3" ColumnName="FACTOR_CONVER_3" />
+          <ScalarProperty Name="FACTOR_CONVER_2" ColumnName="FACTOR_CONVER_2" />
+          <ScalarProperty Name="FACTOR_CONVER_1" ColumnName="FACTOR_CONVER_1" />
+          <ScalarProperty Name="CLASIFICACION_6" ColumnName="CLASIFICACION_6" />
+          <ScalarProperty Name="CLASIFICACION_5" ColumnName="CLASIFICACION_5" />
+          <ScalarProperty Name="CLASIFICACION_4" ColumnName="CLASIFICACION_4" />
+          <ScalarProperty Name="CLASIFICACION_3" ColumnName="CLASIFICACION_3" />
+          <ScalarProperty Name="CLASIFICACION_2" ColumnName="CLASIFICACION_2" />
+          <ScalarProperty Name="CLASIFICACION_1" ColumnName="CLASIFICACION_1" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="PLANTILLA_SERIE" ColumnName="PLANTILLA_SERIE" />
+          <ScalarProperty Name="ARTICULO1" ColumnName="ARTICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARTICULO_PRECIO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.ARTICULO_PRECIO">
+        <MappingFragment StoreEntitySet="ARTICULO_PRECIO">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="MARGEN_UTILIDAD_MIN" ColumnName="MARGEN_UTILIDAD_MIN" />
+          <ScalarProperty Name="USUARIO_ULT_MODIF" ColumnName="USUARIO_ULT_MODIF" />
+          <ScalarProperty Name="FECHA_ULT_MODIF" ColumnName="FECHA_ULT_MODIF" />
+          <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+          <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+          <ScalarProperty Name="MARGEN_UTILIDAD" ColumnName="MARGEN_UTILIDAD" />
+          <ScalarProperty Name="MARGEN_MULR" ColumnName="MARGEN_MULR" />
+          <ScalarProperty Name="ESQUEMA_TRABAJO" ColumnName="ESQUEMA_TRABAJO" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="VERSION_ARTICULO" ColumnName="VERSION_ARTICULO" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="NIVEL_PRECIO" ColumnName="NIVEL_PRECIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BODEGA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.BODEGA">
+        <MappingFragment StoreEntitySet="BODEGA">
+          <ScalarProperty Name="NO_STOCK_NEGATIVO" ColumnName="NO_STOCK_NEGATIVO" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="U_COORDINADAS" ColumnName="U_COORDINADAS" />
+          <ScalarProperty Name="U_SUCURSAL" ColumnName="U_SUCURSAL" />
+          <ScalarProperty Name="MERCADO_LIBRE" ColumnName="MERCADO_LIBRE" />
+          <ScalarProperty Name="CODIGO_ESTABLECIMIENTO" ColumnName="CODIGO_ESTABLECIMIENTO" />
+          <ScalarProperty Name="CONSEC_TRASLADOS" ColumnName="CONSEC_TRASLADOS" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="BODEGA1" ColumnName="BODEGA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORIA_CLIENTE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CATEGORIA_CLIENTE">
+        <MappingFragment StoreEntitySet="CATEGORIA_CLIENTE">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="CTA_COBR_DUDOSA" ColumnName="CTA_COBR_DUDOSA" />
+          <ScalarProperty Name="CTR_COBR_DUDOSA" ColumnName="CTR_COBR_DUDOSA" />
+          <ScalarProperty Name="CTA_AJUSTE_REDONDEO" ColumnName="CTA_AJUSTE_REDONDEO" />
+          <ScalarProperty Name="CTR_AJUSTE_REDONDEO" ColumnName="CTR_AJUSTE_REDONDEO" />
+          <ScalarProperty Name="CTA_VENTAS_EXEN" ColumnName="CTA_VENTAS_EXEN" />
+          <ScalarProperty Name="CTR_VENTAS_EXEN" ColumnName="CTR_VENTAS_EXEN" />
+          <ScalarProperty Name="CTA_INT_CORRIENTE" ColumnName="CTA_INT_CORRIENTE" />
+          <ScalarProperty Name="CTR_INT_CORRIENTE" ColumnName="CTR_INT_CORRIENTE" />
+          <ScalarProperty Name="CTA_DEV_VENTAS" ColumnName="CTA_DEV_VENTAS" />
+          <ScalarProperty Name="CTR_DEV_VENTAS" ColumnName="CTR_DEV_VENTAS" />
+          <ScalarProperty Name="CTA_DESC_BONIF" ColumnName="CTA_DESC_BONIF" />
+          <ScalarProperty Name="CTR_DESC_BONIF" ColumnName="CTR_DESC_BONIF" />
+          <ScalarProperty Name="CTA_ANTICIPO_CXC" ColumnName="CTA_ANTICIPO_CXC" />
+          <ScalarProperty Name="CTR_ANTICIPO_CXC" ColumnName="CTR_ANTICIPO_CXC" />
+          <ScalarProperty Name="CTA_RUBRO2_CXC" ColumnName="CTA_RUBRO2_CXC" />
+          <ScalarProperty Name="CTR_RUBRO2_CXC" ColumnName="CTR_RUBRO2_CXC" />
+          <ScalarProperty Name="CTA_RUBRO1_CXC" ColumnName="CTA_RUBRO1_CXC" />
+          <ScalarProperty Name="CTR_RUBRO1_CXC" ColumnName="CTR_RUBRO1_CXC" />
+          <ScalarProperty Name="CTA_IMPUESTO2_CXC" ColumnName="CTA_IMPUESTO2_CXC" />
+          <ScalarProperty Name="CTR_IMPUESTO2_CXC" ColumnName="CTR_IMPUESTO2_CXC" />
+          <ScalarProperty Name="CTA_IMPUESTO1_CXC" ColumnName="CTA_IMPUESTO1_CXC" />
+          <ScalarProperty Name="CTR_IMPUESTO1_CXC" ColumnName="CTR_IMPUESTO1_CXC" />
+          <ScalarProperty Name="CTA_CREDITO_CXC" ColumnName="CTA_CREDITO_CXC" />
+          <ScalarProperty Name="CTR_CREDITO_CXC" ColumnName="CTR_CREDITO_CXC" />
+          <ScalarProperty Name="CTA_DEBITO_CXC" ColumnName="CTA_DEBITO_CXC" />
+          <ScalarProperty Name="CTR_DEBITO_CXC" ColumnName="CTR_DEBITO_CXC" />
+          <ScalarProperty Name="CTA_RECIBOS_CXC" ColumnName="CTA_RECIBOS_CXC" />
+          <ScalarProperty Name="CTR_RECIBOS_CXC" ColumnName="CTR_RECIBOS_CXC" />
+          <ScalarProperty Name="CTA_INT_MORA_CXC" ColumnName="CTA_INT_MORA_CXC" />
+          <ScalarProperty Name="CTR_INT_MORA_CXC" ColumnName="CTR_INT_MORA_CXC" />
+          <ScalarProperty Name="CTA_PRONTO_PAG_CXC" ColumnName="CTA_PRONTO_PAG_CXC" />
+          <ScalarProperty Name="CTR_PRONTO_PAG_CXC" ColumnName="CTR_PRONTO_PAG_CXC" />
+          <ScalarProperty Name="CTA_CONTADO" ColumnName="CTA_CONTADO" />
+          <ScalarProperty Name="CTR_CONTADO" ColumnName="CTR_CONTADO" />
+          <ScalarProperty Name="CTA_LXC" ColumnName="CTA_LXC" />
+          <ScalarProperty Name="CTR_LXC" ColumnName="CTR_LXC" />
+          <ScalarProperty Name="CTA_CXC" ColumnName="CTA_CXC" />
+          <ScalarProperty Name="CTR_CXC" ColumnName="CTR_CXC" />
+          <ScalarProperty Name="CTA_COBR_COM" ColumnName="CTA_COBR_COM" />
+          <ScalarProperty Name="CTR_COBR_COM" ColumnName="CTR_COBR_COM" />
+          <ScalarProperty Name="CTA_VEND_COM" ColumnName="CTA_VEND_COM" />
+          <ScalarProperty Name="CTR_VEND_COM" ColumnName="CTR_VEND_COM" />
+          <ScalarProperty Name="CTA_COST_LIN" ColumnName="CTA_COST_LIN" />
+          <ScalarProperty Name="CTR_COST_LIN" ColumnName="CTR_COST_LIN" />
+          <ScalarProperty Name="CTA_DESC_LIN" ColumnName="CTA_DESC_LIN" />
+          <ScalarProperty Name="CTR_DESC_LIN" ColumnName="CTR_DESC_LIN" />
+          <ScalarProperty Name="CTA_COST_VENT" ColumnName="CTA_COST_VENT" />
+          <ScalarProperty Name="CTR_COST_VENT" ColumnName="CTR_COST_VENT" />
+          <ScalarProperty Name="CTA_DESC_GRAL" ColumnName="CTA_DESC_GRAL" />
+          <ScalarProperty Name="CTR_DESC_GRAL" ColumnName="CTR_DESC_GRAL" />
+          <ScalarProperty Name="CTA_VENTAS" ColumnName="CTA_VENTAS" />
+          <ScalarProperty Name="CTR_VENTAS" ColumnName="CTR_VENTAS" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CATEGORIA_CLIENTE1" ColumnName="CATEGORIA_CLIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLASIFICACION">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CLASIFICACION">
+        <MappingFragment StoreEntitySet="CLASIFICACION">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="UNIDAD_MEDIDA" ColumnName="UNIDAD_MEDIDA" />
+          <ScalarProperty Name="TIPO_CODIGO_BARRAS" ColumnName="TIPO_CODIGO_BARRAS" />
+          <ScalarProperty Name="APORTE_CODIGO" ColumnName="APORTE_CODIGO" />
+          <ScalarProperty Name="PLANTILLA_SERIE" ColumnName="PLANTILLA_SERIE" />
+          <ScalarProperty Name="USA_NUMEROS_SERIE" ColumnName="USA_NUMEROS_SERIE" />
+          <ScalarProperty Name="AGRUPACION" ColumnName="AGRUPACION" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CLASIFICACION1" ColumnName="CLASIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="PDB_EXPORTADORES" ColumnName="PDB_EXPORTADORES" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="U_TIPO_RECEPTOR" ColumnName="U_TIPO_RECEPTOR" />
+          <ScalarProperty Name="SUJETO_PORCE_SUNAT" ColumnName="SUJETO_PORCE_SUNAT" />
+          <ScalarProperty Name="ES_BUEN_CONTRIBUYENTE" ColumnName="ES_BUEN_CONTRIBUYENTE" />
+          <ScalarProperty Name="ES_AGENTE_PERCEPCION" ColumnName="ES_AGENTE_PERCEPCION" />
+          <ScalarProperty Name="BANCO_NACION" ColumnName="BANCO_NACION" />
+          <ScalarProperty Name="METODO_PAGO" ColumnName="METODO_PAGO" />
+          <ScalarProperty Name="TIPO_PERSONERIA" ColumnName="TIPO_PERSONERIA" />
+          <ScalarProperty Name="TIPO_GENERAR" ColumnName="TIPO_GENERAR" />
+          <ScalarProperty Name="USO_CFDI" ColumnName="USO_CFDI" />
+          <ScalarProperty Name="XSLT_PERSONALIZADO_CREDITO" ColumnName="XSLT_PERSONALIZADO_CREDITO" />
+          <ScalarProperty Name="ITEM_HACIENDA" ColumnName="ITEM_HACIENDA" />
+          <ScalarProperty Name="ES_EXTRANJERO" ColumnName="ES_EXTRANJERO" />
+          <ScalarProperty Name="AFECTACION_IVA" ColumnName="AFECTACION_IVA" />
+          <ScalarProperty Name="TIPIFICACION_CLIENTE" ColumnName="TIPIFICACION_CLIENTE" />
+          <ScalarProperty Name="PORC_TARIFA" ColumnName="PORC_TARIFA" />
+          <ScalarProperty Name="TIPO_TARIFA" ColumnName="TIPO_TARIFA" />
+          <ScalarProperty Name="TIPO_IMPUESTO" ColumnName="TIPO_IMPUESTO" />
+          <ScalarProperty Name="PASS_API_RECEPCION" ColumnName="PASS_API_RECEPCION" />
+          <ScalarProperty Name="USER_API_RECEPCION" ColumnName="USER_API_RECEPCION" />
+          <ScalarProperty Name="USA_API_RECEPCION" ColumnName="USA_API_RECEPCION" />
+          <ScalarProperty Name="API_RECEPCION_DE" ColumnName="API_RECEPCION_DE" />
+          <ScalarProperty Name="SUBTIPODOC" ColumnName="SUBTIPODOC" />
+          <ScalarProperty Name="OTRAS_SENAS" ColumnName="OTRAS_SENAS" />
+          <ScalarProperty Name="DIVISION_GEOGRAFICA4" ColumnName="DIVISION_GEOGRAFICA4" />
+          <ScalarProperty Name="DIVISION_GEOGRAFICA3" ColumnName="DIVISION_GEOGRAFICA3" />
+          <ScalarProperty Name="GEO_LONGITUD" ColumnName="GEO_LONGITUD" />
+          <ScalarProperty Name="GEO_LATITUD" ColumnName="GEO_LATITUD" />
+          <ScalarProperty Name="NOMBRE_ADDENDA" ColumnName="NOMBRE_ADDENDA" />
+          <ScalarProperty Name="XSLT_PERSONALIZADO" ColumnName="XSLT_PERSONALIZADO" />
+          <ScalarProperty Name="DETALLAR_KITS" ColumnName="DETALLAR_KITS" />
+          <ScalarProperty Name="EMAIL_DOC_ELECTRONICO_COPIA" ColumnName="EMAIL_DOC_ELECTRONICO_COPIA" />
+          <ScalarProperty Name="FCH_HORA_ULT_MOD" ColumnName="FCH_HORA_ULT_MOD" />
+          <ScalarProperty Name="USUARIO_ULT_MOD" ColumnName="USUARIO_ULT_MOD" />
+          <ScalarProperty Name="FECHA_HORA_CREACION" ColumnName="FECHA_HORA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="CURP" ColumnName="CURP" />
+          <ScalarProperty Name="PARTICIPA_FLUJOCAJA" ColumnName="PARTICIPA_FLUJOCAJA" />
+          <ScalarProperty Name="PERMITE_DOC_GP" ColumnName="PERMITE_DOC_GP" />
+          <ScalarProperty Name="SALDO_TRANS_DOLAR" ColumnName="SALDO_TRANS_DOLAR" />
+          <ScalarProperty Name="SALDO_TRANS_LOCAL" ColumnName="SALDO_TRANS_LOCAL" />
+          <ScalarProperty Name="SALDO_TRANS" ColumnName="SALDO_TRANS" />
+          <ScalarProperty Name="MODIF_NOMB_EN_FAC" ColumnName="MODIF_NOMB_EN_FAC" />
+          <ScalarProperty Name="MOROSO" ColumnName="MOROSO" />
+          <ScalarProperty Name="REGIMEN_TRIB" ColumnName="REGIMEN_TRIB" />
+          <ScalarProperty Name="DIVISION_GEOGRAFICA2" ColumnName="DIVISION_GEOGRAFICA2" />
+          <ScalarProperty Name="DIVISION_GEOGRAFICA1" ColumnName="DIVISION_GEOGRAFICA1" />
+          <ScalarProperty Name="CODIGO_IMPUESTO" ColumnName="CODIGO_IMPUESTO" />
+          <ScalarProperty Name="EMAIL_ERROR_PED_EDI" ColumnName="EMAIL_ERROR_PED_EDI" />
+          <ScalarProperty Name="NOTIFICAR_ERROR_EDI" ColumnName="NOTIFICAR_ERROR_EDI" />
+          <ScalarProperty Name="ACEPTA_DOC_EDI" ColumnName="ACEPTA_DOC_EDI" />
+          <ScalarProperty Name="EMAIL_PED_EDI" ColumnName="EMAIL_PED_EDI" />
+          <ScalarProperty Name="EMAIL_DOC_ELECTRONICO" ColumnName="EMAIL_DOC_ELECTRONICO" />
+          <ScalarProperty Name="CONFIRMA_DOC_ELECTRONICO" ColumnName="CONFIRMA_DOC_ELECTRONICO" />
+          <ScalarProperty Name="ACEPTA_DOC_ELECTRONICO" ColumnName="ACEPTA_DOC_ELECTRONICO" />
+          <ScalarProperty Name="MODELO_RETENCION" ColumnName="MODELO_RETENCION" />
+          <ScalarProperty Name="RUBRO20_CLIENTE" ColumnName="RUBRO20_CLIENTE" />
+          <ScalarProperty Name="RUBRO19_CLIENTE" ColumnName="RUBRO19_CLIENTE" />
+          <ScalarProperty Name="RUBRO18_CLIENTE" ColumnName="RUBRO18_CLIENTE" />
+          <ScalarProperty Name="RUBRO17_CLIENTE" ColumnName="RUBRO17_CLIENTE" />
+          <ScalarProperty Name="RUBRO16_CLIENTE" ColumnName="RUBRO16_CLIENTE" />
+          <ScalarProperty Name="RUBRO15_CLIENTE" ColumnName="RUBRO15_CLIENTE" />
+          <ScalarProperty Name="RUBRO14_CLIENTE" ColumnName="RUBRO14_CLIENTE" />
+          <ScalarProperty Name="RUBRO13_CLIENTE" ColumnName="RUBRO13_CLIENTE" />
+          <ScalarProperty Name="RUBRO12_CLIENTE" ColumnName="RUBRO12_CLIENTE" />
+          <ScalarProperty Name="RUBRO11_CLIENTE" ColumnName="RUBRO11_CLIENTE" />
+          <ScalarProperty Name="TIPO_CONTRIBUYENTE" ColumnName="TIPO_CONTRIBUYENTE" />
+          <ScalarProperty Name="LOCAL" ColumnName="LOCAL" />
+          <ScalarProperty Name="CLASE_DOCUMENTO" ColumnName="CLASE_DOCUMENTO" />
+          <ScalarProperty Name="UBICACION" ColumnName="UBICACION" />
+          <ScalarProperty Name="GLN" ColumnName="GLN" />
+          <ScalarProperty Name="AJUSTE_FECHA_COBRO" ColumnName="AJUSTE_FECHA_COBRO" />
+          <ScalarProperty Name="DIAS_DE_COBRO" ColumnName="DIAS_DE_COBRO" />
+          <ScalarProperty Name="USAR_EXENCIMP_CORP" ColumnName="USAR_EXENCIMP_CORP" />
+          <ScalarProperty Name="USAR_PRECIOS_CORP" ColumnName="USAR_PRECIOS_CORP" />
+          <ScalarProperty Name="RUBRO10_CLIENTE" ColumnName="RUBRO10_CLIENTE" />
+          <ScalarProperty Name="RUBRO9_CLIENTE" ColumnName="RUBRO9_CLIENTE" />
+          <ScalarProperty Name="RUBRO8_CLIENTE" ColumnName="RUBRO8_CLIENTE" />
+          <ScalarProperty Name="RUBRO7_CLIENTE" ColumnName="RUBRO7_CLIENTE" />
+          <ScalarProperty Name="RUBRO6_CLIENTE" ColumnName="RUBRO6_CLIENTE" />
+          <ScalarProperty Name="RUBRO5_CLIENTE" ColumnName="RUBRO5_CLIENTE" />
+          <ScalarProperty Name="RUBRO4_CLIENTE" ColumnName="RUBRO4_CLIENTE" />
+          <ScalarProperty Name="ASOCOBLIGCONTFACT" ColumnName="ASOCOBLIGCONTFACT" />
+          <ScalarProperty Name="RUBRO5_CLI" ColumnName="RUBRO5_CLI" />
+          <ScalarProperty Name="RUBRO4_CLI" ColumnName="RUBRO4_CLI" />
+          <ScalarProperty Name="RUBRO3_CLI" ColumnName="RUBRO3_CLI" />
+          <ScalarProperty Name="RUBRO2_CLI" ColumnName="RUBRO2_CLI" />
+          <ScalarProperty Name="RUBRO1_CLI" ColumnName="RUBRO1_CLI" />
+          <ScalarProperty Name="DIAS_PROMED_ATRASO" ColumnName="DIAS_PROMED_ATRASO" />
+          <ScalarProperty Name="NOTAS" ColumnName="NOTAS" />
+          <ScalarProperty Name="TIENE_CONVENIO" ColumnName="TIENE_CONVENIO" />
+          <ScalarProperty Name="RUBRO3_CLIENTE" ColumnName="RUBRO3_CLIENTE" />
+          <ScalarProperty Name="RUBRO2_CLIENTE" ColumnName="RUBRO2_CLIENTE" />
+          <ScalarProperty Name="RUBRO1_CLIENTE" ColumnName="RUBRO1_CLIENTE" />
+          <ScalarProperty Name="DOC_A_GENERAR" ColumnName="DOC_A_GENERAR" />
+          <ScalarProperty Name="USAR_DESC_CORP" ColumnName="USAR_DESC_CORP" />
+          <ScalarProperty Name="VERIF_LIMCRED_CORP" ColumnName="VERIF_LIMCRED_CORP" />
+          <ScalarProperty Name="APLICAC_ABIERTAS" ColumnName="APLICAC_ABIERTAS" />
+          <ScalarProperty Name="USAR_DIREMB_CORP" ColumnName="USAR_DIREMB_CORP" />
+          <ScalarProperty Name="REGISTRARDOCSACORP" ColumnName="REGISTRARDOCSACORP" />
+          <ScalarProperty Name="CLI_CORPORAC_ASOC" ColumnName="CLI_CORPORAC_ASOC" />
+          <ScalarProperty Name="ES_CORPORACION" ColumnName="ES_CORPORACION" />
+          <ScalarProperty Name="REQUIERE_OC" ColumnName="REQUIERE_OC" />
+          <ScalarProperty Name="E_MAIL" ColumnName="E_MAIL" />
+          <ScalarProperty Name="FECHA_VENCE_TARJ" ColumnName="FECHA_VENCE_TARJ" />
+          <ScalarProperty Name="TIPO_TARJETA" ColumnName="TIPO_TARJETA" />
+          <ScalarProperty Name="TARJETA_CREDITO" ColumnName="TARJETA_CREDITO" />
+          <ScalarProperty Name="USA_TARJETA" ColumnName="USA_TARJETA" />
+          <ScalarProperty Name="DIAS_ABASTECIMIEN" ColumnName="DIAS_ABASTECIMIEN" />
+          <ScalarProperty Name="CLASE_ABC" ColumnName="CLASE_ABC" />
+          <ScalarProperty Name="CATEGORIA_CLIENTE" ColumnName="CATEGORIA_CLIENTE" />
+          <ScalarProperty Name="COBRO_JUDICIAL" ColumnName="COBRO_JUDICIAL" />
+          <ScalarProperty Name="EXENCION_IMP2" ColumnName="EXENCION_IMP2" />
+          <ScalarProperty Name="EXENCION_IMP1" ColumnName="EXENCION_IMP1" />
+          <ScalarProperty Name="EXENTO_IMPUESTOS" ColumnName="EXENTO_IMPUESTOS" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="ACEPTA_FRACCIONES" ColumnName="ACEPTA_FRACCIONES" />
+          <ScalarProperty Name="COBRADOR" ColumnName="COBRADOR" />
+          <ScalarProperty Name="VENDEDOR" ColumnName="VENDEDOR" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+          <ScalarProperty Name="ZONA" ColumnName="ZONA" />
+          <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+          <ScalarProperty Name="ACEPTA_BACKORDER" ColumnName="ACEPTA_BACKORDER" />
+          <ScalarProperty Name="MONEDA_NIVEL" ColumnName="MONEDA_NIVEL" />
+          <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
+          <ScalarProperty Name="NIVEL_PRECIO" ColumnName="NIVEL_PRECIO" />
+          <ScalarProperty Name="CONDICION_PAGO" ColumnName="CONDICION_PAGO" />
+          <ScalarProperty Name="FECHA_ULT_MOV" ColumnName="FECHA_ULT_MOV" />
+          <ScalarProperty Name="FECHA_ULT_MORA" ColumnName="FECHA_ULT_MORA" />
+          <ScalarProperty Name="TASA_INTERES_MORA" ColumnName="TASA_INTERES_MORA" />
+          <ScalarProperty Name="TASA_INTERES" ColumnName="TASA_INTERES" />
+          <ScalarProperty Name="EXCEDER_LIMITE" ColumnName="EXCEDER_LIMITE" />
+          <ScalarProperty Name="LIMITE_CREDITO" ColumnName="LIMITE_CREDITO" />
+          <ScalarProperty Name="SALDO_NOCARGOS" ColumnName="SALDO_NOCARGOS" />
+          <ScalarProperty Name="SALDO_CREDITO" ColumnName="SALDO_CREDITO" />
+          <ScalarProperty Name="SALDO_DOLAR" ColumnName="SALDO_DOLAR" />
+          <ScalarProperty Name="SALDO_LOCAL" ColumnName="SALDO_LOCAL" />
+          <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="MULTIMONEDA" ColumnName="MULTIMONEDA" />
+          <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+          <ScalarProperty Name="CONTRIBUYENTE" ColumnName="CONTRIBUYENTE" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="TELEFONO2" ColumnName="TELEFONO2" />
+          <ScalarProperty Name="TELEFONO1" ColumnName="TELEFONO1" />
+          <ScalarProperty Name="DIR_EMB_DEFAULT" ColumnName="DIR_EMB_DEFAULT" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+          <ScalarProperty Name="CONTACTO" ColumnName="CONTACTO" />
+          <ScalarProperty Name="ALIAS" ColumnName="ALIAS" />
+          <ScalarProperty Name="DETALLE_DIRECCION" ColumnName="DETALLE_DIRECCION" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CLIENTE1" ColumnName="CLIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE_VENDEDOR">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CLIENTE_VENDEDOR">
+        <MappingFragment StoreEntitySet="CLIENTE_VENDEDOR">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="VENDEDOR" ColumnName="VENDEDOR" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COBRADOR">
+      <EntityTypeMapping TypeName="ModeloHospitalario.COBRADOR">
+        <MappingFragment StoreEntitySet="COBRADOR">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="E_MAIL" ColumnName="E_MAIL" />
+          <ScalarProperty Name="CTA_COMISION" ColumnName="CTA_COMISION" />
+          <ScalarProperty Name="CTR_COMISION" ColumnName="CTR_COMISION" />
+          <ScalarProperty Name="COMISION" ColumnName="COMISION" />
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="COBRADOR1" ColumnName="COBRADOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONDICION_PAGO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CONDICION_PAGO">
+        <MappingFragment StoreEntitySet="CONDICION_PAGO">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="U_PLAZO_PAGO" ColumnName="U_PLAZO_PAGO" />
+          <ScalarProperty Name="U_FORMA_PAGO" ColumnName="U_FORMA_PAGO" />
+          <ScalarProperty Name="U_METODO_PAGO" ColumnName="U_METODO_PAGO" />
+          <ScalarProperty Name="CONDICION_VENTA" ColumnName="CONDICION_VENTA" />
+          <ScalarProperty Name="USA_DIFERIDO" ColumnName="USA_DIFERIDO" />
+          <ScalarProperty Name="TIPO_DIFERIDO" ColumnName="TIPO_DIFERIDO" />
+          <ScalarProperty Name="PLAZO_CONDPAGO" ColumnName="PLAZO_CONDPAGO" />
+          <ScalarProperty Name="TIPO_CONDPAGO" ColumnName="TIPO_CONDPAGO" />
+          <ScalarProperty Name="DESCUENTO_CONTADO" ColumnName="DESCUENTO_CONTADO" />
+          <ScalarProperty Name="PAGOS_PARCIALES" ColumnName="PAGOS_PARCIALES" />
+          <ScalarProperty Name="DIAS_NETO" ColumnName="DIAS_NETO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CONDICION_PAGO1" ColumnName="CONDICION_PAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONSECUTIVO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CONSECUTIVO">
+        <MappingFragment StoreEntitySet="CONSECUTIVO">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="USA_IMP_FISCAL" ColumnName="USA_IMP_FISCAL" />
+          <ScalarProperty Name="CONSECUTIVO_NC" ColumnName="CONSECUTIVO_NC" />
+          <ScalarProperty Name="FECHA_HORA_ULT" ColumnName="FECHA_HORA_ULT" />
+          <ScalarProperty Name="ULTIMO_USUARIO" ColumnName="ULTIMO_USUARIO" />
+          <ScalarProperty Name="ULTIMO_VALOR" ColumnName="ULTIMO_VALOR" />
+          <ScalarProperty Name="VALOR_FINAL" ColumnName="VALOR_FINAL" />
+          <ScalarProperty Name="VALOR_INICIAL" ColumnName="VALOR_INICIAL" />
+          <ScalarProperty Name="MASCARA" ColumnName="MASCARA" />
+          <ScalarProperty Name="FORMATO_IMPRESION_RESUMIDO" ColumnName="FORMATO_IMPRESION_RESUMIDO" />
+          <ScalarProperty Name="FORMATO_IMPRESION_DETALLADO" ColumnName="FORMATO_IMPRESION_DETALLADO" />
+          <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+          <ScalarProperty Name="ENTIDAD" ColumnName="ENTIDAD" />
+          <ScalarProperty Name="LONGITUD" ColumnName="LONGITUD" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CONSECUTIVO1" ColumnName="CONSECUTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONSECUTIVO_FA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CONSECUTIVO_FA">
+        <MappingFragment StoreEntitySet="CONSECUTIVO_FA">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="MATRICULA_MERCANTIL" ColumnName="MATRICULA_MERCANTIL" />
+          <ScalarProperty Name="DE_CC_RPT" ColumnName="DE_CC_RPT" />
+          <ScalarProperty Name="VALOR_INICIAL" ColumnName="VALOR_INICIAL" />
+          <ScalarProperty Name="DE_CONS_RPT" ColumnName="DE_CONS_RPT" />
+          <ScalarProperty Name="SERIE" ColumnName="SERIE" />
+          <ScalarProperty Name="RESOLUCION" ColumnName="RESOLUCION" />
+          <ScalarProperty Name="REIMPRESION" ColumnName="REIMPRESION" />
+          <ScalarProperty Name="COPIA5" ColumnName="COPIA5" />
+          <ScalarProperty Name="COPIA4" ColumnName="COPIA4" />
+          <ScalarProperty Name="COPIA3" ColumnName="COPIA3" />
+          <ScalarProperty Name="COPIA2" ColumnName="COPIA2" />
+          <ScalarProperty Name="COPIA1" ColumnName="COPIA1" />
+          <ScalarProperty Name="ORIGINAL" ColumnName="ORIGINAL" />
+          <ScalarProperty Name="NUMERO_COPIAS" ColumnName="NUMERO_COPIAS" />
+          <ScalarProperty Name="VALOR_MAXIMO" ColumnName="VALOR_MAXIMO" />
+          <ScalarProperty Name="USA_ESQUEMA_CAJAS" ColumnName="USA_ESQUEMA_CAJAS" />
+          <ScalarProperty Name="USA_DESPACHOS" ColumnName="USA_DESPACHOS" />
+          <ScalarProperty Name="FORMATO" ColumnName="FORMATO" />
+          <ScalarProperty Name="FECHA_HORA_ULT" ColumnName="FECHA_HORA_ULT" />
+          <ScalarProperty Name="MASCARA" ColumnName="MASCARA" />
+          <ScalarProperty Name="VALOR_CONSECUTIVO" ColumnName="VALOR_CONSECUTIVO" />
+          <ScalarProperty Name="LONGITUD" ColumnName="LONGITUD" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="USUARIO_ULT" ColumnName="USUARIO_ULT" />
+          <ScalarProperty Name="CODIGO_CONSECUTIVO" ColumnName="CODIGO_CONSECUTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_ACCIONES">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_ACCIONES">
+        <MappingFragment StoreEntitySet="CS_ACCIONES">
+          <ScalarProperty Name="LINK" ColumnName="LINK" />
+          <ScalarProperty Name="ACCIONES" ColumnName="ACCIONES" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_ADMISION">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_ADMISION">
+        <MappingFragment StoreEntitySet="CS_ADMISION">
+          <ScalarProperty Name="REMITIDO" ColumnName="REMITIDO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="DOCTOR_ID" ColumnName="DOCTOR_ID" />
+          <ScalarProperty Name="SIGNOS_VITALES" ColumnName="SIGNOS_VITALES" />
+          <ScalarProperty Name="TIPO_ALTA" ColumnName="TIPO_ALTA" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="ATENDIDO" ColumnName="ATENDIDO" />
+          <ScalarProperty Name="NUM_AFILIADO" ColumnName="NUM_AFILIADO" />
+          <ScalarProperty Name="TIPO_SEGURO" ColumnName="TIPO_SEGURO" />
+          <ScalarProperty Name="FINANCIADOR" ColumnName="FINANCIADOR" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="ASEGURADO" ColumnName="ASEGURADO" />
+          <ScalarProperty Name="FECHA_RECEPCION" ColumnName="FECHA_RECEPCION" />
+          <ScalarProperty Name="AREA_SERVICIO_ID" ColumnName="AREA_SERVICIO_ID" />
+          <ScalarProperty Name="NIVEL_EMERGENCIA" ColumnName="NIVEL_EMERGENCIA" />
+          <ScalarProperty Name="TIPO_INGRESO_ID" ColumnName="TIPO_INGRESO_ID" />
+          <ScalarProperty Name="MOTIVO" ColumnName="MOTIVO" />
+          <ScalarProperty Name="CAUSA_ADMISION_ID" ColumnName="CAUSA_ADMISION_ID" />
+          <ScalarProperty Name="PRIORIDAD_ID" ColumnName="PRIORIDAD_ID" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="ID_ADMISION" ColumnName="ID_ADMISION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_ADMISION_EGY">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_ADMISION_EGY">
+        <MappingFragment StoreEntitySet="CS_ADMISION_EGY">
+          <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="DOCTOR_ID" ColumnName="DOCTOR_ID" />
+          <ScalarProperty Name="SIGNOS_VITALES" ColumnName="SIGNOS_VITALES" />
+          <ScalarProperty Name="TIPO_ALTA" ColumnName="TIPO_ALTA" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="ATENDIDO" ColumnName="ATENDIDO" />
+          <ScalarProperty Name="NUM_AFILIADO" ColumnName="NUM_AFILIADO" />
+          <ScalarProperty Name="TIPO_SEGURO" ColumnName="TIPO_SEGURO" />
+          <ScalarProperty Name="FINANCIADOR" ColumnName="FINANCIADOR" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="ASEGURADO" ColumnName="ASEGURADO" />
+          <ScalarProperty Name="FECHA_RECEPCION" ColumnName="FECHA_RECEPCION" />
+          <ScalarProperty Name="AREA_SERVICIO_ID" ColumnName="AREA_SERVICIO_ID" />
+          <ScalarProperty Name="NIVEL_EMERGENCIA" ColumnName="NIVEL_EMERGENCIA" />
+          <ScalarProperty Name="TIPO_INGRESO_ID" ColumnName="TIPO_INGRESO_ID" />
+          <ScalarProperty Name="MOTIVO" ColumnName="MOTIVO" />
+          <ScalarProperty Name="CAUSA_ADMISION_ID" ColumnName="CAUSA_ADMISION_ID" />
+          <ScalarProperty Name="PRIORIDAD_ID" ColumnName="PRIORIDAD_ID" />
+          <ScalarProperty Name="PACIENTE_ID" ColumnName="PACIENTE_ID" />
+          <ScalarProperty Name="ADMISION_EGY" ColumnName="ADMISION_EGY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_ADT">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_ADT">
+        <MappingFragment StoreEntitySet="CS_ADT">
+          <ScalarProperty Name="USUARIO_ALTA" ColumnName="USUARIO_ALTA" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="TIPO_ALTA" ColumnName="TIPO_ALTA" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+          <ScalarProperty Name="CAMA" ColumnName="CAMA" />
+          <ScalarProperty Name="CUARTO" ColumnName="CUARTO" />
+          <ScalarProperty Name="ESTACION_ENFERMERIA" ColumnName="ESTACION_ENFERMERIA" />
+          <ScalarProperty Name="FECHA_APLICACION" ColumnName="FECHA_APLICACION" />
+          <ScalarProperty Name="USUARIO_APLICACION" ColumnName="USUARIO_APLICACION" />
+          <ScalarProperty Name="FECHA_SOLICITUD" ColumnName="FECHA_SOLICITUD" />
+          <ScalarProperty Name="USUARIO_SOLICITUD" ColumnName="USUARIO_SOLICITUD" />
+          <ScalarProperty Name="NOTA" ColumnName="NOTA" />
+          <ScalarProperty Name="TIPO_ADT" ColumnName="TIPO_ADT" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="ID_ADT" ColumnName="ID_ADT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_CAMA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_CAMA">
+        <MappingFragment StoreEntitySet="CS_CAMA">
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ID_HABITACION" ColumnName="ID_HABITACION" />
+          <ScalarProperty Name="COD_CAMA" ColumnName="COD_CAMA" />
+          <ScalarProperty Name="ID_CAMA" ColumnName="ID_CAMA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_CIE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_CIE">
+        <MappingFragment StoreEntitySet="CS_CIE">
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="GRP" ColumnName="GRP" />
+          <ScalarProperty Name="DEC" ColumnName="DEC" />
+          <ScalarProperty Name="COD_CIE" ColumnName="COD_CIE" />
+          <ScalarProperty Name="ID_CIE" ColumnName="ID_CIE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_CITA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_CITA">
+        <MappingFragment StoreEntitySet="CS_CITA">
+          <ScalarProperty Name="REMITIDO_ID" ColumnName="REMITIDO_ID" />
+          <ScalarProperty Name="FECHA_HORA_SALIDA_PAC" ColumnName="FECHA_HORA_SALIDA_PAC" />
+          <ScalarProperty Name="FECHA_HORA_ENTRADA_PAC" ColumnName="FECHA_HORA_ENTRADA_PAC" />
+          <ScalarProperty Name="FECHA_HORA_LLEGADA_PAC" ColumnName="FECHA_HORA_LLEGADA_PAC" />
+          <ScalarProperty Name="MEDICO_ID" ColumnName="MEDICO_ID" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+          <ScalarProperty Name="NUM_QUIROFANO" ColumnName="NUM_QUIROFANO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+          <ScalarProperty Name="RECURSO_ID" ColumnName="RECURSO_ID" />
+          <ScalarProperty Name="TIPO_SERVICIO_ID" ColumnName="TIPO_SERVICIO_ID" />
+          <ScalarProperty Name="AREA_SERVICIO_ID" ColumnName="AREA_SERVICIO_ID" />
+          <ScalarProperty Name="FECHA_FIN_ATENCION" ColumnName="FECHA_FIN_ATENCION" />
+          <ScalarProperty Name="FECHA_INICIO_ATENCION" ColumnName="FECHA_INICIO_ATENCION" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="ID_CITA" ColumnName="ID_CITA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_CONSULTAS">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_CONSULTAS">
+        <MappingFragment StoreEntitySet="CS_CONSULTAS">
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="ID_ADMISION" ColumnName="ID_ADMISION" />
+          <ScalarProperty Name="AREA_SERVICIO_ID" ColumnName="AREA_SERVICIO_ID" />
+          <ScalarProperty Name="EXAMEN_FISICO" ColumnName="EXAMEN_FISICO" />
+          <ScalarProperty Name="ANTECEDENTE" ColumnName="ANTECEDENTE" />
+          <ScalarProperty Name="RAZON_CONSULTA" ColumnName="RAZON_CONSULTA" />
+          <ScalarProperty Name="DOCTOR_ID" ColumnName="DOCTOR_ID" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="NUM_CONSULTA" ColumnName="NUM_CONSULTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_CONTACTOS">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_CONTACTOS">
+        <MappingFragment StoreEntitySet="CS_CONTACTOS">
+          <ScalarProperty Name="FECHA_MODIFICA" ColumnName="FECHA_MODIFICA" />
+          <ScalarProperty Name="USUARIO_MODIFICA" ColumnName="USUARIO_MODIFICA" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRA" ColumnName="USUARIO_REGISTRA" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="ID_PARENTESCO" ColumnName="ID_PARENTESCO" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="TEL_CONT_2" ColumnName="TEL_CONT_2" />
+          <ScalarProperty Name="TEL_CONT_1" ColumnName="TEL_CONT_1" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="ID_CONTACTO" ColumnName="ID_CONTACTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_CONTROL_ACCION_DETALLE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_CONTROL_ACCION_DETALLE">
+        <MappingFragment StoreEntitySet="CS_CONTROL_ACCION_DETALLE">
+          <ScalarProperty Name="ID_CAT_DETALLE" ColumnName="ID_CAT_DETALLE" />
+          <ScalarProperty Name="ID_ROL_USER" ColumnName="ID_ROL_USER" />
+          <ScalarProperty Name="ID_ACCION" ColumnName="ID_ACCION" />
+          <ScalarProperty Name="ID_CONTROLADOR" ColumnName="ID_CONTROLADOR" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_CONTROLADOR">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_CONTROLADOR">
+        <MappingFragment StoreEntitySet="CS_CONTROLADOR">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CARPETA" ColumnName="CARPETA" />
+          <ScalarProperty Name="CONTROLADOR" ColumnName="CONTROLADOR" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_DEFINICION_PROC_IMAGEN">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_DEFINICION_PROC_IMAGEN">
+        <MappingFragment StoreEntitySet="CS_DEFINICION_PROC_IMAGEN">
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="DEF_IMG" ColumnName="DEF_IMG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_DIAGNOSTICO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_DIAGNOSTICO">
+        <MappingFragment StoreEntitySet="CS_DIAGNOSTICO">
+          <ScalarProperty Name="DIAGNOSTICO_MANUAL" ColumnName="DIAGNOSTICO_MANUAL" />
+          <ScalarProperty Name="TIPO_SERVICIO" ColumnName="TIPO_SERVICIO" />
+          <ScalarProperty Name="TRATAMIENTO" ColumnName="TRATAMIENTO" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="ID_ADMISION" ColumnName="ID_ADMISION" />
+          <ScalarProperty Name="ID_DIAGNOSTICO" ColumnName="ID_DIAGNOSTICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_DIAGNOSTICO_DETALLE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_DIAGNOSTICO_DETALLE">
+        <MappingFragment StoreEntitySet="CS_DIAGNOSTICO_DETALLE">
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="ID_DIAGNOSTICO" ColumnName="ID_DIAGNOSTICO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="COD_CIE" ColumnName="COD_CIE" />
+          <ScalarProperty Name="ID_CIE" ColumnName="ID_CIE" />
+          <ScalarProperty Name="ID_DIAGNOSTICO_DETALLE" ColumnName="ID_DIAGNOSTICO_DETALLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_DIETA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_DIETA">
+        <MappingFragment StoreEntitySet="CS_DIETA">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+          <ScalarProperty Name="CAMA" ColumnName="CAMA" />
+          <ScalarProperty Name="CUARTO" ColumnName="CUARTO" />
+          <ScalarProperty Name="CARACTERISTICA" ColumnName="CARACTERISTICA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="NUM_DIETA" ColumnName="NUM_DIETA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_EMERGENCIA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_EMERGENCIA">
+        <MappingFragment StoreEntitySet="CS_EMERGENCIA">
+          <ScalarProperty Name="CLIENTE_EGY" ColumnName="CLIENTE_EGY" />
+          <ScalarProperty Name="PEDIDO_EGY" ColumnName="PEDIDO_EGY" />
+          <ScalarProperty Name="ADMISION_EGY" ColumnName="ADMISION_EGY" />
+          <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="TIPO_ALTA" ColumnName="TIPO_ALTA" />
+          <ScalarProperty Name="TRANSFERENCIA" ColumnName="TRANSFERENCIA" />
+          <ScalarProperty Name="TRIAGE" ColumnName="TRIAGE" />
+          <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+          <ScalarProperty Name="ADMISION_ID" ColumnName="ADMISION_ID" />
+          <ScalarProperty Name="NIVEL_EMERGENCIA" ColumnName="NIVEL_EMERGENCIA" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="EMERGENCIA" ColumnName="EMERGENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_EQUIPO_QX">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_EQUIPO_QX">
+        <MappingFragment StoreEntitySet="CS_EQUIPO_QX">
+          <ScalarProperty Name="ROL" ColumnName="ROL" />
+          <ScalarProperty Name="PERSONAL_ID" ColumnName="PERSONAL_ID" />
+          <ScalarProperty Name="ID_EQUIPO" ColumnName="ID_EQUIPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_ESTACION">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_ESTACION">
+        <MappingFragment StoreEntitySet="CS_ESTACION">
+          <ScalarProperty Name="TRASPASO" ColumnName="TRASPASO" />
+          <ScalarProperty Name="SOLICITUD" ColumnName="SOLICITUD" />
+          <ScalarProperty Name="EMERGENCIA" ColumnName="EMERGENCIA" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+          <ScalarProperty Name="ESTACION_ENFERMERIA" ColumnName="ESTACION_ENFERMERIA" />
+          <ScalarProperty Name="CUARTO" ColumnName="CUARTO" />
+          <ScalarProperty Name="CAMA" ColumnName="CAMA" />
+          <ScalarProperty Name="ID_ADMISION" ColumnName="ID_ADMISION" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_ESTACION_ENFERMERIA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_ESTACION_ENFERMERIA">
+        <MappingFragment StoreEntitySet="CS_ESTACION_ENFERMERIA">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="BODEGA" ColumnName="BODEGA" />
+          <ScalarProperty Name="AREA_SERVICIO" ColumnName="AREA_SERVICIO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="DESCRIPCORTA" ColumnName="DESCRIPCORTA" />
+          <ScalarProperty Name="ESTACION_ID" ColumnName="ESTACION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_ESTACION_QX">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_ESTACION_QX">
+        <MappingFragment StoreEntitySet="CS_ESTACION_QX">
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="FECHA_LLEGADA" ColumnName="FECHA_LLEGADA" />
+          <ScalarProperty Name="QUIROFANO" ColumnName="QUIROFANO" />
+          <ScalarProperty Name="PROCEDIMIENTO" ColumnName="PROCEDIMIENTO" />
+          <ScalarProperty Name="EQUIPO_ID" ColumnName="EQUIPO_ID" />
+          <ScalarProperty Name="DOCTOR_ID" ColumnName="DOCTOR_ID" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="ID_ESTACION_QX" ColumnName="ID_ESTACION_QX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_FARMACIA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_FARMACIA">
+        <MappingFragment StoreEntitySet="CS_FARMACIA">
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="DOSIS_ID" ColumnName="DOSIS_ID" />
+          <ScalarProperty Name="VIA_ADMINISTRACION_ID" ColumnName="VIA_ADMINISTRACION_ID" />
+          <ScalarProperty Name="BODEGA" ColumnName="BODEGA" />
+          <ScalarProperty Name="CANTIDAD_DESPACHADA" ColumnName="CANTIDAD_DESPACHADA" />
+          <ScalarProperty Name="CANTIDAD_SOLICITADA" ColumnName="CANTIDAD_SOLICITADA" />
+          <ScalarProperty Name="TIPO_SERVICIO_ID" ColumnName="TIPO_SERVICIO_ID" />
+          <ScalarProperty Name="AREA_SERVICIO_ID" ColumnName="AREA_SERVICIO_ID" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="PEDIDO_ID" ColumnName="PEDIDO_ID" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="NUM_ORDEN" ColumnName="NUM_ORDEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_HABITACION">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_HABITACION">
+        <MappingFragment StoreEntitySet="CS_HABITACION">
+          <ScalarProperty Name="ESTACION_ENFERMERIA" ColumnName="ESTACION_ENFERMERIA" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="COD_HABITACION" ColumnName="COD_HABITACION" />
+          <ScalarProperty Name="ID_HABITACION" ColumnName="ID_HABITACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_IMAGENOLOGIA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_IMAGENOLOGIA">
+        <MappingFragment StoreEntitySet="CS_IMAGENOLOGIA">
+          <ScalarProperty Name="FECHA_ANULACION" ColumnName="FECHA_ANULACION" />
+          <ScalarProperty Name="USUARIO_ANULACION" ColumnName="USUARIO_ANULACION" />
+          <ScalarProperty Name="ANULADO" ColumnName="ANULADO" />
+          <ScalarProperty Name="USUARIO_LECTURA" ColumnName="USUARIO_LECTURA" />
+          <ScalarProperty Name="FECHA_LECTURA" ColumnName="FECHA_LECTURA" />
+          <ScalarProperty Name="LECTURA" ColumnName="LECTURA" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="ENV_POR_CORREO" ColumnName="ENV_POR_CORREO" />
+          <ScalarProperty Name="IMPRESO" ColumnName="IMPRESO" />
+          <ScalarProperty Name="EDAD" ColumnName="EDAD" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="PEDIDO_LINEA" ColumnName="PEDIDO_LINEA" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="ID_ADMISION" ColumnName="ID_ADMISION" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="RADIOLOGO_ID" ColumnName="RADIOLOGO_ID" />
+          <ScalarProperty Name="ID_IMAGENOLOGIA" ColumnName="ID_IMAGENOLOGIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_MEDICOS">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_MEDICOS">
+        <MappingFragment StoreEntitySet="CS_MEDICOS">
+          <ScalarProperty Name="AREA" ColumnName="AREA" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="ID_ESPECIALIDAD" ColumnName="ID_ESPECIALIDAD" />
+          <ScalarProperty Name="LICENCIA" ColumnName="LICENCIA" />
+          <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="COD_MEDICO" ColumnName="COD_MEDICO" />
+          <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_PACIENTES">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_PACIENTES">
+        <MappingFragment StoreEntitySet="CS_PACIENTES">
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="TEL_CONT_2" ColumnName="TEL_CONT_2" />
+          <ScalarProperty Name="CONTACTO_2" ColumnName="CONTACTO_2" />
+          <ScalarProperty Name="TEL_CONT_1" ColumnName="TEL_CONT_1" />
+          <ScalarProperty Name="CONTACTO_1" ColumnName="CONTACTO_1" />
+          <ScalarProperty Name="RELIGION_ID" ColumnName="RELIGION_ID" />
+          <ScalarProperty Name="PROFESION_ID" ColumnName="PROFESION_ID" />
+          <ScalarProperty Name="ESCOLARIDAD_ID" ColumnName="ESCOLARIDAD_ID" />
+          <ScalarProperty Name="TIPO_SANGRE_ID" ColumnName="TIPO_SANGRE_ID" />
+          <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+          <ScalarProperty Name="ESTADO_CIVIL_ID" ColumnName="ESTADO_CIVIL_ID" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_PEDIDO_EGY">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_PEDIDO_EGY">
+        <MappingFragment StoreEntitySet="CS_PEDIDO_EGY">
+          <ScalarProperty Name="BODEGA" ColumnName="BODEGA" />
+          <ScalarProperty Name="ADMISION_EGY" ColumnName="ADMISION_EGY" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="PEDIDO_EGY" ColumnName="PEDIDO_EGY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_PERSONAL">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_PERSONAL">
+        <MappingFragment StoreEntitySet="CS_PERSONAL">
+          <ScalarProperty Name="medico" ColumnName="medico" />
+          <ScalarProperty Name="LIC" ColumnName="LIC" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="ESPECIALIDAD" ColumnName="ESPECIALIDAD" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="PUESTO" ColumnName="PUESTO" />
+          <ScalarProperty Name="PERSONAL_ID" ColumnName="PERSONAL_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_PLANTILLA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_PLANTILLA">
+        <MappingFragment StoreEntitySet="CS_PLANTILLA">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+          <ScalarProperty Name="DOCTOR_ID" ColumnName="DOCTOR_ID" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="ID_PLANTILLA" ColumnName="ID_PLANTILLA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_QUIROFANO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_QUIROFANO">
+        <MappingFragment StoreEntitySet="CS_QUIROFANO">
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="COD_QUIROFANO" ColumnName="COD_QUIROFANO" />
+          <ScalarProperty Name="ID_QUIROFANO" ColumnName="ID_QUIROFANO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_RANGO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_RANGO">
+        <MappingFragment StoreEntitySet="CS_RANGO">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="EDAD_MAX" ColumnName="EDAD_MAX" />
+          <ScalarProperty Name="EDAD_MIN" ColumnName="EDAD_MIN" />
+          <ScalarProperty Name="ID_RANGO" ColumnName="ID_RANGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_RESULT_IMAGENOLOGIA_DETALLE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_RESULT_IMAGENOLOGIA_DETALLE">
+        <MappingFragment StoreEntitySet="CS_RESULT_IMAGENOLOGIA_DETALLE">
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="DIAGNOSTICO" ColumnName="DIAGNOSTICO" />
+          <ScalarProperty Name="RESULTADO_IMAG_ID" ColumnName="RESULTADO_IMAG_ID" />
+          <ScalarProperty Name="ID_IMAG_DETALLE" ColumnName="ID_IMAG_DETALLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_RESULTADO_IMAGENOLOGIA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_RESULTADO_IMAGENOLOGIA">
+        <MappingFragment StoreEntitySet="CS_RESULTADO_IMAGENOLOGIA">
+          <ScalarProperty Name="RADIOLOGO" ColumnName="RADIOLOGO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_RESULTADO" ColumnName="USUARIO_RESULTADO" />
+          <ScalarProperty Name="FECHA_RESULTADO" ColumnName="FECHA_RESULTADO" />
+          <ScalarProperty Name="PLANTILLA_ID" ColumnName="PLANTILLA_ID" />
+          <ScalarProperty Name="IMAGENOLOGIA_ID" ColumnName="IMAGENOLOGIA_ID" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="ID_RESULTADO_IMAG" ColumnName="ID_RESULTADO_IMAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_RESULTADOS_LAB_DETALLE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_RESULTADOS_LAB_DETALLE">
+        <MappingFragment StoreEntitySet="CS_RESULTADOS_LAB_DETALLE">
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="RANGO_ID" ColumnName="RANGO_ID" />
+          <ScalarProperty Name="RESULTADO" ColumnName="RESULTADO" />
+          <ScalarProperty Name="ID_TEST_DETALLE" ColumnName="ID_TEST_DETALLE" />
+          <ScalarProperty Name="RESULTADO_LAB_ID" ColumnName="RESULTADO_LAB_ID" />
+          <ScalarProperty Name="ID_ENCABEZADO" ColumnName="ID_ENCABEZADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_ROL">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_ROL">
+        <MappingFragment StoreEntitySet="CS_ROL">
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="USUARIO_MODIFICO" ColumnName="USUARIO_MODIFICO" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_ROL_USER">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_ROL_USER">
+        <MappingFragment StoreEntitySet="CS_ROL_USER">
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="USUARIO_MODIFICO" ColumnName="USUARIO_MODIFICO" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="PERMISO" ColumnName="PERMISO" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_SEGURO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_SEGURO">
+        <MappingFragment StoreEntitySet="CS_SEGURO">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="USUARIO_MODIFICO" ColumnName="USUARIO_MODIFICO" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ID_ASEGURADORA" ColumnName="ID_ASEGURADORA" />
+          <ScalarProperty Name="ID_SEGURO" ColumnName="ID_SEGURO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_SIGNOS_VITALES">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_SIGNOS_VITALES">
+        <MappingFragment StoreEntitySet="CS_SIGNOS_VITALES">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="HALLAZGO" ColumnName="HALLAZGO" />
+          <ScalarProperty Name="PERIMETRO_ABDOMINAL" ColumnName="PERIMETRO_ABDOMINAL" />
+          <ScalarProperty Name="PERIMETRO_CEFALICO" ColumnName="PERIMETRO_CEFALICO" />
+          <ScalarProperty Name="PERIMETRO_MUNECA" ColumnName="PERIMETRO_MUNECA" />
+          <ScalarProperty Name="PERIMETRO_TORAXICO" ColumnName="PERIMETRO_TORAXICO" />
+          <ScalarProperty Name="GLUCOMETRIA" ColumnName="GLUCOMETRIA" />
+          <ScalarProperty Name="SATURACION" ColumnName="SATURACION" />
+          <ScalarProperty Name="RESPIRACION" ColumnName="RESPIRACION" />
+          <ScalarProperty Name="PULSO" ColumnName="PULSO" />
+          <ScalarProperty Name="PDIASTOLICA" ColumnName="PDIASTOLICA" />
+          <ScalarProperty Name="PSISTOLICA" ColumnName="PSISTOLICA" />
+          <ScalarProperty Name="TEMPERATURAC" ColumnName="TEMPERATURAC" />
+          <ScalarProperty Name="IMC" ColumnName="IMC" />
+          <ScalarProperty Name="PESOKG" ColumnName="PESOKG" />
+          <ScalarProperty Name="ESTATURA" ColumnName="ESTATURA" />
+          <ScalarProperty Name="FECHA_HORA_TOMA" ColumnName="FECHA_HORA_TOMA" />
+          <ScalarProperty Name="ADMISION_ID" ColumnName="ADMISION_ID" />
+          <ScalarProperty Name="ID_SIGNOS_VITALES" ColumnName="ID_SIGNOS_VITALES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_TRIAGE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_TRIAGE">
+        <MappingFragment StoreEntitySet="CS_TRIAGE">
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="HALLAZGO" ColumnName="HALLAZGO" />
+          <ScalarProperty Name="PERIMETRO_ABDOMINAL" ColumnName="PERIMETRO_ABDOMINAL" />
+          <ScalarProperty Name="PERIMETRO_CEFALICO" ColumnName="PERIMETRO_CEFALICO" />
+          <ScalarProperty Name="PERIMETRO_MUNECA" ColumnName="PERIMETRO_MUNECA" />
+          <ScalarProperty Name="PERIMETRO_TORAXICO" ColumnName="PERIMETRO_TORAXICO" />
+          <ScalarProperty Name="GLUCOMETRIA" ColumnName="GLUCOMETRIA" />
+          <ScalarProperty Name="SATURACION" ColumnName="SATURACION" />
+          <ScalarProperty Name="RESPIRACION" ColumnName="RESPIRACION" />
+          <ScalarProperty Name="PULSO" ColumnName="PULSO" />
+          <ScalarProperty Name="PDIASTOLICA" ColumnName="PDIASTOLICA" />
+          <ScalarProperty Name="PSISTOLICA" ColumnName="PSISTOLICA" />
+          <ScalarProperty Name="TEMPERATURAC" ColumnName="TEMPERATURAC" />
+          <ScalarProperty Name="IMC" ColumnName="IMC" />
+          <ScalarProperty Name="PESOKG" ColumnName="PESOKG" />
+          <ScalarProperty Name="ESTATURA" ColumnName="ESTATURA" />
+          <ScalarProperty Name="SE_QUITA" ColumnName="SE_QUITA" />
+          <ScalarProperty Name="LOCALIZACION_DOLOR" ColumnName="LOCALIZACION_DOLOR" />
+          <ScalarProperty Name="RESPUESTA_VERBAL" ColumnName="RESPUESTA_VERBAL" />
+          <ScalarProperty Name="APERTURA_OCULAR" ColumnName="APERTURA_OCULAR" />
+          <ScalarProperty Name="RESPUESTA_MOTRIZ" ColumnName="RESPUESTA_MOTRIZ" />
+          <ScalarProperty Name="INCAPACIDAD" ColumnName="INCAPACIDAD" />
+          <ScalarProperty Name="INTENSIDAD_DOLOR" ColumnName="INTENSIDAD_DOLOR" />
+          <ScalarProperty Name="FRECUENCIA_DOLOR" ColumnName="FRECUENCIA_DOLOR" />
+          <ScalarProperty Name="MOTIVO" ColumnName="MOTIVO" />
+          <ScalarProperty Name="REFERENCIA" ColumnName="REFERENCIA" />
+          <ScalarProperty Name="CARACTERISTICA_DOLOR" ColumnName="CARACTERISTICA_DOLOR" />
+          <ScalarProperty Name="CLASIFICACION_DOLOR" ColumnName="CLASIFICACION_DOLOR" />
+          <ScalarProperty Name="NIVEL_EMERGENCIA" ColumnName="NIVEL_EMERGENCIA" />
+          <ScalarProperty Name="EMERGENCIA" ColumnName="EMERGENCIA" />
+          <ScalarProperty Name="ID_ADMISION" ColumnName="ID_ADMISION" />
+          <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+          <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+          <ScalarProperty Name="TRIAGE" ColumnName="TRIAGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_USER">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_USER">
+        <MappingFragment StoreEntitySet="CS_USER">
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="USUARIO_MODIFICO" ColumnName="USUARIO_MODIFICO" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_DIRECCION">
+      <EntityTypeMapping TypeName="ModeloHospitalario.DETALLE_DIRECCION">
+        <MappingFragment StoreEntitySet="DETALLE_DIRECCION">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="CAMPO_10" ColumnName="CAMPO_10" />
+          <ScalarProperty Name="CAMPO_9" ColumnName="CAMPO_9" />
+          <ScalarProperty Name="CAMPO_8" ColumnName="CAMPO_8" />
+          <ScalarProperty Name="CAMPO_7" ColumnName="CAMPO_7" />
+          <ScalarProperty Name="CAMPO_6" ColumnName="CAMPO_6" />
+          <ScalarProperty Name="CAMPO_5" ColumnName="CAMPO_5" />
+          <ScalarProperty Name="CAMPO_4" ColumnName="CAMPO_4" />
+          <ScalarProperty Name="CAMPO_3" ColumnName="CAMPO_3" />
+          <ScalarProperty Name="CAMPO_2" ColumnName="CAMPO_2" />
+          <ScalarProperty Name="CAMPO_1" ColumnName="CAMPO_1" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="DETALLE_DIRECCION1" ColumnName="DETALLE_DIRECCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DIRECC_EMBARQUE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.DIRECC_EMBARQUE">
+        <MappingFragment StoreEntitySet="DIRECC_EMBARQUE">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="TELEFONO2" ColumnName="TELEFONO2" />
+          <ScalarProperty Name="TELEFONO1" ColumnName="TELEFONO1" />
+          <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+          <ScalarProperty Name="CONTACTO" ColumnName="CONTACTO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="DETALLE_DIRECCION" ColumnName="DETALLE_DIRECCION" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EXISTENCIA_BODEGA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.EXISTENCIA_BODEGA">
+        <MappingFragment StoreEntitySet="EXISTENCIA_BODEGA">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="COSTO_PROM_COMPARATIVO_DOLAR" ColumnName="COSTO_PROM_COMPARATIVO_DOLAR" />
+          <ScalarProperty Name="COSTO_PROM_COMPARATIVO_LOC" ColumnName="COSTO_PROM_COMPARATIVO_LOC" />
+          <ScalarProperty Name="COSTO_UNT_ESTANDAR_DOL" ColumnName="COSTO_UNT_ESTANDAR_DOL" />
+          <ScalarProperty Name="COSTO_UNT_ESTANDAR_LOC" ColumnName="COSTO_UNT_ESTANDAR_LOC" />
+          <ScalarProperty Name="COSTO_UNT_PROMEDIO_DOL" ColumnName="COSTO_UNT_PROMEDIO_DOL" />
+          <ScalarProperty Name="COSTO_UNT_PROMEDIO_LOC" ColumnName="COSTO_UNT_PROMEDIO_LOC" />
+          <ScalarProperty Name="FECHA_DESCONG" ColumnName="FECHA_DESCONG" />
+          <ScalarProperty Name="BLOQUEA_TRANS" ColumnName="BLOQUEA_TRANS" />
+          <ScalarProperty Name="FECHA_CONG" ColumnName="FECHA_CONG" />
+          <ScalarProperty Name="CONGELADO" ColumnName="CONGELADO" />
+          <ScalarProperty Name="CANT_REMITIDA" ColumnName="CANT_REMITIDA" />
+          <ScalarProperty Name="CANT_PEDIDA" ColumnName="CANT_PEDIDA" />
+          <ScalarProperty Name="CANT_PRODUCCION" ColumnName="CANT_PRODUCCION" />
+          <ScalarProperty Name="CANT_TRANSITO" ColumnName="CANT_TRANSITO" />
+          <ScalarProperty Name="CANT_VENCIDA" ColumnName="CANT_VENCIDA" />
+          <ScalarProperty Name="CANT_NO_APROBADA" ColumnName="CANT_NO_APROBADA" />
+          <ScalarProperty Name="CANT_RESERVADA" ColumnName="CANT_RESERVADA" />
+          <ScalarProperty Name="CANT_DISPONIBLE" ColumnName="CANT_DISPONIBLE" />
+          <ScalarProperty Name="PUNTO_DE_REORDEN" ColumnName="PUNTO_DE_REORDEN" />
+          <ScalarProperty Name="EXISTENCIA_MAXIMA" ColumnName="EXISTENCIA_MAXIMA" />
+          <ScalarProperty Name="EXISTENCIA_MINIMA" ColumnName="EXISTENCIA_MINIMA" />
+          <ScalarProperty Name="BODEGA" ColumnName="BODEGA" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NIT">
+      <EntityTypeMapping TypeName="ModeloHospitalario.NIT">
+        <MappingFragment StoreEntitySet="NIT">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="TRIBUTO_RUT" ColumnName="TRIBUTO_RUT" />
+          <ScalarProperty Name="RESPONSABLE_RUT" ColumnName="RESPONSABLE_RUT" />
+          <ScalarProperty Name="OBLIG_RESPON_RUT" ColumnName="OBLIG_RESPON_RUT" />
+          <ScalarProperty Name="COD_POSTAL" ColumnName="COD_POSTAL" />
+          <ScalarProperty Name="INF_LEGAL" ColumnName="INF_LEGAL" />
+          <ScalarProperty Name="OTRO" ColumnName="OTRO" />
+          <ScalarProperty Name="CARNE" ColumnName="CARNE" />
+          <ScalarProperty Name="PASAPORTE" ColumnName="PASAPORTE" />
+          <ScalarProperty Name="TIPO_REGIMEN" ColumnName="TIPO_REGIMEN" />
+          <ScalarProperty Name="DUI" ColumnName="DUI" />
+          <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
+          <ScalarProperty Name="GIRO" ColumnName="GIRO" />
+          <ScalarProperty Name="NRC" ColumnName="NRC" />
+          <ScalarProperty Name="TIPO_CONTRIBUYENTE" ColumnName="TIPO_CONTRIBUYENTE" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="ACTIVIDAD_ECONOMINA" ColumnName="ACTIVIDAD_ECONOMINA" />
+          <ScalarProperty Name="NATURALEZA" ColumnName="NATURALEZA" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="DETALLE_DIRECCION" ColumnName="DETALLE_DIRECCION" />
+          <ScalarProperty Name="EXTERIOR" ColumnName="EXTERIOR" />
+          <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+          <ScalarProperty Name="MUNICIPIO" ColumnName="MUNICIPIO" />
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+          <ScalarProperty Name="CLASE_DOCUMENTO" ColumnName="CLASE_DOCUMENTO" />
+          <ScalarProperty Name="TIPO_DOCUMENTO" ColumnName="TIPO_DOCUMENTO" />
+          <ScalarProperty Name="SEGUNDO_APELLIDO" ColumnName="SEGUNDO_APELLIDO" />
+          <ScalarProperty Name="PRIMER_APELLIDO" ColumnName="PRIMER_APELLIDO" />
+          <ScalarProperty Name="SEGUNDO_NOMBRE" ColumnName="SEGUNDO_NOMBRE" />
+          <ScalarProperty Name="PRIMER_NOMBRE" ColumnName="PRIMER_NOMBRE" />
+          <ScalarProperty Name="SUCURSAL" ColumnName="SUCURSAL" />
+          <ScalarProperty Name="NUMERO_DOC_NIT" ColumnName="NUMERO_DOC_NIT" />
+          <ScalarProperty Name="ORIGEN" ColumnName="ORIGEN" />
+          <ScalarProperty Name="USA_REPORTE_D151" ColumnName="USA_REPORTE_D151" />
+          <ScalarProperty Name="DIGITO_VERIFICADOR" ColumnName="DIGITO_VERIFICADOR" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="NOTAS" ColumnName="NOTAS" />
+          <ScalarProperty Name="ALIAS" ColumnName="ALIAS" />
+          <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+          <ScalarProperty Name="NIT1" ColumnName="NIT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NIVEL_PRECIO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.NIVEL_PRECIO">
+        <MappingFragment StoreEntitySet="NIVEL_PRECIO">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="SINC_MOVIL" ColumnName="SINC_MOVIL" />
+          <ScalarProperty Name="SUGERIR_DESCUENTO" ColumnName="SUGERIR_DESCUENTO" />
+          <ScalarProperty Name="DESCUENTOS" ColumnName="DESCUENTOS" />
+          <ScalarProperty Name="ESQUEMA_TRABAJO" ColumnName="ESQUEMA_TRABAJO" />
+          <ScalarProperty Name="CONDICION_PAGO" ColumnName="CONDICION_PAGO" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="NIVEL_PRECIO1" ColumnName="NIVEL_PRECIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAIS">
+      <EntityTypeMapping TypeName="ModeloHospitalario.PAIS">
+        <MappingFragment StoreEntitySet="PAIS">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="U_PAIS" ColumnName="U_PAIS" />
+          <ScalarProperty Name="CTA_IGV_NO_DOM" ColumnName="CTA_IGV_NO_DOM" />
+          <ScalarProperty Name="CTR_IGV_NO_DOM" ColumnName="CTR_IGV_NO_DOM" />
+          <ScalarProperty Name="CTA_GASTO_RENTA" ColumnName="CTA_GASTO_RENTA" />
+          <ScalarProperty Name="CTR_GASTO_RENTA" ColumnName="CTR_GASTO_RENTA" />
+          <ScalarProperty Name="CTA_COBR_DUDOSA" ColumnName="CTA_COBR_DUDOSA" />
+          <ScalarProperty Name="CTR_COBR_DUDOSA" ColumnName="CTR_COBR_DUDOSA" />
+          <ScalarProperty Name="CTR_ADVALOREM" ColumnName="CTR_ADVALOREM" />
+          <ScalarProperty Name="CTA_ADVALOREM" ColumnName="CTA_ADVALOREM" />
+          <ScalarProperty Name="CTA_COMISION" ColumnName="CTA_COMISION" />
+          <ScalarProperty Name="CTR_COMISION" ColumnName="CTR_COMISION" />
+          <ScalarProperty Name="CTA_PENSION_AFP_CXP" ColumnName="CTA_PENSION_AFP_CXP" />
+          <ScalarProperty Name="CTR_PENSION_AFP_CXP" ColumnName="CTR_PENSION_AFP_CXP" />
+          <ScalarProperty Name="CTA_PENSION_ONP_CXP" ColumnName="CTA_PENSION_ONP_CXP" />
+          <ScalarProperty Name="CTR_PENSION_ONP_CXP" ColumnName="CTR_PENSION_ONP_CXP" />
+          <ScalarProperty Name="CTA_RENTA_CXP" ColumnName="CTA_RENTA_CXP" />
+          <ScalarProperty Name="CTR_RENTA_CXP" ColumnName="CTR_RENTA_CXP" />
+          <ScalarProperty Name="ETIQUETA_DIV_GEO4" ColumnName="ETIQUETA_DIV_GEO4" />
+          <ScalarProperty Name="ETIQUETA_DIV_GEO3" ColumnName="ETIQUETA_DIV_GEO3" />
+          <ScalarProperty Name="CTA_AJUSTE_REDONDEO" ColumnName="CTA_AJUSTE_REDONDEO" />
+          <ScalarProperty Name="CTR_AJUSTE_REDONDEO" ColumnName="CTR_AJUSTE_REDONDEO" />
+          <ScalarProperty Name="CTA_VENTAS_EXEN" ColumnName="CTA_VENTAS_EXEN" />
+          <ScalarProperty Name="CTR_VENTAS_EXEN" ColumnName="CTR_VENTAS_EXEN" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="ETIQUETA_DIV_GEO2" ColumnName="ETIQUETA_DIV_GEO2" />
+          <ScalarProperty Name="ETIQUETA_DIV_GEO1" ColumnName="ETIQUETA_DIV_GEO1" />
+          <ScalarProperty Name="CODIGO_ISO" ColumnName="CODIGO_ISO" />
+          <ScalarProperty Name="CTA_INT_CORRIENTE" ColumnName="CTA_INT_CORRIENTE" />
+          <ScalarProperty Name="CTR_INT_CORRIENTE" ColumnName="CTR_INT_CORRIENTE" />
+          <ScalarProperty Name="CTA_DEV_VENTAS" ColumnName="CTA_DEV_VENTAS" />
+          <ScalarProperty Name="CTR_DEV_VENTAS" ColumnName="CTR_DEV_VENTAS" />
+          <ScalarProperty Name="CTA_DESC_BONIF" ColumnName="CTA_DESC_BONIF" />
+          <ScalarProperty Name="CTR_DESC_BONIF" ColumnName="CTR_DESC_BONIF" />
+          <ScalarProperty Name="CTA_ANTICIPO_CXP" ColumnName="CTA_ANTICIPO_CXP" />
+          <ScalarProperty Name="CTR_ANTICIPO_CXP" ColumnName="CTR_ANTICIPO_CXP" />
+          <ScalarProperty Name="CTA_RUBRO2_CXP" ColumnName="CTA_RUBRO2_CXP" />
+          <ScalarProperty Name="CTR_RUBRO2_CXP" ColumnName="CTR_RUBRO2_CXP" />
+          <ScalarProperty Name="CTA_RUBRO1_CXP" ColumnName="CTA_RUBRO1_CXP" />
+          <ScalarProperty Name="CTR_RUBRO1_CXP" ColumnName="CTR_RUBRO1_CXP" />
+          <ScalarProperty Name="CTA_IMPUESTO2_CXP" ColumnName="CTA_IMPUESTO2_CXP" />
+          <ScalarProperty Name="CTR_IMPUESTO2_CXP" ColumnName="CTR_IMPUESTO2_CXP" />
+          <ScalarProperty Name="CTA_IMPUESTO1_CXP" ColumnName="CTA_IMPUESTO1_CXP" />
+          <ScalarProperty Name="CTR_IMPUESTO1_CXP" ColumnName="CTR_IMPUESTO1_CXP" />
+          <ScalarProperty Name="CTA_COMISION_CXP" ColumnName="CTA_COMISION_CXP" />
+          <ScalarProperty Name="CTR_COMISION_CXP" ColumnName="CTR_COMISION_CXP" />
+          <ScalarProperty Name="CTA_PRONTO_PAG_CXP" ColumnName="CTA_PRONTO_PAG_CXP" />
+          <ScalarProperty Name="CTR_PRONTO_PAG_CXP" ColumnName="CTR_PRONTO_PAG_CXP" />
+          <ScalarProperty Name="CTA_CXP" ColumnName="CTA_CXP" />
+          <ScalarProperty Name="CTR_CXP" ColumnName="CTR_CXP" />
+          <ScalarProperty Name="CTA_DEBITO_CXP" ColumnName="CTA_DEBITO_CXP" />
+          <ScalarProperty Name="CTR_DEBITO_CXP" ColumnName="CTR_DEBITO_CXP" />
+          <ScalarProperty Name="CTA_CREDITO_CXP" ColumnName="CTA_CREDITO_CXP" />
+          <ScalarProperty Name="CTR_CREDITO_CXP" ColumnName="CTR_CREDITO_CXP" />
+          <ScalarProperty Name="CTA_LXP" ColumnName="CTA_LXP" />
+          <ScalarProperty Name="CTR_LXP" ColumnName="CTR_LXP" />
+          <ScalarProperty Name="CTA_ANTICIPO_CXC" ColumnName="CTA_ANTICIPO_CXC" />
+          <ScalarProperty Name="CTR_ANTICIPO_CXC" ColumnName="CTR_ANTICIPO_CXC" />
+          <ScalarProperty Name="CTA_RUBRO2_CXC" ColumnName="CTA_RUBRO2_CXC" />
+          <ScalarProperty Name="CTR_RUBRO2_CXC" ColumnName="CTR_RUBRO2_CXC" />
+          <ScalarProperty Name="CTA_RUBRO1_CXC" ColumnName="CTA_RUBRO1_CXC" />
+          <ScalarProperty Name="CTR_RUBRO1_CXC" ColumnName="CTR_RUBRO1_CXC" />
+          <ScalarProperty Name="CTA_IMPUESTO2_CXC" ColumnName="CTA_IMPUESTO2_CXC" />
+          <ScalarProperty Name="CTR_IMPUESTO2_CXC" ColumnName="CTR_IMPUESTO2_CXC" />
+          <ScalarProperty Name="CTA_IMPUESTO1_CXC" ColumnName="CTA_IMPUESTO1_CXC" />
+          <ScalarProperty Name="CTR_IMPUESTO1_CXC" ColumnName="CTR_IMPUESTO1_CXC" />
+          <ScalarProperty Name="CTA_CREDITO_CXC" ColumnName="CTA_CREDITO_CXC" />
+          <ScalarProperty Name="CTR_CREDITO_CXC" ColumnName="CTR_CREDITO_CXC" />
+          <ScalarProperty Name="CTA_DEBITO_CXC" ColumnName="CTA_DEBITO_CXC" />
+          <ScalarProperty Name="CTR_DEBITO_CXC" ColumnName="CTR_DEBITO_CXC" />
+          <ScalarProperty Name="CTA_RECIBOS_CXC" ColumnName="CTA_RECIBOS_CXC" />
+          <ScalarProperty Name="CTR_RECIBOS_CXC" ColumnName="CTR_RECIBOS_CXC" />
+          <ScalarProperty Name="CTA_INT_MORA_CXC" ColumnName="CTA_INT_MORA_CXC" />
+          <ScalarProperty Name="CTR_INT_MORA_CXC" ColumnName="CTR_INT_MORA_CXC" />
+          <ScalarProperty Name="CTA_PRONTO_PAG_CXC" ColumnName="CTA_PRONTO_PAG_CXC" />
+          <ScalarProperty Name="CTR_PRONTO_PAG_CXC" ColumnName="CTR_PRONTO_PAG_CXC" />
+          <ScalarProperty Name="CTA_LXC" ColumnName="CTA_LXC" />
+          <ScalarProperty Name="CTR_LXC" ColumnName="CTR_LXC" />
+          <ScalarProperty Name="CTA_CXC" ColumnName="CTA_CXC" />
+          <ScalarProperty Name="CTR_CXC" ColumnName="CTR_CXC" />
+          <ScalarProperty Name="CTA_CONTADO" ColumnName="CTA_CONTADO" />
+          <ScalarProperty Name="CTR_CONTADO" ColumnName="CTR_CONTADO" />
+          <ScalarProperty Name="CTA_GAST_COM" ColumnName="CTA_GAST_COM" />
+          <ScalarProperty Name="CTR_GAST_COM" ColumnName="CTR_GAST_COM" />
+          <ScalarProperty Name="CTA_COST_LIN" ColumnName="CTA_COST_LIN" />
+          <ScalarProperty Name="CTR_COST_LIN" ColumnName="CTR_COST_LIN" />
+          <ScalarProperty Name="CTA_DESC_LIN" ColumnName="CTA_DESC_LIN" />
+          <ScalarProperty Name="CTR_DESC_LIN" ColumnName="CTR_DESC_LIN" />
+          <ScalarProperty Name="CTA_COST_VENT" ColumnName="CTA_COST_VENT" />
+          <ScalarProperty Name="CTR_COST_VENT" ColumnName="CTR_COST_VENT" />
+          <ScalarProperty Name="CTA_DESC_GRAL" ColumnName="CTA_DESC_GRAL" />
+          <ScalarProperty Name="CTR_DESC_GRAL" ColumnName="CTR_DESC_GRAL" />
+          <ScalarProperty Name="CTA_VENTAS" ColumnName="CTA_VENTAS" />
+          <ScalarProperty Name="CTR_VENTAS" ColumnName="CTR_VENTAS" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="PAIS1" ColumnName="PAIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PEDIDO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.PEDIDO">
+        <MappingFragment StoreEntitySet="PEDIDO">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="TIPO_FACTURA" ColumnName="TIPO_FACTURA" />
+          <ScalarProperty Name="TIPO_DESCUENTO_GLOBAL" ColumnName="TIPO_DESCUENTO_GLOBAL" />
+          <ScalarProperty Name="TIPO_PAGO" ColumnName="TIPO_PAGO" />
+          <ScalarProperty Name="TIENE_RELACIONADOS" ColumnName="TIENE_RELACIONADOS" />
+          <ScalarProperty Name="NUM_IRSEDE_AGR_GAN" ColumnName="NUM_IRSEDE_AGR_GAN" />
+          <ScalarProperty Name="NUM_CONS_REG_EXO" ColumnName="NUM_CONS_REG_EXO" />
+          <ScalarProperty Name="NUM_OC_EXENTA" ColumnName="NUM_OC_EXENTA" />
+          <ScalarProperty Name="NIT_TRANSPORTADOR" ColumnName="NIT_TRANSPORTADOR" />
+          <ScalarProperty Name="NUMERO_FTC" ColumnName="NUMERO_FTC" />
+          <ScalarProperty Name="CONSECUTIVO_FTC" ColumnName="CONSECUTIVO_FTC" />
+          <ScalarProperty Name="FACTURA_ORIGINAL_REEMPLAZO" ColumnName="FACTURA_ORIGINAL_REEMPLAZO" />
+          <ScalarProperty Name="ES_FACTURA_REEMPLAZO" ColumnName="ES_FACTURA_REEMPLAZO" />
+          <ScalarProperty Name="TIPO_REFERENCIA_DE" ColumnName="TIPO_REFERENCIA_DE" />
+          <ScalarProperty Name="CODIGO_REFERENCIA_DE" ColumnName="CODIGO_REFERENCIA_DE" />
+          <ScalarProperty Name="MONTO_OTRO_CARGO" ColumnName="MONTO_OTRO_CARGO" />
+          <ScalarProperty Name="ACTIVIDAD_COMERCIAL" ColumnName="ACTIVIDAD_COMERCIAL" />
+          <ScalarProperty Name="TIPO_OPERACION" ColumnName="TIPO_OPERACION" />
+          <ScalarProperty Name="INCOTERMS" ColumnName="INCOTERMS" />
+          <ScalarProperty Name="FECHA_REFERENCIA_DE" ColumnName="FECHA_REFERENCIA_DE" />
+          <ScalarProperty Name="CLAVE_REFERENCIA_DE" ColumnName="CLAVE_REFERENCIA_DE" />
+          <ScalarProperty Name="FORMA_PAGO" ColumnName="FORMA_PAGO" />
+          <ScalarProperty Name="CONTRATO_VIGENCIA_HASTA" ColumnName="CONTRATO_VIGENCIA_HASTA" />
+          <ScalarProperty Name="CONTRATO_VIGENCIA_DESDE" ColumnName="CONTRATO_VIGENCIA_DESDE" />
+          <ScalarProperty Name="USO_CFDI" ColumnName="USO_CFDI" />
+          <ScalarProperty Name="CORREOS_ENVIO" ColumnName="CORREOS_ENVIO" />
+          <ScalarProperty Name="MODULO" ColumnName="MODULO" />
+          <ScalarProperty Name="RAZON_DESAPRUEBA" ColumnName="RAZON_DESAPRUEBA" />
+          <ScalarProperty Name="FECHA_NO_APRUEBA" ColumnName="FECHA_NO_APRUEBA" />
+          <ScalarProperty Name="USR_NO_APRUEBA" ColumnName="USR_NO_APRUEBA" />
+          <ScalarProperty Name="CONTRATO_REVENTA" ColumnName="CONTRATO_REVENTA" />
+          <ScalarProperty Name="TOTAL_CONTRATO_AC" ColumnName="TOTAL_CONTRATO_AC" />
+          <ScalarProperty Name="DIFERIDO_CONTRATO_AC" ColumnName="DIFERIDO_CONTRATO_AC" />
+          <ScalarProperty Name="FECHA_PROXFACSIST_CONTRATO_AC" ColumnName="FECHA_PROXFACSIST_CONTRATO_AC" />
+          <ScalarProperty Name="FECHA_ULTAUMENTO_CONTRATO_AC" ColumnName="FECHA_ULTAUMENTO_CONTRATO_AC" />
+          <ScalarProperty Name="FECHA_FINFAC_CONTRATO_AC" ColumnName="FECHA_FINFAC_CONTRATO_AC" />
+          <ScalarProperty Name="FECHA_PROXFAC_CONTRATO_AC" ColumnName="FECHA_PROXFAC_CONTRATO_AC" />
+          <ScalarProperty Name="FECHA_INICIO_CONTRATO_AC" ColumnName="FECHA_INICIO_CONTRATO_AC" />
+          <ScalarProperty Name="FECHA_CONTRATO_AC" ColumnName="FECHA_CONTRATO_AC" />
+          <ScalarProperty Name="PERIODICIDAD_CONTRATO_AC" ColumnName="PERIODICIDAD_CONTRATO_AC" />
+          <ScalarProperty Name="TIPO_CONTRATO_AC" ColumnName="TIPO_CONTRATO_AC" />
+          <ScalarProperty Name="CONTRATO_AC" ColumnName="CONTRATO_AC" />
+          <ScalarProperty Name="TASA_GAN_OCASIONAL_PORC" ColumnName="TASA_GAN_OCASIONAL_PORC" />
+          <ScalarProperty Name="TASA_CREE2_PORC" ColumnName="TASA_CREE2_PORC" />
+          <ScalarProperty Name="TASA_CREE2" ColumnName="TASA_CREE2" />
+          <ScalarProperty Name="TASA_CREE1_PORC" ColumnName="TASA_CREE1_PORC" />
+          <ScalarProperty Name="TASA_CREE1" ColumnName="TASA_CREE1" />
+          <ScalarProperty Name="TASA_IMPOSITIVA_PORC" ColumnName="TASA_IMPOSITIVA_PORC" />
+          <ScalarProperty Name="TASA_IMPOSITIVA" ColumnName="TASA_IMPOSITIVA" />
+          <ScalarProperty Name="COTIZACION_PADRE" ColumnName="COTIZACION_PADRE" />
+          <ScalarProperty Name="CAMBIOS_COTI" ColumnName="CAMBIOS_COTI" />
+          <ScalarProperty Name="DES_CANCELA_COTI" ColumnName="DES_CANCELA_COTI" />
+          <ScalarProperty Name="RAZON_CANCELA_COTI" ColumnName="RAZON_CANCELA_COTI" />
+          <ScalarProperty Name="VERSION_COTIZACION" ColumnName="VERSION_COTIZACION" />
+          <ScalarProperty Name="TIPO_DOCUMENTO" ColumnName="TIPO_DOCUMENTO" />
+          <ScalarProperty Name="FECHA_APROBACION" ColumnName="FECHA_APROBACION" />
+          <ScalarProperty Name="FECHA_PROYECTADA" ColumnName="FECHA_PROYECTADA" />
+          <ScalarProperty Name="NOMBRE_CLIENTE" ColumnName="NOMBRE_CLIENTE" />
+          <ScalarProperty Name="BASE_IMPUESTO2" ColumnName="BASE_IMPUESTO2" />
+          <ScalarProperty Name="BASE_IMPUESTO1" ColumnName="BASE_IMPUESTO1" />
+          <ScalarProperty Name="DIVISION_GEOGRAFICA2" ColumnName="DIVISION_GEOGRAFICA2" />
+          <ScalarProperty Name="DIVISION_GEOGRAFICA1" ColumnName="DIVISION_GEOGRAFICA1" />
+          <ScalarProperty Name="DESC_DIREC_EMBARQUE" ColumnName="DESC_DIREC_EMBARQUE" />
+          <ScalarProperty Name="ORIGEN_PEDIDO" ColumnName="ORIGEN_PEDIDO" />
+          <ScalarProperty Name="FIJAR_TIPO_CAMBIO" ColumnName="FIJAR_TIPO_CAMBIO" />
+          <ScalarProperty Name="TIPO_CAMBIO" ColumnName="TIPO_CAMBIO" />
+          <ScalarProperty Name="DESCUENTO_CASCADA" ColumnName="DESCUENTO_CASCADA" />
+          <ScalarProperty Name="PORC_INTCTE" ColumnName="PORC_INTCTE" />
+          <ScalarProperty Name="CONTRATO" ColumnName="CONTRATO" />
+          <ScalarProperty Name="BACKORDER" ColumnName="BACKORDER" />
+          <ScalarProperty Name="TIPO_DOC_CXC" ColumnName="TIPO_DOC_CXC" />
+          <ScalarProperty Name="SUBTIPO_DOC_CXC" ColumnName="SUBTIPO_DOC_CXC" />
+          <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+          <ScalarProperty Name="CLIENTE_ORIGEN" ColumnName="CLIENTE_ORIGEN" />
+          <ScalarProperty Name="CLIENTE_CORPORAC" ColumnName="CLIENTE_CORPORAC" />
+          <ScalarProperty Name="CLIENTE_DIRECCION" ColumnName="CLIENTE_DIRECCION" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="VENDEDOR" ColumnName="VENDEDOR" />
+          <ScalarProperty Name="ZONA" ColumnName="ZONA" />
+          <ScalarProperty Name="BODEGA" ColumnName="BODEGA" />
+          <ScalarProperty Name="CONDICION_PAGO" ColumnName="CONDICION_PAGO" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+          <ScalarProperty Name="COBRADOR" ColumnName="COBRADOR" />
+          <ScalarProperty Name="NIVEL_PRECIO" ColumnName="NIVEL_PRECIO" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="CLASE_PEDIDO" ColumnName="CLASE_PEDIDO" />
+          <ScalarProperty Name="DOC_A_GENERAR" ColumnName="DOC_A_GENERAR" />
+          <ScalarProperty Name="AUTORIZADO" ColumnName="AUTORIZADO" />
+          <ScalarProperty Name="VERSION_NP" ColumnName="VERSION_NP" />
+          <ScalarProperty Name="MONEDA_PEDIDO" ColumnName="MONEDA_PEDIDO" />
+          <ScalarProperty Name="TIPO_PEDIDO" ColumnName="TIPO_PEDIDO" />
+          <ScalarProperty Name="DESCUENTO_VOLUMEN" ColumnName="DESCUENTO_VOLUMEN" />
+          <ScalarProperty Name="FECHA_HORA" ColumnName="FECHA_HORA" />
+          <ScalarProperty Name="IMPRESO" ColumnName="IMPRESO" />
+          <ScalarProperty Name="TOTAL_UNIDADES" ColumnName="TOTAL_UNIDADES" />
+          <ScalarProperty Name="TOTAL_CANCELADO" ColumnName="TOTAL_CANCELADO" />
+          <ScalarProperty Name="PORC_COMI_COBRADOR" ColumnName="PORC_COMI_COBRADOR" />
+          <ScalarProperty Name="PORC_COMI_VENDEDOR" ColumnName="PORC_COMI_VENDEDOR" />
+          <ScalarProperty Name="TOTAL_A_FACTURAR" ColumnName="TOTAL_A_FACTURAR" />
+          <ScalarProperty Name="TOTAL_IMPUESTO2" ColumnName="TOTAL_IMPUESTO2" />
+          <ScalarProperty Name="TOTAL_IMPUESTO1" ColumnName="TOTAL_IMPUESTO1" />
+          <ScalarProperty Name="PORC_DESCUENTO2" ColumnName="PORC_DESCUENTO2" />
+          <ScalarProperty Name="PORC_DESCUENTO1" ColumnName="PORC_DESCUENTO1" />
+          <ScalarProperty Name="MONTO_DESCUENTO2" ColumnName="MONTO_DESCUENTO2" />
+          <ScalarProperty Name="MONTO_DESCUENTO1" ColumnName="MONTO_DESCUENTO1" />
+          <ScalarProperty Name="TIPO_DESCUENTO2" ColumnName="TIPO_DESCUENTO2" />
+          <ScalarProperty Name="TIPO_DESCUENTO1" ColumnName="TIPO_DESCUENTO1" />
+          <ScalarProperty Name="MONTO_DOCUMENTACIO" ColumnName="MONTO_DOCUMENTACIO" />
+          <ScalarProperty Name="MONTO_SEGURO" ColumnName="MONTO_SEGURO" />
+          <ScalarProperty Name="MONTO_FLETE" ColumnName="MONTO_FLETE" />
+          <ScalarProperty Name="MONTO_ANTICIPO" ColumnName="MONTO_ANTICIPO" />
+          <ScalarProperty Name="TOTAL_MERCADERIA" ColumnName="TOTAL_MERCADERIA" />
+          <ScalarProperty Name="COMENTARIO_CXC" ColumnName="COMENTARIO_CXC" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="RUBRO5" ColumnName="RUBRO5" />
+          <ScalarProperty Name="RUBRO4" ColumnName="RUBRO4" />
+          <ScalarProperty Name="RUBRO3" ColumnName="RUBRO3" />
+          <ScalarProperty Name="RUBRO2" ColumnName="RUBRO2" />
+          <ScalarProperty Name="RUBRO1" ColumnName="RUBRO1" />
+          <ScalarProperty Name="DIRECCION_FACTURA" ColumnName="DIRECCION_FACTURA" />
+          <ScalarProperty Name="DIREC_EMBARQUE" ColumnName="DIREC_EMBARQUE" />
+          <ScalarProperty Name="EMBARCAR_A" ColumnName="EMBARCAR_A" />
+          <ScalarProperty Name="TARJETA_CREDITO" ColumnName="TARJETA_CREDITO" />
+          <ScalarProperty Name="FECHA_ORDEN" ColumnName="FECHA_ORDEN" />
+          <ScalarProperty Name="ORDEN_COMPRA" ColumnName="ORDEN_COMPRA" />
+          <ScalarProperty Name="FECHA_ULT_CANCELAC" ColumnName="FECHA_ULT_CANCELAC" />
+          <ScalarProperty Name="FECHA_ULT_EMBARQUE" ColumnName="FECHA_ULT_EMBARQUE" />
+          <ScalarProperty Name="FECHA_PROX_EMBARQU" ColumnName="FECHA_PROX_EMBARQU" />
+          <ScalarProperty Name="FECHA_PROMETIDA" ColumnName="FECHA_PROMETIDA" />
+          <ScalarProperty Name="FECHA_PEDIDO" ColumnName="FECHA_PEDIDO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="PEDIDO1" ColumnName="PEDIDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PEDIDO_LINEA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.PEDIDO_LINEA">
+        <MappingFragment StoreEntitySet="PEDIDO_LINEA">
+          <ScalarProperty Name="PRECIOIMPUESTOINCL" ColumnName="PRECIOIMPUESTOINCL" />
+          <ScalarProperty Name="NUM_MUESTRA" ColumnName="NUM_MUESTRA" />
+          <ScalarProperty Name="DURACION" ColumnName="DURACION" />
+          <ScalarProperty Name="VIA" ColumnName="VIA" />
+          <ScalarProperty Name="DOSIS" ColumnName="DOSIS" />
+          <ScalarProperty Name="NUM_CONSULTA" ColumnName="NUM_CONSULTA" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="TIPO_DESCUENTO_LINEA" ColumnName="TIPO_DESCUENTO_LINEA" />
+          <ScalarProperty Name="PORC_IMP2_BASE" ColumnName="PORC_IMP2_BASE" />
+          <ScalarProperty Name="PORC_IMP1_BASE" ColumnName="PORC_IMP1_BASE" />
+          <ScalarProperty Name="MONTO_EXONERACION2" ColumnName="MONTO_EXONERACION2" />
+          <ScalarProperty Name="PORC_EXONERACION2" ColumnName="PORC_EXONERACION2" />
+          <ScalarProperty Name="ES_CANASTA_BASICA" ColumnName="ES_CANASTA_BASICA" />
+          <ScalarProperty Name="ES_OTRO_CARGO" ColumnName="ES_OTRO_CARGO" />
+          <ScalarProperty Name="PORC_IMPUESTO2" ColumnName="PORC_IMPUESTO2" />
+          <ScalarProperty Name="PORC_IMPUESTO1" ColumnName="PORC_IMPUESTO1" />
+          <ScalarProperty Name="MONTO_EXONERACION" ColumnName="MONTO_EXONERACION" />
+          <ScalarProperty Name="PORC_EXONERACION" ColumnName="PORC_EXONERACION" />
+          <ScalarProperty Name="TIPO_TARIFA2" ColumnName="TIPO_TARIFA2" />
+          <ScalarProperty Name="TIPO_IMPUESTO2" ColumnName="TIPO_IMPUESTO2" />
+          <ScalarProperty Name="TIPO_TARIFA1" ColumnName="TIPO_TARIFA1" />
+          <ScalarProperty Name="TIPO_IMPUESTO1" ColumnName="TIPO_IMPUESTO1" />
+          <ScalarProperty Name="TIPO_DESC" ColumnName="TIPO_DESC" />
+          <ScalarProperty Name="RAZON_PERDIDA" ColumnName="RAZON_PERDIDA" />
+          <ScalarProperty Name="CUENTA_CONTABLE" ColumnName="CUENTA_CONTABLE" />
+          <ScalarProperty Name="CENTRO_COSTO" ColumnName="CENTRO_COSTO" />
+          <ScalarProperty Name="FASE" ColumnName="FASE" />
+          <ScalarProperty Name="PROYECTO" ColumnName="PROYECTO" />
+          <ScalarProperty Name="LINEA_ORDEN_COMPRA" ColumnName="LINEA_ORDEN_COMPRA" />
+          <ScalarProperty Name="FECHA_PROMETIDA" ColumnName="FECHA_PROMETIDA" />
+          <ScalarProperty Name="UNIDAD_DISTRIBUCIO" ColumnName="UNIDAD_DISTRIBUCIO" />
+          <ScalarProperty Name="PEDIDO_LINEA_BONIF" ColumnName="PEDIDO_LINEA_BONIF" />
+          <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="PORC_DESCUENTO" ColumnName="PORC_DESCUENTO" />
+          <ScalarProperty Name="MONTO_DESCUENTO" ColumnName="MONTO_DESCUENTO" />
+          <ScalarProperty Name="TIPO_DESCUENTO" ColumnName="TIPO_DESCUENTO" />
+          <ScalarProperty Name="CANTIDAD_CANCELADA" ColumnName="CANTIDAD_CANCELADA" />
+          <ScalarProperty Name="CANTIDAD_BONIFICAD" ColumnName="CANTIDAD_BONIFICAD" />
+          <ScalarProperty Name="CANTIDAD_RESERVADA" ColumnName="CANTIDAD_RESERVADA" />
+          <ScalarProperty Name="CANTIDAD_FACTURADA" ColumnName="CANTIDAD_FACTURADA" />
+          <ScalarProperty Name="CANTIDAD_A_FACTURA" ColumnName="CANTIDAD_A_FACTURA" />
+          <ScalarProperty Name="CANTIDAD_PEDIDA" ColumnName="CANTIDAD_PEDIDA" />
+          <ScalarProperty Name="PRECIO_UNITARIO" ColumnName="PRECIO_UNITARIO" />
+          <ScalarProperty Name="LINEA_USUARIO" ColumnName="LINEA_USUARIO" />
+          <ScalarProperty Name="FECHA_ENTREGA" ColumnName="FECHA_ENTREGA" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="LOCALIZACION" ColumnName="LOCALIZACION" />
+          <ScalarProperty Name="LOTE" ColumnName="LOTE" />
+          <ScalarProperty Name="BODEGA" ColumnName="BODEGA" />
+          <ScalarProperty Name="PEDIDO_LINEA1" ColumnName="PEDIDO_LINEA" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RUTA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.RUTA">
+        <MappingFragment StoreEntitySet="RUTA">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="RUTA1" ColumnName="RUTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UBICACION">
+      <EntityTypeMapping TypeName="ModeloHospitalario.UBICACION">
+        <MappingFragment StoreEntitySet="UBICACION">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="UBICACION1" ColumnName="UBICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UNIDAD_DE_MEDIDA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.UNIDAD_DE_MEDIDA">
+        <MappingFragment StoreEntitySet="UNIDAD_DE_MEDIDA">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="U_FEUNIDAD" ColumnName="U_FEUNIDAD" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="UNIDAD_MEDIDA" ColumnName="UNIDAD_MEDIDA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENDEDOR">
+      <EntityTypeMapping TypeName="ModeloHospitalario.VENDEDOR">
+        <MappingFragment StoreEntitySet="VENDEDOR">
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="E_MAIL" ColumnName="E_MAIL" />
+          <ScalarProperty Name="CTA_COMISION" ColumnName="CTA_COMISION" />
+          <ScalarProperty Name="CTR_COMISION" ColumnName="CTR_COMISION" />
+          <ScalarProperty Name="COMISION" ColumnName="COMISION" />
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="VENDEDOR1" ColumnName="VENDEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VERSION_NIVEL">
+      <EntityTypeMapping TypeName="ModeloHospitalario.VERSION_NIVEL">
+        <MappingFragment StoreEntitySet="VERSION_NIVEL">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="SINC_MOVIL" ColumnName="SINC_MOVIL" />
+          <ScalarProperty Name="PRECIO_REFERENCIA_DE" ColumnName="PRECIO_REFERENCIA_DE" />
+          <ScalarProperty Name="IMPUESTO1_INCLUIDO" ColumnName="IMPUESTO1_INCLUIDO" />
+          <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+          <ScalarProperty Name="FCH_HORA_ANULACION" ColumnName="FCH_HORA_ANULACION" />
+          <ScalarProperty Name="USUARIO_ANULACION" ColumnName="USUARIO_ANULACION" />
+          <ScalarProperty Name="FCH_HORA_APROBACIO" ColumnName="FCH_HORA_APROBACIO" />
+          <ScalarProperty Name="USUARIO_APROBACION" ColumnName="USUARIO_APROBACION" />
+          <ScalarProperty Name="FCH_HORA_ULT_MODIF" ColumnName="FCH_HORA_ULT_MODIF" />
+          <ScalarProperty Name="USUARIO_ULT_MODIF" ColumnName="USUARIO_ULT_MODIF" />
+          <ScalarProperty Name="FCH_HORA_CREACION" ColumnName="FCH_HORA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="FECHA_CORTE" ColumnName="FECHA_CORTE" />
+          <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="NIVEL_PRECIO" ColumnName="NIVEL_PRECIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZONA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.ZONA">
+        <MappingFragment StoreEntitySet="ZONA">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ZONA1" ColumnName="ZONA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_INTERACCIONES">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_INTERACCIONES">
+        <MappingFragment StoreEntitySet="CS_INTERACCIONES">
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ARTICULO_2" ColumnName="ARTICULO_2" />
+          <ScalarProperty Name="TIPO_INTERACCION" ColumnName="TIPO_INTERACCION" />
+          <ScalarProperty Name="ARTICULO_1" ColumnName="ARTICULO_1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GLOBALES_AS">
+      <EntityTypeMapping TypeName="ModeloHospitalario.GLOBALES_AS">
+        <MappingFragment StoreEntitySet="GLOBALES_AS">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="RUTA_DOCS" ColumnName="RUTA_DOCS" />
+          <ScalarProperty Name="COD_SMTP" ColumnName="COD_SMTP" />
+          <ScalarProperty Name="REPL_LISTA_CIA" ColumnName="REPL_LISTA_CIA" />
+          <ScalarProperty Name="REPL_TC_HIST" ColumnName="REPL_TC_HIST" />
+          <ScalarProperty Name="REPL_TC_CODIGO" ColumnName="REPL_TC_CODIGO" />
+          <ScalarProperty Name="AJ_FCHPAGO_ADE" ColumnName="AJ_FCHPAGO_ADE" />
+          <ScalarProperty Name="AJ_FCHPAGO_ATRAS" ColumnName="AJ_FCHPAGO_ATRAS" />
+          <ScalarProperty Name="AJUSTAR_FECHAPAGO" ColumnName="AJUSTAR_FECHAPAGO" />
+          <ScalarProperty Name="CALC_FRACC_INTCTE" ColumnName="CALC_FRACC_INTCTE" />
+          <ScalarProperty Name="COBRAR_IMP2PP_CC" ColumnName="COBRAR_IMP2PP_CC" />
+          <ScalarProperty Name="COBRAR_IMP1PP_CC" ColumnName="COBRAR_IMP1PP_CC" />
+          <ScalarProperty Name="PATRON_CCOSTO" ColumnName="PATRON_CCOSTO" />
+          <ScalarProperty Name="TIPO_CAMBIO_DOLAR" ColumnName="TIPO_CAMBIO_DOLAR" />
+          <ScalarProperty Name="MONEDA_DOLAR" ColumnName="MONEDA_DOLAR" />
+          <ScalarProperty Name="MONEDA_LOCAL" ColumnName="MONEDA_LOCAL" />
+          <ScalarProperty Name="PAIS_LOCAL" ColumnName="PAIS_LOCAL" />
+          <ScalarProperty Name="IMPUESTO2_DESC" ColumnName="IMPUESTO2_DESC" />
+          <ScalarProperty Name="IMPUESTO1_DESC" ColumnName="IMPUESTO1_DESC" />
+          <ScalarProperty Name="SIMBOLO_MON_REP" ColumnName="SIMBOLO_MON_REP" />
+          <ScalarProperty Name="SIMBOLO_MON_FUNC" ColumnName="SIMBOLO_MON_FUNC" />
+          <ScalarProperty Name="NOMBRE_MON_REP" ColumnName="NOMBRE_MON_REP" />
+          <ScalarProperty Name="NOMBRE_MON_FUNC" ColumnName="NOMBRE_MON_FUNC" />
+          <ScalarProperty Name="FECHA_TRABAJO_FIN" ColumnName="FECHA_TRABAJO_FIN" />
+          <ScalarProperty Name="FECHA_TRABAJO_INI" ColumnName="FECHA_TRABAJO_INI" />
+          <ScalarProperty Name="FECHA_ADV_FIN" ColumnName="FECHA_ADV_FIN" />
+          <ScalarProperty Name="FECHA_ADV_INI" ColumnName="FECHA_ADV_INI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_CATALOGO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_CATALOGO">
+        <MappingFragment StoreEntitySet="CS_CATALOGO">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="USUARIO_MODIFICO" ColumnName="USUARIO_MODIFICO" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ID_CATALOGO" ColumnName="ID_CATALOGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_CATALOGO_DETALLE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_CATALOGO_DETALLE">
+        <MappingFragment StoreEntitySet="CS_CATALOGO_DETALLE">
+          <ScalarProperty Name="ICONO" ColumnName="ICONO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="USUARIO_MODIFICO" ColumnName="USUARIO_MODIFICO" />
+          <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ID_CATALOGO" ColumnName="ID_CATALOGO" />
+          <ScalarProperty Name="ID_CAT_DETALLE" ColumnName="ID_CAT_DETALLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_DEFINICION_PROCEDIMIENTO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_DEFINICION_PROCEDIMIENTO">
+        <MappingFragment StoreEntitySet="CS_DEFINICION_PROCEDIMIENTO">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="ENVIAR_CORREO" ColumnName="ENVIAR_CORREO" />
+          <ScalarProperty Name="IMPRIME_ETIQUETA" ColumnName="IMPRIME_ETIQUETA" />
+          <ScalarProperty Name="COLOR_TUBO" ColumnName="COLOR_TUBO" />
+          <ScalarProperty Name="AREA_SERVICIO" ColumnName="AREA_SERVICIO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_DEFINICION_PROCEDIMIENTO_DET">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_DEFINICION_PROCEDIMIENTO_DET">
+        <MappingFragment StoreEntitySet="CS_DEFINICION_PROCEDIMIENTO_DET">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="TEST" ColumnName="TEST" />
+          <ScalarProperty Name="PROCEDIMIENTO" ColumnName="PROCEDIMIENTO" />
+          <ScalarProperty Name="ID_DEF_DETALLE" ColumnName="ID_DEF_DETALLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_LABORATORIO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_LABORATORIO">
+        <MappingFragment StoreEntitySet="CS_LABORATORIO">
+          <ScalarProperty Name="ENV_POR_CORREO" ColumnName="ENV_POR_CORREO" />
+          <ScalarProperty Name="IMPRESO" ColumnName="IMPRESO" />
+          <ScalarProperty Name="PEDIDO_LINEA" ColumnName="PEDIDO_LINEA" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="ADMISION" ColumnName="ADMISION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="FECHA_RESULTADO" ColumnName="FECHA_RESULTADO" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="USUARIO_ANULACION" ColumnName="USUARIO_ANULACION" />
+          <ScalarProperty Name="FECHA_ANULACION" ColumnName="FECHA_ANULACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_RECEPCION" ColumnName="USUARIO_RECEPCION" />
+          <ScalarProperty Name="FECHA_RECEPCION" ColumnName="FECHA_RECEPCION" />
+          <ScalarProperty Name="USUARIO_TOMA_MUESTRA" ColumnName="USUARIO_TOMA_MUESTRA" />
+          <ScalarProperty Name="FECHA_TOMA_MUESTRA" ColumnName="FECHA_TOMA_MUESTRA" />
+          <ScalarProperty Name="EDAD_AL_TOMAR_MUESTRA" ColumnName="EDAD_AL_TOMAR_MUESTRA" />
+          <ScalarProperty Name="DIAGNOSTICO_ID" ColumnName="DIAGNOSTICO_ID" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="NUM_MUESTRA" ColumnName="NUM_MUESTRA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_RESULTADOS_LAB_ENCABEZADO">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_RESULTADOS_LAB_ENCABEZADO">
+        <MappingFragment StoreEntitySet="CS_RESULTADOS_LAB_ENCABEZADO">
+          <ScalarProperty Name="ENV_POR_CORREO" ColumnName="ENV_POR_CORREO" />
+          <ScalarProperty Name="IMPRESO" ColumnName="IMPRESO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_RESULTADO" ColumnName="FECHA_RESULTADO" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="EXAMEN_ID" ColumnName="EXAMEN_ID" />
+          <ScalarProperty Name="NUM_MUESTRA" ColumnName="NUM_MUESTRA" />
+          <ScalarProperty Name="ID_RESULTADO_LAB" ColumnName="ID_RESULTADO_LAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_TEST">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_TEST">
+        <MappingFragment StoreEntitySet="CS_TEST">
+          <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+          <ScalarProperty Name="UNIDAD_MEDIDA" ColumnName="UNIDAD_MEDIDA" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="TEST" ColumnName="TEST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_TEST_DETALLE">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_TEST_DETALLE">
+        <MappingFragment StoreEntitySet="CS_TEST_DETALLE">
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="HIGH_PANIC" ColumnName="HIGH_PANIC" />
+          <ScalarProperty Name="LOW_PANIC" ColumnName="LOW_PANIC" />
+          <ScalarProperty Name="RANGO_MAXIMO" ColumnName="RANGO_MAXIMO" />
+          <ScalarProperty Name="RANGO_MINIMO" ColumnName="RANGO_MINIMO" />
+          <ScalarProperty Name="EDAD_MAXIMA" ColumnName="EDAD_MAXIMA" />
+          <ScalarProperty Name="EDAD_MIN" ColumnName="EDAD_MIN" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="TEST" ColumnName="TEST" />
+          <ScalarProperty Name="TEST_DETALLE" ColumnName="TEST_DETALLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_PARAMETROS">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_PARAMETROS">
+        <MappingFragment StoreEntitySet="CS_PARAMETROS">
+          <ScalarProperty Name="BODEGA_GENERAL" ColumnName="BODEGA_GENERAL" />
+          <ScalarProperty Name="CATEGORIA_SEGURO" ColumnName="CATEGORIA_SEGURO" />
+          <ScalarProperty Name="CLA_LAB" ColumnName="CLA_LAB" />
+          <ScalarProperty Name="CLA_IMAGEN" ColumnName="CLA_IMAGEN" />
+          <ScalarProperty Name="CLA_FARMACIA" ColumnName="CLA_FARMACIA" />
+          <ScalarProperty Name="ALTA_DEFAULT" ColumnName="ALTA_DEFAULT" />
+          <ScalarProperty Name="CONSECUTIVO_PEDIDO" ColumnName="CONSECUTIVO_PEDIDO" />
+          <ScalarProperty Name="CONSECUTIVO_CLIENTE" ColumnName="CONSECUTIVO_CLIENTE" />
+          <ScalarProperty Name="CATEGORIA_CLIENTE" ColumnName="CATEGORIA_CLIENTE" />
+          <ScalarProperty Name="MONEDA_CLIENTE" ColumnName="MONEDA_CLIENTE" />
+          <ScalarProperty Name="NIVEL_PRECIO" ColumnName="NIVEL_PRECIO" />
+          <ScalarProperty Name="AREA_QX" ColumnName="AREA_QX" />
+          <ScalarProperty Name="AREA_HSP" ColumnName="AREA_HSP" />
+          <ScalarProperty Name="AREA_EGY" ColumnName="AREA_EGY" />
+          <ScalarProperty Name="AREA_EXTERNA" ColumnName="AREA_EXTERNA" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CS_RECETA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_RECETA">
+        <MappingFragment StoreEntitySet="CS_RECETA">
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="PRESENTACION" ColumnName="PRESENTACION" />
+          <ScalarProperty Name="DURACION" ColumnName="DURACION" />
+          <ScalarProperty Name="VIA" ColumnName="VIA" />
+          <ScalarProperty Name="DOSIS" ColumnName="DOSIS" />
+          <ScalarProperty Name="RECETA_LINEA" ColumnName="RECETA_LINEA" />
+          <ScalarProperty Name="MEDICAMENTO" ColumnName="MEDICAMENTO" />
+          <ScalarProperty Name="NUM_CONSULTA" ColumnName="NUM_CONSULTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Insertar_receta_No_Inv" FunctionName="ModeloHospitalario.Store.SP_Insertar_receta_No_Inv" />
+    <EntitySetMapping Name="DIVISION_GEOGRAFICA1">
+      <EntityTypeMapping TypeName="ModeloHospitalario.DIVISION_GEOGRAFICA1">
+        <MappingFragment StoreEntitySet="DIVISION_GEOGRAFICA1">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RowPointer" ColumnName="RowPointer" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="NoteExistsFlag" ColumnName="NoteExistsFlag" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DIVISION_GEOGRAFICA11" ColumnName="DIVISION_GEOGRAFICA1" />
+          <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_listar_paciente" FunctionName="ModeloHospitalario.Store.SP_listar_paciente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_listar_paciente_Result">
+          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="ESTADO_CIVIL_ID" ColumnName="ESTADO_CIVIL_ID" />
+          <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+          <ScalarProperty Name="TIPO_SANGRE_ID" ColumnName="TIPO_SANGRE_ID" />
+          <ScalarProperty Name="ESCOLARIDAD_ID" ColumnName="ESCOLARIDAD_ID" />
+          <ScalarProperty Name="PROFESION_ID" ColumnName="PROFESION_ID" />
+          <ScalarProperty Name="RELIGION_ID" ColumnName="RELIGION_ID" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="CATEGORIA_CLIENTE_ID" ColumnName="CATEGORIA_CLIENTE_ID" />
+          <ScalarProperty Name="NIVEL_PRECIO_ID" ColumnName="NIVEL_PRECIO_ID" />
+          <ScalarProperty Name="PAIS_ID" ColumnName="PAIS_ID" />
+          <ScalarProperty Name="CONDICION_PAGO_ID" ColumnName="CONDICION_PAGO_ID" />
+          <ScalarProperty Name="LOCAL" ColumnName="LOCAL" />
+          <ScalarProperty Name="TELEFONO1" ColumnName="TELEFONO1" />
+          <ScalarProperty Name="TELEFONO2" ColumnName="TELEFONO2" />
+          <ScalarProperty Name="E_MAIL" ColumnName="E_MAIL" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoExamenLaboratorio" FunctionName="ModeloHospitalario.Store.SpListadoExamenLaboratorio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoExamenLaboratorio_Result">
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+          <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+          <ScalarProperty Name="EXAMEN" ColumnName="EXAMEN" />
+          <ScalarProperty Name="DESC_ARTICULO" ColumnName="DESC_ARTICULO" />
+          <ScalarProperty Name="EDAD" ColumnName="EDAD" />
+          <ScalarProperty Name="ED" ColumnName="ED" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+          <ScalarProperty Name="NUM_MUESTRA" ColumnName="NUM_MUESTRA" />
+          <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="FECHA_TOMA_MUESTRA" ColumnName="FECHA_TOMA_MUESTRA" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ADMISION" ColumnName="ADMISION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="PRIORIDAD" ColumnName="PRIORIDAD" />
+          <ScalarProperty Name="AREA_SERVICIO" ColumnName="AREA_SERVICIO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpListadoCitasCS" FunctionName="ModeloHospitalario.Store.SpListadoCitasCS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SpListadoCitasCS_Result">
+          <ScalarProperty Name="ID_CITA" ColumnName="ID_CITA" />
+          <ScalarProperty Name="FECHA_INICIO_ATENCION" ColumnName="FECHA_INICIO_ATENCION" />
+          <ScalarProperty Name="FECHA_FIN_ATENCION" ColumnName="FECHA_FIN_ATENCION" />
+          <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+          <ScalarProperty Name="PACIENTE" ColumnName="PACIENTE" />
+          <ScalarProperty Name="AREA" ColumnName="AREA" />
+          <ScalarProperty Name="AREA_DESCRIPCION" ColumnName="AREA_DESCRIPCION" />
+          <ScalarProperty Name="RECURSO" ColumnName="RECURSO" />
+          <ScalarProperty Name="RECURSO_DESCRIPCION" ColumnName="RECURSO_DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ESTADO_DESCRIPCION" ColumnName="ESTADO_DESCRIPCION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="MEDICO" ColumnName="MEDICO" />
+          <ScalarProperty Name="MEDICO_DESCRIPCION" ColumnName="MEDICO_DESCRIPCION" />
+          <ScalarProperty Name="FECHA_HORA_LLEGADA_PAC" ColumnName="FECHA_HORA_LLEGADA_PAC" />
+          <ScalarProperty Name="FECHA_HORA_SALIDA_PAC" ColumnName="FECHA_HORA_SALIDA_PAC" />
+          <ScalarProperty Name="FECHA_HORA_ENTRADA_PAC" ColumnName="FECHA_HORA_ENTRADA_PAC" />
+          <ScalarProperty Name="REMITIDO_ID" ColumnName="REMITIDO_ID" />
+          <ScalarProperty Name="REMITIDO_DESCRIPCION" ColumnName="REMITIDO_DESCRIPCION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,251 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_PACIENTES>
+
+@{
+    ViewBag.Title = "Listado de Pacientes";
+    ViewBag.Modulo = "mAdmision";
+}
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <table class="table table-responsive table-hover" id="tabla_pacientes">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID Paciente
+                                </th>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Nombres
+                                </th>
+                                <th>
+                                    Apellidos
+                                </th>
+                                <th>
+                                    Identificación
+                                </th>
+                                <th>
+                                    Fecha de Nacimiento
+                                </th>
+                                <th>
+                                    Fecha Registro
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ID_PACIENTE)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CLIENTE_ID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NOMBRES)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.APELLIDOS)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IDENTIFICACION)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FECHA_NACIMIENTO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FECHA_REGISTRO)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    ID Paciente
+                                </th>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Nombres
+                                </th>
+                                <th>
+                                    Apellidos
+                                </th>
+                                <th>
+                                    Identificación
+                                </th>
+                                <th>
+                                    Fecha de Nacimiento
+                                </th>
+                                <th>
+                                    Fecha Registro
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+
+</div>
+
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+
+    <script type="text/javascript">
+
+        /* INICIALIZACIÓN */
+        $(document).ready(function () {
+            $('#tabla_pacientes tfoot th').each(function () {
+                var title = $(this).text().trim();
+                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+            });
+
+            var events = $('#events');
+
+
+            var table = $('#tabla_pacientes').DataTable({
+                dom: 'Bfrtip',
+                language: {
+                    select: {
+                        rows: {
+                            0: "",
+                            1: " │ %d registro seleccionado."
+                        }
+                    }
+                },
+                select: true,
+                buttons: [{
+                    text: 'Nuevo',
+                    action: function (e, dt, node, config) {
+                        window.location.href = '/Admision/NuevoPaciente';
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Editar',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+                        window.location.href = '/Admision/EditarPaciente/' + rowSelected[0][1];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Borrar',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+
+                        $.ajax({
+                            type: "GET",
+                            url: '@Url.Action("Popup_BorrarPaciente", "Admision")/' + rowSelected[0][0],
+                            contentType: "application/json; charset=utf-8",
+                            datatype: "json",
+                            success: function (data) {
+                                $('#myModal').html(data);
+                                $('#myModal').modal('show');
+                            },
+                            error: function () {
+                                alert("Content load failed.");
+                            }
+                        });
+
+                        //window.location.href = '/Admision/BorrarPaciente/' + rowSelected[0][0];
+
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                }, "pdf", "excel"
+                ]
+            });
+
+
+            // Hide two columns
+            table.columns([0]).visible(false);
+
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+            $('#tabla_pacientes tfoot tr').appendTo('#tabla_pacientes thead');
+            $("#tabla_pacientes_wrapper button").each(function () {
+                $(this).removeClass("dt-button");
+                $(this).addClass("btn btn-sm");
+                if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                    $(this).addClass("btn-secondary");
+                }
+                else {
+                    $(this).addClass("btn-primary");
+                }
+            });
+            $('#tabla_pacientes_filter input').addClass("form-control");
+            $('#tabla_pacientes tbody').on('dblclick', 'tr', function () {
+                var rowSelected = table.rows({ selected: true }).data();
+                window.location.href = '/Admision/EditarPaciente/' + rowSelected[0][1];
+            });
+        });
+
+    </script>
+
+}

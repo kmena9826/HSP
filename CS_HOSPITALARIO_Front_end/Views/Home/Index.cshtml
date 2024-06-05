@@ -1,0 +1,224 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.SpListadoTotalesAdmisionesDB_Result>
+@{
+    ViewBag.Title = "Dashboard";
+    ViewBag.Modulo = "mPrincipal";
+}
+
+
+<script src="~/Scripts/bundle.js"></script>
+<script src="~/Scripts/vendor.js"></script>
+<div class="row gap-20 masonry pos-r">
+    <div class="masonry-sizer col-md-6"></div>
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="col-md-3">
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                        <h6 class="lh-1">Total de Admisiones</h6>
+                    </div>
+                    <div class="layer w-100">
+                        <div class="peers ai-sb fxw-nw">
+                            <div class="peer peer-greed"><span id="sparklinedash"></span></div>
+                            <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">@Model.FirstOrDefault().TOTAL_ADMISIONES</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                        <h6 class="lh-1">Admisiones pendiente de signos vitales</h6>
+                    </div>
+                    <div class="layer w-100">
+                        <div class="peers ai-sb fxw-nw">
+                            <div class="peer peer-greed"><span id="sparklinedash2"></span></div>
+                            <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">@Model.FirstOrDefault().TOTAL_ADMISIONES_PENDIENTE_SV</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                        <h6 class="lh-1">Admisiones con signos signos vitales</h6>
+                    </div>
+                    <div class="layer w-100">
+                        <div class="peers ai-sb fxw-nw">
+                            <div class="peer peer-greed"><span id="sparklinedash3"></span></div>
+                            <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">@Model.FirstOrDefault().TOTAL_ADMISIONES_CON_SV</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                        <h6 class="lh-1">Admisiones pendiente de consulta</h6>
+                    </div>
+                    <div class="layer w-100">
+                        <div class="peers ai-sb fxw-nw">
+                            <div class="peer peer-greed"><span id="sparklinedash4"></span></div>
+                            <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">@Model.FirstOrDefault().TOTAL_ADMISIONES_PENDIENTE_CONSULTA</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<div class="row m-0 gap-20 masonry pos-r" style="padding-top:40px">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div id="10admisiones" class="masonry-item col-md-6 col-sm-12">
+
+            </div>
+            <div id="10pacientes" class="masonry-item col-md-6 col-sm-12">
+
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+@section scripts
+ {
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+    <script type="text/javascript">
+                        function detallarSignosVitales(admis) {
+                            $.ajax({
+                                type: "GET",
+                                url: '@Url.Action("Popup_DetalleSignosVitales", "Admision")/' + admis,
+                                contentType: "application/json; charset=utf-8",
+                                datatype: "json",
+                                success: function (data) {
+                                    $('#myModal').html(data);
+                                    $('#myModal').modal('show');
+                                },
+                                error: function () {
+                                    alert("Content load failed.");
+                                }
+                            });
+                        }
+                        /* INICIALIZACIÓN */
+                        $(document).ready(function () {
+
+                            $.get("/Admision/Top10Admisiones").done(function (data) {
+                                $("#10admisiones").append(data);
+                            });
+
+                            $.get("/Admision/Top10Pacientes").done(function (data) {
+                                $("#10pacientes").append(data);
+                            });
+
+                            $('#tabla_admisiones tfoot th').each(function () {
+                                var title = $(this).text().trim();
+                                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+                            });
+
+                            var events = $('#events');
+
+                            var table = $('#tabla_admisiones').DataTable({
+                                dom: 'Bfrtip',
+                                language: {
+                                    select: {
+                                        rows: {
+                                            0: "",
+                                            1: " │ %d registro seleccionado."
+                                        }
+                                    }
+                                },
+                                select: true,
+                                buttons: [{
+                                    text: 'Nuevo',
+                                    action: function (e, dt, node, config) {
+                                        window.location.href = '/Admision/NuevaAdmision';
+                                    },
+                                    init: function (api, node, config) {
+                                        $(node).removeClass('btn-default')
+                                    }
+                                },
+                                {
+                                    text: 'Editar',
+                                    action: function (e, dt, node, config) {
+                                        var rowSelected = table.rows({ selected: true }).data();
+                                        console.log(rowSelected[0][0]);
+                                        window.location.href = '/Admision/EditarAdmision/' + rowSelected[0][0];
+                                    },
+                                    init: function (api, node, config) {
+                                        $(node).removeClass('btn-default')
+                                    }
+                                },
+                                {
+                                    text: 'Borrar',
+                                    action: function (e, dt, node, config) {
+                                        var rowSelected = table.rows({ selected: true }).data();
+                                        console.log(rowSelected[0][0]);
+                                        window.location.href = '/Admision/BorrarAdmision/' + rowSelected[0][0];
+                                    },
+                                    init: function (api, node, config) {
+                                        $(node).removeClass('btn-default')
+                                    }
+                                },
+                                {
+                                    text: 'Signos Vitales',
+                                    action: function (e, dt, node, config) {
+                                        var rowSelected = table.rows({ selected: true }).data();
+                                        console.log(rowSelected[0][0]);
+                                        if (rowSelected[0][7] == 'Pendiente') {
+                                            window.location.href = '/Admision/SignosVitales/' + rowSelected[0][0];
+                                        }
+                                        else
+                                            detallarSignosVitales(rowSelected[0][0]);
+                                    },
+                                    init: function (api, node, config) {
+                                        $(node).removeClass('btn-default')
+                                    }
+                                }, "pdf", "excel"]
+                            });
+                            // Apply the search
+                            table.columns().every(function () {
+                                var that = this;
+
+                                $('input', this.footer()).on('keyup change', function () {
+                                    if (that.search() !== this.value) {
+                                        that
+                                            .search(this.value)
+                                            .draw();
+                                    }
+                                });
+                            });
+                            $('#tabla_admisiones tfoot tr').appendTo('#tabla_admisiones thead');
+                            $("#tabla_admisiones_wrapper button").each(function () {
+                                $(this).removeClass("dt-button");
+                                $(this).addClass("btn btn-sm");
+                                if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                                    $(this).addClass("btn-secondary");
+                                }
+                                else {
+                                    if ($(this).text() == 'Nuevo' || $(this).text() == 'Editar' || $(this).text() == 'Borrar') {
+                                        $(this).addClass("btn-primary");
+                                    }
+                                    else
+                                        $(this).addClass("btn-dark");
+                                }
+                            });
+                            $('#tabla_admisiones_filter input').addClass("form-control");
+
+                            $('#tabla_admisiones tbody').on('dblclick', 'tr', function () {
+                                var rowSelected = table.rows({ selected: true }).data();
+                                window.location.href = '/Admision/EditarAdmision/' + rowSelected[0][0];
+                            });
+
+                        });
+
+    </script>
+}

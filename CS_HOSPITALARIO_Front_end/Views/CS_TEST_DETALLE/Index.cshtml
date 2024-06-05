@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_TEST_DETALLE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SEXO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EDAD_MIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EDAD_MAXIMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RANGO_MINIMO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RANGO_MAXIMO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LOW_PANIC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HIGH_PANIC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CS_TEST.NOMBRE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEXO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EDAD_MIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EDAD_MAXIMA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RANGO_MINIMO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RANGO_MAXIMO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LOW_PANIC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HIGH_PANIC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CS_TEST.NOMBRE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TEST_DETALLE }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TEST_DETALLE }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TEST_DETALLE })
+        </td>
+    </tr>
+}
+
+</table>

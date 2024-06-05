@@ -1,0 +1,162 @@
+﻿@model CS_HOSPITALARIO.Models.CS_MEDICOS
+
+@{
+    ViewBag.Title = "Editar Medico";
+}
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    @using (Html.BeginForm())
+                    {
+                   
+                        <div class="form-horizontal">
+
+                            <div class="row p-20">
+                                <h2 class="col-form-label fsz-lg color-secondary-m">@ViewBag.Title</h2>
+                                <div class="form-group ml-auto">
+                                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                                    @Html.ActionLink("Cancelar", "Index", "Admision", null, new { @class = "btn btn-outline-secondary" })
+                                </div>
+                            </div>
+                            <hr />
+
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.ID_MEDICO)
+
+
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Nombres*</label>
+                                    <div class="">
+                                        @Html.EditorFor(model => model.NOMBRES, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombres", autofocus = "autofocus" } })
+                                        @Html.ValidationMessageFor(model => model.NOMBRES, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Apellidos*</label>
+                                    <div class="">
+                                        @Html.EditorFor(model => model.APELLIDOS, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellidos" } })
+                                        @Html.ValidationMessageFor(model => model.APELLIDOS, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>IDENTIDAD*</label>
+                                    <div class="">
+                                        @Html.EditorFor(model => model.IDENTIFICACION, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IDENTIFICACION, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Sexo*</label>
+                                    <div class="">
+                                        <label class="radio-inline col-md-4">
+                                            @Html.RadioButtonFor(model => model.SEXO, "F") Femenino
+                                        </label>
+                                        <label class="radio-inline col-md-4">
+                                            @Html.RadioButtonFor(model => model.SEXO, "M") Masculino
+                                        </label>
+                                        @Html.ValidationMessageFor(model => model.SEXO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Activo*</label>
+                                    <div class="">
+                                        @Html.CheckBoxFor(model => model.ACTIVO, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>LICENCIA*</label>
+                                    <div class="">
+                                        @Html.EditorFor(model => model.LICENCIA, new { htmlAttributes = new { @class = "form-control", placeholder = "Licencia" } })
+                                        @Html.ValidationMessageFor(model => model.LICENCIA, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>ESPECIALIDAD*</label>
+                                   
+                                    <div class="">
+                                        @Html.DropDownList("ID_ESPECIALIDAD", null, htmlAttributes: new { @class = "form-control", placeholder = "Especialidad" })
+                                        @Html.ValidationMessageFor(model => model.ID_ESPECIALIDAD, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label>FECHA NACIMIENTO*</label>
+                                    <div class="">
+                                        @*@Html.TextBox("FECHA_NACIMIENTO", ViewBag.FECHA_NACIMIENTO, new { @type = "date" })*@
+                                         @Html.EditorFor(model => model.FECHA_NACIMIENTO, "{0:mm/dd/yyyy}", new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.FECHA_NACIMIENTO } })
+                                        @Html.ValidationMessageFor(model => model.FECHA_NACIMIENTO, "", new { @class = "text-danger" })
+                                    </div>
+                                    @*<div class="input-prepend date" id="FECHA_NACIMIENTO" data-date=@DateTime.UtcNow data-date-format="m/d/yyyy">
+                                            <span class="add-on"><i class="icon-calendar"></i></span>
+                                            @Html.EditorFor(model => model.FECHA_NACIMIENTO)
+                                        </div>*@
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>CORREO</label>
+                                    <div class="">
+                                        @Html.EditorFor(model => model.CORREO, new { htmlAttributes = new { @class = "form-control", @type = "email", placeholder = "Correo" } })
+                                        @Html.ValidationMessageFor(model => model.CORREO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>TELEFONO</label>
+                                    <div class="">
+                                        @Html.EditorFor(model => model.TELEFONO, new { htmlAttributes = new { @class = "form-control", placeholder = "Nº Teléfono" } })
+                                        @Html.ValidationMessageFor(model => model.TELEFONO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label>OBSERVACION</label>
+                                    <div class="">
+                                        @Html.TextAreaFor(model => model.OBSERVACION, new { @class = "form-control ocupar-todo", placeholder = "Observaciones", @rows = 3 })
+                                        @Html.ValidationMessageFor(model => model.OBSERVACION, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

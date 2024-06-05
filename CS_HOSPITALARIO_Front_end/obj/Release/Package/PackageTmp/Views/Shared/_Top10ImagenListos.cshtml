@@ -1,0 +1,79 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_IMAGENOLOGIA>
+
+<div class="bd bgc-white">
+	<div class="layers">
+		<div class="layer w-100 p-15 bg-color-secondary-m color-blanco">
+			<h5 class="lh-1">Transcripciones del día</h5>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="color-secondary-h" scope="col">Fecha</th>
+					<th class="color-secondary-h" scope="col">Paciente</th>
+					<th class="color-secondary-h" scope="col">Procedimiento</th>
+					<th class="color-secondary-h" scope="col">Área de Servicio</th>
+					<th class="color-secondary-h" scope="col">Prioridad</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+				<tr>
+					<td>
+						@Convert.ToDateTime(item.FECHA_REGISTRO).ToString("dd/MM/yyyy")
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.CS_PACIENTES.NOMBRES) 
+					</td>
+					<td>
+						<a href="@Url.Action("Transcripcion", "Imagenologia")/@item.ARTICULO.DESCRIPCION">
+							<i class="fas fa-edit fsz-xs color-secondary-m" data-toggle="tooltip" data-placement="right" title="Ver Resultado"></i>
+						</a>
+
+						@Html.DisplayFor(modelItem => item.ARTICULO.DESCRIPCION)
+					</td>
+
+					<td>
+						@Html.DisplayFor(modelItem => item.CS_ADMISION.AREA_SERVICIO.DESCRIPCION)
+					</td>
+					<td>
+						@{
+							if ((bool)item.STAT)
+							{
+								<text>
+									<a href="#">
+										<span class="badge bg-color-info-m color-accent-h p-10 lh-0 tt-c badge-pill">
+											Stat
+											@*<i class="fas fa-eye fa-xs"></i>*@
+										</span>
+									</a>
+								</text>
+							}
+							else
+							{
+								<text>
+									<a href="#">
+										<span class="badge bg-color-light-m color-dark-h p-10 lh-0 tt-c badge-pill">
+											Rutina
+											@*<i class="fas fa-external-link-alt fa-xs"></i>*@
+										</span>
+									</a>
+								</text>
+							}
+						}
+					</td>
+
+				</tr>
+				}
+			</tbody>
+		</table>
+		<div class="ta-c bdT w-100 p-15">
+			<a class="btn btn-primary float-right" href="@Url.Action("Transcripcion", "Imagenologia")">
+				<i class="fas fa-plus-circle"></i>
+				Añadir Orden
+			</a>
+			<a class="float-left" href="@Url.Action("Pacientes", "Imagenologia")">Ver toda la lista de trabajo &nbsp;<i class="fas fa-angle-right"></i></a>
+		</div>
+	</div>
+</div>
+

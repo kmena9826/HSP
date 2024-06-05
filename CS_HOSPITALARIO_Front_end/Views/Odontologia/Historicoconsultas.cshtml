@@ -1,0 +1,297 @@
+﻿
+@{
+    ViewBag.Title = "Historico";
+}
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Historico</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <h3>Historial clinico del Paciente</h3>
+                    <hr />
+                    <div class="row" style="margin-top:50px">
+                        <div class="col-md-3" style="text-align:right">
+                            <label>Seleccione el paciente:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div id="PACIENTE"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div id="CONSULTAS" class="row m-0 gap-20 masonry pos-r" style="display:none">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    <table class="table table-responsive table-hover" id="tabla_consulta">
+                        <thead>
+                            <tr>
+                                <th>
+                                    N° Consulta
+                                </th>
+                                <th>
+                                    Medico ID
+                                </th>
+                                <th>
+                                    MEDICO
+                                </th>
+                                <th>
+                                    Área de Servicio
+                                </th>
+                                <th>
+                                    Fecha de Recepción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        @*<tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a title="Atender especialista" class="btn btn-info" href="@Url.Action("Edit", "Consultas")/@item.ID_ADMISION"><i class="fa fa-eye"></i></a>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ID_ADMISION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CS_PACIENTES.CLIENTE_ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CS_PACIENTES.CLIENTE.NOMBRE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CS_MEDICOS.ID_MEDICO)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CS_MEDICOS.NOMBRES)<br />@Html.DisplayFor(modelItem => item.CS_MEDICOS.APELLIDOS)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE.DESCRIPCION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE1.DESCRIPCION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE2.DESCRIPCION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE3.DESCRIPCION)
+                                        </td>
+                                        <td>
+                                            <text>
+                                                <a href="#" onClick="detallarSignosVitales(@item.ID_ADMISION)">
+                                                    <span class="badge bg-color-info-m color-accent-h p-10 lh-0 tt-c badge-pill">
+                                                        Completo
+                                                        <i class="fas fa-eye fa-xs"></i>
+                                                    </span>
+                                                </a>
+                                            </text>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FECHA_RECEPCION)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>*@
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    N° Consulta
+                                </th>
+                                <th>
+                                    Medico ID
+                                </th>
+                                <th>
+                                    MEDICO
+                                </th>
+                                <th>
+                                    Área de Servicio
+                                </th>
+                                <th>
+                                    Fecha de Recepción
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+@section scripts
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/buttons.flash.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables.select.min.js"></script>
+    <script src="~/Scripts/pdfmake.min.js"></script>
+    <script src="~/Scripts/vfs_fonts.js"></script>
+
+    <script src="~/Scripts/dx.all.js"></script>
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+
+    <script type="text/javascript">
+        function CargarGrid() {
+            $('#tabla_consulta tfoot th').each(function () {
+                var title = $(this).text().trim();
+                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+            });
+            var events = $('#events');
+            var table = $('#tabla_admisiones').DataTable({
+                "order": [[8, "desc"]],
+                "columns": [
+                    { "width": "7%" },
+                    { "width": "10%" },
+                    null,
+                    { "width": "10%" },
+                    null,
+                    { "width": "10%" },
+                    null,
+                    null,
+                    null
+                ],
+
+                select: true,
+                buttons: ["pdf", "excel"]
+            });
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+            $('#tabla_consulta tfoot tr').appendTo('#tabla_consulta thead');
+            $("#tabla_consulta_wrapper button").each(function () {
+                $(this).removeClass("dt-button");
+                $(this).addClass("btn btn-sm");
+                if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                    $(this).addClass("btn-secondary");
+                }
+            });
+            $('#tabla_consulta_filter input').addClass("form-control");
+        }
+        function SelectPacientes() {
+            var pacientes = [];
+            $.ajax({
+                type: "GET",
+                url: "/Consultas/GetPacientes",
+                success: function (data) {
+                    //pacientes.push({
+                    //    ID: 0,
+                    //    NOMBRE: "Seleccione el paciente",
+                    //});
+                    //$.each(data, function (i, v) {
+                    //    pacientes.push({
+                    //        ID: v.ID,
+                    //        NOMBRE: v.NOMBRE,
+                    //    });
+                    //})
+                    $("#PACIENTE").dxSelectBox({
+                        placeholder: "Seleccione el paciente",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: data,
+                            key: "ID"
+                        }),
+                        displayExpr: "NOMBRE",
+                        valueExpr: "ID",
+                        searchEnabled: true,
+                        showClearButton: true,
+                        onValueChanged: function (data) {
+                            if (data.value != 0 && data.value != null) {
+                                $("#CONSULTAS").show();
+                                // $("#CONSULTAS").find('tbody')
+                                $('#CONSULTAS tbody').html('');
+                                ListarConsultas(data.value);
+                                CargarGrid();
+                            }
+                            else {
+                                $("#CONSULTAS").hide();
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function ListarConsultas(paciente) {
+            var consultas = [];
+            $.ajax({
+                type: "POST",
+                data: { paciente },
+                url: "/Odontologia/GetConsultasPacientes",
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        $("#CONSULTAS").find('tbody')
+                            .append('<tr id="' + v.NUM_CONSULTA + '"><td>' + v.NUM_CONSULTA + '</td><td>' + v.ID_MEDICO + '</td>><td>' + v.MEDICO + '</td><td>' + v.AREA_SERVICIO + '</td><td>' + v.FECHA_REGISTRO + '</td><td><button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Reporte de Consulta  Medica" onclick="MostrarConsulta(' + v.NUM_CONSULTA + ')"><i class="fas fa-file-medical-alt"></i></button></td>' + '</td><td><button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Reporte de receta de la Consulta" onclick="MostrarReceta(' + v.NUM_CONSULTA + ')"><i class="fas fa-medkit"></i></button></td>' + '</tr>');
+                    })
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function MostrarConsulta(consulta) {
+            window.open('/Consultas/FormartoHistorialClinico?consulta=' + consulta, '_blank');
+        }
+        function MostrarReceta(consulta) {
+            window.open('/Consultas/FormartoRecetaConsulta?consulta=' + consulta, '_blank');
+        }
+        /* INICIALIZACIÓN */
+        $(document).ready(function () {
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+            $("#PACIENTE").dxSelectBox();
+            SelectPacientes();
+        });
+    </script>
+
+}

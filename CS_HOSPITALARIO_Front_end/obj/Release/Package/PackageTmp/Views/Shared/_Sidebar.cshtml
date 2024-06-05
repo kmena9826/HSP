@@ -1,0 +1,336 @@
+﻿<div class="sidebar">
+    <div id="menu" class="sidebar-inner">
+        <div class="sidebar-logo">
+            <div class="peers ai-c fxw-nw">
+                <div class="peer peer-greed">
+                    <a class="td-n" href="#">
+                        <div class="peers ai-c fxw-nw">
+                            <div class="peer">
+                                <div class="logo"><img src="~/Content/img/logotipo-AH.png" class="img-fluid img-logotipo" /></div>
+                            </div>
+                            <div class="peer peer-greed">
+                                <h5 class="lh-1 mB-0 logo-text">LABORATORIO CUH</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="peer">
+                    <div class="mobile-toggle sidebar-toggle"><a href="" class="td-n"><i class="ti-arrow-circle-left"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <ul class="sidebar-menu scrollable pos-r">
+            <li class="nav-item">
+                <a class="sidebar-link" href="@Url.Action("Index","Home")" default>
+                    <span class="icon-holder">
+                        <i class="color-primary fas fa-h-square"></i>
+                    </span>
+                    <span class="title">Principal</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="color-info-h fas fa-address-book"></i>
+                    </span>
+                    <span class="title">Admisión</span>
+                    <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class='sidebar-link' href="@Url.Action("Admisiones","Admision")">Admisiones</a>
+                    </li>
+                    <li>
+                        <a class='sidebar-link' href="@Url.Action("Index","Cita")">Citas</a>
+                    </li>
+                    <li>
+                        <a class='sidebar-link' href="@Url.Action("Pacientes","Admision")">Pacientes</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="mConsultaExterna" class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="c-orange-500 fas fa-user-md"></i>
+                    </span>
+                    <span class="title">Consulta Externa</span>
+                    <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class='sidebar-link' href="@Url.Action("Index","Consultas")">Consulta</a>
+                    </li>
+                    @*<li>
+                    <a class='sidebar-link' href="datatable.html">Emergencia</a>
+                </li>*@
+                    <li>
+                        <a class='sidebar-link' href="@Url.Action("Historico","Consultas")">Historico</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="mLaboratorio" class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="c-purple-500 fas fa-microscope"></i>
+                    </span>
+                    <span class="title">Laboratorio</span> <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li>
+                        <a href="@Url.Action("AdmisionLaboratorio","Admision")">Admision</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("CitaLaboratorio","Cita")">Cita</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("TomaMuestra","Laboratorio")">Toma de Muestra</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("RecepcionMuestra","Laboratorio")">Recepcion de Muestra</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ListaTrabajo","Laboratorio")">Lista de Trabajo</a>
+                    </li>
+                    <li>
+                        <a class='sidebar-link' href="@Url.Action("Index","Procedimiento")">Procedimiento</a>
+                    </li>
+                    <li>
+                        <a class='sidebar-link' href="@Url.Action("TestDetalles","Procedimiento")">Test Detalle</a>
+                    </li>
+                 
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="mImagenologia" class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="c-indigo-500 fas fa-picture-o"></i>
+                    </span>
+                    <span class="title">Imagenologia</span>
+                    <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li>
+                        <a href="@Url.Action("AdmisionImagen","Admision")">Admision</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("CitaImagen","Cita")">Cita</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Imagenologia")">Lista de Trabajo</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Historial_Imagen","Imagenologia")">Historial</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Plantillas_Listar","Imagenologia")">Plantillas </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Definicion_Img_Listar","Imagenologia")">Definición de Procedimiento</a>
+                    </li>
+                    <li>
+                        <a href="#">Reportes</a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+            @*<li class="nav-item dropdown">
+                <a id="mImagenologia" class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="c-red-500 fa fa-ambulance"></i>
+                    </span>
+                    <span class="title">Emergencias</span>
+                    <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li>
+                        <a href="@Url.Action("AdmisionImagen","Admision")">Estacion de Enfermeria</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("CitaImagen","Cita")">Confirmacion de Admisión </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Imagenologia")">Admisión ER</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Historial_Imagen","Imagenologia")">Triagge</a>
+                    </li>
+                </ul>
+            </li>*@
+            @*<li class="nav-item dropdown">
+            <a id="mFarmacia" class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                    <i class="c-light-green-500 fas fas fa-medkit"></i>
+                </span>
+                <span class="title">Farmacia</span> <span class="arrow">
+                    <i class="ti-angle-right"></i>
+                </span>
+            </a>
+            <ul class="dropdown-menu" style="display: none;">
+                <li>
+                    <a href="#">Despacho</a>
+                </li>
+                <li>
+                    <a href="#">Interacciones</a>
+                </li>
+                <li>
+                    <a href="#">Reportes</a>
+                </li>
+            </ul>
+            </li>*@
+            @*<li class="nav-item dropdown">
+            <a id="mHospitalización" class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                    <i class="c-pink-500 fas fa-wheelchair"></i>
+                </span>
+                <span class="title">Hospitalización</span> <span class="arrow">
+                    <i class="ti-angle-right"></i>
+                </span>
+            </a>
+            <ul class="dropdown-menu" style="display: none;">
+                <li>
+                    <a href="@Url.Action("AdmisionGeneral","Admision")">Admision</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Hospitalizacion")">Estacion de Piso</a>
+                </li>
+                <li>
+                    <a href="#">Transfrencia</a>
+                </li>
+                <li>
+                    <a href="#">Reprotes</a>
+                </li>
+            </ul>
+        </li>
+            <li class="nav-item dropdown">
+            <a id="mQuirofano" class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                    <i class="c-red-500 fas fa-heartbeat"></i>
+                </span>
+                <span class="title">Quirófano</span> <span class="arrow">
+                    <i class="ti-angle-right"></i>
+                </span>
+            </a>
+            <ul class="dropdown-menu" style="display: none;">
+                <li>
+                    <a href="#">Admision</a>
+                </li>
+                <li>
+                    <a href="#">Estaciones</a>
+                </li>
+                <li>
+                    <a href="#">Transfrencias</a>
+                </li>
+                <li>
+                    <a href="#">Reprotes</a>
+                </li>
+            </ul>
+        </li>*@
+            <li class="nav-item dropdown">
+                <a id="mMedicos" class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="c-cyan-500 fa fa-user-circle"></i>
+                    </span>
+                    <span class="title">Medicos</span> <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li>
+                        <a href="@Url.Action("Index","Medicos")">Medicos</a>
+                    </li>
+                    @*<li>
+                    <a href="#">Reportes</a>
+                </li>*@
+                </ul>
+            </li>
+            @*<li class="nav-item dropdown">
+            <a id="mReportes" class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                    <i class="c-cyan-500 fa fa-clipboard"></i>
+                </span>
+                <span class="title">Reportes</span> <span class="arrow">
+                    <i class="ti-angle-right"></i>
+                </span>
+            </a>
+            <ul class="dropdown-menu" style="display: none;">
+                <li>
+                    <a href="@Url.Action("Index","Medicos")">Historico Cliente</a>
+                </li>
+            </ul>
+        </li>*@
+            <li class="nav-item dropdown">
+                <a id="mCatalogos" class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="c-brown-500 fa fa-list-ul"></i>
+                    </span>
+                    <span class="title">Catálogos</span> <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li>
+                        <a href="@Url.Action("Index","CIE")">CIE</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Habitacion")">Habitacion</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Cuarto")">Cuartos</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Quirofano")">Quirofanos</a>
+                    </li>
+                    @*<li>
+                    <a href="#">Modulos</a>
+                </li>*@
+                    @*<li>
+                    <a href="#">Deficion de Procedimiento</a>
+                </li>*@
+                    <li>
+                        <a href="@Url.Action("Seguros","Catalogos")">Seguros</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Maestros","Catalogos")">Catalogos Maestros</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ItemsCatalogos","Catalogos")">Items de Catalogos</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="mCatalogos" class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="cH-red-500 ti-server"></i>
+                    </span>
+                    <span class="title">Administracion</span> <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li>
+                        <a href="@Url.Action("Index","Personal")">Personal</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","User")">Usuarios</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Rol")">Roles</a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

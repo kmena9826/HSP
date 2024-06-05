@@ -1,0 +1,114 @@
+﻿@model CS_HOSPITALARIO.Models.CS_TEST
+
+@{
+    ViewBag.Title = "Editar Test";
+}
+<link href="~/Content/dx.common.css" rel="stylesheet" />
+<link href="~/Content/dx.light.css" rel="stylesheet" />
+<script src="~/Scripts/vendor.js"></script>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Laboratorio</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.HiddenFor(model => model.TEST)
+                        <div class="form-horizontal">
+                            <div class="row p-20">
+                                <h2 class="col-form-label fsz-lg color-secondary-m">@ViewBag.Title</h2>
+                                <div class="form-group ml-auto">
+                                    <input type="submit" value="Guardar" onclick="return ValidarForm()" class="btn btn-primary" />
+                                    @Html.ActionLink("Cancelar", "Index", "Procedimiento", null, new { @class = "btn btn-outline-secondary" })
+                                </div>
+                            </div>
+                            <hr />
+                            @*<fieldset class="form-group">
+                                @Html.LabelFor(model => model.UNIDAD_MEDIDA, "EXAMEN", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("ID_EXAMEN", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                            </fieldset>*@
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NOMBRE, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UNIDAD_MEDIDA, "UNIDAD MEDIDA", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("UNIDAD_MEDIDA", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.UNIDAD_MEDIDA, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.VALOR, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("VALOR", null, htmlAttributes: new { @class = "form-control" })
+                                    @*<select class="form-control" id="VALOR" name="VALOR" placeholder="VALOR">
+                                            <option value="Seleccione">Seleccione</option>
+                                            <option value="N">Numerico</option>
+                                            <option value="A">AlfaNumerico</option>
+                                        </select>*@
+                                    @*@Html.EditorFor(model => model.VALOR, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.ValidationMessageFor(model => model.VALOR, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OBSERVACION, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @*@Html.TextArea(model => model.OBSERVACION, new { htmlAttributes = new { @class = "form-control" ,@col=2} })*@
+                                    @Html.TextArea("OBSERVACION", null, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.OBSERVACION, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/select2.css" rel="stylesheet" />
+@section scripts
+{
+    <script src="~/Scripts/dx.all.js"></script>
+    <script src="~/Scripts/ID.js"></script>
+    <script src="~/Scripts/select2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#UNIDAD_MEDIDA').select2({
+                placeholder: "Seleccione la UM",
+                showClearButton: true,
+                allowClear: true
+            });
+        })
+    </script>
+}
+

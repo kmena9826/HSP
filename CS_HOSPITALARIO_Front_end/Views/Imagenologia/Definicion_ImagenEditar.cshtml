@@ -1,0 +1,182 @@
+﻿@model CS_HOSPITALARIO.Models.CS_DEFINICION_PROC_IMAGEN
+
+@{
+    ViewBag.Title = "Editar definicion de imagen";
+}
+
+
+
+
+
+
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="~/Content/select2.min.css" rel="stylesheet" />
+
+
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action(" Index","Home")">Imagenplogia</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action(" Index","Admision")">Definición de Procedimiento</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    
+                    <div class="row p-20">
+                        <h2 class="col-form-label fsz-lg color-secondary-m">@ViewBag.Title</h2>
+
+                        <div class="form-group ml-auto">
+                            <button class="btn btn-primary" type="button" id="btnGuardar" onclick="ValidarForm()"><i class="fa fa-save"></i> Guardar</button>
+                            @Html.ActionLink("Cancelar", "Definicion_Img_Listar", "Imagenologia", null, new { @class = "btn btn-outline-secondary" })
+                        </div>
+                    </div>
+                    <hr style="margin-bottom:30px" />
+
+                    @using (Html.BeginForm())
+                    {
+                    
+
+                        <div class="form-horizontal">
+                            @Html.HiddenFor(model => model.DEF_IMG)
+                            @Html.HiddenFor(model => model.FECHA_REGISTRO)
+                            @Html.HiddenFor(model => model.USUARIO_REGISTRO)
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label>Estudio:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    @Html.DropDownList("ARTICULO", null, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ACTIVO, "Activo", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.ACTIVO)
+                                        @Html.ValidationMessageFor(model => model.ACTIVO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OBSERVACION, "Observación", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.OBSERVACION, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.OBSERVACION, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                        </div>
+                    }
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+
+    <script>
+
+        function ValidarForm() {
+            let isvalid = true;
+
+
+            if ($("#ARTICULO").val().trim() == "") {
+                $.notify({ message: 'El estudio es requerido' }, { type: 'danger' });
+                isvalid = false;
+                return;
+            }
+            if ($("#OBSERVACION").val().trim() == "") {
+                $.notify({ message: 'La observacion es requerido' }, { type: 'danger' });
+                isvalid = false;
+                return;
+            }
+
+
+            if (isvalid == true) {
+                let definicion = {
+                    "ARTICULO": $("#ARTICULO").val().trim(),
+                    "OBSERVACION": $("#OBSERVACION").val().trim(),
+                    "ACTIVO": $("#ACTIVO").val().trim(),
+                    "DEF_IMG": $("#DEF_IMG").val().trim(),
+                    "FECHA_REGISTRO": $("#FECHA_REGISTRO").val().trim(),
+                    "USUARIO_REGISTRO": $("#USUARIO_REGISTRO").val().trim()
+                };
+
+                Guardar(definicion);
+            }
+            isvalid = false;
+            return isvalid;
+        }
+
+        function Guardar(definicion) {
+            $.ajax({
+                type: "POST",
+                url: '/Imagenologia/Definicion_ImagenEditar',
+                data: JSON.stringify({ definicion: definicion }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.status) {
+
+                        $.notify({ message: 'Se ha modificado la definición' }, { type: 'success' });
+                        window.location.href = '/Imagenologia/Definicion_Img_Listar';
+
+                    } else {
+                        $.notify({ message: 'Error al modificar la definición' }, { type: 'danger' });
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al modificar la definición' }, { type: 'danger' });
+                }
+            })
+        }
+
+        $(document).ready(function () {
+
+            $("#ID_EXAMEN").select2({
+                placeholder: "Seleccione un estudio",
+                allowClear: true,
+
+            });
+
+         });
+
+
+    </script>
+}

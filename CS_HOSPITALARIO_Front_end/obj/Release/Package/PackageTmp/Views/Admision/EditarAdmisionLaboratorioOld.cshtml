@@ -1,0 +1,632 @@
+﻿
+@model CS_HOSPITALARIO.Models.CS_ADMISION
+@{
+    ViewBag.Modulo = "mAdmisionLaboratorio";
+    ViewBag.Title = "Editar Admision Laboratorio";
+}
+<script src="~/Scripts/vendor.js"></script>
+<link href="~/Content/animate.css" rel="stylesheet" />
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bd bgc-white">
+                    <div class="layers">
+                        <div class="ta-c w-100 p-10">
+                            <h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+                            <nav class="float-right m-0" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-color-blanco">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admision")">Admisión Laboratorio</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 gap-20 masonry pos-r">
+    <div class="masonry-item w-100">
+        <div class="row gap-20">
+            <div class="masonry-item col-md-12 col-sm-12">
+                <div class="bgc-white p-20 bd">
+                    @*<h4>Nueva admision de laboratorio</h4>
+                        <hr />*@
+                    @*@using (Html.BeginForm())
+                        {*@
+                    @*<input value="P" id="asegurado" name="asegurado" type="hidden">*@
+                    <input value="" id="ID_FINANC" name="ID_FINANC" type="hidden">
+                    @Html.HiddenFor(model => model.ID_ADMISION)
+                    @Html.HiddenFor(model => model.PEDIDO)
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="row p-20">
+                        <label id="id-pedido" class="col-form-label fsz-lg color-secondary-m">
+                            @if (ViewBag.Accion == "Editar")
+                            {
+                                @Model.PEDIDO
+                            }
+                            else
+                            {
+                                @ViewBag.NUM_PEDIDO
+                            }
+                            @*<i class="fas fa-external-link-alt fsz-xs color-secondary-m" data-toggle="tooltip" data-placement="right" data-html="true" title="Buscar en <b>Softland</b>"></i>*@
+                        </label>
+
+                        <div class="form-group ml-auto">
+                            <input type="submit" value="Guardar" class="btn btn-primary" onclick="return ValidarForm();" />
+                            @Html.ActionLink("Cancelar", "Admisiones", "Admision", null, new { @class = "btn btn-outline-secondary" })
+                        </div>
+                    </div>
+                    <hr style="margin-bottom:30px" />
+                    <ul class="nav nav-tabs" id="myTabLaboratorio" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="admision-tab" data-toggle="tab" href="#admision" role="tab" aria-controls="admision" aria-selected="true">Admision</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="orden-tab" data-toggle="tab" href="#orden" role="tab" aria-controls="orden" onclick="ValidarAdmision()" aria-selected="false">Orden De Laboratorio</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabLaboratorio">
+                        <div class="tab-pane fade show active" id="admision" role="tabpanel" aria-labelledby="admision-tab">
+                            <hr />
+                            <div class="form-row">
+                                <div class="form-group col-md-5">
+                                    <label>Paciente</label>
+                                    <div class="">
+                                        @Html.DropDownList("PACIENTE_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(model => model.PACIENTE_ID, "", new { @class = "text-danger" })*@
+                                        <div class="invalid-feedback">
+                                            Debe de seleccionar el paciente.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label>Medico</label>
+                                    <div class="">
+                                        @Html.DropDownList("DOCTOR_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DOCTOR_ID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="switch float-right" style="right:30px;top:30px;">
+                                        @*<input id="chbx" type="checkbox" class="switch-input">*@
+                                        @Html.CheckBoxFor(model => model.ASEGURADO, new { @class = "switch-input" })
+                                        <span class="switch-label" data-on="Asegurado" data-off="Privado"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Causa de Admisión</label>
+                                    <div class="">
+                                        @Html.DropDownList("CAUSA_ADMISION_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(model => model.CAUSA_ADMISION_ID, "", new { @class = "text-danger" })*@
+                                        <div class="invalid-feedback">
+                                            Debe de seleccionar la causa de la admision.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Prioridad</label>
+                                    <div class="">
+                                        @Html.DropDownList("PRIORIDAD_ID", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(model => model.PRIORIDAD_ID, "", new { @class = "text-danger" })*@
+                                        <div class="invalid-feedback">
+                                            Debe de seleccionar la prioridad.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-row">
+                                <div id="financ" class="form-group col-md-4">
+                                    <label>Financiador</label>
+                                    <div class="">
+                                        @Html.DropDownList("FINANCIADOR", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(model => model.FINANCIADOR, "", new { @class = "text-danger" })*@
+                                        <div class="invalid-feedback">
+                                            Debe de seleccionar el financiador.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tipSeg" class="form-group col-md-4">
+                                    <label>Tipo de Asegurado</label>
+                                    <div class="col-md-12">
+                                        @Html.DropDownList("TIPO_SEGURO", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(model => model.TIPO_SEGURO, "", new { @class = "text-danger" })*@
+                                        <div class="invalid-feedback">
+                                            Debe de seleccionar el tipo de seguro.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="afil" class="form-group col-md-4">
+                                    <label>Nº Afiliado</label>
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.NUM_AFILIADO, new { htmlAttributes = new { @class = "form-control", placeholder = "Nº Afiliado" } })
+                                        @*@Html.ValidationMessageFor(model => model.NUM_AFILIADO, "", new { @class = "text-danger" })*@
+                                        <div class="invalid-feedback">
+                                            Debe de ingresar el numero de afiliado.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="orden" role="tabpanel" aria-labelledby="orden-tab">
+                            <hr />
+                            <div class="row" style="margin-top:50px">
+                                <div class="col-md-2" style="text-align:right;margin-top:5px">
+                                    <label>Agregar Examen:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.DropDownList("ID_EXAMEN", null, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="false" name="STAT" id="STAT">
+                                        <label class="form-check-label" for="STAT">
+                                            Stat
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-sm btn-success" onclick="AgregarExamen()" style="margin-top:5px;margin-bottom:0px">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top:60px">
+                                <hr />
+                                <table id="tblexamen" class="table table-striped">
+                                    <thead style="background-color: #0086c3;color:white">
+                                        <tr>
+                                            <th>Cod Examen</th>
+                                            <th>Examen</th>
+                                            <th>Stat</th>
+                                            <th>Observacion</th>
+                                            <th>Borrar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.EXAMENES_LABORATORIO)
+                                        {
+                                            <tr id="@item.ID_EXAMEN">
+                                                <td>@item.ID_EXAMEN</td>
+                                                <td>@item.DESC_ARTICULO</td>
+                                                @if (@item.STAT == true)
+                                                {
+                                                    <td>Si</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>No</td>
+                                                }
+                                                <td>@item.OBSERVACION</td>
+                                                <td><button type="button" class="btn btn-sm btn-danger" onclick="EliminarDetalle(@item.NUM_MUESTRA)"><i class="fa fa-trash"></i></button></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div id="errorexamenes" class="invalid-feedback">
+                                    Debe de agregar al menos un EXAMEN para el procedmiento del examen.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*}*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <link href="~/Content/select2.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script src="~/Scripts/select2.js"></script>
+    <script type="text/javascript">
+        function AgregarExamen() {
+            var examen = $("#ID_EXAMEN").val();
+            if (examen != '') {
+                var allow = true;
+                $("#tblexamen").find("tr").each(function () {
+                    if ($(this).attr("id") == examen) {
+                        allow = false;
+                        return;
+                    }
+                });
+                if (allow == true) {
+
+                    let STAT;
+                    let VALUE_STAT;
+                    if ($("input[type=checkbox]").is(
+                        ":checked")) {
+                        STAT = 'Si';
+                        VALUE_STAT = true;
+                    } else {
+                        STAT = 'No';
+                        VALUE_STAT = false;
+                    }
+
+                    let laboratorio = {
+                        "EXAMEN_ID": $("#ID_EXAMEN").val(),
+                        "CLIENTE_ID": $("#PACIENTE_ID").val(),
+                        "STAT": VALUE_STAT,
+                        "ACTIVO": true,
+                    };
+                    let pedido = $("#PEDIDO").val();
+                    let idadmision = $("#ID_ADMISION").val();
+                    $.ajax({
+                        type: "POST",
+                        url: '/Admision/NuevoLaboratorioSolo',
+                        data: JSON.stringify({ laboratorio: laboratorio, idadmision: idadmision, pedido: pedido }),
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function (data) {
+                            if (data.status) {
+                                InsertarTotalLaboratorio(pedido);
+                                location.reload();
+                            }
+                        },
+                        error: function () {
+                            $.notify({ message: 'Error al registrar los contactos del paciente' }, { type: 'danger' });
+                        }
+                    })
+                }
+                else {
+                    $.notify({ message: 'Estimado usuario,Este examen ya ha sido agregado' }, { type: 'danger' });
+                }
+            }
+            else {
+                $.notify({ message: 'Por favor seleccione un examen' }, { type: 'danger' });
+            }
+        }
+        function EliminarDetalle(laboratorio) {
+            $.ajax({
+                type: "POST",
+                url: '/Admision/EliminarLaboratorio',
+                data: JSON.stringify({ laboratorio: laboratorio }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.status) {                       
+                        location.reload();
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar los contactos del paciente' }, { type: 'danger' });
+                }
+            })
+        }
+        function ValidarForm() {
+            let isvalid = true;
+
+            var paciente = $("#PACIENTE_ID");
+            paciente.removeClass("is-invalid");
+
+            var causa = $("#CAUSA_ADMISION_ID");
+            causa.removeClass("is-invalid");
+
+            var prioridad = $("#PRIORIDAD_ID");
+            prioridad.removeClass("is-invalid");
+
+            var financiador = $("#FINANCIADOR");
+            financiador.removeClass("is-invalid");
+
+            var tiposeguro = $("#TIPO_SEGURO");
+            tiposeguro.removeClass("is-invalid");
+
+            var numafiliado = $("#NUM_AFILIADO");
+            numafiliado.removeClass("is-invalid");
+
+            var checkbox = document.querySelector('input[type="checkbox"]');
+            var CountExamenes = $('#tblexamen tr').length;
+
+            $("#admision-tab").css('color', '#0f9aee');
+            $("#orden-tab").css('color', '#0f9aee');
+            $("#errorexamenes").hide();
+
+            if (paciente.val() == "") {
+
+                $.notify({ message: 'El paciente es requerido' }, { type: 'danger' });
+                paciente.addClass("is-invalid");
+                isvalid = false;
+                $("#admision-tab").css('color', 'red');
+            }
+            if (causa.val() == "") {
+
+                $.notify({ message: 'La causa de admision es requerido' }, { type: 'danger' });
+                causa.addClass("is-invalid");
+                isvalid = false;
+                $("#admision-tab").css('color', 'red');
+            }
+            if (prioridad.val() == "") {
+
+                $.notify({ message: 'La prioridad es requerido' }, { type: 'danger' });
+                prioridad.addClass("is-invalid");
+                isvalid = false;
+                $("#admision-tab").css('color', 'red');
+            }
+            if (checkbox.checked) {
+                if (financiador.val() == "") {
+
+                    $.notify({ message: 'El financiador es requerido' }, { type: 'danger' });
+                    financiador.addClass("is-invalid");
+                    isvalid = false;
+                    $("#admision-tab").css('color', 'red');
+                }
+                if (tiposeguro.val() == "") {
+
+                    $.notify({ message: 'El tipo de seguro es requerido' }, { type: 'danger' });
+                    tiposeguro.addClass("is-invalid");
+                    isvalid = false;
+                    $("#admision-tab").css('color', 'red');
+                }
+                if (numafiliado.val() == "") {
+
+                    $.notify({ message: 'El numero de afiliado es requerido' }, { type: 'danger' });
+                    numafiliado.addClass("is-invalid");
+                    isvalid = false;
+                    $("#admision-tab").css('color', 'red');
+                }
+            }
+            if (CountExamenes == 1) {
+                $.notify({ message: 'Es necesario que agregue al menos un examen' }, { type: 'danger' });
+                $("#orden-tab").css('color', 'red');
+                $("#errorexamenes").show();
+                isvalid = false;
+            }
+            if (isvalid == false) {
+                $("#admision-tab").click();
+            }
+            if (isvalid == true) {
+                let admision = {
+                    "PACIENTE_ID": $("#PACIENTE_ID").val(),
+                    "PRIORIDAD_ID": $("#PRIORIDAD_ID").val(),
+                    "CAUSA_ADMISION_ID": $("#PACIENTE_ID").val(),
+                    "TIPO_INGRESO_ID": $("#PACIENTE_ID").val(),
+                    "ASEGURADO": document.querySelector('input[type="checkbox"]').checked,
+                    "PEDIDO": $("#PEDIDO").val(),
+                    "FINANCIADOR": $("#FINANCIADOR").val(),
+                    "TIPO_SEGURO": $("#TIPO_SEGURO").val(),
+                    "PEDIDO": $("#PEDIDO").val(),
+                    "NUM_AFILIADO": $("#NUM_AFILIADO").val(),
+                    "ATENDIDO":false,
+                    "DOCTOR_ID": $("#DOCTOR_ID").val(),
+
+                };
+                var examen = [];
+                $("#tblexamen").find("tr").each(function () {
+                    var id = $(this).attr("id");
+                    if (id != null) {
+                        examen.push({
+                            EXAMEN_ID: id,
+                            CLIENTE_ID: $("#PEDIDO").val(),
+                            STAT: $(this).attr("stat"),
+                            ACTIVO: true
+                        });
+                    }
+                });
+                GuardarAdmisionLaboratorio(admision, examen, $("#FINANCIADOR").val());
+            }
+            isvalid = false;
+            return isvalid;
+        }
+
+        $(document).ready(function () {
+            $('#PACIENTE_ID').select2();
+            $('#DOCTOR_ID').select2();
+            $('#AREA_SERVICIO_ID').select2();
+            $('#CAUSA_ADMISION_ID').select2();
+            $('#TIPO_INGRESO_ID').select2();
+            $('#PRIORIDAD_ID').select2();
+           //$('#ID_EXAMEN').select2();
+            $('#PACIENTE_ID').on('change', function () {
+               $('#CLIENTE_ID').val(this.value);
+            });
+            $('#PACIENTE_ID').on('select2:select', function (e) {
+                var data = e.params.data;
+                if (data.id == "") {
+                    $("#orden-tab").removeClass("nav-link");
+                    $("#orden-tab").addClass("nav-link disabled");
+                }
+                else {
+                    $("#orden-tab").removeClass("nav-link disabled");
+                    $("#orden-tab").addClass("nav-link");
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            var checkbox = document.querySelector('input[type="checkbox"]');
+
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    // do this
+                    $('#financ').show();
+                    $('#afil').show();
+                    $('#tipSeg').show();
+                } else {
+                    // do that
+                    $('#financ').hide();
+                    $('#afil').hide();
+                    $('#tipSeg').hide();
+                }
+                $('#FINANCIADOR').val('');
+                $('#TIPO_SEGURO').val('');
+                $('#NUM_AFILIADO').val('');
+            });
+        });
+
+
+        var finanz = document.getElementById("FINANCIADOR");
+
+        finanz.addEventListener("change", function () {
+            document.getElementById('ID_FINANC').value = document.getElementById('FINANCIADOR').value;
+        });
+
+        var idPac = document.getElementById("PACIENTE_ID");
+
+        idPac.addEventListener("change", function () {
+            document.getElementById('ID_FINANC').value = $("#PACIENTE_ID :selected").text();
+        });
+
+        function GuardarAdmisionLaboratorio(admision, laboratorio,financiador) {
+            $.ajax({
+                type: "POST",
+                url: '/Admision/NuevaAdmisionLaboratorio',
+                data: JSON.stringify({ admision: admision, ID_FINANC: financiador }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.status) {
+                        laboratorio.forEach(function (element) {
+                            InsertarLaboratorio(element, data.sexo, data.idadmision, data.pedido)
+                        });
+                        $.notify({ message: 'Se ha registrado la admision del laboratorio correctamente' }, { type: 'success' });
+                        InsertarTotalLaboratorio(data.pedido);
+
+                    } else {
+                        $.notify({ message: 'Error al registrar la admision de laboratorio' }, { type: 'danger' });
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar los examenes' }, { type: 'danger' });
+                }
+            })
+        }
+        function InsertarTotalLaboratorio(pedido) {
+            console.log(pedido);
+            $.ajax({
+                type: "POST",
+                url: '/Admision/MontoPedidoLaboratorio',
+                data: JSON.stringify({ pedido: pedido }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.status) {
+                        location.href = './AdmisionLaboratorio';
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar los contactos del paciente' }, { type: 'danger' });
+                }
+            })
+        }
+        function InsertarLaboratorio(laboratorio,sexo,idadmision,pedido) {
+            $.ajax({
+                type: "POST",
+                url: '/Admision/NuevoLaboratorio',
+                data: JSON.stringify({ laboratorio: laboratorio, sexo: sexo, idadmision: idadmision, pedido: pedido }),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.status) {
+                        return true;
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error al registrar los contactos del paciente' }, { type: 'danger' });
+                }
+            })
+        }
+
+        function ValidarAdmision() {
+            let isvalid = true;
+
+            var paciente = $("#PACIENTE_ID");
+            paciente.removeClass("is-invalid");
+
+
+            var causa = $("#CAUSA_ADMISION_ID");
+            causa.removeClass("is-invalid");
+
+            var prioridad = $("#PRIORIDAD_ID");
+            prioridad.removeClass("is-invalid");
+
+
+            var financiador = $("#FINANCIADOR");
+            financiador.removeClass("is-invalid");
+
+            var tiposeguro = $("#TIPO_SEGURO");
+            tiposeguro.removeClass("is-invalid");
+
+            var numafiliado = $("#NUM_AFILIADO");
+            numafiliado.removeClass("is-invalid");
+
+            var checkbox = document.querySelector('input[type="checkbox"]');
+
+            $("#admision-tab").css('color', '#0f9aee');
+            if (paciente.val() == "") {
+
+                $.notify({ message: 'El paciente es requerido' }, { type: 'danger' });
+                paciente.addClass("is-invalid");
+                isvalid = false;
+                $("#admision-tab").css('color', 'red');
+            }
+            if (causa.val() == "") {
+
+                $.notify({ message: 'La causa de admision es requerido' }, { type: 'danger' });
+                causa.addClass("is-invalid");
+                isvalid = false;
+                $("#admision-tab").css('color', 'red');
+            }
+            if (prioridad.val() == "") {
+
+                $.notify({ message: 'La prioridad es requerido' }, { type: 'danger' });
+                prioridad.addClass("is-invalid");
+                isvalid = false;
+                $("#admision-tab").css('color', 'red');
+            }
+            if (checkbox.checked) {
+                if (financiador.val() == "") {
+
+                    $.notify({ message: 'El financiador es requerido' }, { type: 'danger' });
+                    financiador.addClass("is-invalid");
+                    isvalid = false;
+                    $("#admision-tab").css('color', 'red');
+                }
+                if (tiposeguro.val() == "") {
+
+                    $.notify({ message: 'El tipo de seguro es requerido' }, { type: 'danger' });
+                    tiposeguro.addClass("is-invalid");
+                    isvalid = false;
+                    $("#admision-tab").css('color', 'red');
+                }
+                if (numafiliado.val() == "") {
+
+                    $.notify({ message: 'El numero de afiliado es requerido' }, { type: 'danger' });
+                    numafiliado.addClass("is-invalid");
+                    isvalid = false;
+                    $("#admision-tab").css('color', 'red');
+                }
+            }
+            if (isvalid == false) {
+                $("#admision-tab").click();
+            }
+        }
+    @if (ViewBag.Accion == "Editar" && Model.ASEGURADO)
+    {
+        <text>
+            $('#financ').show();
+            $('#afil').show();
+            $('#tipSeg').show();
+        </text>
+    }
+    else
+    {
+        <text>
+        $('#financ').hide();
+        $('#afil').hide();
+        $('#tipSeg').hide();
+        </text>
+    }
+
+    </script>
+}

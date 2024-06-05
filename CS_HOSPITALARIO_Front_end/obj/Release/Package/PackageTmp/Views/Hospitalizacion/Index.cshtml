@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CS_HOSPITALARIO_Front_end.Models.ViewModel.EstacionViewModel>
+    @{
+        /**/
+
+        ViewBag.Title = "Hospitalización";
+    }
+
+    <h2>Estaciones de Enfermeria</h2>
+
+<span class="glyphicon glyphicon-tags"></span>
+
+    @using (Html.BeginForm())
+    {
+        <div class="masonry-item w-100">
+            <div class="row gap-20">
+                @foreach (var item in Model)
+                {
+
+                    
+                    <div class="col-md-3">
+                        <div class="layers bd bgc-white p-50">
+
+                            <div class="layer w-100 mB-10">
+                                <h4 class="lh-1"><i class="fa fa-user-md" aria-hidden="true" fa-5x></i> <a href="@Url.Action("Estacion_Piso", "Hospitalizacion", new { id = @Html.DisplayFor(modelItem => item.ESTACION_ID) })"> @Html.DisplayFor(modelItem => item.DESCRIPCION) </a> </h4>
+                            </div>
+                            
+                            <div class="layer w-100 mB-10">
+                                <h6 class="lh-1">@Html.DisplayFor(modelItem => item.DESCRIPCORTA)</h6>
+                            </div>
+
+                            <div class="layer w-100">
+                                <div class="peers ai-sb fxw-nw">
+
+
+                                    <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">Cantidad de Paciente: @Html.DisplayFor(modelItem => item.CANTIDAD_PACIENTES)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+            </div>
+        </div>
+
+    }
+
+
+
+    @*@Html.Action("HospitalCardViewPartial")*@

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_RESULTADOS_LAB_ENCABEZADO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EXAMEN_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTE_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_RESULTADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO_REGISTRO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_REGISTRO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMPRESO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ENV_POR_CORREO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CS_LABORATORIO.CLIENTE_ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXAMEN_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLIENTE_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_RESULTADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USUARIO_REGISTRO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_REGISTRO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMPRESO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ENV_POR_CORREO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CS_LABORATORIO.CLIENTE_ID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_RESULTADO_LAB }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_RESULTADO_LAB }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_RESULTADO_LAB })
+        </td>
+    </tr>
+}
+
+</table>

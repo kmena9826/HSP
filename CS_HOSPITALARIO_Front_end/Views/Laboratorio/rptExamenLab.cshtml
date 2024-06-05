@@ -1,0 +1,32 @@
+﻿
+
+@Html.DevExpress().GetStyleSheets(
+                                                new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+                                                new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+                                                new StyleSheet { ExtensionSuite = ExtensionSuite.Report }
+                                            )
+@Html.DevExpress().GetScripts(
+                                            new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+                                            new Script { ExtensionSuite = ExtensionSuite.Editors },
+                                             new Script { ExtensionSuite = ExtensionSuite.Report }
+                                        )
+
+@{
+    ViewBag.Title = "Examen de Laboratorio";
+    Layout = null;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using DevExpress.Web.Mvc
+@using DevExpress.Web.Mvc.UI
+@model DevExpress.XtraReports.UI.XtraReport
+
+
+
+
+
+@Html.DevExpress().WebDocumentViewer(settings =>
+{
+    settings.Name = "ViewerrptLabS";
+}).Bind(Model).GetHtml()

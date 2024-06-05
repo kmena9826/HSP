@@ -1,0 +1,122 @@
+﻿@model CS_HOSPITALARIO.Models.CS_IMAGENOLOGIA
+
+
+@{ 
+//int id = int.Parse(Request["id"]);
+
+}
+
+<div>
+    <h4>CS_IMAGENOLOGIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PEDIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEDIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMPRESO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMPRESO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ENV_POR_CORREO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ENV_POR_CORREO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO_REGISTRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_REGISTRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_REGISTRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_REGISTRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ARTICULO.PLANTILLA_SERIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARTICULO.PLANTILLA_SERIE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CS_CATALOGO_DETALLE.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CS_CATALOGO_DETALLE.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CS_CATALOGO_DETALLE1.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CS_CATALOGO_DETALLE1.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CS_PERSONAL.NOMBRES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CS_PERSONAL.NOMBRES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CS_PACIENTES.CLIENTE_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CS_PACIENTES.CLIENTE_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CS_ADMISION.PEDIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CS_ADMISION.PEDIDO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID_IMAGENOLOGIA }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,28 @@
+﻿@model CS_HOSPITALARIO.Models.CS_CATALOGO
+
+<h2>@ViewBag.Title</h2>
+
+<hr />
+<script src="~/Scripts/vendor.js"></script>
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <h4>¿Está seguro que desea borrar el registro <strong>@Model.DESCRIPCION</strong>?</h4>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="text-left">
+                    <input type="submit" value="Confirmar" class="btn btn-primary" />
+                    @Html.ActionLink("Cancelar", "Maestros", "Catalogos", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

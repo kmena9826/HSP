@@ -1,0 +1,385 @@
+﻿@model IEnumerable<CS_HOSPITALARIO.Models.CS_IMAGENOLOGIA>
+
+@{
+	ViewBag.Title = "Lista de Trabajo Imagen";
+	ViewBag.Modulo = "mImagenologia";
+}
+
+<div class="row m-0 gap-20 masonry pos-r">
+	<div class="masonry-item w-100">
+		<div class="row gap-20">
+			<div class="masonry-item col-md-12 col-sm-12">
+				<div class="bd bgc-white">
+					<div class="layers">
+						<div class="ta-c w-100 p-10">
+							<h4 class="float-left"><span class="color-secondary-h text-uppercase">@ViewBag.Title</span></h4>
+							<nav class="float-right m-0" aria-label="breadcrumb">
+								<ol class="breadcrumb bg-color-blanco">
+									<li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Principal</a></li>
+									<li class="breadcrumb-item"><a href="@Url.Action("Index","Imagenologia")">Imagenología</a></li>
+									<li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row m-0 gap-20 masonry pos-r">
+	<div class="masonry-item w-100">
+		<div class="row gap-20">
+			<div class="masonry-item col-md-12 col-sm-12">
+				<div class="bgc-white p-20 bd">
+					<table class="table table-responsive table-hover" id="table_lista_trabajo_imagen">
+						<thead>
+							<tr>
+								<th>
+									N° Orden
+								</th>
+								<th>
+									Pedido
+								</th>
+								<th>
+									No. Admisión
+								</th>
+								<th>
+									Estado
+								</th>
+								<th>
+									Nombre
+								</th>
+								<th>
+									Apellido
+								</th>
+								<th>
+									Prioridad
+								</th>
+								<th>
+									Área de Servicio
+								</th>
+								<th>
+									Procedimiento
+								</th>
+								<th>
+									Fecha Registro
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							@foreach (var item in Model)
+							{
+							<tr>
+								<td>
+									@Html.DisplayFor(modelItem => item.ID_IMAGENOLOGIA)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.PEDIDO)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.ID_ADMISION)
+								</td>
+
+								<td>
+									@{
+										if ((bool)item.STAT)
+										{
+											@Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE1.DESCRIPCION)
+										}
+										else
+										{
+											switch (item.STATUS)
+											{
+												case 1098:
+													<span class=" fsz-sm badge-pill">
+														@Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE1.DESCRIPCION)
+														<i class="fas fa-file-prescription color-dark-h  fa-lg"></i>
+													</span>
+
+													break;
+												case 1099:
+													<span class="fsz-sm badge-pill">
+														@Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE1.DESCRIPCION)
+													</span>
+													break;
+												default:
+													@Html.DisplayFor(modelItem => item.CS_CATALOGO_DETALLE1.DESCRIPCION)
+													break;
+
+
+											}
+										}
+									}
+
+
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.CS_PACIENTES.NOMBRES)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.CS_PACIENTES.APELLIDOS)
+								</td>
+								<td>
+									@{
+										if ((bool)item.STAT)
+										{
+											<text>
+
+
+													<span class="badge c-red-700 fsz-sm badge-pill">
+														Stat
+														<i class="fas fa-star c-red-700  fa-lg"></i>
+													</span>
+												
+											</text>
+										}
+										else
+										{
+											<text>
+												
+													<span class="badge fsz-sm badge-pill">
+														Rutina
+													</span>
+												
+											</text>
+										}
+									}
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.CS_ADMISION.AREA_SERVICIO.DESCRIPCION)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.ARTICULO.DESCRIPCION)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.FECHA_REGISTRO)
+								</td>
+							</tr>
+							}
+
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>
+									N° Orden
+								</th>
+								<th>
+									Pedido
+								</th>
+								<th>
+									No. Admisión
+								</th>
+								<th>
+									Estado
+								</th>
+								<th>
+									Nombre
+								</th>
+								<th>
+									Apellido
+								</th>
+								<th>
+									Prioridad
+								</th>
+								<th>
+									Área de Servicio
+								</th>
+								<th>
+									Procedimiento
+								</th>
+								<th>
+									fecha Registro
+								</th>
+							</tr>
+						</tfoot>
+
+
+					</table>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<br />
+
+<!-- Modal -->
+<div class="modal fade" id="Transcripciones" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalLabel">Transcripciones</h4>
+			</div>
+			<div class="modal-body">
+				<div id="Transcrip"></div>
+			</div>
+			<div class="modal-footer text-left">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<link href="~/Content/DataTables/css/PagedList.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/DataTableSearch.css" rel="stylesheet" />
+
+@section scripts
+										{
+	<script src="~/Scripts/jquery.dataTables.min.js"></script>
+	<script src="~/Scripts/dataTables.buttons.min.js"></script>
+	<script src="~/Scripts/buttons.flash.min.js"></script>
+	<script src="~/Scripts/jszip.min.js"></script>
+	<script src="~/Scripts/buttons.html5.min.js"></script>
+	<script src="~/Scripts/dataTables.select.min.js"></script>
+	<script src="~/Scripts/pdfmake.min.js"></script>
+	<script src="~/Scripts/vfs_fonts.js"></script>
+
+	<script type="text/javascript">
+
+        /* INICIALIZACIÓN */
+        $(document).ready(function () {
+            $('#table_lista_trabajo_imagen tfoot th').each(function () {
+                var title = $(this).text().trim();
+                $(this).html('<input class="form-control" type="text" placeholder="Buscar por ' + title + '" />');
+            });
+
+            var events = $('#events');
+
+            var table = $('#table_lista_trabajo_imagen').DataTable({
+                dom: 'Bfrtip',
+                language: {
+                    select: {
+                        rows: {
+                            0: "",
+                            1: " │ %d registro seleccionado."
+                        }
+                    }
+                },
+                select: true,
+                buttons: [{
+                    text: 'Nuevo',
+                    action: function (e, dt, node, config) {
+                        window.location.href = '/Catalogos/NuevoCatalogoMaestro';
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Transcripcion',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+
+                        window.location.href = '/Imagenologia/Transcripcion_Nueva/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Resultado',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+                        window.location.href = '/Catalogos/EditarCatalogoMaestro/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Cambio Estado',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+                        window.location.href = '/Catalogos/EditarCatalogoMaestro/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                {
+                    text: 'Firmar',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+                        window.location.href = '/Catalogos/EditarCatalogoMaestro/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+
+                {
+                    text: 'Borrar',
+                    action: function (e, dt, node, config) {
+                        var rowSelected = table.rows({ selected: true }).data();
+                        console.log(rowSelected[0][0]);
+                        window.location.href = '/Catalogos/BorrarCatalogoMaestro/' + rowSelected[0][0];
+                    },
+                    init: function (api, node, config) {
+                        $(node).removeClass('btn-default')
+                    }
+                },
+                    'pdf', 'excel'
+                ]
+            });
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+            $('#table_lista_trabajo_imagen tfoot tr').appendTo('#table_lista_trabajo_imagen thead');
+            $("#table_lista_trabajo_imagen_wrapper button").each(function () {
+                $(this).removeClass("dt-button");
+                $(this).addClass("btn btn-sm");
+                if ($(this).text() == 'PDF' || $(this).text() == 'Excel') {
+                    $(this).addClass("btn-secondary");
+                }
+                else {
+                    $(this).addClass("btn-primary");
+                }
+            });
+            $('#table_lista_trabajo_imagen_filter input').addClass("form-control");
+
+            $('#table_lista_trabajo_imagen tbody').on('dblclick', 'tr', function () {
+                var rowSelected = table.rows({ selected: true }).data();
+                window.location.href = '/Imagenologia/Transcripcion_Nueva/' + rowSelected[0][0];
+            });
+        });
+
+        $(function () {
+            $("#datDesde").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+
+            }).datepicker("setDate", new Date());
+        });
+
+        $(function () {
+            $("#datHasta").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true
+            }).datepicker("setDate", new Date());
+        });
+</script>
+}

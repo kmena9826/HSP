@@ -1,0 +1,46 @@
+﻿@model CS_HOSPITALARIO.Models.CS_USER
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/icon-cs.ico" />
+    <title>SGH - Inicio de Sesión</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background:#eee !important">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <div class="wrapper">
+        @using (Html.BeginForm("Acceso", "Login", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            <h1 class="logo text-center login-logo">SGH</h1>
+            <h3 class="encabezado-login">¡Bienvenido!</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            
+            <div class="form-group">
+                @Html.EditorFor(model => model.USERNAME, new { htmlAttributes = new { @class = "form-control", @autofocus = "autofocus", @placeholder = "Usuario"} })
+                @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.CLAVE, new { htmlAttributes = new { @class = "form-control", @placeholder = "Contraseña", type = "password" } })
+                @Html.ValidationMessageFor(model => model.CLAVE, "", new { @class = "text-danger" })
+
+            </div>
+            <p class="text-danger">@TempData["Message"]</p>
+            <div class="form-group">
+                    <input type="submit" value="Iniciar Sesión" class="btn btn-primary btn-block" />
+            </div>
+            <p class="small text-center"><em>[ admin ~ 123 ]</em></p>
+        }
+    </div>
+</body>
+</html>

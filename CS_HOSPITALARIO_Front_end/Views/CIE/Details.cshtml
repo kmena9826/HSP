@@ -1,0 +1,90 @@
+﻿@model CS_HOSPITALARIO.Models.CS_CIE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CS_CIE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.COD_CIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COD_CIE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DEC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GRP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GRP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VERSION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VERSION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTIVO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTIVO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO_CREACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_CREACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_CREACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_CREACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO_MODIFICACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO_MODIFICACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_MODIFICACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_MODIFICACION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_CIE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

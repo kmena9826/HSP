@@ -1,0 +1,84 @@
+﻿@model CS_HOSPITALARIO.Models.CS_USER
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/icono-ah.ico" />
+    <link rel="icons" type="image/png" sizes="144x144" href="~/Content/images/icons/icon-144x144.png">
+    <title>AH - Acceso</title>
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link rel="manifest" href="~/manifest.json">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body class="app">
+
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <script type="text/javascript">
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('fadeOut');
+            }, 250);
+        });</script>
+    <div class="peers ai-s fxw-nw h-100vh">
+        <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image:url(/Content/img/bg-login.jpg)">
+            <div class="pos-a centerXY">
+                <div class="bgc-white bdrs-50p pos-r" style="width:150px;height:150px">
+                    <img class="pos-a centerXY" style="width:auto; height:75px;" src="~/Content/img/logotipo-AH.png" />
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r" style="min-width:320px">
+            <h1 class="fw-300 c-grey-900 mB-40">
+                LABORATORIO CUH
+            </h1>
+            @using (Html.BeginForm("Acceso", "Login", FormMethod.Post, new { @class = "form-signin" }))
+            {
+                <div class="form-group">
+                    <label class="text-normal text-dark">Usuario</label>
+                    @*<input type="email" class="form-control" placeholder="Usuario" autofocus="autofocus">*@
+                    @Html.EditorFor(model => model.USERNAME, new { htmlAttributes = new { @class = "form-control", required = "required", @autofocus = "autofocus", @placeholder = "Usuario" } })
+                    @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="text-normal texts-dark">Contraseña</label>
+                    @*<input type="password" class="form-control" placeholder="Contraseña">*@
+                    @Html.EditorFor(model => model.CLAVE, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Contraseña", type = "password" } })
+                    @Html.ValidationMessageFor(model => model.CLAVE, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @*<div class="peer"><a href="@Url.Action("Index", "Admision")" class="btn btn-primary btn-block">Acceder</a></div>*@
+                    <div class="peer">
+                        <input type="submit" value="Acceder" class="btn btn-primary btn-block" />
+                    </div>
+                </div>
+                @Html.Hidden("Message", @TempData["Message"])
+            }
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap-notify.js"></script>
+    <script>
+        function ShowAlert() {
+            if ($("#Message").val() != "") {
+                $.notify({ message: $("#Message").val() }, { type: 'danger' });
+            }
+        }
+        $(document).ready(function () {
+            ShowAlert();
+        })
+    </script>
+</body>
+
+</html>
