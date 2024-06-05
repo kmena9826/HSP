@@ -351,8 +351,7 @@ namespace CS_HOSPITALARIO_Front_end.Controllers
             }
         }
         // POST: Consultas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+ 
 
         [HttpGet]
         public ActionResult AdmisionesOdontologia()

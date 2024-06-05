@@ -2410,18 +2410,6 @@ D:\Libraries\Documents\Corpsoft\Hospital LCUG\HSP\CS_HOSPITALARIO_Front_end\obj\
 D:\Libraries\Documents\Corpsoft\Hospital LCUG\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.csproj.CopyComplete
 D:\Libraries\Documents\Corpsoft\Hospital LCUG\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.dll
 D:\Libraries\Documents\Corpsoft\Hospital LCUG\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.pdb
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.csproj.AssemblyReference.cache
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\rptHistorialClinico.resources
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\rptRecetaConsulta.resources
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\SubReporteRecetaClinica.resources
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.Reports.Imagenologia.rptResultadoImagenologia.resources
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\rptEtiquetaExamenLaboratorio.resources
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.Reports.Laboratorio.rptResultadoLab.resources
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.csproj.GenerateResource.cache
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.dll.licenses
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.csproj.CoreCompileInputs.cache
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.dll
-C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.pdb
 C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\bin\ApplicationInsights.config
 C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\bin\CS_HOSPITALARIO_Front_end.dll.config
 C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\bin\CS_HOSPITALARIO_Front_end.dll
@@ -2695,4 +2683,16 @@ C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\bin\de\DevExpress.Spreadsheet.
 C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\bin\es\DevExpress.Spreadsheet.v18.1.Core.resources.dll
 C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\bin\ja\DevExpress.Spreadsheet.v18.1.Core.resources.dll
 C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\bin\ru\DevExpress.Spreadsheet.v18.1.Core.resources.dll
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.csproj.AssemblyReference.cache
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\rptHistorialClinico.resources
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\rptRecetaConsulta.resources
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\SubReporteRecetaClinica.resources
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.Reports.Imagenologia.rptResultadoImagenologia.resources
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\rptEtiquetaExamenLaboratorio.resources
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.Reports.Laboratorio.rptResultadoLab.resources
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.csproj.GenerateResource.cache
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.dll.licenses
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.csproj.CoreCompileInputs.cache
 C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.csproj.CopyComplete
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.dll
+C:\Users\KM\Desktop\HSP\CS_HOSPITALARIO_Front_end\obj\Debug\CS_HOSPITALARIO_Front_end.pdb
