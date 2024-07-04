@@ -26,6 +26,7 @@ namespace CS_HOSPITALARIO.Models
         public string TRATAMIENTO { get; set; }
         public Nullable<int> TIPO_SERVICIO { get; set; }
         public string DIAGNOSTICO_MANUAL { get; set; }
+        public string ID_DIENTES { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CS_DIAGNOSTICO_DETALLE> CS_DIAGNOSTICO_DETALLE { get; set; }

@@ -105,6 +105,7 @@ namespace CS_HOSPITALARIO.Models
         public virtual DbSet<CS_RECETA> CS_RECETA { get; set; }
         public virtual DbSet<DIVISION_GEOGRAFICA1> DIVISION_GEOGRAFICA1 { get; set; }
         public virtual DbSet<CS_GLOBAL_ODONTO> CS_GLOBAL_ODONTO { get; set; }
+        public virtual DbSet<CS_DENTADURA> CS_DENTADURA { get; set; }
     
         public virtual int SP_Actualizar_pedido_monto_paciente(string pEDIDO, Nullable<int> vERSION, Nullable<decimal> tOTAL, Nullable<decimal> cANTIDAD)
         {
@@ -540,6 +541,19 @@ namespace CS_HOSPITALARIO.Models
         public virtual ObjectResult<SpListadoCitasCS2_Result1> SpListadoCitasCS2()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SpListadoCitasCS2_Result1>("SpListadoCitasCS2");
+        }
+    
+        public virtual ObjectResult<SP_GetDiagnosticosPorDiente_Result> SP_GetDiagnosticosPorDiente(Nullable<int> iD_ADMISION, string selectedDiente)
+        {
+            var iD_ADMISIONParameter = iD_ADMISION.HasValue ?
+                new ObjectParameter("ID_ADMISION", iD_ADMISION) :
+                new ObjectParameter("ID_ADMISION", typeof(int));
+    
+            var selectedDienteParameter = selectedDiente != null ?
+                new ObjectParameter("selectedDiente", selectedDiente) :
+                new ObjectParameter("selectedDiente", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetDiagnosticosPorDiente_Result>("SP_GetDiagnosticosPorDiente", iD_ADMISIONParameter, selectedDienteParameter);
         }
     }
 }

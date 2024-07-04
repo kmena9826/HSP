@@ -294,6 +294,9 @@
     <Compile Include="Models\CS_DEFINICION_PROC_IMAGEN.cs">
       <DependentUpon>ModeloHospitalario.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CS_DENTADURA.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CS_DIAGNOSTICO.cs">
       <DependentUpon>ModeloHospitalario.tt</DependentUpon>
     </Compile>
@@ -491,6 +494,9 @@
       <DependentUpon>ModeloHospitalario.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SpListadoTotalesAdmisionesDB_Result.cs">
+      <DependentUpon>ModeloHospitalario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GetDiagnosticosPorDiente_Result.cs">
       <DependentUpon>ModeloHospitalario.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_Insertar_detalle_direccion_cliente_Result.cs">

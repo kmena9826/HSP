@@ -804,6 +804,14 @@
     <Property Name="TEST" Type="int" Nullable="false" />
     <Property Name="ACTIVO" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="CS_DENTADURA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="225" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="255" />
+  </EntityType>
   <EntityType Name="CS_DIAGNOSTICO">
     <Key>
       <PropertyRef Name="ID_DIAGNOSTICO" />
@@ -814,6 +822,7 @@
     <Property Name="TRATAMIENTO" Type="text" />
     <Property Name="TIPO_SERVICIO" Type="int" />
     <Property Name="DIAGNOSTICO_MANUAL" Type="varchar" MaxLength="100" />
+    <Property Name="ID_DIENTES" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="CS_DIAGNOSTICO_DETALLE">
     <Key>
@@ -3431,6 +3440,10 @@ advertencia 6035: La relación 'FK_CS_ADMISION_CS_PACIENTES1' tiene columnas que
     <Parameter Name="TOTAL" Type="decimal" Mode="In" />
     <Parameter Name="CANTIDAD" Type="decimal" Mode="In" />
   </Function>
+  <Function Name="SP_GetDiagnosticosPorDiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LCUH">
+    <Parameter Name="ID_ADMISION" Type="int" Mode="In" />
+    <Parameter Name="selectedDiente" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="SP_Insertar_cliente_NIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LCUH">
     <Parameter Name="IDENTIFICACION" Type="varchar" Mode="In" />
     <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
@@ -3567,6 +3580,7 @@ advertencia 6035: La relación 'FK_CS_ADMISION_CS_PACIENTES1' tiene columnas que
     <EntitySet Name="CS_DEFINICION_PROC_IMAGEN" EntityType="Self.CS_DEFINICION_PROC_IMAGEN" Schema="LCUH" store:Type="Tables" />
     <EntitySet Name="CS_DEFINICION_PROCEDIMIENTO" EntityType="Self.CS_DEFINICION_PROCEDIMIENTO" Schema="LCUH" store:Type="Tables" />
     <EntitySet Name="CS_DEFINICION_PROCEDIMIENTO_DET" EntityType="Self.CS_DEFINICION_PROCEDIMIENTO_DET" Schema="LCUH" store:Type="Tables" />
+    <EntitySet Name="CS_DENTADURA" EntityType="Self.CS_DENTADURA" Schema="LCUH" store:Type="Tables" />
     <EntitySet Name="CS_DIAGNOSTICO" EntityType="Self.CS_DIAGNOSTICO" Schema="LCUH" store:Type="Tables" />
     <EntitySet Name="CS_DIAGNOSTICO_DETALLE" EntityType="Self.CS_DIAGNOSTICO_DETALLE" Schema="LCUH" store:Type="Tables" />
     <EntitySet Name="CS_DIETA" EntityType="Self.CS_DIETA" Schema="LCUH" store:Type="Tables" />

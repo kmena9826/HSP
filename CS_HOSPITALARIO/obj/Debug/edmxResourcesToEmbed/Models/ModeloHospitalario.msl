@@ -1135,6 +1135,7 @@
     <EntitySetMapping Name="CS_DIAGNOSTICO">
       <EntityTypeMapping TypeName="ModeloHospitalario.CS_DIAGNOSTICO">
         <MappingFragment StoreEntitySet="CS_DIAGNOSTICO">
+          <ScalarProperty Name="ID_DIENTES" ColumnName="ID_DIENTES" />
           <ScalarProperty Name="DIAGNOSTICO_MANUAL" ColumnName="DIAGNOSTICO_MANUAL" />
           <ScalarProperty Name="TIPO_SERVICIO" ColumnName="TIPO_SERVICIO" />
           <ScalarProperty Name="TRATAMIENTO" ColumnName="TRATAMIENTO" />
@@ -2490,6 +2491,26 @@
           <ScalarProperty Name="FECHA_HORA_ENTRADA_PAC" ColumnName="FECHA_HORA_ENTRADA_PAC" />
           <ScalarProperty Name="REMITIDO" ColumnName="REMITIDO" />
           <ScalarProperty Name="REMITIDO_DESCRIPCION" ColumnName="REMITIDO_DESCRIPCION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CS_DENTADURA">
+      <EntityTypeMapping TypeName="ModeloHospitalario.CS_DENTADURA">
+        <MappingFragment StoreEntitySet="CS_DENTADURA">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetDiagnosticosPorDiente" FunctionName="ModeloHospitalario.Store.SP_GetDiagnosticosPorDiente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModeloHospitalario.SP_GetDiagnosticosPorDiente_Result">
+          <ScalarProperty Name="NUM_CONSULTA" ColumnName="NUM_CONSULTA" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="ID_DIENTES" ColumnName="ID_DIENTES" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="TRATAMIENTO" ColumnName="TRATAMIENTO" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

@@ -667,6 +667,11 @@
     <FunctionImport Name="SpListadoCitasCS" ReturnType="Collection(ModeloHospitalario.SpListadoCitasCS_Result)" />
     <FunctionImport Name="SpListadoCitasCS1" ReturnType="Collection(ModeloHospitalario.SpListadoCitasCS2_Result)" />
     <FunctionImport Name="SpListadoCitasCS2" ReturnType="Collection(ModeloHospitalario.SpListadoCitasCS2_Result1)" />
+    <EntitySet Name="CS_DENTADURA" EntityType="ModeloHospitalario.CS_DENTADURA" />
+    <FunctionImport Name="SP_GetDiagnosticosPorDiente" ReturnType="Collection(ModeloHospitalario.SP_GetDiagnosticosPorDiente_Result)">
+      <Parameter Name="ID_ADMISION" Mode="In" Type="Int32" />
+      <Parameter Name="selectedDiente" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SP_Listado_CIE_Capitulos_Result">
     <Property Type="Int32" Name="ID_CIE" Nullable="false" />
@@ -1791,6 +1796,7 @@
     <Property Name="TIPO_SERVICIO" Type="Int32" />
     <NavigationProperty Name="CS_DIAGNOSTICO_DETALLE" Relationship="ModeloHospitalario.FK_CS_DIAGNOSTICO_DETALLE_CS_DIAGNOSTICO" FromRole="CS_DIAGNOSTICO" ToRole="CS_DIAGNOSTICO_DETALLE" />
     <Property Name="DIAGNOSTICO_MANUAL" Type="String" Unicode="false" FixedLength="false" MaxLength="100" />
+    <Property Name="ID_DIENTES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="CS_DIAGNOSTICO_DETALLE">
     <Key>
@@ -4775,5 +4781,20 @@
     <Property Type="DateTime" Name="FECHA_HORA_ENTRADA_PAC" Nullable="true" Precision="23" />
     <Property Type="Int32" Name="REMITIDO" Nullable="true" />
     <Property Type="String" Name="REMITIDO_DESCRIPCION" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <EntityType Name="CS_DENTADURA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODIGO" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="SP_GetDiagnosticosPorDiente_Result">
+    <Property Type="Int32" Name="NUM_CONSULTA" Nullable="false" />
+    <Property Type="DateTime" Name="FECHA_REGISTRO" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ID_DIENTES" Nullable="true" />
+    <Property Type="String" Name="OBSERVACIONES" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="TRATAMIENTO" Nullable="true" MaxLength="Max" />
   </ComplexType>
 </Schema>

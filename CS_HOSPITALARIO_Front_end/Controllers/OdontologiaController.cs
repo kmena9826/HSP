@@ -161,10 +161,8 @@ namespace CS_HOSPITALARIO_Front_end.Controllers
                 return RedirectToAction("", "home");
             }
         }
-        // POST: Consultas/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
 
+        
         [HttpPost]
         public JsonResult Editconsultas(int num_consulta, string cliente_id, int id_medico, string razon, string antecendente, string examen, int area, int admision)
         {
@@ -198,7 +196,7 @@ namespace CS_HOSPITALARIO_Front_end.Controllers
             return new JsonResult { Data = new { status = status } };
         }
         [HttpPost]
-        public JsonResult GuardarDiagnostico(int num_consulta, string observaciones, string tratamiento, string diagnosticoManual)
+        public JsonResult GuardarDiagnostico(int num_consulta, string observaciones, string tratamiento, string iddientes, string diagnosticoManual )
         {
             var status = false;
             int ID_DIAGNOSTICO = 0;
@@ -206,24 +204,16 @@ namespace CS_HOSPITALARIO_Front_end.Controllers
             {
                 using (HospitalarioBD dc = new HospitalarioBD())
                 {
-                    var diagnosticobd = db.CS_DIAGNOSTICO.Where(x => x.ID_ADMISION == num_consulta).FirstOrDefault();
-                    if (diagnosticobd == null)
-                    {
                         CS_DIAGNOSTICO diagnostico = new CS_DIAGNOSTICO();
                         diagnostico.ID_ADMISION = num_consulta;
                         diagnostico.OBSERVACIONES = observaciones;
                         diagnostico.TRATAMIENTO = tratamiento;
                         diagnostico.DIAGNOSTICO_MANUAL = diagnosticoManual;
+                        diagnostico.ID_DIENTES = iddientes;
                         dc.CS_DIAGNOSTICO.Add(diagnostico);
 
                         status = dc.SaveChanges() > 0;
                         ID_DIAGNOSTICO = diagnostico.ID_DIAGNOSTICO;
-                    }
-                    else
-                    {
-                        ID_DIAGNOSTICO = diagnosticobd.ID_DIAGNOSTICO;
-                        status = true;
-                    }
 
                 }
             }
@@ -232,6 +222,30 @@ namespace CS_HOSPITALARIO_Front_end.Controllers
                 status = false;
             }
             return new JsonResult { Data = new { status = status, ID_DIAGNOSTICO = ID_DIAGNOSTICO } };
+        }
+        public JsonResult GetDientes()
+        {
+            using (HospitalarioBD dc = new HospitalarioBD())
+            {
+                try
+                {
+                    var AREA = db.CS_DENTADURA.Select(x => new
+                    {
+                        CODIGO = x.CODIGO,
+                        NOMBRE = x.NOMBRE
+                    }).ToList();
+                    return Json(AREA.Select(x => new
+                    {
+                        CODIGO = x.CODIGO,
+                        NOMBRE = x.NOMBRE
+                    }), JsonRequestBehavior.AllowGet);
+                }
+                catch
+                {
+                    return null;
+                }
+
+            }
         }
         public JsonResult GuardarDiagnosticoDetalle(int ID_CIE, string COD_CIE, string TIPO, int ID_DIAGNOSTICO)
         {

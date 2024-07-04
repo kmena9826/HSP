@@ -202,6 +202,7 @@
         <AssociationConnector Association="ModeloHospitalario.FK_CS_CITA_CS_MEDICOS" />
         <AssociationConnector Association="ModeloHospitalario.FK_CS_CITA_REMITIDO" />
         <EntityTypeShape EntityType="ModeloHospitalario.CS_GLOBAL_ODONTO" Width="1.5" PointX="6.375" PointY="7.75" />
+        <EntityTypeShape EntityType="ModeloHospitalario.CS_DENTADURA" Width="1.5" PointX="14.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

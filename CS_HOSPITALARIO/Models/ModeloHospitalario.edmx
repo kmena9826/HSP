@@ -809,6 +809,14 @@
           <Property Name="TEST" Type="int" Nullable="false" />
           <Property Name="ACTIVO" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="CS_DENTADURA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="225" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="CS_DIAGNOSTICO">
           <Key>
             <PropertyRef Name="ID_DIAGNOSTICO" />
@@ -819,6 +827,7 @@
           <Property Name="TRATAMIENTO" Type="text" />
           <Property Name="TIPO_SERVICIO" Type="int" />
           <Property Name="DIAGNOSTICO_MANUAL" Type="varchar" MaxLength="100" />
+          <Property Name="ID_DIENTES" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="CS_DIAGNOSTICO_DETALLE">
           <Key>
@@ -3436,6 +3445,10 @@ advertencia 6035: La relación 'FK_CS_ADMISION_CS_PACIENTES1' tiene columnas que
           <Parameter Name="TOTAL" Type="decimal" Mode="In" />
           <Parameter Name="CANTIDAD" Type="decimal" Mode="In" />
         </Function>
+        <Function Name="SP_GetDiagnosticosPorDiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LCUH">
+          <Parameter Name="ID_ADMISION" Type="int" Mode="In" />
+          <Parameter Name="selectedDiente" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SP_Insertar_cliente_NIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LCUH">
           <Parameter Name="IDENTIFICACION" Type="varchar" Mode="In" />
           <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
@@ -3572,6 +3585,7 @@ advertencia 6035: La relación 'FK_CS_ADMISION_CS_PACIENTES1' tiene columnas que
           <EntitySet Name="CS_DEFINICION_PROC_IMAGEN" EntityType="Self.CS_DEFINICION_PROC_IMAGEN" Schema="LCUH" store:Type="Tables" />
           <EntitySet Name="CS_DEFINICION_PROCEDIMIENTO" EntityType="Self.CS_DEFINICION_PROCEDIMIENTO" Schema="LCUH" store:Type="Tables" />
           <EntitySet Name="CS_DEFINICION_PROCEDIMIENTO_DET" EntityType="Self.CS_DEFINICION_PROCEDIMIENTO_DET" Schema="LCUH" store:Type="Tables" />
+          <EntitySet Name="CS_DENTADURA" EntityType="Self.CS_DENTADURA" Schema="LCUH" store:Type="Tables" />
           <EntitySet Name="CS_DIAGNOSTICO" EntityType="Self.CS_DIAGNOSTICO" Schema="LCUH" store:Type="Tables" />
           <EntitySet Name="CS_DIAGNOSTICO_DETALLE" EntityType="Self.CS_DIAGNOSTICO_DETALLE" Schema="LCUH" store:Type="Tables" />
           <EntitySet Name="CS_DIETA" EntityType="Self.CS_DIETA" Schema="LCUH" store:Type="Tables" />
@@ -4802,6 +4816,11 @@ advertencia 6035: La relación 'FK_CS_ADMISION_CS_PACIENTES1' tiene columnas que
           <FunctionImport Name="SpListadoCitasCS" ReturnType="Collection(ModeloHospitalario.SpListadoCitasCS_Result)" />
           <FunctionImport Name="SpListadoCitasCS1" ReturnType="Collection(ModeloHospitalario.SpListadoCitasCS2_Result)" />
           <FunctionImport Name="SpListadoCitasCS2" ReturnType="Collection(ModeloHospitalario.SpListadoCitasCS2_Result1)" />
+          <EntitySet Name="CS_DENTADURA" EntityType="ModeloHospitalario.CS_DENTADURA" />
+          <FunctionImport Name="SP_GetDiagnosticosPorDiente" ReturnType="Collection(ModeloHospitalario.SP_GetDiagnosticosPorDiente_Result)">
+            <Parameter Name="ID_ADMISION" Mode="In" Type="Int32" />
+            <Parameter Name="selectedDiente" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_Listado_CIE_Capitulos_Result">
           <Property Type="Int32" Name="ID_CIE" Nullable="false" />
@@ -5926,6 +5945,7 @@ advertencia 6035: La relación 'FK_CS_ADMISION_CS_PACIENTES1' tiene columnas que
           <Property Name="TIPO_SERVICIO" Type="Int32" />
           <NavigationProperty Name="CS_DIAGNOSTICO_DETALLE" Relationship="ModeloHospitalario.FK_CS_DIAGNOSTICO_DETALLE_CS_DIAGNOSTICO" FromRole="CS_DIAGNOSTICO" ToRole="CS_DIAGNOSTICO_DETALLE" />
           <Property Name="DIAGNOSTICO_MANUAL" Type="String" Unicode="false" FixedLength="false" MaxLength="100" />
+          <Property Name="ID_DIENTES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CS_DIAGNOSTICO_DETALLE">
           <Key>
@@ -8911,6 +8931,21 @@ advertencia 6035: La relación 'FK_CS_ADMISION_CS_PACIENTES1' tiene columnas que
           <Property Type="Int32" Name="REMITIDO" Nullable="true" />
           <Property Type="String" Name="REMITIDO_DESCRIPCION" Nullable="true" MaxLength="200" />
         </ComplexType>
+        <EntityType Name="CS_DENTADURA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="SP_GetDiagnosticosPorDiente_Result">
+          <Property Type="Int32" Name="NUM_CONSULTA" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA_REGISTRO" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ID_DIENTES" Nullable="true" />
+          <Property Type="String" Name="OBSERVACIONES" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="TRATAMIENTO" Nullable="true" MaxLength="Max" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10051,6 +10086,7 @@ advertencia 6035: La relación 'FK_CS_ADMISION_CS_PACIENTES1' tiene columnas que
           <EntitySetMapping Name="CS_DIAGNOSTICO">
             <EntityTypeMapping TypeName="ModeloHospitalario.CS_DIAGNOSTICO">
               <MappingFragment StoreEntitySet="CS_DIAGNOSTICO">
+                <ScalarProperty Name="ID_DIENTES" ColumnName="ID_DIENTES" />
                 <ScalarProperty Name="DIAGNOSTICO_MANUAL" ColumnName="DIAGNOSTICO_MANUAL" />
                 <ScalarProperty Name="TIPO_SERVICIO" ColumnName="TIPO_SERVICIO" />
                 <ScalarProperty Name="TRATAMIENTO" ColumnName="TRATAMIENTO" />
@@ -11406,6 +11442,26 @@ advertencia 6035: La relación 'FK_CS_ADMISION_CS_PACIENTES1' tiene columnas que
                 <ScalarProperty Name="FECHA_HORA_ENTRADA_PAC" ColumnName="FECHA_HORA_ENTRADA_PAC" />
                 <ScalarProperty Name="REMITIDO" ColumnName="REMITIDO" />
                 <ScalarProperty Name="REMITIDO_DESCRIPCION" ColumnName="REMITIDO_DESCRIPCION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CS_DENTADURA">
+            <EntityTypeMapping TypeName="ModeloHospitalario.CS_DENTADURA">
+              <MappingFragment StoreEntitySet="CS_DENTADURA">
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetDiagnosticosPorDiente" FunctionName="ModeloHospitalario.Store.SP_GetDiagnosticosPorDiente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ModeloHospitalario.SP_GetDiagnosticosPorDiente_Result">
+                <ScalarProperty Name="NUM_CONSULTA" ColumnName="NUM_CONSULTA" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="ID_DIENTES" ColumnName="ID_DIENTES" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="TRATAMIENTO" ColumnName="TRATAMIENTO" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

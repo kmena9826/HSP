@@ -320,6 +320,7 @@ namespace CS_HOSPITALARIO_Front_end.Controllers
                         diagnostico.OBSERVACIONES = observaciones;
                         diagnostico.TRATAMIENTO = tratamiento;
                         diagnostico.DIAGNOSTICO_MANUAL = diagnosticoManual;
+                        diagnostico.ID_DIENTES = null;
                         dc.CS_DIAGNOSTICO.Add(diagnostico);
 
                         status = dc.SaveChanges() > 0;

@@ -201,13 +201,13 @@ public class rptHistorialClinico : DevExpress.XtraReports.UI.XtraReport
             this.xrTableRow8 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell49 = new DevExpress.XtraReports.UI.XRTableCell();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
+            this.xrSubreport1 = new DevExpress.XtraReports.UI.XRSubreport();
             this.sconsulta = new DevExpress.XtraReports.Parameters.Parameter();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.xrPageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.Consulta = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.formattingRule1 = new DevExpress.XtraReports.UI.FormattingRule();
-            this.xrSubreport1 = new DevExpress.XtraReports.UI.XRSubreport();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -253,7 +253,7 @@ public class rptHistorialClinico : DevExpress.XtraReports.UI.XtraReport
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel1,
             this.xrPictureBox1});
-            this.ReportHeader.HeightF = 77.08333F;
+            this.ReportHeader.HeightF = 106.25F;
             this.ReportHeader.Name = "ReportHeader";
             // 
             // xrLabel1
@@ -275,7 +275,7 @@ public class rptHistorialClinico : DevExpress.XtraReports.UI.XtraReport
             this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
             this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(4.669285F, 0F);
             this.xrPictureBox1.Name = "xrPictureBox1";
-            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(266.6667F, 36.45833F);
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(108.3333F, 106.25F);
             this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.AutoSize;
             // 
             // GroupHeader1
@@ -983,6 +983,14 @@ public class rptHistorialClinico : DevExpress.XtraReports.UI.XtraReport
             this.GroupFooter1.HeightF = 34.375F;
             this.GroupFooter1.Name = "GroupFooter1";
             // 
+            // xrSubreport1
+            // 
+            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(36.53908F, 9.999974F);
+            this.xrSubreport1.Name = "xrSubreport1";
+            this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Consulta", this.sconsulta));
+            this.xrSubreport1.ReportSource = new SubReporteRecetaClinica();
+            this.xrSubreport1.SizeF = new System.Drawing.SizeF(666.6666F, 23F);
+            // 
             // sconsulta
             // 
             this.sconsulta.Name = "sconsulta";
@@ -1036,14 +1044,6 @@ public class rptHistorialClinico : DevExpress.XtraReports.UI.XtraReport
             // 
             this.formattingRule1.DataMember = "HM_SP_Listado_consulta_ID";
             this.formattingRule1.Name = "formattingRule1";
-            // 
-            // xrSubreport1
-            // 
-            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(36.53908F, 9.999974F);
-            this.xrSubreport1.Name = "xrSubreport1";
-            this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Consulta", this.sconsulta));
-            this.xrSubreport1.ReportSource = new SubReporteRecetaClinica();
-            this.xrSubreport1.SizeF = new System.Drawing.SizeF(666.6666F, 23F);
             // 
             // rptHistorialClinico
             // 
