@@ -527,6 +527,7 @@ namespace CS_HOSPITALARIO_Front_end.Controllers
 
             }
         }
+
         public JsonResult GetVias()
         {
             using (HospitalarioBD dc = new HospitalarioBD())
@@ -534,6 +535,30 @@ namespace CS_HOSPITALARIO_Front_end.Controllers
                 try
                 {
                     var AREA = db.CS_CATALOGO_DETALLE.Where(a => a.ID_CATALOGO == 25).Select(x => new
+                    {
+                        ID = x.ID_CAT_DETALLE,
+                        DESCRIPCION = x.DESCRIPCION
+                    }).ToList();
+                    return Json(AREA.Select(x => new
+                    {
+                        ID = x.ID,
+                        DESCRIPCION = x.DESCRIPCION
+                    }), JsonRequestBehavior.AllowGet);
+                }
+                catch
+                {
+                    return null;
+                }
+
+            }
+        }
+        public JsonResult GetTipoOrden()
+        {
+            using (HospitalarioBD dc = new HospitalarioBD())
+            {
+                try
+                {
+                    var AREA = db.CS_CATALOGO_DETALLE.Where(a => a.ID_CATALOGO == 1029).Select(x => new
                     {
                         ID = x.ID_CAT_DETALLE,
                         DESCRIPCION = x.DESCRIPCION

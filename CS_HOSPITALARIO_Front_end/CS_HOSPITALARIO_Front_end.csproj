@@ -2274,6 +2274,7 @@
     <Content Include="crystalreportviewers13\urlreporting\activexviewer.js" />
     <Content Include="crystalreportviewers13\urlreporting\appletviewer.js" />
     <Content Include="Forms\ReportCrystalTest.aspx" />
+    <Content Include="icon-96x96.png" />
     <Content Include="Scripts\bootstrap-notify.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2311,7 +2312,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="icon-cs.ico" />
-    <Content Include="icono-ah.ico" />
+    <Content Include="icono-ah2.ico" />
     <Content Include="Scripts\analytics.js" />
     <Content Include="Scripts\bundle.js" />
     <Content Include="Scripts\buttons.flash.min.js" />
@@ -2722,7 +2723,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icono-ah.ico</ApplicationIcon>
+    <ApplicationIcon>icono-ah2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />

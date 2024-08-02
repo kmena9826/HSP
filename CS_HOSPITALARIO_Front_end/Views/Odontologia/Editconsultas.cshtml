@@ -11,6 +11,20 @@
 
 
 <style>
+    .floating-icon {
+        position: fixed; /* Mantiene el ícono en una posición fija */
+        bottom: 20px; /* Espacio desde el borde inferior */
+        right: 20px; /* Espacio desde el borde derecho */
+        background-color: #28A745; /* Fondo del ícono */
+        color: white; /* Color del ícono */
+        border-radius: 50%; /* Forma circular */
+        padding: 15px; /* Espaciado interno */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra del ícono */
+        cursor: pointer; /* Cursor tipo mano */
+        z-index: 1000; /* Asegura que esté encima de otros elementos */
+        transition: transform 0.2s ease-in-out;
+    }
+
     [data-notify="progressbar"] {
         margin-bottom: 0px;
         position: absolute;
@@ -119,8 +133,10 @@
         margin-left: 50px;
         margin-right: 50px;
     }
+
 </style>
 <script src="~/Scripts/vendor.js"></script>
+
 <link href="~/Content/dx.common.css" rel="stylesheet" />
 <link href="~/Content/dx.light.css" rel="stylesheet" />
 <div class="row m-0 gap-20 masonry pos-r">
@@ -163,6 +179,9 @@
                         <div class="col-md-9">
                             <h4>Consulta Nº: @Model.NUM_CONSULTA</h4>
                         </div>
+                    </div>
+                    <div class="floating-icon" onclick="handleClick()">
+                        <i class="fas fa-file-alt"></i> <!-- Cambia 'fa-plus' por el ícono que desees -->
                     </div>
                     <hr />
                     <div class="row">
@@ -701,7 +720,7 @@
                         <div class="form-group">
                             <label for="selectDiente">Seleccione un Diente:</label>
                             <select class="form-control" id="selectDiente">
-                                <option value=""></option>
+                                <option value="">Codigo</option>
                                 <!-- Agregar más opciones según sea necesario -->
                             </select>
                         </div>
@@ -728,6 +747,55 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="ModalOrden" tabindex="-1" role="dialog" aria-labelledby="ModalOrdenLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalOrdenLabel">Generar Orden</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="ordenForm">
+                    <!-- Selección del tipo de orden -->
+                    <!-- Fecha de la orden -->
+                    <div class="form-group">
+                        <label for="fechaOrden">Fecha: *</label>
+                        <input type="date" class="form-control" id="fechaOrden" name="fechaOrden">
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoOrden">Tipo de Orden: *</label>
+                        <div id="tipoOrden">
+                            <!-- Añade más opciones si es necesario -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Ormedico">Medico: *</label>
+                        <div id="Ormedico" >
+                            <!-- Añade más opciones si es necesario -->
+                        </div>
+                    </div>
+
+                    <!-- Observaciones -->
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones:</label>
+                        <textarea class="form-control" id="observaciones" name="observaciones" rows="3"></textarea>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardarOrden()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 <div class="modal fade" id="ModalReceta" tabindex="-1" role="dialog" aria-labelledby="ModalRecetaLabel" aria-hidden="true">
@@ -1028,6 +1096,42 @@
                 //alert('Estimado usuario, debe escoger al menos un diente.');
             }
         }
+        function guardarOrden() {
+            var tipoOrden = $('#tipoOrden').val();
+            var observaciones = $('#observaciones').val();
+            var fechaOrden = $('#fechaOrden').val();
+            var ormedico = $('#Ormedico').val();
+
+            // Validar datos si es necesario
+            if (!tipoOrden || !Ormedico || !fechaOrden) {
+                $.notify({ message: 'Todos los campos con  *  son requeridos' }, { type: 'danger' });
+                return;
+            }
+            console.log(tipoOrden, observaciones, fechaOrden,ormedico);
+            $('#ModalOrden').modal('hide');
+
+            // Enviar datos al servidor
+            @*$.ajax({
+                type: "POST",
+                url: '/Ruta/Del/Servidor', // Cambiar a la URL adecuada para guardar la orden
+                data: {
+                    tipoOrden: tipoOrden,
+                    observaciones: observaciones,
+                    fechaOrden: fechaOrden
+                },
+                success: function (response) {
+                    if (response.status) {
+                        $.notify({ message: 'Orden guardada exitosamente' }, { type: 'success' });
+                        $('#ModalOrden').modal('hide');
+                    } else {
+                        $.notify({ message: 'Error al guardar la orden' }, { type: 'danger' });
+                    }
+                },
+                error: function () {
+                    $.notify({ message: 'Error en la solicitud' }, { type: 'danger' });
+                }
+            });*@
+        }
         function CargarGridCie() {
             $.ajax({
                 url: "/Consultas/GetCatalogoCIE",
@@ -1134,11 +1238,21 @@
         function ËliminarDiagnostico(cie) {
             cie.remove();
         }
+        function setDefaultDate() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('fechaOrden').value = today;
+        }
         function VerHistorial() {
-            //CargarDosis();
             CargarDientes();
             $("#ModalHistorial").modal('show');
         }
+        function handleClick() {
+            setDefaultDate();
+            CargarMedicos();
+            CargarTipoOrden();
+            $("#ModalOrden").modal('show');
+        }
+
         function CheckArticuloAvailability() {
             var medicamentoField = $('#MEDICAMENTO_NO_INV')
             var medAvailableText = $('#medAvailableText')
@@ -1234,6 +1348,57 @@
                 }
             })
         }
+        function CargarTipoOrden() {
+            $.ajax({
+                type: "GET",
+                url: "/Consultas/GetTipoOrden",
+                success: function (data) {
+                    $("#tipoOrden").dxSelectBox({
+                        placeholder: "Seleccione tipo",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: data,
+                            key: "ID"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ID",
+                        searchEnabled: true,
+                        showClearButton: true,
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
+        function CargarMedicos() {
+            var medicos = [];
+            $.ajax({
+                type: "GET",
+                url: "/cita/GetMedicos",
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        medicos.push({
+                            ID: v.ID,
+                            DESCRIPCION: v.DESCRIPCION,
+                        });
+                    })
+                    $("#Ormedico").dxSelectBox({
+                        placeholder: "Seleccione el Medico",
+                        dataSource: new DevExpress.data.ArrayStore({
+                            data: medicos,
+                            key: "ID"
+                        }),
+                        displayExpr: "DESCRIPCION",
+                        valueExpr: "ID",
+                        searchEnabled: true,
+                        showClearButton: true
+                    });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
         function CargarVias() {
             $.ajax({
                 type: "GET",
@@ -1263,9 +1428,9 @@
                 success: function (data) {
                     data.forEach(function (diente) {
                         $('#selectDiente').append(`
-                    <option value="${diente.ID}">${diente.NOMBRE}</option>`);
+                        <option value="${diente.ID}">${diente.NOMBRE}</option>`);
                     });
-             
+
                 },
                 error: function (error) {
                     alert(error);
@@ -1423,7 +1588,14 @@
                                                         "TIPO": detalle.TIPO,
                                                         "ID_DIAGNOSTICO": data.ID_DIAGNOSTICO
                                                     };
-                                                    GuardarDiagnosticoDetalle(DiagnsoticoDetalle);
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url: '/Odontologia/GuardarDiagnosticoDetalle',
+                                                        data: DiagnsoticoDetalle,
+                                                        error: function () {
+                                                            $.notify({ message: 'Error al registrar la consulta' }, { type: 'danger' });
+                                                        }
+                                                    });
                                                 });
 
                                             }
@@ -1473,6 +1645,7 @@
                 }
             })
         }
+
         function GuardarReceta(Receta) {
             $.ajax({
                 type: "POST",
